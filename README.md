@@ -15,7 +15,7 @@ Inside of your Astro project, you'll see the following folders and files:
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-Any blog posts' images will be placed in the `public/` directory, and site images will be stored in `src/` directory.
+Any blog posts' images will be placed in the `public/images/` directory for using Image components to optimize and bundle them, and the website images will be stored in `src/images/` directory.
 
 ## 🧞 Commands
 
