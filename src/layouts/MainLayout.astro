@@ -5,6 +5,10 @@ import IconGitHub from "../images/icon-github.svg";
 import IconLinkedIn from "../images/icon-linkedin.svg";
 import IconTwitter from "../images/icon-twitter.svg";
 
+import { SITE_TITLE, SITE_DESCRIPTION } from "../constants";
+
+const { title = "Articles, Stories & Turorials for Tech People" } = Astro.props;
+
 const navItems = [
   { name: "首頁", path: "/" },
   { name: "歸檔", path: "/archives" },
@@ -22,7 +26,8 @@ const currentYear = new Date().getFullYear(); // e.g. 2024
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <meta name="description" content={SITE_DESCRIPTION} />
+    <title>{SITE_TITLE} - {title}</title>
   </head>
   <body>
     <!-- Header -->
