@@ -1,7 +1,7 @@
 ---
 title: "Understand JavaScript #2 語法作用域 (Lexical Scope)"
 excerpt: "JavaScript 是屬於語法作用域（靜態作用域），而靜態作用域與動態作用域這兩者有何不同呢。"
-tags: ["JavaScript"]
+tags: ["javascript"]
 date: 2021-02-24
 author: "Sean Huang"
 image: "javascript.png"

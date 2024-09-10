@@ -1,7 +1,7 @@
 ---
 title: "[React] Debouncing with useCallback Hook"
 excerpt: "本文介紹 React 當中 useCallback 這個 Hook 的使用概念，並且結合 Lodash 實作 Debouncing Search 的功能幫助理解 useCallback 的作用。"
-tags: ["React", "Lodash"]
+tags: ["react", "lodash"]
 date: 2022-10-11
 author: "Sean Huang"
 image: "javascript.png"

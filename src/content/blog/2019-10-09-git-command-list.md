@@ -1,7 +1,7 @@
 ---
 title: "Git 常用指令大全"
 excerpt: "在修習六角學院的 Git 課程後所整理的指令大全，在內容與順序上有做一些調整，方便讓之後使用 Git 的時候能夠做為參考筆記。"
-tags: ["Git"]
+tags: ["git"]
 date: 2019-10-09
 author: "Sean Huang"
 image: "javascript.png"

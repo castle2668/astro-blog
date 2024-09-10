@@ -1,7 +1,7 @@
 ---
 title: "React Redux with Functional Components"
 excerpt: "本文介紹 React Redux 於 Functional Components 的使用。"
-tags: ["React", "Redux"]
+tags: ["react", "redux"]
 date: 2022-03-03
 author: "Sean Huang"
 image: "javascript.png"

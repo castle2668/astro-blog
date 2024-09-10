@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+import MainLayout from "../layouts/MainLayout.astro";
+
+// 取得所有文章並排序
+const allBlogArticles: CollectionEntry<"blog">[] = (
+  await getCollection("blog")
+).sort(
+  (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+    b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+// 按照年份分類文章
+const articlesByYear = allBlogArticles.reduce((acc, article) => {
+  const year = new Date(article.data.date).getFullYear();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(article);
+  return acc;
+}, {});
+
+// 將年份轉換為陣列並按降序排序
+const sortedYears = Object.keys(articlesByYear).sort(
+  (a, b) => parseInt(b) - parseInt(a)
+);
+---
+
+<MainLayout title="歸檔">
+  <h1 class="text-2xl pb-3">歸檔</h1>
+  <div class="grid grid-cols-1 gap-4">
+    {
+      sortedYears.map((year) => (
+        <div>
+          <h2 class="text-xl font-semibold">{year}</h2>
+          <ul class="list-disc pl-6">
+            {(articlesByYear[year] as CollectionEntry<"blog">[]).map(
+              (article) => (
+                <li>
+                  <a
+                    href={`/articles/${article.url}`}
+                    class="hover:text-indigo-400"
+                  >
+                    {new Date(article.data.date).toLocaleDateString("zh-TW", {
+                      month: "long",
+                      day: "numeric",
+                    })}
+                    : {article.data.title}
+                  </a>
+                </li>
+              )
+            )}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</MainLayout>

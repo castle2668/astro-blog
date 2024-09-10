@@ -1,7 +1,7 @@
 ---
 title: "關於 React Refs 的概念，以及如何 Forwarding Refs"
 excerpt: "本文會介紹 React 當中的 Refs，及其延伸出的 useRef 與 forwardRef 的使用方式。"
-tags: ["React"]
+tags: ["react"]
 date: 2021-10-01
 author: "Sean Huang"
 image: "javascript.png"

@@ -1,10 +1,10 @@
 ---
 title: 'Next.js 的 "_document.js" 檔案使用紀錄'
 excerpt: "我專案都快成型了，老實講這個 document.js 還真的沒什麼修改到，秉持著自己專案內不能有一丁點自己不懂的東西的想法，來探探這個底線 document.js 是個什麼玩意兒。"
-tags: ["Next", "Pages Router"]
+tags: ["next", "pagesrouter"]
 date: 2023-09-15
 author: "Sean Huang"
-image: "javascript.png"
+image: "nextjs.png"
 slug: 2023-09-15-next-document-file
 ---
 

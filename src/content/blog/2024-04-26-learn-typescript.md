@@ -1,7 +1,7 @@
 ---
 title: "[Note] TypeScript Course for Beginners - Learn TypeScript from Scratch!"
 excerpt: "這個 TypeScript 學習大綱包含從基礎到進階的概念，涵蓋了 TypeScript 的基本語法、編譯器配置、高級類型和特性、泛型、裝飾器、命名空間和模組，以及 TypeScript 與其他工具的集成。此大綱適用於想要全面學習 TypeScript 的開發者，從基本開始，然後深入理解 TypeScript 的高級功能。"
-tags: ["TypeScript"]
+tags: ["typescript"]
 date: 2024-04-26
 author: "Sean Huang"
 image: "javascript.png"

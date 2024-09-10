@@ -1,7 +1,7 @@
 ---
 title: "Understand JavaScript #9 物件實體語法 (Object Literal Syntax)"
 excerpt: "本文主要內容為探討「物件」的相關知識，包含成員取用運算子、物件實體語法、偽裝命名空間，與 JSON 資料格式。"
-tags: ["JavaScript"]
+tags: ["javascript"]
 date: 2021-03-19
 author: "Sean Huang"
 image: "javascript.png"

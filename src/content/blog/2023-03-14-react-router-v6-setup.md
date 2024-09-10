@@ -1,7 +1,7 @@
 ---
 title: "React Router V6 - Setup Routes"
 excerpt: "React Router 團隊最近又來一次全面升級，新增了許多功能，特別是 Loader 功能實在是讓我大開眼界。除此之外，我發現他們的文件寫得很好，基本上只要跟著走一遍 Tutorial 就可以掌握新版的寫法調整與新功能哩。"
-tags: ["React", "React Router"]
+tags: ["react", "reactrouter"]
 date: 2023-03-14
 author: "Sean Huang"
 image: "javascript.png"

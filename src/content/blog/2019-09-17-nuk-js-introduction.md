@@ -1,7 +1,7 @@
 ---
 title: "NUK JavaScript #1：let、const、型別"
 excerpt: "這學期終於選到 JS 課程了，很期待但又怕很難哈哈。總之就整理筆記，幫忙加深印象吧，往後複習期中期末考試應該有幫助。此篇將會介紹環境安裝、型別，與 ES6 的 let、const。"
-tags: ["NUK", "JavaScript"]
+tags: ["nuk", "javascript"]
 date: 2019-09-17
 author: "Sean Huang"
 image: "javascript.png"

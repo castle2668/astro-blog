@@ -1,7 +1,7 @@
 ---
 title: "更強大的 React 狀態管理工具 useReducer Hook"
 excerpt: "在 JavaScript 的世界中，陣列處理方法之一的 reduce 就是將多個值陸續處理累積後成為新的單一值，而本文要介紹的 useReducer 也有類似的概念，透過這個更強大的狀態管理 Hook，可以將複雜的 State 處理完成後，返回一個單純的值。"
-tags: ["React"]
+tags: ["react"]
 date: 2021-10-24
 author: "Sean Huang"
 image: "javascript.png"

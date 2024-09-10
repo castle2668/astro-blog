@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const allBlogArticles: CollectionEntry<"blog">[] = await getCollection("blog");
+
+const tags = allBlogArticles
+  .flatMap((article) => article.data.tags)
+  .filter((tag, index, array) => array.indexOf(tag) === index)
+  .sort();
+---
+
+<MainLayout>
+  <h1 class="text-2xl mb-4">All Tags</h1>
+  <p class="mb-4">目前總共有 {tags.length} 個標籤 `(๑•̀ω•́)ノ`</p>
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      tags.map((tag) => (
+        <a
+          href={`/tags/${tag}`}
+          class="bg-gray-100 p-2 mb-6 hover:bg-indigo-500 hover:text-white"
+        >
+          #{tag}
+        </a>
+      ))
+    }
+  </div>
+</MainLayout>

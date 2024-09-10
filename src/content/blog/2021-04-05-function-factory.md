@@ -1,7 +1,7 @@
 ---
 title: "Understand JavaScript #16 函式工廠 (Function Factory)"
 excerpt: "本文主要內容為探討「函式工廠」的相關知識。閉包有很多有用的地方，像是函式工廠就是用閉包建立的模式，文章內容也會包含重載函式、一級函式、執行環境等概念。"
-tags: ["JavaScript"]
+tags: ["javascript"]
 date: 2021-04-05
 author: "Sean Huang"
 image: "javascript.png"

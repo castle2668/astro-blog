@@ -1,7 +1,7 @@
 ---
 title: "JavaScript Object Snippets"
 excerpt: "開發上，我們常常對物件做各種操作與應用，本文記載 Sean 常用到的物件操作方式。"
-tags: ["JavaScript"]
+tags: ["javascript"]
 date: 2023-02-05
 author: "Sean Huang"
 image: "javascript.png"

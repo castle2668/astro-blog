@@ -1,7 +1,7 @@
 ---
 title: "在 Quasar 使用全域 Filter 過濾器"
 excerpt: "這篇文章會介紹如何在 Quasar 加入全域的 Filter 過濾器，讓我們在各元件之中都能直接使用過濾器。"
-tags: ["Quasar Framework"]
+tags: ["quasarframework"]
 date: 2020-05-03
 author: "Sean Huang"
 image: "javascript.png"

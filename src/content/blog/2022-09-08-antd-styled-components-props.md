@@ -1,7 +1,7 @@
 ---
 title: "為什麼在 Ant Design 使用 styled-components 傳遞 Boolean Props 會出現警告"
 excerpt: "最近要使用 styled-components 包裝 Ant Design 的元件時，想透過傳遞 Boolean 值的 props 來製作動態樣式，結果是成功了但是卻一直跳出警告訊息，這是為什麼呢？"
-tags: ["React", "Ant Design", "Styled Components"]
+tags: ["react", "antdesign", "styledcomponents"]
 date: 2022-09-08
 author: "Sean Huang"
 image: "javascript.png"

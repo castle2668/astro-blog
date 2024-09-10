@@ -1,7 +1,7 @@
 ---
 title: "Understand JavaScript #11 傳值和傳參考"
 excerpt: "本文主要介紹「傳值和傳參考」的概念，這對於 JavaScript 的開發與除錯會很有幫助，如果不知道這些觀念，可能會導致一些很難 Debug 的奇怪問題。"
-tags: ["JavaScript"]
+tags: ["javascript"]
 date: 2021-03-23
 author: "Sean Huang"
 image: "javascript.png"

@@ -1,7 +1,7 @@
 ---
 title: "Understand JavaScript #0 目錄"
 excerpt: "這個系列筆記的主要內容是 JavaScript: Understanding the Weird Parts 課程的學習筆記，主要在講解 JavaScript 背後的運作原理與邏輯。"
-tags: ["JavaScript"]
+tags: ["javascript"]
 date: 2021-02-22
 author: "Sean Huang"
 image: "javascript.png"

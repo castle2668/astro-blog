@@ -1,7 +1,7 @@
 ---
 title: "Understand JavaScript #12 物件 × 函式 × this"
 excerpt: "本文主要內容為探討物件、函式，以及那個令人困惑的「this」的指向問題與相關知識。"
-tags: ["JavaScript"]
+tags: ["javascript"]
 date: 2021-03-26
 author: "Sean Huang"
 image: "javascript.png"

@@ -1,7 +1,7 @@
 ---
 title: "使用 Redux Toolkit 更有效率地撰寫 Redux"
 excerpt: "本文介紹 Redux Toolkit 的基本使用方式，因為我是從 Vue 轉 React 的開發者，第一眼看到 Redux Toolkit 真的眼睛為之一亮！裡面使用到的觀念與 Vuex 相仿，非常好理解，撰寫的結構也相當有條理喔。"
-tags: ["React", "Redux", "Redux Toolkit"]
+tags: ["react", "redux", "reduxtoolkit"]
 date: 2022-03-17
 author: "Sean Huang"
 image: "javascript.png"

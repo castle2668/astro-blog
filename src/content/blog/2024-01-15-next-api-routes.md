@@ -1,10 +1,10 @@
 ---
 title: "透過 Next.js API Routes 新增後端程式碼，實現 Fullstack React"
 excerpt: "其實專案使用 Next.js 的話，可以考慮直接在 Next 專案中的 API Routes 進行後端的開發，只是這次開發公司專案是第一次用，當初並沒有規劃這一塊，所以目前專案完成上線後，沒有安排進行這方面的重構，不過我們還是可以學習一下怎麼在 Next 這個框架中完成全端開發。"
-tags: ["Next", "Pages Router", "API Routes"]
+tags: ["next", "pagesrouter", "apiroutes"]
 date: 2024-01-15
 author: "Sean Huang"
-image: "javascript.png"
+image: "nextjs.png"
 slug: 2024-01-15-next-api-routes
 ---
 

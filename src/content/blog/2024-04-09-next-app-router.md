@@ -1,10 +1,10 @@
 ---
 title: "Next.js v12 到 v14 版本升級紀錄！有何不同？"
 excerpt: "專案一直以來都是使用 Next 12 以及 Pages Router 進行開發，不久前 Next 發表了 v14，其中 v13 與 v14 都陸續新增了一些概念，最重要的就是 App Router 成為默認的架構方式，而近期 App Router 的功能已經大致完善，因此打算試用看看。族繁不及備載，本篇文章只有記載本身學習與使用 Next 14 的體驗，以及瞭解到的幾項改變。"
-tags: ["Next", "App Router", "React Server Components"]
+tags: ["next", "approuter", "reactservercomponents"]
 date: 2024-04-09
 author: "Sean Huang"
-image: "javascript.png"
+image: "nextjs.png"
 slug: 2024-04-09-next-app-router
 ---
 

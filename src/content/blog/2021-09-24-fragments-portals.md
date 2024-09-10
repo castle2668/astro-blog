@@ -1,7 +1,7 @@
 ---
 title: "Cleaner Code with React Fragments & Portals"
 excerpt: "透過 Fragments 與 Portals 讓我們可以使用 React 撰寫出更乾淨的 HTML Code。"
-tags: ["React"]
+tags: ["react"]
 date: 2021-09-24
 author: "Sean Huang"
 image: "javascript.png"

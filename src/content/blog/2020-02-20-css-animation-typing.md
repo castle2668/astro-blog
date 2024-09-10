@@ -1,7 +1,7 @@
 ---
 title: "透過 CSS Animation 製作打字動畫與閃爍游標"
 excerpt: "本文介紹如何透過 CSS 來製作出打字動畫與閃爍游標，這個效果用在專案上可以添增一些亮點，視覺效果還滿不錯的，一起來試試看吧！"
-tags: ["CSS"]
+tags: ["css"]
 date: 2020-02-20
 author: "Sean Huang"
 image: "javascript.png"
