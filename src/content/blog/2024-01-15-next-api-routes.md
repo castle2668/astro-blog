@@ -4,7 +4,7 @@ excerpt: "其實專案使用 Next.js 的話，可以考慮直接在 Next 專案�
 tags: ["Next", "Pages Router", "API Routes"]
 date: 2024-01-15
 author: "Sean Huang"
-image: "javascript.png"
+image: "nextjs.png"
 slug: 2024-01-15-next-api-routes
 ---
 

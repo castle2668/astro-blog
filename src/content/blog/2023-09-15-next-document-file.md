@@ -4,7 +4,7 @@ excerpt: "我專案都快成型了，老實講這個 document.js 還真的沒什
 tags: ["Next", "Pages Router"]
 date: 2023-09-15
 author: "Sean Huang"
-image: "javascript.png"
+image: "nextjs.png"
 slug: 2023-09-15-next-document-file
 ---
 

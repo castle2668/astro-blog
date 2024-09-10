@@ -4,7 +4,7 @@ excerpt: "Next.js 的一大特點就是已經即成了許多便利的功能，�
 tags: ["Next", "Pages Router"]
 date: 2023-11-15
 author: "Sean Huang"
-image: "javascript.png"
+image: "nextjs.png"
 slug: 2023-11-15-next-image-optimization
 ---
 

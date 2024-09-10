@@ -4,7 +4,7 @@ excerpt: "Next.js 除了可以用來做 SSR 之外，其實也可以取代原本
 tags: ["Next", "Pages Router"]
 date: 2023-07-15
 author: "Sean Huang"
-image: "javascript.png"
+image: "nextjs.png"
 slug: 2023-07-15-next-pre-rendering-data-fetching
 ---
 

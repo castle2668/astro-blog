@@ -4,7 +4,7 @@ excerpt: "專案一直以來都是使用 Next 12 以及 Pages Router 進行開�
 tags: ["Next", "App Router", "React Server Components"]
 date: 2024-04-09
 author: "Sean Huang"
-image: "javascript.png"
+image: "nextjs.png"
 slug: 2024-04-09-next-app-router
 ---
 

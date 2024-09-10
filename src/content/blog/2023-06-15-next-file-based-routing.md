@@ -4,7 +4,7 @@ excerpt: "今年下半年接了一個公司的對外專案，因此有 SEO 需�
 tags: ["Next", "Pages Router"]
 date: 2023-06-15
 author: "Sean Huang"
-image: "javascript.png"
+image: "nextjs.png"
 slug: 2023-06-15-next-file-based-routing
 ---
 
