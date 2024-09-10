@@ -1,6 +1,7 @@
 ---
-import { formatDate, capitalize } from "../utils";
 import type { CollectionEntry } from "astro:content";
+
+import { capitalize, formatDate } from "../utils";
 
 const { article } = Astro.props;
 
@@ -9,8 +10,8 @@ interface Props {
 }
 ---
 
-<div class="max-w-md mx-auto mt-10">
-  <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+<div class="mt-10">
+  <div class="bg-white rounded-lg overflow-hidden shadow-lg h-full">
     <a href={"/articles/" + article.slug}>
       <img
         src={"/images/" + article.data.image}
@@ -25,8 +26,14 @@ interface Props {
           {article.data.title}{" "}
         </a>
       </h2>
-      <p class="text-gray-600 text-sm mb-4">
+      <p class="text-gray-600 text-sm mb-2">
         {formatDate(article.data.date)}
+      </p>
+      <!-- Excerpt -->
+      <p class="hidden text-gray-600 mb-4 sm:line-clamp-3 xl:line-clamp-5">
+        <a href={"/articles/" + article.slug}>
+          {article.data.excerpt}
+        </a>
       </p>
       {/* Tags */}
       <div class="flex flex-wrap gap-2">
