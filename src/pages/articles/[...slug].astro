@@ -1,0 +1,131 @@
+---
+import { getEntry } from "astro:content";
+
+import Tags from "../../components/Tags.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+import { formatDate } from "../../utils";
+
+const { slug } = Astro.params;
+
+if (slug === undefined) {
+  throw new Error("Slug is required");
+}
+
+const entry = await getEntry("blog", slug);
+
+if (entry === undefined) {
+  return Astro.redirect("/404");
+}
+
+const { Content } = await entry.render();
+---
+
+<MainLayout>
+  <a
+    href="/articles"
+    class="inline-block bg-gray-100 p-2 mb-6 hover:bg-indigo-500 hover:text-white"
+    >Back To Articles</a
+  >
+  <article>
+    <h1 class="text-4xl font-bold mb-2">{entry.data.title}</h1>
+    <h3 class="text-lg mb-2">
+      Written by {entry.data.author} on {formatDate(entry.data.date)}
+    </h3>
+    <Tags tags={entry.data.tags} />
+    <img
+      src={"/images/" + entry.data.image}
+      alt="Article Image"
+      class="w-full h-auto rounded-xl my-6"
+    />
+    <div class="article-content">
+      <Content />
+    </div>
+  </article>
+</MainLayout>
+
+<style is:global>
+  .article-content p {
+    margin: 20px 0;
+  }
+
+  .article-content h2 {
+    margin: 20px 0;
+    font-size: 1.8rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .article-content a {
+    word-break: break-all;
+    text-decoration: underline;
+  }
+
+  .article-content a:hover {
+    color: #c1170c;
+  }
+
+  .article-content code:not([class]) {
+    background-color: rgba(27, 31, 35, 0.06);
+    color: #274878;
+    font-size: 14px;
+    padding: 2px 4px;
+  }
+
+  .article-content pre {
+    position: relative;
+    padding: 32px 16px 16px 16px;
+    &::before {
+      content: attr(data-language);
+      position: absolute;
+      top: 0;
+      right: 16px;
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 0 0 4px 4px;
+      font-size: 14px;
+      line-height: 1;
+      text-transform: uppercase;
+      font-weight: bold;
+      background: #005a9c;
+      color: #fff;
+    }
+    code {
+      font-size: 14px;
+      @media (min-width: 768px) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .article-content blockquote {
+    border-left: 4px solid #c1170c;
+    line-height: 1.8;
+    padding-left: 16px;
+    margin: 0 0 20px 20px;
+  }
+
+  .article-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    li {
+      margin: 8px 0;
+    }
+  }
+
+  .article-content ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+    li {
+      margin: 8px 0;
+    }
+  }
+
+  .article-content table,
+  .article-content tr,
+  .article-content td,
+  .article-content th {
+    border: 1px solid #555;
+    border-collapse: collapse;
+    padding: 8px;
+    min-width: 100px;
+  }
+</style>
