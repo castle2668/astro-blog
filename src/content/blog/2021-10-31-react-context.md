@@ -1,7 +1,7 @@
 ---
 title: "使用 React Context 處理全域狀態"
 excerpt: "為了避免 Props Drilling，React 提供了 Context API 幫助我們解決這樣的問題，本文會介紹 Context API 的基本用法，包含 createContext、Provider、Consumer、useContext 等概念。"
-tags: ["React"]
+tags: ["react"]
 date: 2021-10-31
 author: "Sean Huang"
 image: "javascript.png"

@@ -1,7 +1,7 @@
 ---
 title: "瞭解 Spread & Rest Operator 與 Destructuring 的用法"
 excerpt: "Spread 與 Rest 運算子都是寫成三個點，而它的身份就取決於我們在哪裡使用它，一起來看看吧。"
-tags: ["JavaScript"]
+tags: ["javascript"]
 date: 2021-08-06
 author: "Sean Huang"
 image: "javascript.png"

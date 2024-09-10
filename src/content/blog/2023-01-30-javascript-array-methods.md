@@ -1,7 +1,7 @@
 ---
 title: "The JavaScript Array Methods Handbook"
 excerpt: "健忘的 Sean 常常需要查看的陣列處理方法小抄。"
-tags: ["JavaScript"]
+tags: ["javascript"]
 date: 2023-01-30
 author: "Sean Huang"
 image: "javascript.png"

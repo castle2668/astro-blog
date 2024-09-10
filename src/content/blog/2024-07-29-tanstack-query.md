@@ -1,7 +1,7 @@
 ---
 title: "使用 TanStack Query 輕鬆處理 HTTP Requests"
 excerpt: "TanStack Query 可以幫助我們發送 HTTP Request 也就是串接 API，讓前端畫面與後端資料能夠溝通與同步。沒錯！這些事情透過 useEffect 以及 Fetch 或 Axios 就能做到了，只是 TanStack Query 大幅地簡化了這方面的 Code，一起來看看 TanStack Query 如何提升開發者體驗吧。"
-tags: ["React", "TanStack Query"]
+tags: ["react", "tanstackquery"]
 date: 2024-07-29
 author: "Sean Huang"
 image: "javascript.png"

@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Class-based Components"
 excerpt: "本文介紹 React Class-based Components 的使用方式。"
-tags: ["React"]
+tags: ["react"]
 date: 2022-01-09
 author: "Sean Huang"
 image: "javascript.png"

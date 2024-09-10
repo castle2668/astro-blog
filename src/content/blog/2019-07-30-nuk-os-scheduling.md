@@ -1,7 +1,7 @@
 ---
 title: "Operating System: Scheduling"
 excerpt: "本文介紹作業系統中「排程」的基礎概念，主要是在講四種演算法 FCFS、Priority Scheduling、SJF、RR，並說明各演算法延伸出的概念。"
-tags: ["Operating System", "NUK"]
+tags: ["os", "nuk"]
 date: 2019-07-30
 author: "Sean Huang"
 image: "javascript.png"

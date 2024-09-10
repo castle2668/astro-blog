@@ -1,7 +1,7 @@
 ---
 title: "2022 年度回顧"
 excerpt: "這是我在 2022 年最值得聊聊的十件事情 🎉"
-tags: ["Yearly Review", "Life"]
+tags: ["yearlyreview", "life"]
 date: 2022-12-31
 author: "Sean Huang"
 image: "javascript.png"

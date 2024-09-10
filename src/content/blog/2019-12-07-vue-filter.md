@@ -1,7 +1,7 @@
 ---
 title: "Vue.js 使用 Filter 自訂資料呈現格式"
 excerpt: "Vue 提供的 Filter 過濾器可用於自訂畫面資料的呈現格式，如果不是做複雜的資料處理，只是做簡單調整的話，就很適合使用 Filter。"
-tags: ["Vue"]
+tags: ["vue"]
 date: 2019-12-07
 author: "Sean Huang"
 image: "javascript.png"

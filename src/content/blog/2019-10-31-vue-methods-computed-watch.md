@@ -1,7 +1,7 @@
 ---
 title: "Vue.js Methods、Computed 與 Watch 的差異"
 excerpt: "在 Vue.js 中 Methods、Computed、Watch 裡面都可以寫函式，這三種屬性有什麼差異呢？"
-tags: ["Vue"]
+tags: ["vue"]
 date: 2019-10-31
 author: "Sean Huang"
 image: "javascript.png"

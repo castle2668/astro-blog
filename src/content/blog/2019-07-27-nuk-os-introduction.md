@@ -1,7 +1,7 @@
 ---
 title: "Operating System: Introduction"
 excerpt: "覺得之前課堂上講的 OS 很抽象，因此打算寫個筆記複習，考試前也多少有幫助吧！本文介紹作業系統的定義以及基本概念。"
-tags: ["Operating System", "NUK"]
+tags: ["os", "nuk"]
 date: 2019-07-27
 author: "Sean Huang"
 image: "javascript.png"

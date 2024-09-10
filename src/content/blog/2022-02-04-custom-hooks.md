@@ -1,7 +1,7 @@
 ---
 title: "React Code Reuse - Custom Hooks"
 excerpt: "本文介紹為什麼我們要建立並使用 Custom Hooks，以及講解如何撰寫創建自己的 Hooks，讓我們在開發 React 專案時更好地複用各種邏輯與程式碼。"
-tags: ["React"]
+tags: ["react"]
 date: 2022-02-04
 author: "Sean Huang"
 image: "javascript.png"

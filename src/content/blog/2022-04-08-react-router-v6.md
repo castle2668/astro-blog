@@ -1,7 +1,7 @@
 ---
 title: "升級 React Router v6 筆記"
 excerpt: "本文為 React Router 升級第 6 版的筆記。"
-tags: ["React", "React Router"]
+tags: ["react", "reactrouter"]
 date: 2022-04-08
 author: "Sean Huang"
 image: "javascript.png"

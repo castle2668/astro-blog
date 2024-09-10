@@ -1,7 +1,7 @@
 ---
 title: "Operating System: Multi-programming"
 excerpt: "本文介紹作業系統 Multi-programming 的概念。"
-tags: ["Operating System", "NUK"]
+tags: ["os", "nuk"]
 date: 2019-07-29
 author: "Sean Huang"
 image: "javascript.png"

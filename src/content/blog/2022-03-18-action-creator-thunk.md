@@ -1,7 +1,7 @@
 ---
 title: "Redux Toolkit with Action Creator Thunk"
 excerpt: "本文介紹 Redux Toolkit 當中的 Action Creator Thunk 設計，透過 Thunk 幫助我們更好地處理非同步邏輯。"
-tags: ["React", "Redux", "Redux Toolkit"]
+tags: ["react", "redux", "reduxtoolkit"]
 date: 2022-03-18
 author: "Sean Huang"
 image: "javascript.png"

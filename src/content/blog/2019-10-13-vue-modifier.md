@@ -1,7 +1,7 @@
 ---
 title: "Vue.js Event Modifier"
 excerpt: "在使用 Vue 的 v-on 時可以搭配修飾符，幫助我們加上一些附加作用，而 Vue 幫我們包裝好的修飾符有事件修飾符、按鍵修飾符，與滑鼠修飾符這三種。"
-tags: ["Vue"]
+tags: ["vue"]
 date: 2019-10-13
 author: "Sean Huang"
 image: "javascript.png"

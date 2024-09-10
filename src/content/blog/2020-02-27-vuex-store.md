@@ -1,7 +1,7 @@
 ---
 title: "使用 Vuex 管理資料狀態"
 excerpt: "瞭解 Vue 的指令、元件、路由配置等概念後，我們用 Vue CLI 製作的網站差不多告一段落了！然而 Vue 生態圈還有一個必備技能是 Vuex，我們現在就來把 Vuex 也加入專案，讓我們的資料狀態可以跨元件同步。"
-tags: ["Vue", "Vuex"]
+tags: ["vue", "Vuex"]
 date: 2020-02-27
 author: "Sean Huang"
 image: "javascript.png"

@@ -1,7 +1,7 @@
 ---
 title: "JavaScript ES6 箭頭函式與傳統函式的差異"
 excerpt: "本文內容主要探討 JavaScript ES6 中的「箭頭函式」的相關概念。"
-tags: ["JavaScript"]
+tags: ["javascript"]
 date: 2021-07-29
 author: "Sean Huang"
 image: "javascript.png"

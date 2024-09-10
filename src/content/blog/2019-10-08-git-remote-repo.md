@@ -1,7 +1,7 @@
 ---
 title: "Git 同步遠端數據庫"
 excerpt: "使用 Git 與 Github 進行團隊合作時，會利用遠端數據庫做上傳與下載，同時也會出現 Git 衝突，本篇文講解如何處理這些狀況。"
-tags: ["Git"]
+tags: ["git"]
 date: 2019-10-08
 author: "Sean Huang"
 image: "javascript.png"

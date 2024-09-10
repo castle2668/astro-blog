@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 
-import { capitalize, formatDate } from "../utils";
+import { formatDate } from "../utils";
 
 const { article } = Astro.props;
 
@@ -46,7 +46,7 @@ interface Props {
                   : "px-2 py-1 bg-indigo-500 text-white rounded-full text-xs hover:opacity-90"
               }
             >
-              <a href={"/tag/" + tag}>#{capitalize(tag)}</a>
+              <a href={"/tag/" + tag}>#{tag}</a>
             </span>
           ))
         }

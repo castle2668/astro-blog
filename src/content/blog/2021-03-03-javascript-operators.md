@@ -1,7 +1,7 @@
 ---
 title: "Understand JavaScript #8 運算子 (Operators)"
 excerpt: "本文主要內容為探討「運算子」的各種概念，能幫助我們順利除錯與瞭解可能會因為動態型別而產生的問題。"
-tags: ["JavaScript"]
+tags: ["javascript"]
 date: 2021-03-03
 author: "Sean Huang"
 image: "javascript.png"

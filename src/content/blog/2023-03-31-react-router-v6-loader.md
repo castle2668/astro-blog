@@ -1,7 +1,7 @@
 ---
 title: "React Router V6 - Fetch data with Loader"
 excerpt: "上一篇介紹了 React Router V6 的基本架構，包含導頁、動態路由與巢狀路由，本文則會介紹 V6 全新的重要功能 Loader。"
-tags: ["React", "React Router"]
+tags: ["react", "reactrouter"]
 date: 2023-03-31
 author: "Sean Huang"
 image: "javascript.png"

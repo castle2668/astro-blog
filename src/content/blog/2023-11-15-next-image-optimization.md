@@ -1,7 +1,7 @@
 ---
 title: "使用 Next Image 最佳化圖片"
 excerpt: "Next.js 的一大特點就是已經即成了許多便利的功能，包含簡便的路由配置、圖片優化、效能優化、打包優化等等，今天來看看圖片優化是怎麼個做法。"
-tags: ["Next", "Pages Router"]
+tags: ["next", "pagesrouter"]
 date: 2023-11-15
 author: "Sean Huang"
 image: "nextjs.png"

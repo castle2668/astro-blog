@@ -1,7 +1,7 @@
 ---
 title: "Understand JavaScript #6 Event Loop"
 excerpt: "Event Loop 負責排程處理同步與非同步的工作，有了這位任務管理員，你的網站才不會卡卡的喔。"
-tags: ["JavaScript"]
+tags: ["javascript"]
 date: 2021-02-28
 author: "Sean Huang"
 image: "javascript.png"

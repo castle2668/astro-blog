@@ -1,7 +1,7 @@
 ---
 title: "瞭解 React Router V5 基礎知識"
 excerpt: "現代前端開發常見的 SPA 是指頁面 URL 切換時，不必重新 Fetch 新的 HTML 檔案，且會阻止瀏覽器的默認行為，直接去更新畫面上的內容。在 React 技術線當中，可以藉由 React Router 幫助我們完成 SPA 下的頁面切換，根據 Route 的更改呈現出不同的元件。"
-tags: ["React", "React Router"]
+tags: ["react", "reactrouter"]
 date: 2022-04-04
 author: "Sean Huang"
 image: "javascript.png"

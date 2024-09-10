@@ -1,7 +1,7 @@
 ---
 title: "Understand JavaScript #5 範圍鏈 (Scope Chain)"
 excerpt: "範圍鏈是什麼，這個專有名詞聽起來好像很難懂，但是其實它很好理解呢。"
-tags: ["JavaScript"]
+tags: ["javascript"]
 date: 2021-02-27
 author: "Sean Huang"
 image: "javascript.png"

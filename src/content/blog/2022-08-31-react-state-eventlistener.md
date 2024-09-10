@@ -1,7 +1,7 @@
 ---
 title: "為什麼 React State 在 Event Listener 中沒有正確更新"
 excerpt: "最近在使用 Ant Design 的 Table 元件時，想要監聽 Scroll 事件去更改呈現的欄位，但是發現 State 成功更新後，Table 所使用的 State 卻沒有跟著更新，這到底是怎麼回事哩。"
-tags: ["React", "Ant Design"]
+tags: ["react", "antdesign"]
 date: 2022-08-31
 author: "Sean Huang"
 image: "javascript.png"

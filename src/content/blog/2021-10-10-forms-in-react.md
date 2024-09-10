@@ -1,7 +1,7 @@
 ---
 title: "Forms in React"
 excerpt: "本文介紹如何在 React 中使用 Forms 表單相關元素。"
-tags: ["React"]
+tags: ["react"]
 date: 2021-10-10
 author: "Sean Huang"
 image: "javascript.png"
