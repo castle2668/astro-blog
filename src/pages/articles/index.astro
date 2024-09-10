@@ -1,9 +1,14 @@
 ---
-import MainLayout from "../../layouts/MainLayout.astro";
-import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
 import ArticleCard from "../../components/ArticleCard.astro";
+import Pagination from "../../components/Pagination.astro";
+import SearchForm from "../../components/SearchForm.astro";
+import { ARTICLES_PER_PAGE } from "../../constants";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const currentPage: number | null = +Astro.url.searchParams.get("page")! || 1;
 
 const allBlogArticles: CollectionEntry<"blog">[] = (
   await getCollection("blog")
@@ -11,17 +16,31 @@ const allBlogArticles: CollectionEntry<"blog">[] = (
   (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
     b.data.date.valueOf() - a.data.date.valueOf()
 );
+
+const totalPages: number = Math.ceil(
+  allBlogArticles.length / ARTICLES_PER_PAGE
+);
+
+const articlesForPage: CollectionEntry<"blog">[] = allBlogArticles.slice(
+  (currentPage - 1) * ARTICLES_PER_PAGE,
+  currentPage * ARTICLES_PER_PAGE
+);
 ---
 
 <MainLayout>
-  <section>
-    <h1>文章列表</h1>
-    <ul>
-      {allBlogArticles.map((article) => <ArticleCard article={article} />)}
-    </ul>
-  </section>
-  <div>
-    <a href="/" rel="prev"> ← 較新文章 </a>
-    <a href="/" rel="next"> 較舊文章 → </a>
+  <h1 class="text-2xl pb-3">All Articles</h1>
+
+  <SearchForm />
+  <br />
+
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {articlesForPage.map((article) => <ArticleCard article={article} />)}
   </div>
+
+  <Pagination
+    currentPage={currentPage}
+    totalPages={totalPages}
+    disablePrevious={currentPage === 1}
+    disableNext={currentPage === totalPages}
+  />
 </MainLayout>
