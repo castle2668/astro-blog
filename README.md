@@ -1,5 +1,9 @@
 # Astro Blog
 
+## 🔥 Tech Stack
+
+`Astro` + `Tailwind CSS` + `TypeScript` + `ESLint` + `eslint-plugin-simple-import-sort`
+
 ## 🚀 Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:

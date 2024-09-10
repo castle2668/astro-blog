@@ -1,44 +1,162 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
 import { Image } from "astro:assets";
-import License from "../images/license.png";
+
+import Author1 from "../images/author1.jpeg";
+import Author2 from "../images/author2.jpeg";
+import Author3 from "../images/author3.jpeg";
+import Avatar from "../images/avatar.jpeg";
+import IconFacebook from "../images/icon-facebook.svg";
+import IconGitHub from "../images/icon-github.svg";
+import IconGmail from "../images/icon-gmail.svg";
+import IconInstagram from "../images/icon-instagram.svg";
+import IconLinkedIn from "../images/icon-linkedin.svg";
+import IconTwitter from "../images/icon-twitter.svg";
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<MainLayout title="About The Tech People Blog">
-  <h2>🍔 About Me | 關於我</h2>
-  <p>Frontend Engineer / Taiwanese / Passion Comes From Mastery</p>
-  <ul>
-    <li>暱稱：Sean Huang</li>
-    <li>
-      描述：每天都進步 1%，一年後你會進步 37 倍；每天都退步
-      1%，一年後你會弱化到趨近於 0！
-    </li>
-    <li>狀態：正在執行四轉任務中...</li>
-    <li>專業：前端開發與資訊管理</li>
-    <li>信箱：castle2668@gmail.com</li>
-  </ul>
-  <h2>🏡 About Blog | 關於部落格</h2>
-  <p>
-    這個部落格主要是用來紀錄我學習與開發的筆記，同時檢視自己對技能的理解。
-    <br />
-    歡迎大家交流 `(ゝ∀･)b`
-  </p>
-  <ul>
-    <li>網站名稱：Sean's Blog</li>
-    <li>網站類型：部落格</li>
-    <li>網站描述：學習筆記與開發心得</li>
-    <li>網站網址：https://www.seanhuang.dev</li>
-    <li>網站狀態：持續更新中...</li>
-  </ul>
-  <h2>📎 License | 授權</h2>
-  <p>
-    本部落格是採用創用 CC 姓名標示 - 非商業性 - 相同方式分享 4.0
-    國際授權條款授權。
-  </p>
-  <a
-    href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
-    title="CC BY-NC-SA 4.0"
-  >
-    <Image src={License} alt="CC BY-NC-SA 4.0" width={88} height={31} />
-  </a>
+<MainLayout title="About The TechPeople Blog">
+  <h1 class="text-4xl font-bold mb-5">About Sean's Blog</h1>
+  <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="w-full md:w-1/2 mb-8 md:mb-0">
+      <Image
+        src={Avatar}
+        alt="Tech People Team"
+        class="w-full h-auto rounded-lg shadow-lg"
+      />
+    </div>
+    <div class="w-full md:w-1/2">
+      <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Who We Are</h2>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        歡迎來到 Sean's
+        Blog，前身為海豹人的第一個家，我們的作者其實都是同一個人，也就是不同時期的
+        Sean。我們是一個由技術愛好者組成的團隊（作者多元宇宙），致力於為大家帶來網站開發相關的最新文章、教學與分享。
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        我們的目標是為台灣的網站開發圈提供更多幫助和教學，幫助每個人都能跟上網站開發領域快速發展的趨勢，無論你是經驗豐富的開發人員、相關技術的愛好者，或是好奇技術趨勢的人們，我們都會盡力為你提供幫助。
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        Welcome to Sean's Blog, formerly known as Sealman's first homepage. Our
+        authors are actually the same person, Sean from different periods. We
+        are a team of continuously passionate technology enthusiasts (multiverse
+        of authors), dedicated to bringing you all relevant information. The
+        latest articles, teaching and sharing of technology.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        Our mission is to provide more support and education to Taiwan's web
+        development community and help everyone keep up with the rapidly
+        developing world of web development around the world. Whether you're an
+        experienced developer, a fan of related technologies, or just curious
+        about a technology trend, we've got you covered.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-6">
+        本部落格是採用創用 CC 姓名標示 - 非商業性 - 相同方式分享 4.0
+        國際授權條款授權，即<a
+          href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+          title="CC BY-NC-SA 4.0"
+        >
+          CC BY-NC-SA 4.0
+        </a>授權。
+      </p>
+    </div>
+  </div>
+
+  <!-- About Me -->
+  <div class="mt-10">
+    <h2 class="text-3xl font-extrabold text-gray-900 mb-8">Our Team</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <Image src={Author3} alt="Team Member 1" class="w-full h-auto" />
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Sean Huang</h3>
+          <p class="text-gray-70 mb-2">Lead Writer & Editor-in-Chief.</p>
+          <p class="text-gray-70 mb-2">Former Wistron Frontend Engineer.</p>
+          <p class="text-gray-70 mb-4">Passion Comes From Mastery.</p>
+          <ul class="flex gap-4">
+            <li>
+              <a href="mailto:castel2668@gmail.com" target="_blank">
+                <Image src={IconGmail} alt="Gmail" width={30} height={30} />
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/castle2668" target="_blank">
+                <Image src={IconGitHub} alt="GitHub" width={30} height={30} />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/sean-huang-tw"
+                target="_blank"
+              >
+                <Image
+                  src={IconLinkedIn}
+                  alt="LinkedIn"
+                  width={30}
+                  height={30}
+                />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/seanhuangdev" target="_blank">
+                <Image
+                  src={IconFacebook}
+                  alt="Facebook"
+                  width={30}
+                  height={30}
+                />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/catsle_h" target="_blank">
+                <Image
+                  src={IconInstagram}
+                  alt="Instagram"
+                  width={30}
+                  height={30}
+                />
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/castle2668" target="_blank">
+                <Image src={IconTwitter} alt="Twitter" width={30} height={30} />
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <Image src={Author2} alt="Team Member 2" class="w-full h-auto" />
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">
+            海豹人 Sealman
+          </h3>
+          <p class="text-gray-70 mb-2">Tech Analyst & Former Lead Writer.</p>
+          <p class="text-gray-70 mb-2">
+            Former TAAZE Frontend Developer. Former Rakuya Senior Frontend
+            Developer. Former Funliday Frontend Engineer.
+          </p>
+          <p class="text-gray-70">
+            透過撰寫部落格，可以記錄自己學習或開發的過程，日後檢視自己對該項技能的理解時，也能隨時繼續把文章補充得更完整。
+          </p>
+        </div>
+      </div>
+      <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <Image src={Author1} alt="Team Member 3" class="w-full h-auto" />
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">
+            Huang, Yung-Hsiang
+          </h3>
+          <p class="text-gray-70 mb-2">Founder & Former Editor-in-Chief.</p>
+          <p class="text-gray-70 mb-2">
+            Graduated from National University of Kaohsiung with a bachelor's
+            degree in Information Management.
+          </p>
+          <p class="text-gray-70">
+            專長是前端開發與資訊管理。喜歡的正能量小語：「每天都進步
+            1%，一年後你會進步 37 倍；每天都退步 1%，一年後你會弱化到趨近於
+            0」。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </MainLayout>

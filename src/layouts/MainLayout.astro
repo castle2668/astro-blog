@@ -1,31 +1,29 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from "../constants";
-
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../constants";
 
-const { title = "Articles, Stories & Turorials for Tech People" } = Astro.props;
+const { title = "Articles, Stories & Tutorials For Tech People" } = Astro.props;
 
 interface Props {
   title?: string;
 }
 ---
 
+<!doctype html>
 <html lang="zh-Hant-TW">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={SITE_DESCRIPTION} />
     <title>{SITE_TITLE} - {title}</title>
   </head>
-  <body>
-    <Header />
+  <body class="">
+    <Navbar />
 
-    <main>
+    <section class="container mx-auto max-w-screen-xl my-10 px-8">
       <slot />
-    </main>
+    </section>
 
     <Footer />
   </body>
