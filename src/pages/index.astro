@@ -2,9 +2,9 @@
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 
-import ArticleCard from "../components/ArticleCard.astro";
+import ArticleCard from "../components/ArticleCard";
 import MostRecentArticle from "../components/MostRecentArticle.astro";
-import SearchForm from "../components/SearchForm.astro";
+import SearchInput from "../components/SearchInput";
 import { HOMEPAGE_ARTICLE_LIMIT } from "../constants";
 import MainLayout from "../layouts/MainLayout.astro";
 
@@ -25,10 +25,10 @@ const otherArticles: CollectionEntry<"blog">[] = allBlogArticles.slice(1);
   <div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
     <div>
       <h1 class="text-5xl font-bold mt-4 mb-8 leading-tight xl:text-6xl">
-        Articles, Stories & Tutorials for Tech People
+        Articles, Stories & Tutorials for Web Enthusiasts
       </h1>
 
-      <SearchForm />
+      <SearchInput client:load />
     </div>
     <MostRecentArticle article={mostRecentArticle} />
   </div>
@@ -38,7 +38,7 @@ const otherArticles: CollectionEntry<"blog">[] = allBlogArticles.slice(1);
     {
       otherArticles
         .slice(0, HOMEPAGE_ARTICLE_LIMIT)
-        .map((article) => <ArticleCard article={article} />)
+        .map((article) => <ArticleCard client:load article={article} />)
     }
   </div>
 </MainLayout>

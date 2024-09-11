@@ -2,9 +2,9 @@
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 
-import ArticleCard from "../../components/ArticleCard.astro";
+import ArticleCard from "../../components/ArticleCard";
 import Pagination from "../../components/Pagination.astro";
-import SearchForm from "../../components/SearchForm.astro";
+import SearchInput from "../../components/SearchInput";
 import { ARTICLES_PER_PAGE } from "../../constants";
 import MainLayout from "../../layouts/MainLayout.astro";
 
@@ -30,11 +30,15 @@ const articlesForPage: CollectionEntry<"blog">[] = allBlogArticles.slice(
 <MainLayout>
   <h1 class="text-2xl pb-3">All Articles</h1>
 
-  <SearchForm />
+  <SearchInput client:load />
   <br />
 
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    {articlesForPage.map((article) => <ArticleCard article={article} />)}
+    {
+      articlesForPage.map((article) => (
+        <ArticleCard article={article} client:load />
+      ))
+    }
   </div>
 
   <Pagination

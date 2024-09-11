@@ -3,7 +3,7 @@ import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../constants";
 
-const { title = "Articles, Stories & Tutorials For Tech People" } = Astro.props;
+const { title = "Home" } = Astro.props;
 
 interface Props {
   title?: string;
@@ -17,9 +17,9 @@ interface Props {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="description" content={SITE_DESCRIPTION} />
-    <title>{SITE_TITLE} - {title}</title>
+    <title>{title} | {SITE_TITLE}</title>
   </head>
-  <body class="">
+  <body>
     <Navbar />
 
     <section class="container mx-auto max-w-screen-xl my-10 px-8">
