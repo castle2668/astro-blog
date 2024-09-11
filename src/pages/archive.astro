@@ -11,10 +11,6 @@ const allBlogArticles: CollectionEntry<"blog">[] = (
     b.data.date.valueOf() - a.data.date.valueOf()
 );
 
-// const tagArticles = allBlogArticles.filter((article) =>
-//   article.data.tags.includes(tag)
-// );
-
 // 依年份分類文章
 const articlesByYear = allBlogArticles.map((article) => {
   const date = new Date(article.data.date);
