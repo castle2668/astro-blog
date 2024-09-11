@@ -36,7 +36,7 @@ slug: 2021-09-24-fragments-portals
 
 首先定義要 Portal 的目的地。
 
-```HTML
+```html
 <div id="backdrop-root"></div>
 <div id="overlay-root"></div>
 <div id="root"></div>

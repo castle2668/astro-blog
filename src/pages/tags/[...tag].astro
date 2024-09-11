@@ -5,6 +5,21 @@ import { getCollection } from "astro:content";
 import ArticleCard from "../../components/ArticleCard.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
 
+// 生成所有標籤頁面
+export async function getStaticPaths() {
+  const allBlogArticles: CollectionEntry<"blog">[] =
+    await getCollection("blog");
+
+  const tags = new Set<string>();
+  allBlogArticles.forEach((article) => {
+    article.data.tags.forEach((tag) => tags.add(tag));
+  });
+
+  return Array.from(tags).map((tag) => ({
+    params: { tag },
+  }));
+}
+
 const { tag } = Astro.params;
 
 if (tag === undefined) {
