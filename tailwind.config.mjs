@@ -6,6 +6,9 @@ export default {
       backgroundImage: {
         "footer-texture": "url('/src/images/footer-texture.png')",
       },
+      colors: {
+        maple: "#c1170c",
+      },
     },
   },
   plugins: [],

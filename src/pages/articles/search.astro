@@ -1,35 +1,7 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
-
-import ArticleCard from "../../components/ArticleCard.astro";
-import SearchForm from "../../components/SearchForm.astro";
+import SearchInput from "../../components/SearchInput";
+import SearchResult from "../../components/SearchResult.tsx";
 import MainLayout from "../../layouts/MainLayout.astro";
-
-const query: string | null = Astro.url.searchParams.get("query");
-
-if (!query) {
-  return Astro.redirect("/404");
-}
-
-const allBlogArticles: CollectionEntry<"blog">[] = await getCollection("blog");
-
-// Filter articles based on query
-const searchResults = allBlogArticles.filter((article) => {
-  const titleMatch: boolean = article.data.title
-    .toLowerCase()
-    .includes(query!.toLowerCase());
-
-  const bodyMatch: boolean = article.body
-    .toLowerCase()
-    .includes(query!.toLowerCase());
-
-  const slugMatch: boolean = article.slug
-    .toLowerCase()
-    .includes(query!.toLowerCase());
-
-  return titleMatch || bodyMatch || slugMatch;
-});
 ---
 
 <MainLayout title="Search Results">
@@ -39,13 +11,9 @@ const searchResults = allBlogArticles.filter((article) => {
     >All Articles</a
   >
 
-  <SearchForm />
+  <SearchInput client:load />
 
   <br />
 
-  <h1 class="text-2xl pb-3 mt-6">Results For <strong>{query}</strong></h1>
-
-  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    {searchResults.map((article) => <ArticleCard article={article} />)}
-  </div>
+  <SearchResult client:load />
 </MainLayout>

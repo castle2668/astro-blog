@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 
-import ArticleCard from "../../components/ArticleCard.astro";
+import ArticleCard from "../../components/ArticleCard";
 import MainLayout from "../../layouts/MainLayout.astro";
 
 // 生成所有標籤頁面
@@ -41,11 +41,15 @@ const tagArticles = allBlogArticles.filter((article) =>
 <MainLayout>
   <a
     href="/articles"
-    class="inline-block bg-gray-100 p-2 mb-6 hover:bg-indigo-500 hover:text-white"
+    class="inline-block bg-gray-100 p-2 mb-6 hover:bg-pink-500 hover:text-white"
     >Back To Articles</a
   >
   <h1 class="text-2xl pb-3">#{tag}</h1>
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    {tagArticles.map((article) => <ArticleCard article={article} />)}
+    {
+      tagArticles.map((article) => (
+        <ArticleCard article={article} client:load />
+      ))
+    }
   </div>
 </MainLayout>
