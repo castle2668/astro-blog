@@ -1,9 +1,16 @@
 ---
-import { getEntry } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 
 import Tags from "../../components/Tags.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
 import { formatDate } from "../../utils";
+
+export async function getStaticPaths() {
+  const allBlogArticles = await getCollection("blog");
+  return allBlogArticles.map((article) => ({
+    params: { slug: article.slug },
+  }));
+}
 
 const { slug } = Astro.params;
 
