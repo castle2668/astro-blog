@@ -4,7 +4,7 @@ excerpt: "本文延續上篇的 Vuex 基礎入門文章，將介紹該如何透�
 tags: ["vue", "vuex"]
 date: 2020-03-13
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2020-03-13-vuex-module
 ---
 

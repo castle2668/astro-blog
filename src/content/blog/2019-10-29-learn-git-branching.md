@@ -4,7 +4,7 @@ excerpt: "Learn Git Branching 能幫助 Git 初學者領會 Git 分支背後的�
 tags: ["git", "nuk"]
 date: 2019-10-29
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2019-10-29-learn-git-branching
 ---
 

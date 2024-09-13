@@ -4,7 +4,7 @@ excerpt: "在公司或團隊中，與其他人一起分工工作時，分支 (br
 tags: ["git"]
 date: 2019-10-05
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2019-10-05-git-branch
 ---
 

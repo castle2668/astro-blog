@@ -4,7 +4,7 @@ excerpt: "本文使用 Star Wars API 為例示範 React 如何串接第三方 AP
 tags: ["react"]
 date: 2021-12-27
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2021-12-27-sending-http-requests
 ---
 

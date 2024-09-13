@@ -4,7 +4,7 @@ excerpt: "在使用 Vue 的 v-on 時可以搭配修飾符，幫助我們加上�
 tags: ["vue"]
 date: 2019-10-13
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2019-10-13-vue-modifier
 ---
 

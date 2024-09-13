@@ -4,7 +4,7 @@ excerpt: "本文介紹為什麼我們要建立並使用 Custom Hooks，以及講
 tags: ["react"]
 date: 2022-02-04
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2022-02-04-custom-hooks
 ---
 

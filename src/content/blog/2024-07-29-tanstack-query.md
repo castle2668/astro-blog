@@ -4,7 +4,7 @@ excerpt: "TanStack Query 可以幫助我們發送 HTTP Request 也就是串接 A
 tags: ["react", "tanstackquery"]
 date: 2024-07-29
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2024-07-29-tanstack-query
 ---
 

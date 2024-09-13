@@ -4,7 +4,7 @@ excerpt: "現代前端開發常見的 SPA 是指頁面 URL 切換時，不必重
 tags: ["react", "reactrouter"]
 date: 2022-04-04
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2022-04-04-react-router-v5
 ---
 

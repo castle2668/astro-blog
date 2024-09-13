@@ -4,7 +4,7 @@ excerpt: "本文介紹 React 的 Lifecycle，這是只有 Class-based Components
 tags: ["react"]
 date: 2022-01-16
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2022-01-16-the-component-lifecycle
 ---
 

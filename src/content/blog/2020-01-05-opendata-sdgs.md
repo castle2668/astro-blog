@@ -4,7 +4,7 @@ excerpt: "本學期的資訊倫理課程，期末報告是去右昌國中成果�
 tags: ["nuk", "informationethics", "sdgs", "opendata"]
 date: 2020-01-05
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2020-01-05-opendata-sdgs
 ---
 

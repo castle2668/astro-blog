@@ -4,7 +4,7 @@ excerpt: "最近要使用 styled-components 包裝 Ant Design 的元件時，想
 tags: ["react", "antdesign", "styledcomponents"]
 date: 2022-09-08
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2022-09-08-antd-styled-components-props
 ---
 

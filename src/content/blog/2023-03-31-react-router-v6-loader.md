@@ -4,7 +4,7 @@ excerpt: "上一篇介紹了 React Router V6 的基本架構，包含導頁、�
 tags: ["react", "reactrouter"]
 date: 2023-03-31
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2023-03-31-react-router-v6-loader
 ---
 

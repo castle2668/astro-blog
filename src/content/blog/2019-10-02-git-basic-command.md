@@ -4,7 +4,7 @@ excerpt: "從大二開始接觸前端到現在也快兩年了，途中有煩人�
 tags: ["git"]
 date: 2019-10-02
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2019-10-02-git-basic-command
 ---
 

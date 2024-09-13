@@ -4,7 +4,7 @@ excerpt: "Props 的用途是讓父子元件之間傳遞狀態，使子元件也�
 tags: ["react"]
 date: 2021-09-08
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2021-09-08-lifting-the-state-up
 ---
 

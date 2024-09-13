@@ -4,7 +4,7 @@ excerpt: "本文介紹如何透過 CSS 來製作出打字動畫與閃爍游標�
 tags: ["css"]
 date: 2020-02-20
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2020-02-20-css-animation-typing
 ---
 

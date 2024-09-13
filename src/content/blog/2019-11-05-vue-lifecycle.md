@@ -4,7 +4,7 @@ excerpt: "本文簡單介紹 Vue 的生命週期，瞭解 Vue 的生命週期對
 tags: ["vue"]
 date: 2019-11-05
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2019-11-05-vue-lifecycle
 ---
 

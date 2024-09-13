@@ -4,7 +4,7 @@ excerpt: "最近在使用 Ant Design 的 Table 元件時，想要監聽 Scroll �
 tags: ["react", "antdesign"]
 date: 2022-08-31
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2022-08-31-react-state-eventlistener
 ---
 

@@ -4,7 +4,7 @@ excerpt: "在 Vue.js 中 Methods、Computed、Watch 裡面都可以寫函式，�
 tags: ["vue"]
 date: 2019-10-31
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2019-10-31-vue-methods-computed-watch
 ---
 

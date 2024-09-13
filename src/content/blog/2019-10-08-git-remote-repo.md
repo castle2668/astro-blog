@@ -4,7 +4,7 @@ excerpt: "使用 Git 與 Github 進行團隊合作時，會利用遠端數據庫
 tags: ["git"]
 date: 2019-10-08
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2019-10-08-git-remote-repo
 ---
 

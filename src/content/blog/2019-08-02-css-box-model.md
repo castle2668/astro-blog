@@ -4,7 +4,7 @@ excerpt: "自己計算元素的寬高真的很麻煩，很怕不小心漏算了 
 tags: ["css"]
 date: 2019-08-02
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2019-08-02-css-box-model
 ---
 

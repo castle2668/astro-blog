@@ -4,7 +4,7 @@ excerpt: "Vue 提供的 Filter 過濾器可用於自訂畫面資料的呈現格�
 tags: ["vue"]
 date: 2019-12-07
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2019-12-07-vue-filter
 ---
 

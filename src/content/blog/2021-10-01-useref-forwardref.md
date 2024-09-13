@@ -4,7 +4,7 @@ excerpt: "本文會介紹 React 當中的 Refs，及其延伸出的 useRef 與 f
 tags: ["react"]
 date: 2021-10-01
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2021-10-01-useref-forwardref
 ---
 
