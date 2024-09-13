@@ -3,8 +3,8 @@ title: "Operating System: Process"
 excerpt: "Program、Process、Thread 傻傻分不清楚？本文介紹作業系統 Process 的概念。"
 tags: ["os", "nuk"]
 date: 2019-07-28
-author: "Sean Huang"
-image: "javascript.png"
+author: "Huang, Yung-Hsiang"
+image: "development.jpg"
 slug: 2019-07-28-nuk-os-process
 ---
 

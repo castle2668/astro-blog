@@ -4,7 +4,7 @@ excerpt: "本文介紹 React.memo 的使用方式，以此減少元件不必要�
 tags: ["react"]
 date: 2021-12-03
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2021-12-03-react-memo
 ---
 

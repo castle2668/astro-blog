@@ -4,7 +4,7 @@ excerpt: "在修習六角學院的 Git 課程後所整理的指令大全，在�
 tags: ["git"]
 date: 2019-10-09
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2019-10-09-git-command-list
 ---
 

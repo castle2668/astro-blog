@@ -4,7 +4,7 @@ excerpt: "本篇介紹如何透過 v-bind 指令來動態綁定屬性，這是�
 tags: ["vue"]
 date: 2020-05-24
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2020-05-24-vue-bind-class
 ---
 

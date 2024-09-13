@@ -4,7 +4,7 @@ excerpt: "來記錄一下我在 2023 年發生的大小事情 🎉"
 tags: ["yearlyreview", "life"]
 date: 2024-01-01
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2024-01-01-yearly-review
 ---
 

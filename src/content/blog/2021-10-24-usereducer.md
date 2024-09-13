@@ -4,7 +4,7 @@ excerpt: "在 JavaScript 的世界中，陣列處理方法之一的 reduce 就�
 tags: ["react"]
 date: 2021-10-24
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2021-10-24-usereducer
 ---
 

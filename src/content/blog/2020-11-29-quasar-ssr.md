@@ -4,7 +4,7 @@ excerpt: "最近專案要從 SPA 改成 SSR，雖然一般而言 SSR 是在專�
 tags: ["quasarframework"]
 date: 2020-11-29
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2020-11-29-quasar-ssr
 ---
 

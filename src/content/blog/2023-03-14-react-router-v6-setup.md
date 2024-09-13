@@ -4,7 +4,7 @@ excerpt: "React Router 團隊最近又來一次全面升級，新增了許多功
 tags: ["react", "reactrouter"]
 date: 2023-03-14
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2023-03-14-react-router-v6-setup
 ---
 

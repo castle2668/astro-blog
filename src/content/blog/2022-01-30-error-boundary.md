@@ -4,7 +4,7 @@ excerpt: "本文介紹 React Class-based Components 中 Error Boundary 的使用
 tags: ["react"]
 date: 2022-01-30
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2022-01-30-error-boundary
 ---
 

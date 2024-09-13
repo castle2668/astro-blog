@@ -4,7 +4,7 @@ excerpt: "上一篇介紹了 React Router V6 的 Loader，本文會介紹另一�
 tags: ["react", "reactrouter"]
 date: 2023-04-14
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2023-04-14-react-router-v6-action
 ---
 

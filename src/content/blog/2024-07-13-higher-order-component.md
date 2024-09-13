@@ -4,7 +4,7 @@ excerpt: "本篇文章會透過一個簡單的 Functional Components 的範例�
 tags: ["react"]
 date: 2024-07-13
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2024-07-13-higher-order-component
 ---
 

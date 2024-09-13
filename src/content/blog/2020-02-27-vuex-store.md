@@ -4,7 +4,7 @@ excerpt: "瞭解 Vue 的指令、元件、路由配置等概念後，我們用 V
 tags: ["vue", "vuex"]
 date: 2020-02-27
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2020-02-27-vuex-store
 ---
 

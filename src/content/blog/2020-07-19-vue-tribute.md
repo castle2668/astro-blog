@@ -4,7 +4,7 @@ excerpt: "這篇文章主要說明如何透過 vue-tribute 來實作網頁上的
 tags: ["vue", "javascript", "html"]
 date: 2020-07-19
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2020-07-19-vue-tribute
 ---
 

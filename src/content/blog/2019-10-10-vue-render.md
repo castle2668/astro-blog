@@ -4,7 +4,7 @@ excerpt: "建立起一個 Vue 的應用程式後，我們有 Mustache、v-html�
 tags: ["vue"]
 date: 2019-10-10
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2019-10-10-vue-render
 ---
 

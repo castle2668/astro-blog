@@ -4,7 +4,7 @@ excerpt: "本文介紹何謂 Side Effect，以及我們該如何使用 useEffect
 tags: ["react"]
 date: 2021-10-17
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2021-10-17-useeffect
 ---
 

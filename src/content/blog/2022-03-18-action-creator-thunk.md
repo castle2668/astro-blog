@@ -4,7 +4,7 @@ excerpt: "本文介紹 Redux Toolkit 當中的 Action Creator Thunk 設計，透
 tags: ["react", "redux", "reduxtoolkit"]
 date: 2022-03-18
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2022-03-18-action-creator-thunk
 ---
 

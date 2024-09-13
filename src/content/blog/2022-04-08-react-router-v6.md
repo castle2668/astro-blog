@@ -4,7 +4,7 @@ excerpt: "本文為 React Router 升級第 6 版的筆記。"
 tags: ["react", "reactrouter"]
 date: 2022-04-08
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2022-04-08-react-router-v6
 ---
 

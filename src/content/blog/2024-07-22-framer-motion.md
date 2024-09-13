@@ -4,7 +4,7 @@ excerpt: "沒有動畫效果的 Web Apps 不是說不好，但就是在完整度
 tags: ["react", "css", "framermotion"]
 date: 2024-07-22
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2024-07-22-framer-motion
 ---
 

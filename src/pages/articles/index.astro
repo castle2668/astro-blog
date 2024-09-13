@@ -1,50 +1,15 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
-
-import ArticleCard from "../../components/ArticleCard";
-import Pagination from "../../components/Pagination.astro";
+import AllArticles from "../../components/AllArticles";
 import SearchInput from "../../components/SearchInput";
-import { ARTICLES_PER_PAGE } from "../../constants";
 import MainLayout from "../../layouts/MainLayout.astro";
-
-const currentPage: number | null = +Astro.url.searchParams.get("page")! || 1;
-
-const allBlogArticles: CollectionEntry<"blog">[] = (
-  await getCollection("blog")
-).sort(
-  (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
-    b.data.date.valueOf() - a.data.date.valueOf()
-);
-
-const totalPages: number = Math.ceil(
-  allBlogArticles.length / ARTICLES_PER_PAGE
-);
-
-const articlesForPage: CollectionEntry<"blog">[] = allBlogArticles.slice(
-  (currentPage - 1) * ARTICLES_PER_PAGE,
-  currentPage * ARTICLES_PER_PAGE
-);
 ---
 
 <MainLayout>
   <h1 class="text-2xl pb-3">All Articles</h1>
 
   <SearchInput client:load />
+
   <br />
 
-  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    {
-      articlesForPage.map((article) => (
-        <ArticleCard article={article} client:load />
-      ))
-    }
-  </div>
-
-  <Pagination
-    currentPage={currentPage}
-    totalPages={totalPages}
-    disablePrevious={currentPage === 1}
-    disableNext={currentPage === totalPages}
-  />
+  <AllArticles client:load />
 </MainLayout>

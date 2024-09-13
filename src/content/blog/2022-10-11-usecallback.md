@@ -4,7 +4,7 @@ excerpt: "本文介紹 React 當中 useCallback 這個 Hook 的使用概念，�
 tags: ["react", "lodash"]
 date: 2022-10-11
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2022-10-11-usecallback
 ---
 

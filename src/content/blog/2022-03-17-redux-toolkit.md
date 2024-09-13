@@ -4,7 +4,7 @@ excerpt: "本文介紹 Redux Toolkit 的基本使用方式，因為我是從 Vue
 tags: ["react", "redux", "reduxtoolkit"]
 date: 2022-03-17
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2022-03-17-redux-toolkit
 ---
 

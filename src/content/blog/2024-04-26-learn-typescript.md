@@ -4,7 +4,7 @@ excerpt: "這個 TypeScript 學習大綱包含從基礎到進階的概念，涵�
 tags: ["typescript"]
 date: 2024-04-26
 author: "Sean Huang"
-image: "javascript.png"
+image: "react.jpg"
 slug: 2024-04-26-learn-typescript
 ---
 

@@ -4,7 +4,7 @@ excerpt: "這篇文章會介紹如何在 Quasar 加入全域的 Filter 過濾器
 tags: ["quasarframework"]
 date: 2020-05-03
 author: "Sean Huang"
-image: "javascript.png"
+image: "development.jpg"
 slug: 2020-05-03-quasar-global-filter
 ---
 
