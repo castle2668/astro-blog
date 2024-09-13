@@ -36,7 +36,7 @@ const ArticleCard: React.FC<Props> = ({ article }) => {
                 className={
                   index % 2 === 0
                     ? "px-2 py-1 bg-green-500 text-white rounded-full text-xs hover:opacity-90"
-                    : "px-2 py-1 bg-indigo-500 text-white rounded-full text-xs hover:opacity-90"
+                    : "px-2 py-1 bg-maple-600 text-white rounded-full text-xs hover:opacity-90"
                 }
               >
                 <a href={`/tags/${tag}`}>#{tag}</a>

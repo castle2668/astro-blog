@@ -36,14 +36,14 @@ const SearchPage = () => {
           name="query"
           value={query}
           onChange={handleChange}
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full p-2.5 focus:outline-pink-500"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-maple-600 focus:border-maple-600 block w-full p-2.5 focus:outline-maple-600"
           placeholder="Search articles..."
           required
         />
       </div>
       <button
         type="submit"
-        className="p-2.5 ms-2 text-sm font-medium text-white bg-pink-700 rounded-lg border border-pink-700 hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300"
+        className="p-2.5 ms-2 text-sm font-medium text-white bg-maple-500 rounded-lg border border-maple-500 hover:bg-maple-600 focus:ring-4 focus:outline-none focus:ring-maple-300"
       >
         <svg
           className="w-4 h-4"

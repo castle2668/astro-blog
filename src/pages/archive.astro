@@ -44,10 +44,10 @@ const articlesByYearSorted = years.map((year) => {
         <h2 class="text-xl mb-2">{year.year}</h2>
         <ul class="list-disc ml-4">
           {year.articles.map((article) => (
-            <li>
+            <li class="p-1">
               <a
                 href={`/articles/${article.article.slug}`}
-                class="hover:text-pink-500"
+                class="hover:text-maple-600"
               >
                 {article.article.data.title}
               </a>
