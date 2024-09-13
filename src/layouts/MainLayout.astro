@@ -19,6 +19,18 @@ interface Props {
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <meta name="description" content={SITE_DESCRIPTION} />
     <title>{title} | {SITE_TITLE}</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-360W2PV7GV"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-360W2PV7GV");
+    </script>
   </head>
   <body>
     <Navbar />
