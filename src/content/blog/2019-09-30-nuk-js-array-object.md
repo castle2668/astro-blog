@@ -3,7 +3,7 @@ title: "NUK JavaScript #4：陣列、物件、for"
 excerpt: "此篇文章介紹陣列、物件、for 迴圈。"
 tags: ["nuk", "javascript"]
 date: 2019-09-30
-author: "Sean Huang"
+author: "Huang, Yung-Hsiang"
 image: "javascript.png"
 slug: 2019-09-30-nuk-js-array-object
 ---

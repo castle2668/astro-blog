@@ -3,7 +3,7 @@ title: "NUK JavaScript #5：AJAX 撈取資料"
 excerpt: "這次要介紹如何用 AJAX 撈取資料。"
 tags: ["nuk", "javascript"]
 date: 2019-10-01
-author: "Sean Huang"
+author: "Huang, Yung-Hsiang"
 image: "javascript.png"
 slug: 2019-10-01-nuk-js-ajax
 ---

@@ -3,7 +3,7 @@ title: "NUK JavaScript #3：運算子、if-else 條件式"
 excerpt: "到了第三篇，我們要介紹運算子以及條件式，之後會進入物件與陣列，一步一步學習 JS 的基礎。"
 tags: ["nuk", "javascript"]
 date: 2019-09-27
-author: "Sean Huang"
+author: "Huang, Yung-Hsiang"
 image: "javascript.png"
 slug: 2019-09-27-nuk-js-operator
 ---

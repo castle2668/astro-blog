@@ -3,7 +3,7 @@ title: "NUK JavaScript #2：函式 (Functions)"
 excerpt: "原先想將 Function 與上一篇的 let 與 const 合併在同一篇，但由於篇幅會有些過長，因此決定另外寫一篇文章介紹函式。這篇文章會介紹函式的使用方式與觀念。"
 tags: ["nuk", "javascript"]
 date: 2019-09-18
-author: "Sean Huang"
+author: "Huang, Yung-Hsiang"
 image: "javascript.png"
 slug: 2019-09-18-nuk-js-function
 ---
