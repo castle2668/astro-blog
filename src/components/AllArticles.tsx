@@ -4,6 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import { ARTICLES_PER_PAGE } from "../constants";
 import ArticleCard from "./ArticleCard";
+import LoadingGIF from "../images/loading.gif";
 
 const AllArticles = () => {
   const [currentPage, setCurrentPage] = useState<number>(999);
@@ -11,6 +12,7 @@ const AllArticles = () => {
   const [articlesForPage, setArticlesForPage] = useState<
     CollectionEntry<"blog">[]
   >([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -27,6 +29,8 @@ const AllArticles = () => {
     if (currentPage === 999) return;
 
     const fetchArticles = async () => {
+      setIsLoading(true);
+
       const allBlogArticles: CollectionEntry<"blog">[] = (
         await getCollection("blog")
       ).sort(
@@ -45,6 +49,7 @@ const AllArticles = () => {
 
       setTotalPages(totalPages);
       setArticlesForPage(articlesForPage);
+      setIsLoading(false);
     };
 
     fetchArticles();
@@ -52,17 +57,23 @@ const AllArticles = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {articlesForPage.map((article) => (
-          <ArticleCard key={article.slug} article={article} />
-        ))}
-      </div>
+      {isLoading ? (
+        <img src={LoadingGIF.src} alt="Loading Image" />
+      ) : (
+        <>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {articlesForPage.map((article) => (
+              <ArticleCard key={article.slug} article={article} />
+            ))}
+          </div>
 
-      <Pagination
-        currentPage={currentPage}
-        disablePrevious={currentPage === 1}
-        disableNext={currentPage === totalPages}
-      />
+          <Pagination
+            currentPage={currentPage}
+            disablePrevious={currentPage === 1}
+            disableNext={currentPage === totalPages}
+          />
+        </>
+      )}
     </div>
   );
 };

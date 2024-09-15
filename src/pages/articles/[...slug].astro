@@ -27,7 +27,12 @@ if (entry === undefined) {
 const { Content } = await entry.render();
 ---
 
-<MainLayout>
+<MainLayout
+  title={entry.data.title}
+  description={entry.data.excerpt}
+  image={`https://www.seanhuang.dev/mages/${entry.data.image}`}
+  url={`/articles/${slug}/`}
+>
   <a
     href="/articles"
     class="inline-block bg-gray-100 p-2 mb-6 hover:bg-maple-600 hover:text-white rounded"
@@ -43,9 +48,10 @@ const { Content } = await entry.render();
     <img
       src={"/images/" + entry.data.image}
       alt="Article Image"
-      class="w-full h-auto rounded-xl my-6"
+      class="w-full h-auto rounded-xl my-6 max-h-96 object-center object-cover"
     />
     <div class="article-content">
+      <p>{entry.data.excerpt}</p>
       <Content />
     </div>
   </article>
@@ -143,6 +149,6 @@ const { Content } = await entry.render();
     border: 1px solid #555;
     border-collapse: collapse;
     padding: 8px;
-    min-width: 100px;
+    min-width: 50px;
   }
 </style>

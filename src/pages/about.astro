@@ -4,22 +4,22 @@ import { Image } from "astro:assets";
 import Author1 from "../images/author1.jpeg";
 import Author2 from "../images/author2.jpeg";
 import Author3 from "../images/author3.jpeg";
-import Avatar from "../images/avatar.jpeg";
 import IconFacebook from "../images/icon-facebook.svg";
 import IconGitHub from "../images/icon-github.svg";
 import IconGmail from "../images/icon-gmail.svg";
 import IconInstagram from "../images/icon-instagram.svg";
 import IconLinkedIn from "../images/icon-linkedin.svg";
 import IconTwitter from "../images/icon-twitter.svg";
+import Logo from "../images/logo.jpeg";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<MainLayout title="About The TechPeople Blog">
+<MainLayout title="About The Sean's Blog" url="/about/">
   <h1 class="text-4xl font-bold mb-5">About Sean's Blog</h1>
   <div class="flex flex-col md:flex-row items-center justify-between gap-6">
     <div class="w-full md:w-1/2 mb-8 md:mb-0">
       <Image
-        src={Avatar}
+        src={Logo}
         alt="Sean's Blog Team"
         class="w-full h-auto rounded-lg shadow-lg"
       />
@@ -29,14 +29,14 @@ import MainLayout from "../layouts/MainLayout.astro";
       <p class="text-gray-700 leading-relaxed mb-6">
         Welcome to Sean's Blog, formerly known as Sealman's first homepage. Our
         authors are actually the same person, Sean from different periods. We
-        are a team of continuously passionate technology enthusiasts (multiverse
-        of authors), dedicated to bringing you all relevant information. The
-        latest articles, teaching and sharing of technology.
+        are a team of continuously passionate technology enthusiasts (a
+        multiverse of authors), dedicated to bringing you all relevant
+        information. The latest articles, teaching, and sharing of technology.
       </p>
       <p class="text-gray-700 leading-relaxed mb-6">
         Our mission is to provide more support and education to Taiwan's web
         development community and help everyone keep up with the rapidly
-        developing world of web development around the world. Whether you're an
+        developing world of web developments around the world. Whether you're an
         experienced developer, a fan of related technologies, or just curious
         about a technology trend, we've got you covered.
       </p>

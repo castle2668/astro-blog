@@ -38,7 +38,7 @@ const tagArticles = allBlogArticles.filter((article) =>
 );
 ---
 
-<MainLayout>
+<MainLayout title={`#${tag}`} url={`/tags/${tag}/`}>
   <a
     href="/articles"
     class="inline-block bg-gray-100 p-2 mb-6 hover:bg-maple-500 hover:text-white rounded"

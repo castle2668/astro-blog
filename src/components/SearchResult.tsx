@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import ArticleCard from "../components/ArticleCard";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
+import LoadingGIF from "../images/loading.gif";
 
 const SearchResult = () => {
   const [query, setQuery] = useState<string | null>(null);
   const [searchResults, setSearchResults] = useState<CollectionEntry<"blog">[]>(
     [],
   );
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -15,6 +17,8 @@ const SearchResult = () => {
     setQuery(queryParam);
 
     const fetchArticles = async () => {
+      setIsLoading(true);
+
       const allBlogArticles: CollectionEntry<"blog">[] =
         await getCollection("blog");
 
@@ -28,7 +32,9 @@ const SearchResult = () => {
             .includes(queryParam.toLowerCase());
           return titleMatch || bodyMatch;
         });
+
         setSearchResults(filteredArticles);
+        setIsLoading(false);
       }
     };
 
@@ -40,11 +46,15 @@ const SearchResult = () => {
       <h1 className="text-2xl pb-3 mt-6">
         Results For <strong>{query}</strong>
       </h1>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {searchResults.map((article) => (
-          <ArticleCard key={article.slug} article={article} />
-        ))}
-      </div>
+      {isLoading ? (
+        <img src={LoadingGIF.src} alt="Loading Image" />
+      ) : (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {searchResults.map((article) => (
+            <ArticleCard key={article.slug} article={article} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

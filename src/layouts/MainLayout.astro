@@ -2,11 +2,20 @@
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../constants";
+import Logo from "../images/logo.jpeg";
 
-const { title = "Home" } = Astro.props;
+const {
+  title = "Home",
+  description = SITE_DESCRIPTION,
+  image = Logo.src,
+  url = "/",
+} = Astro.props;
 
 interface Props {
   title?: string;
+  description?: string;
+  image?: string;
+  url?: string;
 }
 ---
 
@@ -17,8 +26,27 @@ interface Props {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
-    <meta name="description" content={SITE_DESCRIPTION} />
+    <link rel="canonical" href={`https://www.seanhuang.dev${url}`} />
+
+    <!-- Primary Meta Tags -->
     <title>{title} | {SITE_TITLE}</title>
+    <meta name="title" content={`${title} | ${SITE_TITLE}`} />
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={`https://www.seanhuang.dev${url}`} />
+    <meta property="og:title" content={`${title} | ${SITE_TITLE}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={`https://www.seanhuang.dev${url}`} />
+    <meta property="twitter:title" content={`${title} | ${SITE_TITLE}`} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-360W2PV7GV"
     ></script>
