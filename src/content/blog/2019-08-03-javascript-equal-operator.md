@@ -3,7 +3,7 @@ title: "JavaScript 兩個等號與三個等號有什麼不同"
 excerpt: "過去學過 Java、C 與 Python 都沒遇過這問題，沒想到在學習 JavaScript 時會遇到三等號與雙等號的問題，滿新奇的！"
 tags: ["javascript"]
 date: 2019-08-03
-author: "Sean Huang"
+author: "Huang, Yung-Hsiang"
 image: "javascript.png"
 slug: 2019-08-03-javascript-equal-operator
 ---
