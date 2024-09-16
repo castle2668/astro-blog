@@ -4,7 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import LoadingGIF from "../images/loading.gif";
 
-const SearchResult = () => {
+const SearchResult: React.FC = () => {
   const [query, setQuery] = useState<string | null>(null);
   const [searchResults, setSearchResults] = useState<CollectionEntry<"blog">[]>(
     [],
