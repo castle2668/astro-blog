@@ -3,7 +3,7 @@ title: "JavaScript var & let & const 的特點與差異"
 excerpt: "本篇文章介紹 JavaScript ES6 裡面 let 與 const 的重要觀念，以及使用上的注意事項。"
 tags: ["javascript"]
 date: 2019-10-28
-author: "Sean Huang"
+author: "Huang, Yung-Hsiang"
 image: "javascript.png"
 slug: 2019-10-28-javascript-var-let-const
 ---
