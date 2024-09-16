@@ -3,7 +3,7 @@ title: "使用 vue-tribute 實作標記功能"
 excerpt: "這篇文章主要說明如何透過 vue-tribute 來實作網頁上的標記功能（@mention），先備知識必須要已經基本會使用 Vue。"
 tags: ["vue", "javascript", "html"]
 date: 2020-07-19
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "development.jpg"
 slug: 2020-07-19-vue-tribute
 ---

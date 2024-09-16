@@ -3,7 +3,7 @@ title: "Understand JavaScript #3 Name-Value Pair"
 excerpt: "本文聊聊比較輕鬆的主題 Name-Value Pair 或稱 Key-Value Pair 鍵值對，以及它跟物件的關係。"
 tags: ["javascript"]
 date: 2021-02-25
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "javascript.png"
 slug: 2021-02-25-name-value-pair
 ---

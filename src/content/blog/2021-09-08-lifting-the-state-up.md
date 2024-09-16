@@ -3,7 +3,7 @@ title: "[React] Lifting The State Up"
 excerpt: "Props 的用途是讓父子元件之間傳遞狀態，使子元件也能使用到父元件定義的狀態，而子元件的狀態也能透過 Lifting State 的方式提升給父元件使用。"
 tags: ["react"]
 date: 2021-09-08
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "react.jpg"
 slug: 2021-09-08-lifting-the-state-up
 ---

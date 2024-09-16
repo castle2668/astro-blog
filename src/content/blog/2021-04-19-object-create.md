@@ -3,7 +3,7 @@ title: "Understand JavaScript #23 使用 Object.create 建立多層繼承"
 excerpt: "本文主要內容為探討「Object.create」的相關知識以及搭配使用的 Polyfill。"
 tags: ["javascript"]
 date: 2021-04-19
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "javascript.png"
 slug: 2021-04-19-object-create
 ---

@@ -3,7 +3,7 @@ title: "Introducing React.memo"
 excerpt: "本文介紹 React.memo 的使用方式，以此減少元件不必要的渲染。"
 tags: ["react"]
 date: 2021-12-03
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "react.jpg"
 slug: 2021-12-03-react-memo
 ---

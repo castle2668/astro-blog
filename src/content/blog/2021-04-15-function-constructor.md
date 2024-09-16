@@ -3,7 +3,7 @@ title: "Understand JavaScript #21 使用建構式自定義原型"
 excerpt: "本文主要內容為探討關鍵字 new 與函式建構子的相關知識，內容包含關鍵字 new、函式建構子，以及函式的原型屬性。"
 tags: ["javascript"]
 date: 2021-04-15
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "javascript.png"
 slug: 2021-04-15-function-constructor
 ---

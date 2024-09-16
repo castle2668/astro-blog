@@ -3,7 +3,7 @@ title: "Styling React Components"
 excerpt: "本文介紹 React 中基本的樣式撰寫方式，包含 Inline Style、CSS Modules、styled-components 等方式。"
 tags: ["react"]
 date: 2021-09-17
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "react.jpg"
 slug: 2021-09-17-styling-react-components
 ---

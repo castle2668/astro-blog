@@ -3,7 +3,7 @@ title: "Understand JavaScript #17 回呼函式 (Callback Function)"
 excerpt: "本文主要內容為探討「回呼函式」的相關知識，其實我們可能已經用過回呼函式的概念了，像是 setTimeout 或是 jQuery 事件就是在使用閉包與回呼的概念喔。"
 tags: ["javascript"]
 date: 2021-04-07
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "javascript.png"
 slug: 2021-04-07-callback-function
 ---

@@ -3,7 +3,7 @@ title: "Understand JavaScript #14 立即呼叫的函式表達式 (IIFEs) 與安�
 excerpt: "本文主要內容為探討「IIFE」的相關知識，理解為什麼 IIFE 會被應用在各種大型框架或資源庫裡面，並且能幫助撰寫安全的程式碼。"
 tags: ["javascript"]
 date: 2021-03-30
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "javascript.png"
 slug: 2021-03-30-iife-safe-code
 ---

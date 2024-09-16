@@ -3,7 +3,7 @@ title: "在 React Class-based Components 中使用 Error Boundary 處理錯誤"
 excerpt: "本文介紹 React Class-based Components 中 Error Boundary 的使用方式。"
 tags: ["react"]
 date: 2022-01-30
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "react.jpg"
 slug: 2022-01-30-error-boundary
 ---

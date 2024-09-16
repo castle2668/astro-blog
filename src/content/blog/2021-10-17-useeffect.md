@@ -3,7 +3,7 @@ title: "Understanding React's useEffect Hook"
 excerpt: "本文介紹何謂 Side Effect，以及我們該如何使用 useEffect 處理這些副作用。"
 tags: ["react"]
 date: 2021-10-17
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "react.jpg"
 slug: 2021-10-17-useeffect
 ---
