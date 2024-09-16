@@ -6,7 +6,7 @@ import { ARTICLES_PER_PAGE } from "../constants";
 import ArticleCard from "./ArticleCard";
 import LoadingGIF from "../images/loading.gif";
 
-const AllArticles = () => {
+const AllArticles: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(999);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [articlesForPage, setArticlesForPage] = useState<

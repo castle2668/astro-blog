@@ -1,12 +1,12 @@
 import React from "react";
 
-interface PaginationProps {
+interface Props {
   currentPage: number;
   disablePrevious: boolean;
   disableNext: boolean;
 }
 
-const Pagination = (props: PaginationProps) => {
+const Pagination: React.FC<Props> = (props) => {
   const { currentPage, disablePrevious, disableNext } = props;
 
   return (
