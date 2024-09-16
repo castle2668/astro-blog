@@ -3,7 +3,7 @@ title: "JavaScript ES6 箭頭函式與傳統函式的差異"
 excerpt: "本文內容主要探討 JavaScript ES6 中的「箭頭函式」的相關概念。"
 tags: ["javascript"]
 date: 2021-07-29
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "javascript.png"
 slug: 2021-07-29-es6-arrow-function
 ---

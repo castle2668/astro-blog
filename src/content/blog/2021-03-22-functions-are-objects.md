@@ -3,7 +3,7 @@ title: "Understand JavaScript #10 函式就是物件 (Functions Are Objects)"
 excerpt: "本文主要內容為探討「函式物件」的相關知識，包含「一級函式」這個讓 JavaScript 適合撰寫 Functional Programming 的特性，以及函式陳述式、函式表達式、匿名函式等重要觀念。"
 tags: ["javascript"]
 date: 2021-03-22
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "javascript.png"
 slug: 2021-03-22-functions-are-objects
 ---

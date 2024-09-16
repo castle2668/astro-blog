@@ -3,7 +3,7 @@ title: "Introduction to Class-based Components"
 excerpt: "本文介紹 React Class-based Components 的使用方式。"
 tags: ["react"]
 date: 2022-01-09
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "react.jpg"
 slug: 2022-01-09-class-based-components
 ---

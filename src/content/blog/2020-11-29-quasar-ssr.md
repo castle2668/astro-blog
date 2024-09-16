@@ -3,7 +3,7 @@ title: "使用 Quasar CLI 建構 SSR 網站"
 excerpt: "最近專案要從 SPA 改成 SSR，雖然一般而言 SSR 是在專案開發前或者開發初期就得考量，但是事情總有個萬一，俗話說的好，需求是會成長的？總之好險 Quasar 有提供建構 SSR 的方法，這對於轉換到 SSR 會減少許多麻煩。"
 tags: ["quasarframework"]
 date: 2020-11-29
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "development.jpg"
 slug: 2020-11-29-quasar-ssr
 ---

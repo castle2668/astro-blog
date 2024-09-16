@@ -3,7 +3,7 @@ title: "React Redux with Functional Components"
 excerpt: "本文介紹 React Redux 於 Functional Components 的使用。"
 tags: ["react", "redux"]
 date: 2022-03-03
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "react.jpg"
 slug: 2022-03-03-redux-with-functional-components
 ---

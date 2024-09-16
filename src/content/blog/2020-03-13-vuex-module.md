@@ -3,7 +3,7 @@ title: "使用 Vuex 模組化管理資料"
 excerpt: "本文延續上篇的 Vuex 基礎入門文章，將介紹該如何透過 Vuex 管理專案的元件與資料狀態，也會介紹如何將 Store 的資料模組化，以減少專案程式碼的重複性，並提升程式碼的可讀性。"
 tags: ["vue", "vuex"]
 date: 2020-03-13
-author: "Sean Huang"
+author: "Huang, Yung-Hsiang"
 image: "development.jpg"
 slug: 2020-03-13-vuex-module
 ---

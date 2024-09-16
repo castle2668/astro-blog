@@ -3,7 +3,7 @@ title: "Understand JavaScript #13 函式參數與 arguments、spread"
 excerpt: "本文主要內容為探討「函式參數」的相關知識，包含預設值、arguments 關鍵字、spread parameter 等等。"
 tags: ["javascript"]
 date: 2021-03-29
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "javascript.png"
 slug: 2021-03-29-arguments-spread
 ---

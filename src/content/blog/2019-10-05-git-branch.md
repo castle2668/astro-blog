@@ -3,7 +3,7 @@ title: "Git 分支、標籤、暫存檔案"
 excerpt: "在公司或團隊中，與其他人一起分工工作時，分支 (branch) 是相當重要的觀念喔。"
 tags: ["git"]
 date: 2019-10-05
-author: "Sean Huang"
+author: "Huang, Yung-Hsiang"
 image: "development.jpg"
 slug: 2019-10-05-git-branch
 ---

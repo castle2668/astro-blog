@@ -3,7 +3,7 @@ title: "Understand JavaScript #18 bind()、call() 與 apply()"
 excerpt: "本文主要內容為探討 bind()、call() 與 apply() 的相關知識，這三個函式都與 this 有關，可以用來控制 this 變數。"
 tags: ["javascript"]
 date: 2021-04-08
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "javascript.png"
 slug: 2021-04-08-bind-call-apply
 ---

@@ -3,7 +3,7 @@ title: "ES6 Modules - Exports & Imports"
 excerpt: "在現代前端當中，模組化是相當推薦而且實用的做法，為了要存取其他模組，我們需要透過 export 讓模組可以被引用，並使用 import 來存取模組。"
 tags: ["javascript"]
 date: 2021-08-05
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "javascript.png"
 slug: 2021-08-05-es6-modules-exports-imports
 ---

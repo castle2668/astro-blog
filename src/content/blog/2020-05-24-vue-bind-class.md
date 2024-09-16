@@ -3,7 +3,7 @@ title: "Vue.js 使用 v-bind 動態綁定 Class、Style 與各種屬性"
 excerpt: "本篇介紹如何透過 v-bind 指令來動態綁定屬性，這是很常用到的技巧喔，以下就來介紹各種 v-bind 綁定的用法吧！"
 tags: ["vue"]
 date: 2020-05-24
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "development.jpg"
 slug: 2020-05-24-vue-bind-class
 ---

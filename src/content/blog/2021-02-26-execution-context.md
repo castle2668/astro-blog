@@ -3,7 +3,7 @@ title: "Understand JavaScript #4 Execution Context - How JS Works Behind The Sce
 excerpt: "本篇主要介紹 JavaScript 的運作過程，可以瞭解到 JavaScript 底層在做的事情，以及程式碼處理與執行的過程，還有一些我們必須理解的專有名詞。以下一一仔細跟大家說明 (๑•̀ㅂ•́)و✧"
 tags: ["javascript"]
 date: 2021-02-26
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "javascript.png"
 slug: 2021-02-26-execution-context
 ---

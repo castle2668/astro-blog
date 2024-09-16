@@ -3,7 +3,7 @@ title: "Understand JavaScript #19 Functional Programming ft. Underscore, Loadsh"
 excerpt: "本文主要內容為探討「函式程式設計」的相關知識，透過一個經典的範例玩轉 Functional Programming，也會提到 Underscore 與 Loadsh 這兩個有名的資源庫。"
 tags: ["javascript"]
 date: 2021-04-09
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "javascript.png"
 slug: 2021-04-09-functional-programming
 ---

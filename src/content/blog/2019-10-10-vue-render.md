@@ -3,7 +3,7 @@ title: "Vue.js 呈現資料的幾種方法"
 excerpt: "建立起一個 Vue 的應用程式後，我們有 Mustache、v-html、v-text、v-model 這好幾種不同的語法可以將資料呈現到畫面上，這些方式有什麼差別，使用時又有哪些要注意的地方哩。"
 tags: ["vue"]
 date: 2019-10-10
-author: "Sean Huang"
+author: "Huang, Yung-Hsiang"
 image: "development.jpg"
 slug: 2019-10-10-vue-render
 ---

@@ -3,7 +3,7 @@ title: "Sending Http Requests feat. Star Wars API"
 excerpt: "本文使用 Star Wars API 為例示範 React 如何串接第三方 API。"
 tags: ["react"]
 date: 2021-12-27
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "react.jpg"
 slug: 2021-12-27-sending-http-requests
 ---

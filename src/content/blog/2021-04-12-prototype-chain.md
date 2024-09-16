@@ -3,7 +3,7 @@ title: "Understand JavaScript #20 物件導向與原型繼承"
 excerpt: "本文主要內容為探討「原型」的相關知識，包含原型繼承、原型鏈、基本物件，以及資源庫 Underscore 裡面的 Reflection 與 Extend 模式。"
 tags: ["javascript"]
 date: 2021-04-12
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "javascript.png"
 slug: 2021-04-12-prototype-chain
 ---

@@ -3,7 +3,7 @@ title: "Understand JavaScript #7 型別 (Types)"
 excerpt: "JavaScript 很特別，它與其他程式語言不同，尤其是處理變數資料與型別的部分。本文主要內容為「型別」的相關知識，包含動態型別、純值、陣列，至於物件則會紀錄在其他筆記中。"
 tags: ["javascript"]
 date: 2021-03-02
-author: "Sean Huang"
+author: "海豹人 Sealman"
 image: "javascript.png"
 slug: 2021-03-02-javascript-types
 ---

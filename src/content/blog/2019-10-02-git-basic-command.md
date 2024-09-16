@@ -3,7 +3,7 @@ title: "基本 Command 操作與 Git 指令"
 excerpt: "從大二開始接觸前端到現在也快兩年了，途中有煩人的考試，還有充滿雲組員的專題 👻 不過還是陸續學習了 HTML、CSS、jQuery、RWD、JavaScript、Bootstrap，而現在終於要回頭補上 Git 了！雖然目前用 Github Desktop 也可以完成大部分需要的動作，不過 Git 也是遲早要學會的東西，剛好最近的進度告一段落，就順便學個 Git 當作休閒放鬆一下吧。"
 tags: ["git"]
 date: 2019-10-02
-author: "Sean Huang"
+author: "Huang, Yung-Hsiang"
 image: "development.jpg"
 slug: 2019-10-02-git-basic-command
 ---
