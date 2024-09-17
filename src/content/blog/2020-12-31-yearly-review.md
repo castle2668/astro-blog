@@ -4,7 +4,7 @@ excerpt: "跨年連假期間特別悠閒，剛好有空來檢視過去一年的�
 tags: ["yearlyreview", "life"]
 date: 2020-12-31
 author: "海豹人 Sealman"
-image: "development.jpg"
+image: "work-life-balance.jpg"
 slug: 2020-12-31-yearly-review
 ---
 

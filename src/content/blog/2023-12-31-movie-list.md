@@ -4,7 +4,7 @@ excerpt: "跟大家分享一下我 2023 去電影院看的各種電影，很喜�
 tags: ["life"]
 date: 2023-12-31
 author: "Sean Huang"
-image: "development.jpg"
+image: "work-life-balance.jpg"
 slug: 2023-12-31-movie-list
 ---
 
