@@ -4,7 +4,7 @@ excerpt: "前陣子發現自己的文章未經同意被搬運到中國的農場�
 tags: ["life"]
 date: 2020-05-17
 author: "海豹人 Sealman"
-image: "development.jpg"
+image: "work-life-balance.jpg"
 slug: 2020-05-17-content-farm-terminator
 ---
 
