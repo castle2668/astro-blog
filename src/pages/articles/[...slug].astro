@@ -40,7 +40,7 @@ const { Content } = await entry.render();
   >
   <article>
     <h1 class="text-4xl font-bold mb-2">{entry.data.title}</h1>
-    <h3 class="text-lg mb-2 flex items-center gap-4">
+    <h3 class="text-lg mb-2 flex flex-wrap items-center gap-2">
       <span>🧑🏻‍💻 {entry.data.author}</span>
       <span>📅 {formatDate(entry.data.date)}</span>
     </h3>
