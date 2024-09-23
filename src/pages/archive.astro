@@ -45,6 +45,11 @@ const articlesByYearSorted = years.map((year) => {
         <ul class="list-disc ml-4">
           {year.articles.map((article) => (
             <li class="p-1">
+              <span>
+                {`${article.article.data.date.toLocaleDateString("en-US", {
+                  month: "short",
+                })}.`}
+              </span>
               <a
                 href={`/articles/${article.article.slug}`}
                 class="hover:text-maple-600"
