@@ -221,7 +221,7 @@ const resume = {
                 {exp.role} @ {exp.company}
               </h4>
               <p class="text-sm text-gray-600 mb-1">{exp.date}</p>
-              <div class="flex flex-wrap gap-2 mb-1">
+              <div class="flex flex-wrap gap-1 mb-1">
                 {exp.skills.map((skill) => (
                   <span class="px-1.5 py-0.5 bg-gray-200 text-sm text-gray-600 rounded">
                     {skill}
@@ -288,13 +288,20 @@ const resume = {
       <!-- Projects -->
       <section class="mb-8">
         <h3 class="text-xl font-semibold mb-2">Projects</h3>
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {
             resume.projects.map((project) => (
               <div class="p-4 bg-gray-50 rounded shadow-md">
                 <h4 class="font-semibold mb-1">{project.name}</h4>
-                <p class="text-sm text-gray-600 mb-2">{project.description}</p>
-                <div class="flex items-center gap-2 mb-2">
+                <p class="text-sm text-gray-600 mb-1">{project.description}</p>
+                <div class="flex flex-wrap gap-1 mb-1">
+                  {project.skills.map((skill) => (
+                    <span class="px-1 py-0.5 bg-gray-200 text-sm text-gray-600 rounded">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+                <div class="flex items-center gap-2 mb-1">
                   <a
                     href={project.demo}
                     class="text-sm text-blue-500"
@@ -315,12 +322,23 @@ const resume = {
                 <img
                   src={project.image}
                   alt={project.name}
-                  class="w-full h-48 object-cover object-top rounded"
+                  class="w-full h-48 object-cover object-top rounded hidden sm:block"
                 />
               </div>
             ))
           }
         </div>
+        <p class="text-sm text-gray-600 mt-2">
+          More projects can be found on my
+          <a
+            href={resume.contact.github}
+            class="text-blue-500"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </p>
       </section>
     </div>
   </body>
