@@ -63,12 +63,16 @@ interface Props {
     </script>
   </head>
   <body>
-    <Navbar />
+    {url !== "/resume/" && <Navbar />}
 
-    <section class="container mx-auto max-w-screen-xl my-10 px-8">
+    <section
+      class={url !== "/resume/"
+        ? "container mx-auto max-w-screen-xl my-10 px-8"
+        : ""}
+    >
       <slot />
     </section>
 
-    <Footer />
+    {url !== "/resume/" && <Footer />}
   </body>
 </html>
