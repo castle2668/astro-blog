@@ -1,4 +1,6 @@
 ---
+import MainLayout from "../layouts/MainLayout.astro";
+
 const resume = {
   name: "Sean Huang",
   title: "Frontend Engineer",
@@ -184,169 +186,170 @@ const resume = {
 };
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resume | Sean Huang</title>
-  </head>
-  <body class="bg-gray-100 text-gray-800 font-sans antialiased">
-    <div class="max-w-4xl mx-auto p-8 bg-white shadow-md">
-      <div class="flex flex-col items-center text-center mb-8">
-        <h1 class="text-3xl font-bold mb-2">{resume.name}</h1>
-        <h2 class="text-xl text-gray-600 mb-4">{resume.title}</h2>
-        <div class="text-sm text-gray-500">
-          <p>
-            Email: <a
-              href={`mailto:${resume.contact.email}`}
-              class="text-blue-500">{resume.contact.email}</a
-            >
-          </p>
-          <p>Phone: {resume.contact.phone}</p>
-          <p>
-            <a href={resume.contact.linkedin} class="text-blue-500">LinkedIn</a>
-            | <a href={resume.contact.github} class="text-blue-500">GitHub</a>
-          </p>
-        </div>
-      </div>
-
-      <!-- About -->
-      <section class="mb-8">
-        <h3 class="text-xl font-semibold mb-2">About</h3>
-        <p class="text-sm text-gray-700 whitespace-pre-line">
-          {resume.about}
-        </p>
-      </section>
-
-      <!-- Experience -->
-      <section class="mb-8">
-        <h3 class="text-xl font-semibold mb-2">Experience</h3>
-        {
-          resume.experience.map((exp) => (
-            <div class="mb-6">
-              <h4 class="font-semibold">
-                {exp.role} @ {exp.company}
-              </h4>
-              <p class="text-sm text-gray-600 mb-1">{exp.date}</p>
-              <div class="flex flex-wrap gap-1 mb-1">
-                {exp.skills.map((skill) => (
-                  <span class="px-1.5 py-0.5 bg-gray-200 text-sm text-gray-600 rounded">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-              <p class="text-sm text-gray-700 whitespace-pre-line mb-2">
-                <span>Summary:</span>
-                {exp.summary}
-              </p>
-              <ul class="list-disc list-inside text-sm text-gray-700">
-                <span>Hightlights:</span>
-                {exp.highlights.map((highlight) => (
-                  <li>{highlight}</li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
-      </section>
-
-      <!-- Education -->
-      <section class="mb-8">
-        <h3 class="text-xl font-semibold mb-2">Education</h3>
-        {
-          resume.education.map((edu) => (
-            <div class="mb-6">
-              <h4 class="font-semibold">{edu.institution}</h4>
-              <p class="text-sm text-gray-600">
-                {edu.degree} in {edu.field}
-              </p>
-              <p class="text-sm text-gray-600">{edu.duration}</p>
-              <p class="text-sm text-gray-700 whitespace-pre-line">
-                {edu.description}
-              </p>
-            </div>
-          ))
-        }
-      </section>
-
-      <!-- Certifications -->
-      <section class="mb-8">
-        <h3 class="text-xl font-semibold mb-2">Certifications</h3>
-        {
-          resume.certifications.map((cert) => (
-            <div class="mb-2">
-              <p class="font-semibold text-sm">{cert.name}</p>
-              <p class="text-sm text-gray-600">
-                {cert.organization} ({cert.issued})
-              </p>
-              <a
-                href={cert.url}
-                class="text-sm text-blue-500"
-                target="_blank"
-                rel="noopener noreferrer"
+<MainLayout title="Resume" url="/resume/">
+  <div class="fixed top-0 left-0 h-full w-full overflow-auto">
+    <div class="bg-gray-100 text-gray-800 font-sans antialiased">
+      <div class="max-w-4xl mx-auto p-8 bg-white shadow-md">
+        <div class="flex flex-col items-center text-center mb-8">
+          <h1 class="text-3xl font-bold mb-2">{resume.name}</h1>
+          <h2 class="text-xl text-gray-600 mb-4">{resume.title}</h2>
+          <div class="text-sm text-gray-500">
+            <p>
+              Email: <a
+                href={`mailto:${resume.contact.email}`}
+                class="text-blue-500">{resume.contact.email}</a
               >
-                View Certificate
-              </a>
-            </div>
-          ))
-        }
-      </section>
+            </p>
+            <p>Phone: {resume.contact.phone}</p>
+            <p>
+              <a href={resume.contact.linkedin} class="text-blue-500"
+                >LinkedIn</a
+              >
+              | <a href={resume.contact.github} class="text-blue-500">GitHub</a>
+            </p>
+          </div>
+        </div>
 
-      <!-- Projects -->
-      <section class="mb-8">
-        <h3 class="text-xl font-semibold mb-2">Projects</h3>
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <!-- About -->
+        <section class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">About</h3>
+          <p class="text-sm text-gray-700 whitespace-pre-line">
+            {resume.about}
+          </p>
+        </section>
+
+        <!-- Experience -->
+        <section class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">Experience</h3>
           {
-            resume.projects.map((project) => (
-              <div class="p-4 bg-gray-50 rounded shadow-md">
-                <h4 class="font-semibold mb-1">{project.name}</h4>
-                <p class="text-sm text-gray-600 mb-1">{project.description}</p>
+            resume.experience.map((exp) => (
+              <div class="mb-6">
+                <h4 class="font-semibold">
+                  {exp.role} @ {exp.company}
+                </h4>
+                <p class="text-sm text-gray-600 mb-1">{exp.date}</p>
                 <div class="flex flex-wrap gap-1 mb-1">
-                  {project.skills.map((skill) => (
-                    <span class="px-1 py-0.5 bg-gray-200 text-sm text-gray-600 rounded">
+                  {exp.skills.map((skill) => (
+                    <span class="px-1.5 py-0.5 bg-gray-200 text-sm text-gray-600 rounded">
                       {skill}
                     </span>
                   ))}
                 </div>
-                <div class="flex items-center gap-2 mb-1">
-                  <a
-                    href={project.demo}
-                    class="text-sm text-blue-500"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Demo
-                  </a>
-                  <a
-                    href={project.repo}
-                    class="text-sm text-blue-500"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </a>
-                </div>
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  class="w-full h-48 object-cover object-top rounded hidden sm:block"
-                />
+                <p class="text-sm text-gray-700 whitespace-pre-line mb-2">
+                  <span>Summary:</span>
+                  {exp.summary}
+                </p>
+                <ul class="list-disc list-inside text-sm text-gray-700">
+                  <span>Hightlights:</span>
+                  {exp.highlights.map((highlight) => (
+                    <li>{highlight}</li>
+                  ))}
+                </ul>
               </div>
             ))
           }
-        </div>
-        <p class="text-sm text-gray-600 mt-2">
-          More projects can be found on my
-          <a
-            href={resume.contact.github}
-            class="text-blue-500"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-        </p>
-      </section>
+        </section>
+
+        <!-- Education -->
+        <section class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">Education</h3>
+          {
+            resume.education.map((edu) => (
+              <div class="mb-6">
+                <h4 class="font-semibold">{edu.institution}</h4>
+                <p class="text-sm text-gray-600">
+                  {edu.degree} in {edu.field}
+                </p>
+                <p class="text-sm text-gray-600">{edu.duration}</p>
+                <p class="text-sm text-gray-700 whitespace-pre-line">
+                  {edu.description}
+                </p>
+              </div>
+            ))
+          }
+        </section>
+
+        <!-- Certifications -->
+        <section class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">Certifications</h3>
+          {
+            resume.certifications.map((cert) => (
+              <div class="mb-2">
+                <p class="font-semibold text-sm">{cert.name}</p>
+                <p class="text-sm text-gray-600">
+                  {cert.organization} ({cert.issued})
+                </p>
+                <a
+                  href={cert.url}
+                  class="text-sm text-blue-500"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Certificate
+                </a>
+              </div>
+            ))
+          }
+        </section>
+
+        <!-- Projects -->
+        <section class="mb-8">
+          <h3 class="text-xl font-semibold mb-2">Projects</h3>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {
+              resume.projects.map((project) => (
+                <div class="p-4 bg-gray-50 rounded shadow-md">
+                  <h4 class="font-semibold mb-1">{project.name}</h4>
+                  <p class="text-sm text-gray-600 mb-1">
+                    {project.description}
+                  </p>
+                  <div class="flex flex-wrap gap-1 mb-1">
+                    {project.skills.map((skill) => (
+                      <span class="px-1 py-0.5 bg-gray-200 text-sm text-gray-600 rounded">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <a
+                      href={project.demo}
+                      class="text-sm text-blue-500"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Demo
+                    </a>
+                    <a
+                      href={project.repo}
+                      class="text-sm text-blue-500"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      GitHub
+                    </a>
+                  </div>
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    class="w-full h-48 object-cover object-top rounded hidden sm:block"
+                  />
+                </div>
+              ))
+            }
+          </div>
+          <p class="text-sm text-gray-600 mt-2">
+            More projects can be found on my
+            <a
+              href={resume.contact.github}
+              class="text-blue-500"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+          </p>
+        </section>
+      </div>
     </div>
-  </body>
-</html>
+  </div>
+</MainLayout>
