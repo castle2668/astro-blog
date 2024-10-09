@@ -6,25 +6,50 @@ import MainLayout from "../../layouts/MainLayout.astro";
 
 const allBlogArticles: CollectionEntry<"blog">[] = await getCollection("blog");
 
-const tags = allBlogArticles
+const tagCounts: { [key: string]: number } = allBlogArticles
   .flatMap((article) => article.data.tags)
-  .filter((tag, index, array) => array.indexOf(tag) === index)
-  .sort();
+  .reduce((acc: { [key: string]: number }, tag: string) => {
+    acc[tag] = (acc[tag] || 0) + 1;
+    return acc;
+  }, {});
+
+const tags = Object.keys(tagCounts).sort();
+
+const groupedTags = tags.reduce(
+  (acc: { [key: string]: string[] }, tag: string) => {
+    const firstLetter = tag[0].toUpperCase();
+    if (!acc[firstLetter]) {
+      acc[firstLetter] = [];
+    }
+    acc[firstLetter].push(tag);
+    return acc;
+  },
+  {}
+);
 ---
 
 <MainLayout title="All Tags" url="/tags/">
   <h1 class="text-2xl mb-4">All Tags</h1>
   <p class="mb-4">目前總共有 {tags.length} 個標籤 `(๑•̀ω•́)ノ`</p>
-  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  <div class="flex flex-col gap-4">
     {
-      tags.map((tag) => (
-        <a
-          href={`/tags/${tag}`}
-          class="bg-gray-100 p-2 mb-6 hover:bg-maple-600 hover:text-white rounded"
-        >
-          #{tag}
-        </a>
-      ))
+      Object.keys(groupedTags)
+        .sort()
+        .map((letter) => (
+          <div>
+            <h2 class="text-xl mb-2">{letter}</h2>
+            <div class="flex flex-wrap gap-4">
+              {groupedTags[letter].map((tag) => (
+                <a
+                  href={`/tags/${tag}`}
+                  class="block p-2 text-center rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-500"
+                >
+                  {tag} ({tagCounts[tag]})
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
     }
   </div>
 </MainLayout>

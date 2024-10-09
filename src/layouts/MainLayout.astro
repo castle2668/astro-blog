@@ -67,7 +67,7 @@ interface Props {
 
     <section
       class={url !== "/resume/"
-        ? "container mx-auto max-w-screen-xl my-10 px-8"
+        ? "container mx-auto max-w-screen-xl py-10 px-8 min-h-[calc(100vh-231px)]"
         : ""}
     >
       <slot />
@@ -76,3 +76,10 @@ interface Props {
     {url !== "/resume/" && <Footer />}
   </body>
 </html>
+
+<style>
+  html.dark {
+    background-color: #333;
+    color: #fff;
+  }
+</style>
