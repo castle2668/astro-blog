@@ -25,22 +25,22 @@ import MainLayout from "../layouts/MainLayout.astro";
       />
     </div>
     <div class="w-full md:w-1/2">
-      <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Who We Are</h2>
-      <p class="text-gray-700 leading-relaxed mb-6">
+      <h2 class="text-3xl font-extrabold mb-4">Who We Are</h2>
+      <p class="leading-relaxed mb-6">
         Welcome to Sean's Blog, formerly known as Sealman's first homepage. Our
         authors are actually the same person, Sean from different periods. We
         are a team of continuously passionate technology enthusiasts (a
         multiverse of authors), dedicated to bringing you all relevant
         information. The latest articles, teaching, and sharing of technology.
       </p>
-      <p class="text-gray-700 leading-relaxed mb-6">
+      <p class="leading-relaxed mb-6">
         Our mission is to provide more support and education to Taiwan's web
         development community and help everyone keep up with the rapidly
         developing world of web developments around the world. Whether you're an
         experienced developer, a fan of related technologies, or just curious
         about a technology trend, we've got you covered.
       </p>
-      <p class="text-gray-700 leading-relaxed mb-6">
+      <p class="leading-relaxed mb-6">
         本部落格是採用創用 CC 姓名標示 - 非商業性 - 相同方式分享 4.0
         國際授權條款授權，即<a
           href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
@@ -55,15 +55,15 @@ import MainLayout from "../layouts/MainLayout.astro";
 
   <!-- About Me -->
   <div class="mt-10">
-    <h2 class="text-3xl font-extrabold text-gray-900 mb-8">Our Team</h2>
+    <h2 class="text-3xl font-extrabold mb-8">Our Team</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-      <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+      <div class="shadow-lg shadow-pink-200 rounded-lg overflow-hidden">
         <Image src={Author3} alt="Team Member 1" class="w-full h-auto" />
         <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Sean Huang</h3>
-          <p class="text-gray-70 mb-2">Lead Writer & Editor-in-Chief.</p>
-          <p class="text-gray-70 mb-2">Former Wistron Frontend Engineer.</p>
-          <p class="text-gray-70 mb-4">Passion Comes From Mastery.</p>
+          <h3 class="text-xl font-semibold mb-2">Sean Huang</h3>
+          <p class="mb-2">Lead Writer & Editor-in-Chief.</p>
+          <p class="mb-2">Former Wistron Frontend Engineer.</p>
+          <p class="mb-4">Passion Comes From Mastery.</p>
           <ul class="flex gap-4">
             <li class="hover:opacity-90">
               <a href="mailto:castel2668@gmail.com" target="_blank">
@@ -72,7 +72,13 @@ import MainLayout from "../layouts/MainLayout.astro";
             </li>
             <li class="hover:opacity-90">
               <a href="https://github.com/castle2668" target="_blank">
-                <Image src={IconGitHub} alt="GitHub" width={30} height={30} />
+                <Image
+                  src={IconGitHub}
+                  alt="GitHub"
+                  width={30}
+                  height={30}
+                  class="dark:bg-white dark:rounded-full dark:border-white dark:border-[1px]"
+                />
               </a>
             </li>
             <li class="hover:opacity-90">
@@ -116,34 +122,30 @@ import MainLayout from "../layouts/MainLayout.astro";
           </ul>
         </div>
       </div>
-      <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+      <div class="shadow-lg shadow-yellow-200 rounded-lg overflow-hidden">
         <Image src={Author2} alt="Team Member 2" class="w-full h-auto" />
         <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">
-            海豹人 Sealman
-          </h3>
-          <p class="text-gray-70 mb-2">Tech Analyst & Former Lead Writer.</p>
-          <p class="text-gray-70 mb-2">
+          <h3 class="text-xl font-semibold mb-2">海豹人 Sealman</h3>
+          <p class="mb-2">Tech Analyst & Former Lead Writer.</p>
+          <p class="mb-2">
             Former TAAZE Frontend Developer. Former Rakuya Senior Frontend
             Developer. Former Funliday Frontend Engineer.
           </p>
-          <p class="text-gray-70">
+          <p>
             透過撰寫部落格，可以記錄自己學習或開發的過程，日後檢視自己對該項技能的理解時，也能隨時繼續把文章補充得更完整。
           </p>
         </div>
       </div>
-      <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+      <div class="shadow-lg shadow-sky-200 rounded-lg overflow-hidden">
         <Image src={Author1} alt="Team Member 3" class="w-full h-auto" />
         <div class="p-6">
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">
-            Huang, Yung-Hsiang
-          </h3>
-          <p class="text-gray-70 mb-2">Founder & Former Editor-in-Chief.</p>
-          <p class="text-gray-70 mb-2">
+          <h3 class="text-xl font-semibold mb-2">Huang, Yung-Hsiang</h3>
+          <p class="mb-2">Founder & Former Editor-in-Chief.</p>
+          <p class="mb-2">
             Graduated from National University of Kaohsiung with a bachelor's
             degree in Information Management.
           </p>
-          <p class="text-gray-70">
+          <p>
             專長是前端開發與資訊管理。喜歡的正能量小語：「每天都進步
             1%，一年後你會進步 37 倍；每天都退步 1%，一年後你會弱化到趨近於
             0」。

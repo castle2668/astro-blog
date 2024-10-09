@@ -1,12 +1,13 @@
 ---
-import { getCollection, getEntry } from "astro:content";
+import { type CollectionEntry, getCollection, getEntry } from "astro:content";
 
 import Tags from "../../components/Tags.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
 import { formatDate } from "../../utils";
 
 export async function getStaticPaths() {
-  const allBlogArticles = await getCollection("blog");
+  const allBlogArticles: CollectionEntry<"blog">[] =
+    await getCollection("blog");
   return allBlogArticles.map((article) => ({
     params: { slug: article.slug },
   }));
@@ -35,7 +36,7 @@ const { Content } = await entry.render();
 >
   <a
     href="/articles"
-    class="inline-block bg-gray-100 p-2 mb-6 hover:bg-maple-600 hover:text-white rounded"
+    class="inline-block p-2 mb-6 rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-500"
     >Back To Articles</a
   >
   <article>
@@ -84,9 +85,16 @@ const { Content } = await entry.render();
     color: #c1170c;
   }
 
-  .article-content code:not([class]) {
-    background-color: rgba(27, 31, 35, 0.06);
-    color: #274878;
+  html.light .article-content > p code:not([class]),
+  html.light .article-content > code:not([class]) {
+    background-color: #edf1f7;
+    font-size: 14px;
+    padding: 2px 4px;
+  }
+
+  html.dark .article-content > p code:not([class]),
+  html.dark .article-content > code:not([class]) {
+    background-color: #415977;
     font-size: 14px;
     padding: 2px 4px;
   }

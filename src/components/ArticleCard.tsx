@@ -8,8 +8,8 @@ interface Props {
 
 const ArticleCard: React.FC<Props> = ({ article }) => {
   return (
-    <div className="mt-10">
-      <div className="bg-white rounded-lg overflow-hidden shadow-lg h-full">
+    <div className="mt-10 ">
+      <div className="rounded-lg overflow-hidden shadow-lg h-full border border-gray-200 dark:border-gray-600">
         <a href={`/articles/${article.slug}`}>
           <img
             src={`/images/${article.data.image}`}
@@ -21,14 +21,10 @@ const ArticleCard: React.FC<Props> = ({ article }) => {
           <h2 className="text-2xl font-semibold mb-2">
             <a href={`/articles/${article.slug}`}>{article.data.title}</a>
           </h2>
-          <p className="text-gray-600 text-sm mb-2">
-            {formatDate(article.data.date)}
-          </p>
-          {/* Excerpt */}
-          <p className="hidden text-gray-600 mb-4 sm:line-clamp-3 xl:line-clamp-5">
+          <p className="text-sm mb-2">{formatDate(article.data.date)}</p>
+          <p className="hidden mb-4 sm:line-clamp-3 xl:line-clamp-5">
             <a href={`/articles/${article.slug}`}>{article.data.excerpt}</a>
           </p>
-          {/* Tags */}
           <div className="flex flex-wrap gap-2">
             {article.data.tags.map((tag: string, index: number) => (
               <span

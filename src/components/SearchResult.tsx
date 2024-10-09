@@ -55,6 +55,9 @@ const SearchResult: React.FC = () => {
           ))}
         </div>
       )}
+      {searchResults.length === 0 && (
+        <p className="text-xl mt-6">No results found for "{query}"</p>
+      )}
     </div>
   );
 };
