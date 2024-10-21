@@ -1,5 +1,5 @@
 ---
-title: "[演算法] Fizz Buzz"
+title: "[Algorithm] Fizz Buzz"
 excerpt: "Fizz Buzz 通常是大家入門的第一個演算法，非常經典而且基礎的概念，算是學習演算法的一個入門磚，輕鬆又有趣。"
 tags: ["algorithm", "leetcode"]
 date: 2024-09-23
