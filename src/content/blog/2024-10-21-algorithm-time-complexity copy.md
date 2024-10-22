@@ -27,7 +27,7 @@ function logFirstTwo(arr) {
 }
 ```
 
-In this case, it doesn’t matter if the array has 10 elements or 10 million. The function always logs just the first two elements. So, the runtime remains flat on our graph—no changes there!
+In this case, it doesn’t matter if the array has 10 elements or 10 million. The function always logs just the first two elements. So, the runtime remains flat on our graph — no changes there!
 
 ## 2. Linear Time - O(n)
 
@@ -41,7 +41,7 @@ function logAll(arr) {
 }
 ```
 
-If you have an array with 5 elements, the function will perform 5 operations. If it has 100 elements, it will do 100 operations. The runtime grows straight up as the input size increases—think of it as a straight line on the graph.
+If you have an array with 5 elements, the function will perform 5 operations. If it has 100 elements, it will do 100 operations. The runtime grows straight up as the input size increases — think of it as a straight line on the graph.
 
 ## 3. Exponential Time - O(n²)
 
@@ -57,7 +57,7 @@ function logAllPairs(arr) {
 }
 ```
 
-Here, for every element in the array, we’re looking at every other element. So, with 3 elements, we log 9 pairs. With 4 elements, we log 16 pairs. You can see how quickly things can get out of hand—this would show an exponential jump on our graph!
+Here, for every element in the array, we’re looking at every other element. So, with 3 elements, we log 9 pairs. With 4 elements, we log 16 pairs. You can see how quickly things can get out of hand — this would show an exponential jump on our graph!
 
 ## 4. Logarithmic Time - O(log n)
 
