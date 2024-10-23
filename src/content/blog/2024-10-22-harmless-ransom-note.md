@@ -4,7 +4,7 @@ excerpt: "In this post, we'll break down a common algorithm question you might s
 tags: ["algorithm", "hashtable"]
 date: 2024-10-22
 author: "Sean Huang"
-image: "development.jpg"
+image: "javascript.png"
 slug: 2024-10-22-harmless-ransom-note
 ---
 

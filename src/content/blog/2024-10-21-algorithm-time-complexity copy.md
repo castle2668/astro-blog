@@ -4,7 +4,7 @@ excerpt: "Hey there, fellow coders! Today, we're diving into a concept that's su
 tags: ["algorithm"]
 date: 2024-10-21
 author: "Sean Huang"
-image: "development.jpg"
+image: "javascript.png"
 slug: 2024-10-21-algorithm-time-complexity
 ---
 
