@@ -1,11 +1,11 @@
 ---
 title: "[Algorithm] Time Complexity & Big O Notation"
 excerpt: "Hey there, fellow coders! Today, we're diving into a concept that's super important for anyone who writes algorithms: Big O notation. It helps us understand how an algorithm performs as the size of its input grows. Think of it as a way to measure the efficiency of our code. Let’s break it down into bite-sized pieces, along with some relatable examples."
-tags: ["algorithm"]
-date: 2024-10-21
+tags: ["algorithm", "javascript"]
+date: 2024-08-14
 author: "Sean Huang"
 image: "javascript.png"
-slug: 2024-10-21-algorithm-time-complexity
+slug: 2024-08-14-algorithm-time-complexity
 ---
 
 ## What is Big O Notation?

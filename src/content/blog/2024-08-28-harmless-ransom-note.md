@@ -1,11 +1,11 @@
 ---
 title: "[Algorithm] Harmless Ransom Note"
 excerpt: "In this post, we'll break down a common algorithm question you might see in coding interviews: the Harmless Ransom Note. It’s a great example to understand how to manipulate strings and use objects as hash tables for performance improvements. Plus, it’s relatively straightforward but offers a solid practice in understanding time complexity."
-tags: ["algorithm", "hashtable"]
-date: 2024-10-22
+tags: ["algorithm", "javascript", "hashtable", "leetcode"]
+date: 2024-08-28
 author: "Sean Huang"
 image: "javascript.png"
-slug: 2024-10-22-harmless-ransom-note
+slug: 2024-08-28-harmless-ransom-note
 ---
 
 ## The Problem
@@ -76,6 +76,45 @@ The time complexity of this algorithm is `O(n + m)`, where:
 - `m` is the number of words in the note text
 
 We loop over both arrays once, making this a linear solution.
+
+## Related Problem
+
+### 383. Ransom Note
+
+- [Question](https://leetcode.com/problems/ransom-note/description/)
+- [My Submission](https://leetcode.com/problems/ransom-note/submissions/1430421661)
+
+```javascript
+/**
+ * @param {string} ransomNote
+ * @param {string} magazine
+ * @return {boolean}
+ */
+var canConstruct = function (ransomNote, magazine) {
+  let noteArr = ransomNote.replace(" ", "").split("");
+  let magazineArr = magazine.replace(" ", "").split("");
+  let magazineObj = {};
+
+  magazineArr.forEach((letter) => {
+    if (!magazineObj[letter]) {
+      magazineObj[letter] = 0;
+    }
+    magazineObj[letter] += 1;
+  });
+
+  let noteIsPossible = true;
+  noteArr.forEach((letter) => {
+    if (magazineObj[letter] && magazineObj[letter] > 0) {
+      magazineObj[letter] -= 1;
+    } else {
+      console.log(letter);
+      noteIsPossible = false;
+    }
+  });
+
+  return noteIsPossible;
+};
+```
 
 ## Conclusion
 
