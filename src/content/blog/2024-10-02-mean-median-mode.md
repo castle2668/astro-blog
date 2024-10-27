@@ -1,7 +1,7 @@
 ---
-title: "[Algorithm] Mean Median Mode"
+title: "[Algorithms] Mean Median Mode"
 excerpt: "Learn how to calculate the mean, median, and mode of a number array in JavaScript with a reusable, functional approach. We’ll split the task into easy-to-follow steps that make this algorithm both efficient and beginner-friendly!"
-tags: ["algorithm", "javascript"]
+tags: ["algorithms", "javascript"]
 date: 2024-10-02
 author: "Sean Huang"
 image: "javascript.png"

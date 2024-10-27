@@ -1,7 +1,7 @@
 ---
-title: "[Algorithm] Max Stock Profit"
+title: "[Algorithms] Max Stock Profit"
 excerpt: "In this article, we’ll walk through the Max Stock Profit algorithm, which helps determine the maximum profit achievable from buying and selling a stock in a single day based on its changing prices. This common algorithm problem often appears in technical interviews and requires a mix of array handling and optimization techniques."
-tags: ["algorithm", "javascript"]
+tags: ["algorithms", "javascript"]
 date: 2024-10-23
 author: "Sean Huang"
 image: "javascript.png"

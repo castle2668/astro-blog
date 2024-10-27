@@ -1,7 +1,7 @@
 ---
-title: "[Algorithm] Caesar Cipher"
+title: "[Algorithms] Caesar Cipher"
 excerpt: "The algorithm we'll explore in this post is the Caesar Cipher. This classic encryption technique shifts each letter in a string by a specified number of places in the alphabet."
-tags: ["algorithm", "javascript"]
+tags: ["algorithms", "javascript"]
 date: 2024-09-11
 author: "Sean Huang"
 image: "javascript.png"

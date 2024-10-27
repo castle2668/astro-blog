@@ -1,7 +1,7 @@
 ---
-title: "[Algorithm] Binary Search"
+title: "[Algorithms] Binary Search"
 excerpt: "Binary Search algorithm is a fundamental technique in computer science. It's widely used in various applications and is a common topic in technical interviews. Understanding binary search is crucial because it offers a fast way to find values in sorted lists."
-tags: ["algorithm", "javascript"]
+tags: ["algorithms", "javascript"]
 date: 2024-10-14
 author: "Sean Huang"
 image: "javascript.png"

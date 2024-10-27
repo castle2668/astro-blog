@@ -1,7 +1,7 @@
 ---
-title: "[Algorithm] Bubble Sort"
+title: "[Algorithms] Bubble Sort"
 excerpt: "In this article, we’ll dive into Bubble Sort, a straightforward sorting algorithm often encountered in coding interviews. We’ll discuss how it works, go through an example, and examine a JavaScript implementation of the algorithm."
-tags: ["algorithm", "javascript"]
+tags: ["algorithms", "javascript"]
 date: 2024-10-21
 author: "Sean Huang"
 image: "javascript.png"

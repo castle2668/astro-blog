@@ -1,7 +1,7 @@
 ---
-title: "[Algorithm] Merge Sort"
+title: "[Algorithms] Merge Sort"
 excerpt: "In this article, we’re covering Merge Sort, an efficient sorting algorithm that breaks down arrays into smaller parts, sorts them, and merges them back into a single sorted array. Merge Sort is often highlighted in technical interviews, so understanding its mechanics is essential."
-tags: ["algorithm", "javascript"]
+tags: ["algorithms", "javascript"]
 date: 2024-10-22
 author: "Sean Huang"
 image: "javascript.png"
