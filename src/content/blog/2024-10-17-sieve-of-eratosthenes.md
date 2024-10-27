@@ -1,7 +1,7 @@
 ---
-title: "[Algorithm] Sieve Of Eratosthenes"
+title: "[Algorithms] Sieve Of Eratosthenes"
 excerpt: "Discover the Sieve of Eratosthenes — an efficient algorithm to find all prime numbers up to a given limit. We'll cover the steps involved, optimizing runtime, and breaking down the code for a clear understanding."
-tags: ["algorithm", "javascript"]
+tags: ["algorithms", "javascript"]
 date: 2024-10-17
 author: "Sean Huang"
 image: "javascript.png"

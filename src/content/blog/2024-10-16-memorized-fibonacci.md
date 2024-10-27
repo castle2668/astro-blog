@@ -1,7 +1,7 @@
 ---
-title: "[Algorithm] Fibonacci vs. Memorized Fibonacci"
+title: "[Algorithms] Fibonacci vs. Memorized Fibonacci"
 excerpt: "In this post, we'll explore two different implementations of the Fibonacci sequence: the classic recursive version and an optimized version using memoization. Both methods generate the same result, but their efficiency is quite different, especially when dealing with large numbers."
-tags: ["algorithm", "javascript"]
+tags: ["algorithms", "javascript"]
 date: 2024-10-16
 author: "Sean Huang"
 image: "javascript.png"

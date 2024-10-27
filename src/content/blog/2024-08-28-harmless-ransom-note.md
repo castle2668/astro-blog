@@ -1,7 +1,7 @@
 ---
-title: "[Algorithm] Harmless Ransom Note"
+title: "[Algorithms] Harmless Ransom Note"
 excerpt: "In this post, we'll break down a common algorithm question you might see in coding interviews: the Harmless Ransom Note. It’s a great example to understand how to manipulate strings and use objects as hash tables for performance improvements. Plus, it’s relatively straightforward but offers a solid practice in understanding time complexity."
-tags: ["algorithm", "javascript", "hashtable", "leetcode"]
+tags: ["algorithms", "javascript", "hashtable", "leetcode"]
 date: 2024-08-28
 author: "Sean Huang"
 image: "javascript.png"
