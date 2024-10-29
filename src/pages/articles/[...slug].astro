@@ -39,24 +39,80 @@ const { Content } = await entry.render();
     class="inline-block p-2 mb-6 rounded-md bg-gray-100 hover:bg-gray-200 dark:bg-gray-600 dark:hover:bg-gray-500"
     >Back To Articles</a
   >
-  <article>
-    <h1 class="text-4xl font-bold mb-2">{entry.data.title}</h1>
-    <h3 class="text-lg mb-2 flex flex-wrap items-center gap-2">
-      <span>🧑🏻‍💻 {entry.data.author}</span>
-      <span>📅 {formatDate(entry.data.date)}</span>
-    </h3>
-    <Tags tags={entry.data.tags} />
-    <img
-      src={"/images/" + entry.data.image}
-      alt="Article Image"
-      class="w-full h-auto rounded-xl my-6 max-h-96 object-center object-cover"
-    />
-    <div class="article-content">
-      <p>{entry.data.excerpt}</p>
-      <Content />
+  <article class="flex gap-6">
+    <div class="lg:max-w-3xl">
+      <h1 class="text-4xl font-bold mb-2">{entry.data.title}</h1>
+      <h3 class="text-lg mb-2 flex flex-wrap items-center gap-2">
+        <span>🧑🏻‍💻 {entry.data.author}</span>
+        <span>📅 {formatDate(entry.data.date)}</span>
+      </h3>
+      <Tags tags={entry.data.tags} />
+      <img
+        src={"/images/" + entry.data.image}
+        alt="Article Image"
+        class="w-full h-auto rounded-xl my-6 max-h-96 object-center object-cover"
+      />
+      <div class="article-content">
+        <p>{entry.data.excerpt}</p>
+        <Content />
+      </div>
     </div>
+    <aside class="hidden lg:block">
+      <nav class="sticky top-5">
+        <h2 class="text-xl font-bold mb-4">Table of Contents</h2>
+        <ul id="toc">
+          <!-- 這裡將自動生成 TOC 項目 -->
+        </ul>
+      </nav>
+    </aside>
   </article>
 </MainLayout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const articleContent = document.querySelector(".article-content");
+    const toc = document.getElementById("toc");
+
+    if (!articleContent || !toc) return;
+
+    const headings = articleContent.querySelectorAll("h1, h2, h3, h4, h5, h6");
+    let currentLevel = 1;
+    let currentList = toc;
+
+    headings.forEach((heading) => {
+      const htmlHeading = heading as HTMLElement;
+      const level = parseInt(heading.tagName.substring(1));
+
+      const id = htmlHeading.innerText.toLowerCase().replace(/\s+/g, "-");
+      htmlHeading.id = id;
+
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = `#${id}`;
+      a.innerText = htmlHeading.innerText;
+      a.classList.add(`heading-${level}`);
+      li.appendChild(a);
+
+      if (level > currentLevel) {
+        const newList = document.createElement("ul");
+        currentList.lastElementChild?.appendChild(newList);
+        currentList = newList;
+      } else if (level < currentLevel) {
+        currentList = currentList.parentElement?.closest("ul") || toc;
+      }
+
+      currentList.appendChild(li);
+      currentLevel = level;
+    });
+
+    // 設定到 TOC
+    toc.appendChild(currentList);
+
+    if (toc.children.length === 0) {
+      toc.style.display = "none";
+    }
+  });
+</script>
 
 <style is:global>
   .article-content p {
@@ -162,5 +218,29 @@ const { Content } = await entry.render();
     border-collapse: collapse;
     padding: 8px;
     min-width: 50px;
+  }
+
+  /* TOC 樣式 */
+  ul#toc {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul#toc li a {
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+
+  ul#toc li a.heading-2 {
+    margin-left: 20px;
+  }
+
+  ul#toc li a.heading-3 {
+    margin-left: 40px;
+  }
+
+  ul#toc li a:hover {
+    text-decoration: underline;
   }
 </style>
