@@ -68,20 +68,22 @@ BST.prototype.contains = function (value) {
 
 The `depthFirstTraversal` method is structured to handle different traversal orders. By passing a specific order (`'pre-order'`, `'in-order'`, or `'post-order'`), you can define when to apply the iterator function, achieving flexibility in traversal styles.
 
+### Depth First Traversal - Pre-Order
+
+Pre-order is the most standard DFS algorithm.
+
+Pre-order traversal visits nodes in the following order:
+
+1. Visit the node.
+2. Traverse the left subtree.
+3. Traverse the right subtree.
+
 ### Depth First Traversal - In-Order
 
 In-order traversal visits nodes in ascending order:
 
 1. Traverse the left subtree.
 2. Visit the node.
-3. Traverse the right subtree.
-
-### Depth First Traversal - Pre-Order
-
-Pre-order traversal visits nodes in the following order:
-
-1. Visit the node.
-2. Traverse the left subtree.
 3. Traverse the right subtree.
 
 ### Depth First Traversal - Post-Order
@@ -117,6 +119,24 @@ BST.prototype.breadthFirstTraversal = function (iteratorFunc) {
   }
 };
 ```
+
+## DFS vs BFS
+
+Here is an example that compares the order that the graph is searched in when using a BFS or a DFS (by each of the three approaches).
+
+```plaintext
+      1
+    /   \
+   2     3
+  / \
+ 4   5
+```
+
+- Breadth First Search : 1 2 3 4 5
+- Depth First Search
+  - Pre-order: 1 2 4 5 3
+  - In-order : 4 2 5 1 3
+  - Post-order : 4 5 2 3 1
 
 ## getMinVal and getMaxVal Methods
 
