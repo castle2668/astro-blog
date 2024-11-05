@@ -32,7 +32,7 @@ export default React.memo(DemoOutput);
 // {} === {} // false
 ```
 
-這樣代表只要 Props `是物件，React.memo` 就沒辦法處理了嗎？關於這一點可以搭配 `useCallback` 與 `useMemo` 等 Hooks 來解決喔。
+這樣代表只要 Props 是物件，`React.memo` 就沒辦法處理了嗎？關於這一點可以搭配 `useCallback` 與 `useMemo` 等 Hooks 來解決喔。
 
 ## 回顧
 
