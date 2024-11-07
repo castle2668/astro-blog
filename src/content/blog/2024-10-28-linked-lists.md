@@ -224,6 +224,8 @@ myLL.addToTail(99); // 42 <-> 7
 
 ## Wrap Up
 
-A linked list is a flexible data structure, especially useful for situations that involve frequent additions and deletions. In this article, we’ve covered how to add nodes with `addToHead` and `addToTail`, remove nodes with `removeHead` and `removeTail`, and search the list using `search` and `indexOf`. These basic operations offer insight into how to access and manage data within a linked list.
+A linked list is a flexible data structure, especially useful for situations that involve frequent additions and deletions.
 
-Stay tuned for the next article, where we’ll explore more linked list operations or delve into different types of linked lists (like singly linked or doubly linked lists). Thanks for reading!
+In this article, we’ve covered how to add nodes with `addToHead` and `addToTail`, remove nodes with `removeHead` and `removeTail`, and search the list using `search` and `indexOf`.
+
+These basic operations offer insight into how to access and manage data within a linked list.
