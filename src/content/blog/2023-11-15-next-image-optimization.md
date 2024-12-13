@@ -1,10 +1,10 @@
 ---
-title: "使用 Next Image 最佳化圖片"
-excerpt: "Next.js 的一大特點就是已經即成了許多便利的功能，包含簡便的路由配置、圖片優化、效能優化、打包優化等等，今天來看看圖片優化是怎麼個做法。"
-tags: ["next", "pagesrouter"]
+title: '使用 Next Image 最佳化圖片'
+excerpt: 'Next.js 的一大特點就是已經即成了許多便利的功能，包含簡便的路由配置、圖片優化、效能優化、打包優化等等，今天來看看圖片優化是怎麼個做法。'
+tags: ['nextjs', 'pagesrouter']
 date: 2023-11-15
-author: "Sean Huang"
-image: "nextjs.png"
+author: 'Sean Huang'
+image: 'nextjs.png'
 slug: 2023-11-15-next-image-optimization
 ---
 
@@ -15,15 +15,15 @@ slug: 2023-11-15-next-image-optimization
 使用 Next Image 會根據匯入的檔案自動設定 width 與 height。
 
 ```jsx
-import profilePic from "@/public/images/site/avatar.jpeg";
+import profilePic from '@/public/images/site/avatar.jpeg'
 
-<Image src={profilePic} alt="An image showing avatar" />;
+;<Image src={profilePic} alt="An image showing avatar" />
 ```
 
 我們也可以明確地撰寫 `width` 與 `height` 這兩個屬性，這麼做影響的不只是圖片呈現的寬度，也會影響到這張圖片被 Fetch 下來的尺寸大小，而畫面上的圖片寬高依然可以透過 CSS 去調整。
 
 ```jsx
-import Image from "next/image";
+import Image from 'next/image'
 
 export default function Page() {
   return (
@@ -33,7 +33,7 @@ export default function Page() {
       height={250}
       alt="Picture of the author"
     />
-  );
+  )
 }
 ```
 

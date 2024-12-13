@@ -1,10 +1,10 @@
 ---
-title: "Introduction to Class-based Components"
-excerpt: "本文介紹 React Class-based Components 的使用方式。"
-tags: ["react"]
+title: 'Introduction to Class-based Components'
+excerpt: '本文介紹 React Class-based Components 的使用方式。'
+tags: ['react']
 date: 2022-01-09
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2022-01-09-class-based-components
 ---
 
@@ -13,19 +13,19 @@ slug: 2022-01-09-class-based-components
 Traditionally (**React < 16.8**), you had to use Class-based Components to manage **State**.
 
 ```jsx
-import { Component } from "react";
-import classes from "./User.module.css";
+import { Component } from 'react'
+import classes from './User.module.css'
 
 class User extends Component {
   render() {
-    return <li className={classes.user}>{this.props.name}</li>;
+    return <li className={classes.user}>{this.props.name}</li>
   }
 }
 // const User = (props) => {
 //   return <li className={classes.user}>{props.name}</li>;
 // };
 
-export default User;
+export default User
 ```
 
 幾個重點：
@@ -38,40 +38,40 @@ export default User;
 ```jsx
 class Users extends Component {
   constructor() {
-    super(); // 當使用 extends 時一定要加 super
+    super() // 當使用 extends 時一定要加 super
     // Class Component 的狀態只能是一個名為 state 的 Object
     this.state = {
       showUsers: true,
-      more: "Test",
-    };
+      more: 'Test',
+    }
   }
 
   toggleUsersHandler() {
     // this.state.showUsers = false; // NOT!
     // 這個 setState 是 Class Component 提供的方法，會合併 state Object
-    this.setState((prevState) => {
-      return { showUsers: !prevState.showUsers };
-    });
+    this.setState(prevState => {
+      return { showUsers: !prevState.showUsers }
+    })
   }
 
   render() {
     // helper constant
     const usersList = (
       <ul>
-        {DUMMY_USERS.map((user) => (
+        {DUMMY_USERS.map(user => (
           <User key={user.id} name={user.name} />
         ))}
       </ul>
-    );
+    )
 
     return (
       <div className={classes.users}>
         <button onClick={this.toggleUsersHandler.bind(this)}>
-          {this.state.showUsers ? "Hide" : "Show"} Users
+          {this.state.showUsers ? 'Hide' : 'Show'} Users
         </button>
         {this.state.showUsers && usersList}
       </div>
-    );
+    )
   }
 }
 ```
@@ -79,18 +79,18 @@ class Users extends Component {
 ## 使用 Context
 
 ```jsx
-import { Component } from "react";
-import UsersContext from "../store/users-context";
+import { Component } from 'react'
+import UsersContext from '../store/users-context'
 
 class UserFinder extends Component {
   // class component 只能使用一個 context
-  static contextType = UsersContext;
+  static contextType = UsersContext
 
   componentDidMount() {
     this.setState({
       // 取得 context 的資料
       filteredUsers: this.context.users,
-    });
+    })
   }
 }
 ```

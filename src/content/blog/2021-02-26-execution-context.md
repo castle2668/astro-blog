@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #4 Execution Context - How JS Works Behind The Scenes"
-excerpt: "本篇主要介紹 JavaScript 的運作過程，可以瞭解到 JavaScript 底層在做的事情，以及程式碼處理與執行的過程，還有一些我們必須理解的專有名詞。以下一一仔細跟大家說明 (๑•̀ㅂ•́)و✧"
-tags: ["javascript"]
+title: 'Understand JavaScript #4 Execution Context - How JS Works Behind The Scenes'
+excerpt: '本篇主要介紹 JavaScript 的運作過程，可以瞭解到 JavaScript 底層在做的事情，以及程式碼處理與執行的過程，還有一些我們必須理解的專有名詞。以下一一仔細跟大家說明 (๑•̀ㅂ•́)و✧'
+tags: ['javascript']
 date: 2021-02-26
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-02-26-execution-context
 ---
 
@@ -63,10 +63,10 @@ JavaScript 每次呼叫執行函式的時候，都會創造一個新的執行環
 function b() {}
 
 function a() {
-  b();
+  b()
 }
 
-a();
+a()
 ```
 
 我們再來看一個稍微複雜一點的例子，這次我們來看每一行程式碼的執行順序為何。
@@ -75,16 +75,16 @@ a();
 // STEP 1
 
 function a() {
-  b(); // STEP 3
-  var c; // STEP 5
+  b() // STEP 3
+  var c // STEP 5
 }
 
 function b() {
-  var d; // STEP 4
+  var d // STEP 4
 }
 
-a(); // STEP 2
-var d; // STEP 6
+a() // STEP 2
+var d // STEP 6
 ```
 
 STEP 1：一開始經過創造階段後，已經創造出全域執行環境。
@@ -120,29 +120,29 @@ STEP 6：當 a 函式完成後，同樣也會 Pop off，所以現在執行環境
 這個階段會逐行執行我們寫好的程式碼，例如我們寫好了以下這段程式碼，可以看到這邊有一個變數和一個函式，所以我們先把它進行提升 (Hoisting)。
 
 ```javascript
-b();
-console.log(a);
-var a = "Hello World!";
+b()
+console.log(a)
+var a = 'Hello World!'
 function b() {
-  console.log("Called b");
+  console.log('Called b')
 }
-console.log(a);
+console.log(a)
 ```
 
 提升的方法是，先把宣告的函式移到最上面，接著提升宣告的變數，這樣我們就能大概看出這段程式碼的執行結果了。
 
 ```javascript
 function b() {
-  console.log("Called b");
+  console.log('Called b')
 }
-var a;
+var a
 
-b(); // Called b
+b() // Called b
 
-console.log(a); // undefined
+console.log(a) // undefined
 
-a = "Hello World!";
-console.log(a); // Hello World!
+a = 'Hello World!'
+console.log(a) // Hello World!
 ```
 
 ## 回顧

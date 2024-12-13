@@ -1,10 +1,10 @@
 ---
-title: "Vue.js 使用 Filter 自訂資料呈現格式"
-excerpt: "Vue 提供的 Filter 過濾器可用於自訂畫面資料的呈現格式，如果不是做複雜的資料處理，只是做簡單調整的話，就很適合使用 Filter。"
-tags: ["vue"]
+title: 'Vue.js 使用 Filter 自訂資料呈現格式'
+excerpt: 'Vue 提供的 Filter 過濾器可用於自訂畫面資料的呈現格式，如果不是做複雜的資料處理，只是做簡單調整的話，就很適合使用 Filter。'
+tags: ['vue']
 date: 2019-12-07
-author: "Huang, Yung-Hsiang"
-image: "development.jpg"
+author: 'Huang, Yung-Hsiang'
+image: 'development.jpg'
 slug: 2019-12-07-vue-filter
 ---
 
@@ -42,11 +42,11 @@ var child = {
   // 定義 Filter 的方法
   filters: {
     currency: function (n) {
-      return n.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+      return n.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
     },
   },
   // ...
-};
+}
 ```
 
 ### STEP 3：加上多種 Filter
@@ -60,14 +60,14 @@ var child = {
   // ...
   filters: {
     dollarSign: function (n) {
-      return `$ ${n}`; // ES6 寫法
+      return `$ ${n}` // ES6 寫法
     },
     currency: function (n) {
-      return n.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+      return n.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
     },
   },
   // ...
-};
+}
 ```
 
 要特別注意 Filter 傳入參數的順序是「由前往後」的。
@@ -104,34 +104,34 @@ Filter 的全域註冊，其實就只是將元件內的函式，移到全域去�
 範例：
 
 ```javascript
-Vue.filter("dollarSign", function (n) {
-  return `$ ${n}`;
-});
+Vue.filter('dollarSign', function (n) {
+  return `$ ${n}`
+})
 
-Vue.filter("currency", function (n) {
-  return n.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
-});
+Vue.filter('currency', function (n) {
+  return n.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+})
 ```
 
 完成全域註冊之後，原本元件內的 Filter 函式就能刪掉哩。
 
 ```javascript
 var child = {
-  props: ["item"],
-  template: "#row-component",
+  props: ['item'],
+  template: '#row-component',
   data: function () {
     return {
       data: {},
-    };
+    }
   },
   // 已經改成全域註冊了，因此以下可以刪掉囉
   // filters: {
   //     ...
   // },
   mounted: function () {
-    console.log("Component:", this);
+    console.log('Component:', this)
   },
-};
+}
 ```
 
 > 以上資源是我自己整理過後的筆記，若有錯誤歡迎隨時和我聯繫

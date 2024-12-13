@@ -1,10 +1,10 @@
 ---
-title: "使用 Prettier 與 ESLint 自動對 JavaScript 排版與除錯"
-excerpt: "近一兩年專案都是使用這套 Linter 與 Formatter 的組合拳，IDE 使用 VS Code 的話歡迎參考看看。"
-tags: ["eslint", "prettier"]
+title: '使用 Prettier 與 ESLint 自動對 JavaScript 排版與除錯'
+excerpt: '近一兩年專案都是使用這套 Linter 與 Formatter 的組合拳，IDE 使用 VS Code 的話歡迎參考看看。'
+tags: ['eslint', 'prettier']
 date: 2023-10-23
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2023-10-23-vscode-eslint-prettier
 ---
 

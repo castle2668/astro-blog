@@ -1,10 +1,10 @@
 ---
-title: "React Class-based Components 的生命週期（Lifecycle）"
-excerpt: "本文介紹 React 的 Lifecycle，這是只有 Class-based Components 才有的喔。"
-tags: ["react"]
+title: 'React Class-based Components 的生命週期（Lifecycle）'
+excerpt: '本文介紹 React 的 Lifecycle，這是只有 Class-based Components 才有的喔。'
+tags: ['react']
 date: 2022-01-16
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2022-01-16-the-component-lifecycle
 ---
 

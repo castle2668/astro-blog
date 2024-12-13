@@ -1,10 +1,10 @@
 ---
-title: "[Algorithms] Time Complexity & Big O Notation"
+title: '[Algorithms] Time Complexity & Big O Notation'
 excerpt: "Hey there, fellow coders! Today, we're diving into a concept that's super important for anyone who writes algorithms: Big O notation. It helps us understand how an algorithm performs as the size of its input grows. Think of it as a way to measure the efficiency of our code. Let’s break it down into bite-sized pieces, along with some relatable examples."
-tags: ["algorithms", "javascript"]
+tags: ['algorithms', 'javascript']
 date: 2024-08-14
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2024-08-14-time-complexity
 ---
 
@@ -22,8 +22,8 @@ Let’s kick things off with **constant time**, represented as **O(1)**. This me
 
 ```javascript
 function logFirstTwo(arr) {
-  console.log(arr[0]);
-  console.log(arr[1]);
+  console.log(arr[0])
+  console.log(arr[1])
 }
 ```
 
@@ -36,7 +36,7 @@ Next up is **linear time**, or **O(n)**. Here, the runtime increases directly in
 ```javascript
 function logAll(arr) {
   for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i]);
+    console.log(arr[i])
   }
 }
 ```
@@ -51,7 +51,7 @@ Now, let’s get a bit more complicated with **exponential time**, represented a
 function logAllPairs(arr) {
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr.length; j++) {
-      console.log(arr[i], arr[j]);
+      console.log(arr[i], arr[j])
     }
   }
 }
@@ -65,22 +65,22 @@ Finally, let’s talk about **logarithmic time**, which is super efficient. It�
 
 ```javascript
 function binarySearch(arr, target) {
-  let left = 0;
-  let right = arr.length - 1;
+  let left = 0
+  let right = arr.length - 1
 
   while (left <= right) {
-    let middle = Math.floor((left + right) / 2);
+    let middle = Math.floor((left + right) / 2)
 
     if (arr[middle] === target) {
-      return middle; // Target found!
+      return middle // Target found!
     } else if (arr[middle] < target) {
-      left = middle + 1; // Look in the right half
+      left = middle + 1 // Look in the right half
     } else {
-      right = middle - 1; // Look in the left half
+      right = middle - 1 // Look in the left half
     }
   }
 
-  return -1; // Target not found
+  return -1 // Target not found
 }
 ```
 

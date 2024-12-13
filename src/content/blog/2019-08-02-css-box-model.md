@@ -1,10 +1,10 @@
 ---
-title: "CSS 盒模型 (Box Model) - 讓版面控制更容易"
-excerpt: "自己計算元素的寬高真的很麻煩，很怕不小心漏算了 1 px，讓畫面不整齊…還好有盒模型幫我控制元素的各種寬高，使用過的都說讚，我也已經回不去了！"
-tags: ["css"]
+title: 'CSS 盒模型 (Box Model) - 讓版面控制更容易'
+excerpt: '自己計算元素的寬高真的很麻煩，很怕不小心漏算了 1 px，讓畫面不整齊…還好有盒模型幫我控制元素的各種寬高，使用過的都說讚，我也已經回不去了！'
+tags: ['css']
 date: 2019-08-02
-author: "Huang, Yung-Hsiang"
-image: "development.jpg"
+author: 'Huang, Yung-Hsiang'
+image: 'development.jpg'
 slug: 2019-08-02-css-box-model
 ---
 

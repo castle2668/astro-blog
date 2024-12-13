@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #1 How JS Reads Code"
-excerpt: "第一篇文要先來說說 JavaScript 是如何運行的，它是透過什麼去解析程式碼，而在這個過程中有哪些觀念呢。"
-tags: ["javascript"]
+title: 'Understand JavaScript #1 How JS Reads Code'
+excerpt: '第一篇文要先來說說 JavaScript 是如何運行的，它是透過什麼去解析程式碼，而在這個過程中有哪些觀念呢。'
+tags: ['javascript']
 date: 2021-02-23
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-02-23-how-js-reads-code
 ---
 
@@ -50,7 +50,7 @@ JavaScript 屬於直譯式語言，無法直接被瀏覽器閱讀，需經過解
 LHS：賦予值到左側的變數上
 
 ```javascript
-var author = "Sean"; // LHS
+var author = 'Sean' // LHS
 ```
 
 LHS 是把右側的值「賦予到左側的變數上」，因此當左側無法被賦予值的時候，就會出現錯誤。
@@ -65,10 +65,10 @@ LHS 是把右側的值「賦予到左側的變數上」，因此當左側無法�
 RHS：取值來自於右側的變數上
 
 ```javascript
-var author = "Sean"; // LHS
-console.log(author); // RHS
-var man = author;
-console.log(autho);
+var author = 'Sean' // LHS
+console.log(author) // RHS
+var man = author
+console.log(autho)
 ```
 
 第三行：右側使用 RHS 取得 `author` 這個變數，並且透過 LHS 把值賦予到左側的變數上。

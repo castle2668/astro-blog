@@ -1,10 +1,10 @@
 ---
-title: "瞭解 React Router V5 基礎知識"
-excerpt: "現代前端開發常見的 SPA 是指頁面 URL 切換時，不必重新 Fetch 新的 HTML 檔案，且會阻止瀏覽器的默認行為，直接去更新畫面上的內容。在 React 技術線當中，可以藉由 React Router 幫助我們完成 SPA 下的頁面切換，根據 Route 的更改呈現出不同的元件。"
-tags: ["react", "reactrouter"]
+title: '瞭解 React Router V5 基礎知識'
+excerpt: '現代前端開發常見的 SPA 是指頁面 URL 切換時，不必重新 Fetch 新的 HTML 檔案，且會阻止瀏覽器的默認行為，直接去更新畫面上的內容。在 React 技術線當中，可以藉由 React Router 幫助我們完成 SPA 下的頁面切換，根據 Route 的更改呈現出不同的元件。'
+tags: ['react', 'reactrouter']
 date: 2022-04-04
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2022-04-04-react-router-v5
 ---
 
@@ -64,7 +64,7 @@ function App() {
         </Route>
       </main>
     </div>
-  );
+  )
 }
 
 // our-domain.com/welcome => Welcome Component
@@ -145,8 +145,8 @@ const MainHeader = () => {
         </ul>
       </nav>
     </header>
-  );
-};
+  )
+}
 ```
 
 ### NavLink
@@ -192,8 +192,8 @@ const Welcome = () => {
         <p>Welcome, new user!</p>
       </Route>
     </section>
-  );
-};
+  )
+}
 ```
 
 除此之外，如果是位於動態路由之下的巢狀路由，可以用以下兩種寫法。
@@ -241,14 +241,14 @@ const params = useParams();
 
 ```jsx
 // ourdomain.com/products/p1
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom'
 
 const ProductDetail = () => {
-  const params = useParams();
-  console.log(params); // Object
-  console.log(params.productId); // p1
+  const params = useParams()
+  console.log(params) // Object
+  console.log(params.productId) // p1
   // ...
-};
+}
 ```
 
 ### useHistory Hook
@@ -265,14 +265,12 @@ const ProductDetail = () => {
 最後，除了用 Template Literal 組出路徑的字串之外，React Router 還有提供一個**可讀性更好**的寫法，就是將傳遞的路徑使用 Object 來表達，拆分為 `pathname` 與後續參數 `search`。
 
 ```jsx
-history.push(
-  `${location.pathname}?sort=${isSortingAscending ? "desc" : "asc"}`,
-);
+history.push(`${location.pathname}?sort=${isSortingAscending ? 'desc' : 'asc'}`)
 
 history.push({
   pathname: `${location.pathname}`,
-  search: `?sort=${isSortingAscending ? "desc" : "asc"}`,
-});
+  search: `?sort=${isSortingAscending ? 'desc' : 'asc'}`,
+})
 ```
 
 ### useLocation Hook
@@ -283,20 +281,20 @@ history.push({
 
 ```jsx
 // 載入頁面後取得排序方式，得到排序後的資料
-const location = useLocation();
-const queryParams = new URLSearchParams(location.search);
-const isSortingAscending = queryParams.get("sort") === "asc";
+const location = useLocation()
+const queryParams = new URLSearchParams(location.search)
+const isSortingAscending = queryParams.get('sort') === 'asc'
 // sortQuotes (Sorting Helper) 的詳細寫法這裡省略
-const sortedQuotes = sortQuotes(props.quotes, isSortingAscending);
+const sortedQuotes = sortQuotes(props.quotes, isSortingAscending)
 
 // 透過 useHistory 更新路由
-const history = useHistory();
+const history = useHistory()
 const changeSortingHandler = () => {
   // history.push('/quotes?sort=' + (isSortingAscending ? 'desc' : 'asc'));
   history.push(
-    `${location.pathname}?sort=${isSortingAscending ? "desc" : "asc"}`,
-  );
-};
+    `${location.pathname}?sort=${isSortingAscending ? 'desc' : 'asc'}`
+  )
+}
 ```
 
 Q: Why do we need useLocation? Isn't everything from useLocation included in useHistory?
@@ -357,7 +355,7 @@ console.log(match);
 ```jsx
 <Prompt
   when={isEntering}
-  message={(location) => "Are you sure you want to leave"}
+  message={location => 'Are you sure you want to leave'}
 />
 ```
 

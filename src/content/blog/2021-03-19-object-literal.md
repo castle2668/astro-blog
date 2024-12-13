@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #9 物件實體語法 (Object Literal Syntax)"
-excerpt: "本文主要內容為探討「物件」的相關知識，包含成員取用運算子、物件實體語法、偽裝命名空間，與 JSON 資料格式。"
-tags: ["javascript"]
+title: 'Understand JavaScript #9 物件實體語法 (Object Literal Syntax)'
+excerpt: '本文主要內容為探討「物件」的相關知識，包含成員取用運算子、物件實體語法、偽裝命名空間，與 JSON 資料格式。'
+tags: ['javascript']
 date: 2021-03-19
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-03-19-object-literal
 ---
 
@@ -24,13 +24,13 @@ slug: 2021-03-19-object-literal
 通常只有在無法使用點存取的時候，才會使用中括號。例如：要存取的屬性是**動態字串**，也就是一些可能會改變的字串。
 
 ```javascript
-const person = new Object();
-person["firstname"] = "Grisia";
+const person = new Object()
+person['firstname'] = 'Grisia'
 
-const lastnameProperty = "lastname";
-person[lastnameProperty] = "Sun";
+const lastnameProperty = 'lastname'
+person[lastnameProperty] = 'Sun'
 
-console.log(person); // {firstname: "Grisia", lastname: "Sun"}
+console.log(person) // {firstname: "Grisia", lastname: "Sun"}
 ```
 
 > 題外話，其實 `person.firstname` 原本應該要寫成 `person.'firstname'`，但是因為我們有語法解析器，所以 JavaScript 自己會知道我們寫的 `firstname` 要當字串處理。
@@ -40,11 +40,11 @@ console.log(person); // {firstname: "Grisia", lastname: "Sun"}
 > 使用中括號也可以，點與中括號雖然是不同的函式，不過做的事情是一樣的。
 
 ```javascript
-person.address = new Object();
-person.address.city = "Tainan";
+person.address = new Object()
+person.address.city = 'Tainan'
 
-console.log(person.address.city); // Tainan
-console.log(person["address"]["city"]); // Tainan
+console.log(person.address.city) // Tainan
+console.log(person['address']['city']) // Tainan
 ```
 
 上面因為運算子相同（優先性相同），所以要考慮相依性才能知道誰先運算。成員取用運算子是左相依性，所以會先在 `person` 中取得 `address` 屬性，之後再從 `person.address` 裡面找到 `city` 這個屬性。
@@ -61,29 +61,29 @@ console.log(person["address"]["city"]); // Tainan
 
 ```javascript
 const GrisiaSun = {
-  firstname: "Grisia",
-  lastname: "Sun",
+  firstname: 'Grisia',
+  lastname: 'Sun',
   address: {
-    street: "111 Main St.",
-    city: "New York",
-    state: "TW",
+    street: '111 Main St.',
+    city: 'New York',
+    state: 'TW',
   },
-};
-
-function greet(person) {
-  console.log(`Hi ${person.firstname}`);
 }
 
-greet(GrisiaSun); // Hi Grisia
+function greet(person) {
+  console.log(`Hi ${person.firstname}`)
+}
+
+greet(GrisiaSun) // Hi Grisia
 ```
 
 透過物件實體語法，我們可以在任何地方創立物件，像是在物件被呼叫時，同時建立物件與它的屬性。
 
 ```javascript
 greet({
-  firstname: "Mary",
-  lastname: "Doe",
-}); // Hi Mary
+  firstname: 'Mary',
+  lastname: 'Doe',
+}) // Hi Mary
 ```
 
 ### 與運算子在使用上的差異
@@ -91,8 +91,8 @@ greet({
 使用「點運算子」直接創立以下物件與屬性，會出現錯誤訊息 "Uncaught TypeError: Cannot set property 'greet' of undefined"。
 
 ```javascript
-const english = {};
-english.greeting.greet = "Hello!";
+const english = {}
+english.greeting.greet = 'Hello!'
 ```
 
 為什麼會出現錯誤？我們一步一步檢查。
@@ -104,9 +104,9 @@ english.greeting.greet = "Hello!";
 所以我們必須多一個步驟，先在記憶體中創造一個物件，這樣就能再用點運算子連結 `greet` 屬性。
 
 ```javascript
-const english = {};
-english.greeting = {}; // 要先創造一個物件
-english.greeting.greet = "Hello!";
+const english = {}
+english.greeting = {} // 要先創造一個物件
+english.greeting.greet = 'Hello!'
 ```
 
 以上使用點運算子的寫法有點冗長，如果我們改用物件實體語法去初始化，就可以很快地建立完成。
@@ -114,11 +114,11 @@ english.greeting.greet = "Hello!";
 ```javascript
 const english = {
   greeting: {
-    greet: "Hello!",
+    greet: 'Hello!',
   },
-};
+}
 
-console.log(english.greeting.greet); // Hello!
+console.log(english.greeting.greet) // Hello!
 ```
 
 其實對於 JavaScript 底層來說，使用「物件實體語法」或是「點運算子」建立物件都是一樣的，它們都是在建立物件與它的屬性和方法到記憶體中，因此對 JavaScript 而言是一樣的處理，但我們通常會選擇使用更強大、好寫的物件實體語法。
@@ -132,13 +132,13 @@ console.log(english.greeting.greet); // Hello!
 以下範例就是藉由物件 `english` 和 `spanish` 作為容器，讓兩個可能是不同 JavaScript 檔案裡面的 `greet` 不會互相衝突、覆蓋。
 
 ```javascript
-const english = {};
-const spanish = {};
+const english = {}
+const spanish = {}
 
-english.greet = "Hello!";
-spanish.greet = "Hola!";
+english.greet = 'Hello!'
+spanish.greet = 'Hola!'
 
-console.log(english); // {greet: "Hello!"}
+console.log(english) // {greet: "Hello!"}
 ```
 
 透過物件實體語法，我們可以維持某一些程式碼與其他程式碼分離，這個做法在許多框架中都很常見，以下簡略模擬框架的程式碼寫法。
@@ -146,15 +146,15 @@ console.log(english); // {greet: "Hello!"}
 ```javascript
 const jQuery = {
   greeting: {
-    greet: "Hello!",
+    greet: 'Hello!',
   },
-};
+}
 
 const vue = {
   greeting: {
-    greet: "Hola!",
+    greet: 'Hola!',
   },
-};
+}
 ```
 
 ## JavaScript Object Notation (JSON)
@@ -178,25 +178,25 @@ JSON 是有效的物件實體語法，因為物件實體語法的屬性是可以
 
 ```javascript
 const objectLiteral = {
-  firstname: "Damao",
+  firstname: 'Damao',
   isProgrammer: true,
-};
+}
 
-console.log(JSON.stringify(objectLiteral));
+console.log(JSON.stringify(objectLiteral))
 // {"firstname":"Damao","isProgrammer":true}
 
-console.log(typeof JSON.stringify(objectLiteral)); // string
+console.log(typeof JSON.stringify(objectLiteral)) // string
 ```
 
 `JSON.parse` 會接受一個符合 JSON 格式的字串，把它轉換為 JavaScript 物件。
 
 ```javascript
-const jsonValue = '{"firstname":"Damao","isProgrammer":true}';
+const jsonValue = '{"firstname":"Damao","isProgrammer":true}'
 
-console.log(JSON.parse(jsonValue));
+console.log(JSON.parse(jsonValue))
 // {firstname: "Damao", isProgrammer: true}
 
-console.log(typeof JSON.parse(jsonString)); // object
+console.log(typeof JSON.parse(jsonString)) // object
 ```
 
 ## 回顧

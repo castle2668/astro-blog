@@ -1,10 +1,10 @@
 ---
-title: "Sending Http Requests feat. Star Wars API"
-excerpt: "本文使用 Star Wars API 為例示範 React 如何串接第三方 API。"
-tags: ["react"]
+title: 'Sending Http Requests feat. Star Wars API'
+excerpt: '本文使用 Star Wars API 為例示範 React 如何串接第三方 API。'
+tags: ['react']
 date: 2021-12-27
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2021-12-27-sending-http-requests
 ---
 
@@ -22,24 +22,24 @@ slug: 2021-12-27-sending-http-requests
 
 ```jsx
 function fetchMovieHandler() {
-  fetch("https://swapi.dev/api/films")
-    .then((res) => {
-      return res.json();
+  fetch('https://swapi.dev/api/films')
+    .then(res => {
+      return res.json()
     })
-    .then((data) => {
-      const transformedMovies = data.results.map((movieData) => {
+    .then(data => {
+      const transformedMovies = data.results.map(movieData => {
         return {
           id: movieData.episode_id,
           title: movieData.title,
           openingText: movieData.opening_crawl,
           releaseDate: movieData.release_date,
-        };
-      });
-      setMovies(transformedMovies);
+        }
+      })
+      setMovies(transformedMovies)
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch(err => {
+      console.log(err)
+    })
 }
 ```
 
@@ -49,18 +49,18 @@ function fetchMovieHandler() {
 
 ```jsx
 async function fetchMovieHandler() {
-  const response = await fetch("https://swapi.dev/api/films");
-  const data = await response.json();
+  const response = await fetch('https://swapi.dev/api/films')
+  const data = await response.json()
 
-  const transformedMovies = data.results.map((movieData) => {
+  const transformedMovies = data.results.map(movieData => {
     return {
       id: movieData.episode_id,
       title: movieData.title,
       openingText: movieData.opening_crawl,
       releaseDate: movieData.release_date,
-    };
-  });
-  setMovies(transformedMovies);
+    }
+  })
+  setMovies(transformedMovies)
 }
 ```
 
@@ -70,49 +70,49 @@ async function fetchMovieHandler() {
 
 ```jsx
 function App() {
-  const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false); // 是否正在讀取
-  const [error, setError] = useState(null); // 錯誤訊息
+  const [movies, setMovies] = useState([])
+  const [isLoading, setIsLoading] = useState(false) // 是否正在讀取
+  const [error, setError] = useState(null) // 錯誤訊息
 
   async function fetchMovieHandler() {
-    setIsLoading(true);
-    setError(null);
+    setIsLoading(true)
+    setError(null)
 
     // 使用 try...catch 處理錯誤
     try {
-      const response = await fetch("https://swapi.dev/api/films");
+      const response = await fetch('https://swapi.dev/api/films')
       // 檢查 Fetch 回傳的狀態
       if (!response.ok) {
-        throw new Error("Something went wrong!");
+        throw new Error('Something went wrong!')
       }
-      const data = await response.json();
-      const transformedMovies = data.results.map((movieData) => {
+      const data = await response.json()
+      const transformedMovies = data.results.map(movieData => {
         return {
           id: movieData.episode_id,
           title: movieData.title,
           openingText: movieData.opening_crawl,
           releaseDate: movieData.release_date,
-        };
-      });
-      setMovies(transformedMovies);
+        }
+      })
+      setMovies(transformedMovies)
     } catch (error) {
-      setError(error.message);
+      setError(error.message)
     }
 
     // 不論成功失敗最後都會關閉讀取
-    setIsLoading(false);
+    setIsLoading(false)
   }
 
   // 處理不同狀態下的呈現內容
-  let content = <p>Found no movies.</p>;
+  let content = <p>Found no movies.</p>
   if (movies.length > 0) {
-    content = <MoviesList movies={movies} />;
+    content = <MoviesList movies={movies} />
   }
   if (error) {
-    content = <p>{error}</p>;
+    content = <p>{error}</p>
   }
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = <p>Loading...</p>
   }
 
   return (
@@ -128,10 +128,10 @@ function App() {
         {content}
       </section>
     </React.Fragment>
-  );
+  )
 }
 
-export default App;
+export default App
 ```
 
 ## Working with useEffect and useCallback Hooks
@@ -145,11 +145,11 @@ export default App;
 ```jsx
 const fetchMovieHandler = useCallback(async () => {
   // Do the same thing...
-}, []);
+}, [])
 
 useEffect(() => {
-  fetchMovieHandler();
-}, [fetchMovieHandler]);
+  fetchMovieHandler()
+}, [fetchMovieHandler])
 ```
 
 ## Sending a POST request to Firebase Realtime Database
@@ -158,27 +158,27 @@ Fetch API 除了 GET 之外也能用 POST，寫法是在 `fetch()` 的第二個�
 
 ```jsx
 async function addMovieHandler(movie) {
-  setError(null);
+  setError(null)
 
   try {
-    console.log(movie);
+    console.log(movie)
     const response = await fetch(
-      "https://react-http-14f5a-default-rtdb.firebaseio.com/movies.json",
+      'https://react-http-14f5a-default-rtdb.firebaseio.com/movies.json',
       {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify(movie), // body want JSON data
         // Firebase 不用設定 Content-Type，但一般保險起見還是都會設定
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-      },
-    );
-    const data = await response.json();
-    console.log(data);
+      }
+    )
+    const data = await response.json()
+    console.log(data)
 
-    fetchMoviesHandler(); // Fetch movies after adding new movie
+    fetchMoviesHandler() // Fetch movies after adding new movie
   } catch (error) {
-    setError(error.message);
+    setError(error.message)
   }
 }
 ```

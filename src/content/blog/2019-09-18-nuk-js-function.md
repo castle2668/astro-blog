@@ -1,10 +1,10 @@
 ---
-title: "NUK JavaScript #2：函式 (Functions)"
-excerpt: "原先想將 Function 與上一篇的 let 與 const 合併在同一篇，但由於篇幅會有些過長，因此決定另外寫一篇文章介紹函式。這篇文章會介紹函式的使用方式與觀念。"
-tags: ["nuk", "javascript"]
+title: 'NUK JavaScript #2：函式 (Functions)'
+excerpt: '原先想將 Function 與上一篇的 let 與 const 合併在同一篇，但由於篇幅會有些過長，因此決定另外寫一篇文章介紹函式。這篇文章會介紹函式的使用方式與觀念。'
+tags: ['nuk', 'javascript']
 date: 2019-09-18
-author: "Huang, Yung-Hsiang"
-image: "javascript.png"
+author: 'Huang, Yung-Hsiang'
+image: 'javascript.png'
 slug: 2019-09-18-nuk-js-function
 ---
 
@@ -15,15 +15,15 @@ slug: 2019-09-18-nuk-js-function
 範例：
 
 ```javascript
-let a = 1;
+let a = 1
 
 function bark() {
-  console.log("bark!!!");
+  console.log('bark!!!')
 }
 
-bark();
-bark();
-bark();
+bark()
+bark()
+bark()
 ```
 
 我們宣告一個函式 bark() 之後，使用 bark() 呼叫函式執行。  
@@ -39,29 +39,29 @@ bark();
 
 ```javascript
 function add(num1, num2) {
-  console.log(num1 + num2);
+  console.log(num1 + num2)
 }
 
-add(3, 5); // 8
+add(3, 5) // 8
 ```
 
 更進階一點，我們再運用上乘法，就能製作一個收銀機功能了：
 
 ```javascript
-let hamPrice = 30;
-let cokePrice = 20;
+let hamPrice = 30
+let cokePrice = 20
 
 // 參數 (可以看成這個參數就等同於宣告了下面兩行)
 function total(hamNum, cokeNum) {
   // let hamNum = 10;
   // let cokeNum = 30;
 
-  let hamTotal = hamPrice * hamNum;
-  let cokeTotal = cokePrice * cokeNum;
-  console.log(hamTotal + cokeTotal);
+  let hamTotal = hamPrice * hamNum
+  let cokeTotal = cokePrice * cokeNum
+  console.log(hamTotal + cokeTotal)
 }
 
-total(10, 30);
+total(10, 30)
 ```
 
 在這個例子中，帶入函式的參數 hamNum 與 cokeNum 其實也能看成是宣告了 `let hamNum = 10` 與 `let cokeNum = 30`。
@@ -77,9 +77,9 @@ total(10, 30);
 ```javascript
 function add(num1) {}
 
-add(1);
-add(2);
-add(3);
+add(1)
+add(2)
+add(3)
 
 // 1
 // 3
@@ -97,15 +97,15 @@ add(3);
 我們依照這個邏輯，首先宣告一個變數 a 並賦予值等於 0，然後宣告一個函式，並讓我們每次執行函式之後，函式中的 a 會更新成 a + num1。
 
 ```javascript
-let a = 0;
+let a = 0
 function add(num1) {
-  a = a + num1;
-  console.log(a);
+  a = a + num1
+  console.log(a)
 }
 
-add(1);
-add(2);
-add(3);
+add(1)
+add(2)
+add(3)
 ```
 
 運用這個邏輯，我們就能得到以下的正確結果啦！
@@ -117,9 +117,9 @@ add(3);
 ```javascript
 function test2(num1) {}
 
-test2(3);
-test2(5);
-test2(2);
+test2(3)
+test2(5)
+test2(2)
 
 // 30
 // 6
@@ -129,15 +129,15 @@ test2(2);
 以下是參考解答：
 
 ```javascript
-let a = 90;
+let a = 90
 function test2(num1) {
-  a = a / num1;
-  console.log(a);
+  a = a / num1
+  console.log(a)
 }
 
-test2(3);
-test2(5);
-test2(2);
+test2(3)
+test2(5)
+test2(2)
 ```
 
 ### 題三
@@ -148,11 +148,11 @@ test2(2);
 
 ```javascript
 function bmi(h_num, w_num) {
-  h_num = h_num / 100;
-  let txt = w_num / (h_num * h_num);
-  console.log(txt);
+  h_num = h_num / 100
+  let txt = w_num / (h_num * h_num)
+  console.log(txt)
 }
-bmi(168, 54);
+bmi(168, 54)
 ```
 
 1. 將輸入的體重數值轉為公尺為單位

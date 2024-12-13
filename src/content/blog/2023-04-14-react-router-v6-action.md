@@ -1,10 +1,10 @@
 ---
-title: "React Router V6 - Form & Action"
-excerpt: "上一篇介紹了 React Router V6 的 Loader，本文會介紹另一個重要的新功能 Action 與表單處理方式。"
-tags: ["react", "reactrouter"]
+title: 'React Router V6 - Form & Action'
+excerpt: '上一篇介紹了 React Router V6 的 Loader，本文會介紹另一個重要的新功能 Action 與表單處理方式。'
+tags: ['react', 'reactrouter']
 date: 2023-04-14
-author: "Sean Huang"
-image: "react.jpg"
+author: 'Sean Huang'
+image: 'react.jpg'
 slug: 2023-04-14-react-router-v6-action
 ---
 
@@ -15,7 +15,7 @@ slug: 2023-04-14-react-router-v6-action
 React Router V6 提供的 `<Form>` 元件會阻止原生的表單行為，路由會在表單送出後執行 `action` 的內容，以下是一個簡單的範例。
 
 ```jsx
-import { Form } from "react-router-dom";
+import { Form } from 'react-router-dom'
 
 const EventForm = () => {
   return (
@@ -23,10 +23,10 @@ const EventForm = () => {
       <label htmlFor="title">Title</label>
       <input id="title" type="text" name="title" />
     </Form>
-  );
-};
+  )
+}
 
-export default EventForm;
+export default EventForm
 ```
 
 在使用 React Router 的 `<Form>` 時，記得要為 Form Elements 加上 `name` 這個屬性，方便後續取得該欄位的值。
@@ -37,29 +37,29 @@ export default EventForm;
 
 ```jsx
 export const action = async ({ request, params }) => {
-  const data = await request.formData();
+  const data = await request.formData()
 
   const eventData = {
-    title: data.get("title"), // get("title") 對應到 name＝"title" 的 input
-    image: data.get("image"),
-    date: data.get("date"),
-    description: data.get("description"),
-  };
-
-  const response = await fetch("http://localhost:8080/events", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(eventData),
-  });
-
-  if (!response.ok) {
-    throw json({ message: "Could not send event" }, { status: 500 });
+    title: data.get('title'), // get("title") 對應到 name＝"title" 的 input
+    image: data.get('image'),
+    date: data.get('date'),
+    description: data.get('description'),
   }
 
-  return redirect("/events");
-};
+  const response = await fetch('http://localhost:8080/events', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(eventData),
+  })
+
+  if (!response.ok) {
+    throw json({ message: 'Could not send event' }, { status: 500 })
+  }
+
+  return redirect('/events')
+}
 ```
 
 最後我們使用了 React Router 提供的 `redirect()` 函式來進行重新導頁。
@@ -77,29 +77,29 @@ export const action = async ({ request, params }) => {
 接著執行的 `submit()` 函式可以放入兩個參數，第一個參數是 FormData 的物件，第二個參數是 Form 表單元素的 Properties。
 
 ```jsx
-import { useSubmit } from "react-router-dom";
+import { useSubmit } from 'react-router-dom'
 
 const EventItem = ({ event }) => {
-  const submit = useSubmit();
+  const submit = useSubmit()
 
   const startDeleteHandler = () => {
-    const proceed = window.confirm("Are you sure you want to delete");
+    const proceed = window.confirm('Are you sure you want to delete')
 
     if (proceed) {
       // params: FormData Object, Form Properties
-      submit(null, { method: "delete" });
+      submit(null, { method: 'delete' })
     }
-  };
+  }
 
   return (
     <article>
       {/* ... */}
       <button onClick={startDeleteHandler}>Delete</button>
     </article>
-  );
-};
+  )
+}
 
-export default EventItem;
+export default EventItem
 ```
 
 使用 `useSubmit` 就跟送出表單一樣，都會去觸發路由裡面定義的 `action()`，所以我們要在負責執行刪除行為的元件中定義 `action()` 的內容。
@@ -110,18 +110,18 @@ export default EventItem;
 
 ```jsx
 export const action = async ({ request, params }) => {
-  const eventId = params.eventId;
+  const eventId = params.eventId
 
   const response = await fetch(`http://localhost:8080/events/${eventId}`, {
     method: request.method, // submit(null, { method: "delete" });
-  });
+  })
 
   if (!response.ok) {
-    throw json({ message: "Could not delete event" }, { status: 500 });
+    throw json({ message: 'Could not delete event' }, { status: 500 })
   }
 
-  return redirect("/events");
-};
+  return redirect('/events')
+}
 ```
 
 這樣就能順利以程式化的方式執行刪除動作囉！

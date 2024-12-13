@@ -1,10 +1,10 @@
 ---
-title: "[React] Lifting The State Up"
-excerpt: "Props 的用途是讓父子元件之間傳遞狀態，使子元件也能使用到父元件定義的狀態，而子元件的狀態也能透過 Lifting State 的方式提升給父元件使用。"
-tags: ["react"]
+title: '[React] Lifting The State Up'
+excerpt: 'Props 的用途是讓父子元件之間傳遞狀態，使子元件也能使用到父元件定義的狀態，而子元件的狀態也能透過 Lifting State 的方式提升給父元件使用。'
+tags: ['react']
 date: 2021-09-08
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2021-09-08-lifting-the-state-up
 ---
 
@@ -21,10 +21,10 @@ slug: 2021-09-08-lifting-the-state-up
 
 const xxxHandler = () => {
   // do something...
-};
+}
 
 // Return JSX
-<ChildComponent onXXX={xxxHandler} />;
+;<ChildComponent onXXX={xxxHandler} />
 ```
 
 ## STEP 2：子元件存取 Props 調用函式
@@ -34,7 +34,7 @@ const xxxHandler = () => {
 ```jsx
 // ChildComponent
 
-props.onXxx();
+props.onXxx()
 ```
 
 ## STEP 3：從子元件傳入參數，達到 State 提升
@@ -45,11 +45,11 @@ props.onXxx();
 // ChildComponent
 
 const childData = {
-  title: "Child Title",
+  title: 'Child Title',
   data: new Date(),
-};
+}
 
-props.onXxx(childData);
+props.onXxx(childData)
 ```
 
 這時候 Parent 就可以從參數獲得 Child 的資料了，此時就完成了提升 State 的動作了。
@@ -57,14 +57,14 @@ props.onXxx(childData);
 ```jsx
 // ParentComponent
 
-const xxxHandler = (enteredChildData) => {
+const xxxHandler = enteredChildData => {
   // do something...
-  const childData = { ...enteredChildData };
-  console.log(childData);
-};
+  const childData = { ...enteredChildData }
+  console.log(childData)
+}
 
 // Return JSX
-<ChildComponent onXXX={xxxHandler} />;
+;<ChildComponent onXXX={xxxHandler} />
 ```
 
 ## Recap

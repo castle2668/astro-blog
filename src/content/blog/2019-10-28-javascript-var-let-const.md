@@ -1,10 +1,10 @@
 ---
-title: "JavaScript var & let & const 的特點與差異"
-excerpt: "本篇文章介紹 JavaScript ES6 裡面 let 與 const 的重要觀念，以及使用上的注意事項。"
-tags: ["javascript"]
+title: 'JavaScript var & let & const 的特點與差異'
+excerpt: '本篇文章介紹 JavaScript ES6 裡面 let 與 const 的重要觀念，以及使用上的注意事項。'
+tags: ['javascript']
 date: 2019-10-28
-author: "Huang, Yung-Hsiang"
-image: "javascript.png"
+author: 'Huang, Yung-Hsiang'
+image: 'javascript.png'
 slug: 2019-10-28-javascript-var-let-const
 ---
 
@@ -13,10 +13,10 @@ slug: 2019-10-28-javascript-var-let-const
 之前在 ES5 我們會用 var 宣告變數，但是使用 var 宣告變數會「汙染全域環境」，實際情況見以下範例。
 
 ```javascript
-var a = 1;
-console.log(a);
+var a = 1
+console.log(a)
 for (var i = 0; i < 3; i++) {
-  console.log(i);
+  console.log(i)
 }
 ```
 
@@ -41,9 +41,9 @@ ES6 解決了 ES5 的 BUG 與不便之處，由於不會汙染全域變數，因
 - let 與 const 不會出現在全域變數 (window) 裡面
 
 ```javascript
-let a = 1;
-const b = 1;
-var c = 1;
+let a = 1
+const b = 1
+var c = 1
 ```
 
 範例中的變數 a 跟 b 不會出現在 `window` 裡，c 則會出現在 `window` 裡，因為 c 是全域變數。
@@ -59,16 +59,16 @@ Block Scope 具體的作用是什麼呢，我們可以透過下面範例來理�
 在 `function changeA(){...}` 裡面的變數 `a` 只會存活在那個 Function 的大括號區塊內，函式裡面的 `a = 1` 並不會變更到外面全域的 `a`，也因此最後的 `console.log(a)` 仍會回傳全域的 `a` 即為 0。
 
 ```javascript
-var a = 0; // 這個 a 是全域變數
+var a = 0 // 這個 a 是全域變數
 
 function changeA() {
-  let a = 0; // 這個 a 是區域變數
-  a = 1;
-  console.log(a); // 結果為 1
+  let a = 0 // 這個 a 是區域變數
+  a = 1
+  console.log(a) // 結果為 1
 }
 
-changeA();
-console.log(a); // 結果為 0
+changeA()
+console.log(a) // 結果為 0
 ```
 
 > 註：ES6 建議將 JS 都寫成「函數式」，盡量以函式呼叫的方式去做設計，不要使用到 var。
@@ -90,13 +90,13 @@ console.log(a); // 結果為 0
 
 ```javascript
 // Javascript
-const listLength = document.querySelectorAll(".list li").length;
+const listLength = document.querySelectorAll('.list li').length
 for (var i = 0; i < listLength; i++) {
   document
-    .querySelectorAll(".list li")
-    [i].addEventListener("click", function () {
-      alert(i + 1);
-    });
+    .querySelectorAll('.list li')
+    [i].addEventListener('click', function () {
+      alert(i + 1)
+    })
 }
 ```
 
@@ -109,13 +109,13 @@ for (var i = 0; i < listLength; i++) {
 由於 Block Scope 的作用，讓 For 迴圈每次執行時，裡面的 `let i` 都可以存活在個別的「大括號作用域」裡面，所以彼此執行的內容不像 var 一樣會被干擾。
 
 ```javascript
-const listLength = document.querySelectorAll(".list li").length;
+const listLength = document.querySelectorAll('.list li').length
 for (let i = 0; i < listLength; i++) {
   document
-    .querySelectorAll(".list li")
-    [i].addEventListener("click", function () {
-      alert(i + 1); // 用 let 的話，會在大括號區塊內重新綁定
-    });
+    .querySelectorAll('.list li')
+    [i].addEventListener('click', function () {
+      alert(i + 1) // 用 let 的話，會在大括號區塊內重新綁定
+    })
 }
 ```
 
@@ -140,11 +140,11 @@ for (let i = 0; i < listLength; i++) {
 
 ```javascript
 const obj = {
-  url: "https://www.seanhuang.dev",
-};
-Object.freeze(obj); // 使用 freeze 就不能修正了
-obj.url = "30";
-console.log(obj.url); // 30 -> https://www.seanhuang.dev
+  url: 'https://www.seanhuang.dev',
+}
+Object.freeze(obj) // 使用 freeze 就不能修正了
+obj.url = '30'
+console.log(obj.url) // 30 -> https://www.seanhuang.dev
 ```
 
 ## var 有 Hoisting；let 與 const 有 TDZ
@@ -153,19 +153,19 @@ ES5 使用 var 宣告變數具有 Hoisting 的特性，會將宣告的變數向�
 
 ```javascript
 // var a; // 相當於有這一行存在
-console.log(a); // undefined
+console.log(a) // undefined
 
-var a = 3;
-console.log(a); // 3
+var a = 3
+console.log(a) // 3
 ```
 
 但如果是使用 let 或 const 宣告變數，因為它們沒有 Hoisting 的特性，並不會將變數向上提升，所以這裡不是出現 `undefined`，而是顯示 `xxx is not defined` 表示還沒宣告。
 
 ```javascript
-console.log(a); // a is not defined (抓不到值)
+console.log(a) // a is not defined (抓不到值)
 
-let a = 3;
-console.log(a); // 3
+let a = 3
+console.log(a) // 3
 ```
 
 因此許多人認為只有 var 有 Hoisting 的特性，然而 let 與 const 其實也有差不多的東西，叫做「暫時性死區（Temporal Dead Zone, TDZ）」。
@@ -179,17 +179,17 @@ console.log(a); // 3
 - var 可以重新宣告賦值
 
   ```javascript
-  var a = 1;
-  var a = 2; // var 可以重新賦予
+  var a = 1
+  var a = 2 // var 可以重新賦予
   ```
 
 - let 跟 const 則不能重新宣告賦值
 
   ```javascript
-  let a = 1;
-  let a = 2; // a 已被賦予值
-  const b = 1;
-  const b = 2; // b 已被賦予值
+  let a = 1
+  let a = 2 // a 已被賦予值
+  const b = 1
+  const b = 2 // b 已被賦予值
   ```
 
 > 注意：重新宣告 `let a = 1` 跟重新賦值 `a = 1` 是不同的事情喔，這裡主要表達的是「重新宣告」這件事。

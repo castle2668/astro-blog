@@ -1,10 +1,10 @@
 ---
-title: "Vue 生命週期 (Lifecycle)"
-excerpt: "本文簡單介紹 Vue 的生命週期，瞭解 Vue 的生命週期對於熟悉 Vue.js 會有很大的幫助。"
-tags: ["vue"]
+title: 'Vue 生命週期 (Lifecycle)'
+excerpt: '本文簡單介紹 Vue 的生命週期，瞭解 Vue 的生命週期對於熟悉 Vue.js 會有很大的幫助。'
+tags: ['vue']
 date: 2019-11-05
-author: "Huang, Yung-Hsiang"
-image: "development.jpg"
+author: 'Huang, Yung-Hsiang'
+image: 'development.jpg'
 slug: 2019-11-05-vue-lifecycle
 ---
 

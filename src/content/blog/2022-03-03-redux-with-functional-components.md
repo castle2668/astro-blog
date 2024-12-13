@@ -1,10 +1,10 @@
 ---
-title: "React Redux with Functional Components"
-excerpt: "本文介紹 React Redux 於 Functional Components 的使用。"
-tags: ["react", "redux"]
+title: 'React Redux with Functional Components'
+excerpt: '本文介紹 React Redux 於 Functional Components 的使用。'
+tags: ['react', 'redux']
 date: 2022-03-03
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2022-03-03-redux-with-functional-components
 ---
 
@@ -15,20 +15,20 @@ slug: 2022-03-03-redux-with-functional-components
 `useSelector` 會監控 Redux 特定狀態的更動，有點類似 Vuex 中 `computed` 計算屬性的感覺。
 
 ```jsx
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux'
 
 const Counter = () => {
   // 取出 store 裡面特定的 state，只取得需要的 state!
-  const counter = useSelector((state) => state.counter);
+  const counter = useSelector(state => state.counter)
 
   return (
     <main>
       <div>{counter}</div>
     </main>
-  );
-};
+  )
+}
 
-export default Counter;
+export default Counter
 ```
 
 當 Redux Store 更新時，使用 `counter` 的 Component 也會一起被更新（重新評估、執行），因為這樣才能確保接收 Redux 最新的 `state` 喔。
@@ -40,28 +40,28 @@ export default Counter;
 `useDispatch` 提供 dispatch 函式：`const dispatch = useDispatch()`。
 
 ```jsx
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux'
 
 const Counter = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const incrementHandler = () => {
-    dispatch({ type: "INCREMENT" });
-  };
+    dispatch({ type: 'INCREMENT' })
+  }
 
   const decrementHandler = () => {
-    dispatch({ type: "DECREMENT" });
-  };
+    dispatch({ type: 'DECREMENT' })
+  }
 
   return (
     <main>
       <button onClick={incrementHandler}>Increment</button>
       <button onClick={decrementHandler}>Decrement</button>
     </main>
-  );
-};
+  )
+}
 
-export default Counter;
+export default Counter
 ```
 
 ## 給 Actions 物件加上更多 Payloads
@@ -74,17 +74,17 @@ export default Counter;
 // Counter Component
 const Counter = () => {
   const increaseHandler = () => {
-    dispatch({ type: "INCREASE", amount: 5 });
-  };
+    dispatch({ type: 'INCREASE', amount: 5 })
+  }
   // return jsx...
-};
+}
 
 // Redux Reducer Function
 const counterReducer = (state = { counter: 0 }, action) => {
-  if (action.type === "INCREASE") {
-    return { counter: state.counter + action.amount };
+  if (action.type === 'INCREASE') {
+    return { counter: state.counter + action.amount }
   }
-};
+}
 ```
 
 ## 如果有多個 State 記得一起更新
@@ -95,21 +95,21 @@ const counterReducer = (state = { counter: 0 }, action) => {
 - 重點二：千萬不要直接改變 (Mutate) 現有的狀態，也就是不能直接對 State 做改變，正確的做法是在進行操作後，再去 `return` 整個新的 State 物件。
 
 ```jsx
-if (action.type === "INCREASE") {
+if (action.type === 'INCREASE') {
   // Never mutate state!!!
   // state.counter++;
   // return state;
   return {
     counter: state.counter + action.amount,
     showCounter: state.showCounter, // 不更動
-  };
+  }
 }
 
-if (action.type === "TOGGLE") {
+if (action.type === 'TOGGLE') {
   return {
     counter: state.counter, // 不更動
     showCounter: !state.showCounter,
-  };
+  }
 }
 ```
 

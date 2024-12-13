@@ -1,10 +1,10 @@
 ---
 title: "Understanding React's useEffect Hook"
-excerpt: "本文介紹何謂 Side Effect，以及我們該如何使用 useEffect 處理這些副作用。"
-tags: ["react"]
+excerpt: '本文介紹何謂 Side Effect，以及我們該如何使用 useEffect 處理這些副作用。'
+tags: ['react']
 date: 2021-10-17
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2021-10-17-useeffect
 ---
 
@@ -54,10 +54,10 @@ useEffect(() => {...}, [dependencies]);
 
 ```jsx
 React.useEffect(async () => {
-  const res = await fetch("https://api.imgflip.com/get_memes");
-  const data = await res.json();
-  setAllMemes(data.data.memes);
-}, []);
+  const res = await fetch('https://api.imgflip.com/get_memes')
+  const data = await res.json()
+  setAllMemes(data.data.memes)
+}, [])
 ```
 
 ### 補充：哪些東西不需要放進 Dependencies
@@ -77,11 +77,11 @@ React.useEffect(async () => {
 更好的做法是，事先透過 object destructuring 將 object properties 取出，再把特定的值放入 dependency array。
 
 ```jsx
-const { someProperty } = someObject;
+const { someProperty } = someObject
 
 useEffect(() => {
   // code that only uses someProperty ...
-}, [someProperty]);
+}, [someProperty])
 ```
 
 也可以用這麼寫，但是解構出來會比較好看。
@@ -89,7 +89,7 @@ useEffect(() => {
 ```jsx
 useEffect(() => {
   // code that only uses someProperty ...
-}, [someObject.someProperty]);
+}, [someObject.someProperty])
 ```
 
 總之只要避免掉以下這種寫法即可，因為這麼做的話，`useEffect` 會在每一個 `someObject` 裡面的值被更改時執行。
@@ -97,7 +97,7 @@ useEffect(() => {
 ```jsx
 useEffect(() => {
   // code that only uses someProperty ...
-}, [someObject]);
+}, [someObject])
 ```
 
 ## Cleanup Function
@@ -116,26 +116,26 @@ useEffect(() => {
 ### 範例：清除 EventListener 避免 Memory Leak
 
 ```jsx
-import React from "react";
+import React from 'react'
 
 export default function WindowTracker() {
-  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth)
 
   React.useEffect(() => {
     function watchWidth() {
-      console.log("Setting up...");
-      setWindowWidth(window.innerWidth);
+      console.log('Setting up...')
+      setWindowWidth(window.innerWidth)
     }
 
-    window.addEventListener("resize", watchWidth);
+    window.addEventListener('resize', watchWidth)
 
     return function () {
-      console.log("Cleaning up...");
-      window.removeEventListener("resize", watchWidth);
-    };
-  }, []);
+      console.log('Cleaning up...')
+      window.removeEventListener('resize', watchWidth)
+    }
+  }, [])
 
-  return <h1>Window width: {windowWidth}</h1>;
+  return <h1>Window width: {windowWidth}</h1>
 }
 ```
 
@@ -156,17 +156,17 @@ export default function WindowTracker() {
 ```jsx
 useEffect(() => {
   setTimeout(() => {
-    console.log("Checking form validity!");
+    console.log('Checking form validity!')
     setFormIsValid(
-      enteredEmail.includes("@") && enteredPassword.trim().length > 6,
-    );
-  }, 500);
+      enteredEmail.includes('@') && enteredPassword.trim().length > 6
+    )
+  }, 500)
 
   // CLEANUP
   return () => {
-    console.log("CLEANUP");
-  };
-}, [enteredEmail, enteredPassword]);
+    console.log('CLEANUP')
+  }
+}, [enteredEmail, enteredPassword])
 
 // First init...
 // "Checking form validity!"
@@ -185,18 +185,18 @@ useEffect(() => {
 ```jsx
 useEffect(() => {
   const identifier = setTimeout(() => {
-    console.log("Checking form validity!");
+    console.log('Checking form validity!')
     setFormIsValid(
-      enteredEmail.includes("@") && enteredPassword.trim().length > 6,
-    );
-  }, 500);
+      enteredEmail.includes('@') && enteredPassword.trim().length > 6
+    )
+  }, 500)
 
   // CLEANUP
   return () => {
-    console.log("CLEANUP");
-    clearTimeout(identifier);
-  };
-}, [enteredEmail, enteredPassword]);
+    console.log('CLEANUP')
+    clearTimeout(identifier)
+  }
+}, [enteredEmail, enteredPassword])
 ```
 
 ### 在 useEffect 使用 Async Function 要注意的事情
@@ -210,12 +210,12 @@ useEffect(() => {
 ```jsx
 React.useEffect(() => {
   async function getMemes() {
-    const res = await fetch("https://api.imgflip.com/get_memes");
-    const data = await res.json();
-    setAllMemes(data.data.memes);
+    const res = await fetch('https://api.imgflip.com/get_memes')
+    const data = await res.json()
+    setAllMemes(data.data.memes)
   }
-  getMemes();
-}, []);
+  getMemes()
+}, [])
 ```
 
 ## Recap

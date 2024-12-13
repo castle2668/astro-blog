@@ -1,21 +1,21 @@
 ---
-import Footer from "../components/Footer.astro";
-import Navbar from "../components/Navbar.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../constants";
-import Logo from "../images/logo.jpeg";
+import Footer from '../components/Footer.astro'
+import Navbar from '../components/Navbar.astro'
+import { SITE_DESCRIPTION, SITE_TITLE } from '../constants'
+import Logo from '../images/logo.jpeg'
 
 const {
-  title = "Home",
+  title = 'Home',
   description = SITE_DESCRIPTION,
   image = Logo.src,
-  url = "/",
-} = Astro.props;
+  url = '/',
+} = Astro.props
 
 interface Props {
-  title?: string;
-  description?: string;
-  image?: string;
-  url?: string;
+  title?: string
+  description?: string
+  image?: string
+  url?: string
 }
 ---
 
@@ -53,27 +53,27 @@ interface Props {
       src="https://www.googletagmanager.com/gtag/js?id=G-360W2PV7GV"
       is:inline></script>
     <script is:inline>
-      window.dataLayer = window.dataLayer || [];
+      window.dataLayer = window.dataLayer || []
       function gtag() {
-        dataLayer.push(arguments);
+        dataLayer.push(arguments)
       }
-      gtag("js", new Date());
+      gtag('js', new Date())
 
-      gtag("config", "G-360W2PV7GV");
+      gtag('config', 'G-360W2PV7GV')
     </script>
   </head>
   <body>
-    {url !== "/resume/" && <Navbar />}
+    {url !== '/resume/' && <Navbar />}
 
     <section
-      class={url !== "/resume/"
-        ? "container mx-auto max-w-screen-xl py-10 px-8 min-h-[calc(100vh-231px)]"
-        : ""}
+      class={url !== '/resume/'
+        ? 'container mx-auto max-w-screen-xl py-10 px-8 min-h-[calc(100vh-231px)]'
+        : ''}
     >
       <slot />
     </section>
 
-    {url !== "/resume/" && <Footer />}
+    {url !== '/resume/' && <Footer />}
   </body>
 </html>
 

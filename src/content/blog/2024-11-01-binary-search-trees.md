@@ -1,10 +1,10 @@
 ---
-title: "[Data Structures] Binary Search Trees"
+title: '[Data Structures] Binary Search Trees'
 excerpt: "In this article, we'll dive into the fundamentals of Binary Search Trees (BST), a powerful data structure that organizes data for efficient insertion, search, and traversal operations. Starting from the basic concepts, we’ll explore the recursive call stack, how to insert and search for values, and cover multiple traversal methods, including depth-first (in-order, pre-order, post-order) and breadth-first traversals. By the end, you’ll understand BST operations and have the code to create and manipulate a Binary Search Tree in JavaScript."
-tags: ["datastructures", "javascript"]
+tags: ['datastructures', 'javascript']
 date: 2024-11-01
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2024-11-01-binary-search-trees
 ---
 
@@ -19,9 +19,9 @@ This structure allows efficient searching, insertion, and deletion, which makes 
 
 ```javascript
 function BST(value) {
-  this.value = value;
-  this.right = null;
-  this.left = null;
+  this.value = value
+  this.right = null
+  this.left = null
 }
 ```
 
@@ -39,13 +39,13 @@ The `insert` method adds a new value to the tree in the correct position, preser
 ```javascript
 BST.prototype.insert = function (value) {
   if (value <= this.value) {
-    if (!this.left) this.left = new BST(value);
-    else this.left.insert(value);
+    if (!this.left) this.left = new BST(value)
+    else this.left.insert(value)
   } else {
-    if (!this.right) this.right = new BST(value);
-    else this.right.insert(value);
+    if (!this.right) this.right = new BST(value)
+    else this.right.insert(value)
   }
-};
+}
 ```
 
 ## Contains Method
@@ -57,11 +57,10 @@ The `contains` method checks if a specific value exists in the tree. Similar to 
 
 ```javascript
 BST.prototype.contains = function (value) {
-  if (this.value === value) return true;
-  if (value < this.value) return this.left ? this.left.contains(value) : false;
-  if (value > this.value)
-    return this.right ? this.right.contains(value) : false;
-};
+  if (this.value === value) return true
+  if (value < this.value) return this.left ? this.left.contains(value) : false
+  if (value > this.value) return this.right ? this.right.contains(value) : false
+}
 ```
 
 ## Depth First Traversal Method
@@ -96,12 +95,12 @@ Post-order traversal follows:
 
 ```javascript
 BST.prototype.depthFirstTraversal = function (iteratorFunc, order) {
-  if (order === "pre-order") iteratorFunc(this.value);
-  if (this.left) this.left.depthFirstTraversal(iteratorFunc, order);
-  if (order === "in-order") iteratorFunc(this.value);
-  if (this.right) this.right.depthFirstTraversal(iteratorFunc, order);
-  if (order === "post-order") iteratorFunc(this.value);
-};
+  if (order === 'pre-order') iteratorFunc(this.value)
+  if (this.left) this.left.depthFirstTraversal(iteratorFunc, order)
+  if (order === 'in-order') iteratorFunc(this.value)
+  if (this.right) this.right.depthFirstTraversal(iteratorFunc, order)
+  if (order === 'post-order') iteratorFunc(this.value)
+}
 ```
 
 ## Breadth First Traversal Method
@@ -110,14 +109,14 @@ Breadth-first traversal (BFS) visits nodes level by level, from top to bottom. A
 
 ```javascript
 BST.prototype.breadthFirstTraversal = function (iteratorFunc) {
-  var queue = [this];
+  var queue = [this]
   while (queue.length) {
-    var treeNode = queue.shift();
-    iteratorFunc(treeNode);
-    if (treeNode.left) queue.push(treeNode.left);
-    if (treeNode.right) queue.push(treeNode.right);
+    var treeNode = queue.shift()
+    iteratorFunc(treeNode)
+    if (treeNode.left) queue.push(treeNode.left)
+    if (treeNode.right) queue.push(treeNode.right)
   }
-};
+}
 ```
 
 ## DFS vs BFS
@@ -148,8 +147,8 @@ The `getMinVal` method recursively traverses the left side of the tree until it 
 
 ```javascript
 BST.prototype.getMinVal = function () {
-  return this.left ? this.left.getMinVal() : this.value;
-};
+  return this.left ? this.left.getMinVal() : this.value
+}
 ```
 
 When called, it checks if the node has a left child:
@@ -163,8 +162,8 @@ The `getMaxVal` method works similarly, but it traverses the right side of the t
 
 ```javascript
 BST.prototype.getMaxVal = function () {
-  return this.right ? this.right.getMaxVal() : this.value;
-};
+  return this.right ? this.right.getMaxVal() : this.value
+}
 ```
 
 The method moves right until it reaches a node with no further right children, which represents the maximum value in the tree.
@@ -177,72 +176,71 @@ Here’s the full JavaScript implementation of a Binary Search Tree, with method
 
 ```javascript
 function BST(value) {
-  this.value = value;
-  this.right = null;
-  this.left = null;
+  this.value = value
+  this.right = null
+  this.left = null
 }
 
 BST.prototype.insert = function (value) {
   if (value <= this.value) {
-    if (!this.left) this.left = new BST(value);
-    else this.left.insert(value);
+    if (!this.left) this.left = new BST(value)
+    else this.left.insert(value)
   } else {
-    if (!this.right) this.right = new BST(value);
-    else this.right.insert(value);
+    if (!this.right) this.right = new BST(value)
+    else this.right.insert(value)
   }
-};
-
-BST.prototype.contains = function (value) {
-  if (this.value === value) return true;
-  if (value < this.value) return this.left ? this.left.contains(value) : false;
-  if (value > this.value)
-    return this.right ? this.right.contains(value) : false;
-};
-
-BST.prototype.depthFirstTraversal = function (iteratorFunc, order) {
-  if (order === "pre-order") iteratorFunc(this.value);
-  if (this.left) this.left.depthFirstTraversal(iteratorFunc, order);
-  if (order === "in-order") iteratorFunc(this.value);
-  if (this.right) this.right.depthFirstTraversal(iteratorFunc, order);
-  if (order === "post-order") iteratorFunc(this.value);
-};
-
-BST.prototype.breadthFirstTraversal = function (iteratorFunc) {
-  var queue = [this];
-  while (queue.length) {
-    var treeNode = queue.shift();
-    iteratorFunc(treeNode);
-    if (treeNode.left) queue.push(treeNode.left);
-    if (treeNode.right) queue.push(treeNode.right);
-  }
-};
-
-BST.prototype.getMinVal = function () {
-  return this.left ? this.left.getMinVal() : this.value;
-};
-
-BST.prototype.getMaxVal = function () {
-  return this.right ? this.right.getMaxVal() : this.value;
-};
-
-// Example of using the tree
-var bst = new BST(40);
-bst.insert(25);
-bst.insert(60);
-bst.insert(15);
-bst.insert(30);
-bst.insert(50);
-bst.insert(70);
-bst.insert(5);
-bst.insert(20);
-bst.insert(65);
-bst.insert(80);
-
-function log(node) {
-  console.log(node.value);
 }
 
-bst.breadthFirstTraversal(log);
+BST.prototype.contains = function (value) {
+  if (this.value === value) return true
+  if (value < this.value) return this.left ? this.left.contains(value) : false
+  if (value > this.value) return this.right ? this.right.contains(value) : false
+}
+
+BST.prototype.depthFirstTraversal = function (iteratorFunc, order) {
+  if (order === 'pre-order') iteratorFunc(this.value)
+  if (this.left) this.left.depthFirstTraversal(iteratorFunc, order)
+  if (order === 'in-order') iteratorFunc(this.value)
+  if (this.right) this.right.depthFirstTraversal(iteratorFunc, order)
+  if (order === 'post-order') iteratorFunc(this.value)
+}
+
+BST.prototype.breadthFirstTraversal = function (iteratorFunc) {
+  var queue = [this]
+  while (queue.length) {
+    var treeNode = queue.shift()
+    iteratorFunc(treeNode)
+    if (treeNode.left) queue.push(treeNode.left)
+    if (treeNode.right) queue.push(treeNode.right)
+  }
+}
+
+BST.prototype.getMinVal = function () {
+  return this.left ? this.left.getMinVal() : this.value
+}
+
+BST.prototype.getMaxVal = function () {
+  return this.right ? this.right.getMaxVal() : this.value
+}
+
+// Example of using the tree
+var bst = new BST(40)
+bst.insert(25)
+bst.insert(60)
+bst.insert(15)
+bst.insert(30)
+bst.insert(50)
+bst.insert(70)
+bst.insert(5)
+bst.insert(20)
+bst.insert(65)
+bst.insert(80)
+
+function log(node) {
+  console.log(node.value)
+}
+
+bst.breadthFirstTraversal(log)
 ```
 
 ### Example
@@ -252,23 +250,23 @@ In this example, `breadthFirstTraversal` uses the `log` function to traverse the
 With the following insertion order:
 
 ```javascript
-var bst = new BST(40);
-bst.insert(25);
-bst.insert(60);
-bst.insert(15);
-bst.insert(30);
-bst.insert(50);
-bst.insert(70);
-bst.insert(5);
-bst.insert(20);
-bst.insert(65);
-bst.insert(80);
+var bst = new BST(40)
+bst.insert(25)
+bst.insert(60)
+bst.insert(15)
+bst.insert(30)
+bst.insert(50)
+bst.insert(70)
+bst.insert(5)
+bst.insert(20)
+bst.insert(65)
+bst.insert(80)
 
 function log(node) {
-  console.log(node.value);
+  console.log(node.value)
 }
 
-bst.breadthFirstTraversal(log);
+bst.breadthFirstTraversal(log)
 ```
 
 The resulting BST structure is:

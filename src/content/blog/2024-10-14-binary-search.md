@@ -1,10 +1,10 @@
 ---
-title: "[Algorithms] Binary Search"
+title: '[Algorithms] Binary Search'
 excerpt: "Binary Search algorithm is a fundamental technique in computer science. It's widely used in various applications and is a common topic in technical interviews. Understanding binary search is crucial because it offers a fast way to find values in sorted lists."
-tags: ["algorithms", "javascript"]
+tags: ['algorithms', 'javascript']
 date: 2024-10-14
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2024-10-14-binary-search
 ---
 
@@ -34,18 +34,18 @@ Here's how you can implement binary search in JavaScript:
 
 ```javascript
 function binarySearch(numArray, key) {
-  const middleIdx = Math.floor(numArray.length / 2);
-  const middleElem = numArray[middleIdx];
+  const middleIdx = Math.floor(numArray.length / 2)
+  const middleElem = numArray[middleIdx]
 
-  if (middleElem === key) return true;
+  if (middleElem === key) return true
   else if (middleElem < key && numArray.length > 1) {
-    return binarySearch(numArray.slice(middleIdx + 1), key); // Exclude middle element
+    return binarySearch(numArray.slice(middleIdx + 1), key) // Exclude middle element
   } else if (middleElem > key && numArray.length > 1) {
-    return binarySearch(numArray.slice(0, middleIdx), key);
-  } else return false;
+    return binarySearch(numArray.slice(0, middleIdx), key)
+  } else return false
 }
 
-console.log(binarySearch([5, 7, 12, 16, 36, 39, 42, 56, 71], 56));
+console.log(binarySearch([5, 7, 12, 16, 36, 39, 42, 56, 71], 56))
 ```
 
 ## Conclusion

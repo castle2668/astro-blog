@@ -1,10 +1,10 @@
 ---
-title: "Learn Git Branching - 學習 Git Branch 的小遊戲"
-excerpt: "Learn Git Branching 能幫助 Git 初學者領會 Git 分支背後的強大概念，對於剛開始使用 Git 的人來說，相當適合用來幫助瞭解分支使用上的各種方式。"
-tags: ["git", "nuk"]
+title: 'Learn Git Branching - 學習 Git Branch 的小遊戲'
+excerpt: 'Learn Git Branching 能幫助 Git 初學者領會 Git 分支背後的強大概念，對於剛開始使用 Git 的人來說，相當適合用來幫助瞭解分支使用上的各種方式。'
+tags: ['git', 'nuk']
 date: 2019-10-29
-author: "Huang, Yung-Hsiang"
-image: "development.jpg"
+author: 'Huang, Yung-Hsiang'
+image: 'development.jpg'
 slug: 2019-10-29-learn-git-branching
 ---
 

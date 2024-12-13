@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #17 回呼函式 (Callback Function)"
-excerpt: "本文主要內容為探討「回呼函式」的相關知識，其實我們可能已經用過回呼函式的概念了，像是 setTimeout 或是 jQuery 事件就是在使用閉包與回呼的概念喔。"
-tags: ["javascript"]
+title: 'Understand JavaScript #17 回呼函式 (Callback Function)'
+excerpt: '本文主要內容為探討「回呼函式」的相關知識，其實我們可能已經用過回呼函式的概念了，像是 setTimeout 或是 jQuery 事件就是在使用閉包與回呼的概念喔。'
+tags: ['javascript']
 date: 2021-04-07
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-04-07-callback-function
 ---
 
@@ -17,19 +17,19 @@ slug: 2021-04-07-callback-function
 
 ```javascript
 function tellMeWhenDone(callback) {
-  var a = 1000;
-  var b = 2000;
+  var a = 1000
+  var b = 2000
 
-  callback(); // 回呼，執行作為參數的函式
+  callback() // 回呼，執行作為參數的函式
 }
 
 tellMeWhenDone(function () {
-  console.log("I am Done!");
-});
+  console.log('I am Done!')
+})
 
 tellMeWhenDone(function () {
-  console.log("All Done...");
-});
+  console.log('All Done...')
+})
 
 // I am Done!
 // All Done...
@@ -43,14 +43,14 @@ tellMeWhenDone(function () {
 
 ```javascript
 function sayHiLater() {
-  var greeting = "Hi!";
+  var greeting = 'Hi!'
 
   setTimeout(function () {
-    console.log(greeting);
-  }, 3000);
+    console.log(greeting)
+  }, 3000)
 }
 
-sayHiLater();
+sayHiLater()
 ```
 
 ## 回顧

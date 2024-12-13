@@ -1,10 +1,10 @@
 ---
-title: "2020 年度回顧"
-excerpt: "跨年連假期間特別悠閒，剛好有空來檢視過去一年的成果，同時訂定下個年度的計劃，雖然通常都不會如期完成 🤣 不過還是想記錄下來，所以本文就來說說我在 2020 年最值得聊聊的幾件事情 🎉"
-tags: ["yearlyreview", "life"]
+title: '2020 年度回顧'
+excerpt: '跨年連假期間特別悠閒，剛好有空來檢視過去一年的成果，同時訂定下個年度的計劃，雖然通常都不會如期完成 🤣 不過還是想記錄下來，所以本文就來說說我在 2020 年最值得聊聊的幾件事情 🎉'
+tags: ['yearlyreview', 'life']
 date: 2020-12-31
-author: "海豹人 Sealman"
-image: "work-life-balance.jpg"
+author: '海豹人 Sealman'
+image: 'work-life-balance.jpg'
 slug: 2020-12-31-yearly-review
 ---
 

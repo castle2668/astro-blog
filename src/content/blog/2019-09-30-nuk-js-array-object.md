@@ -1,24 +1,24 @@
 ---
-title: "NUK JavaScript #4：陣列、物件、for"
-excerpt: "此篇文章介紹陣列、物件、for 迴圈。"
-tags: ["nuk", "javascript"]
+title: 'NUK JavaScript #4：陣列、物件、for'
+excerpt: '此篇文章介紹陣列、物件、for 迴圈。'
+tags: ['nuk', 'javascript']
 date: 2019-09-30
-author: "Huang, Yung-Hsiang"
-image: "javascript.png"
+author: 'Huang, Yung-Hsiang'
+image: 'javascript.png'
 slug: 2019-09-30-nuk-js-array-object
 ---
 
 ## 陣列
 
 ```javascript
-let pens = ["red", "black", "white"];
-console.log(pens.length);
+let pens = ['red', 'black', 'white']
+console.log(pens.length)
 
-pens.push("pink");
-console.log(pens.length);
+pens.push('pink')
+console.log(pens.length)
 
-pens.push(3);
-console.log(pens);
+pens.push(3)
+console.log(pens)
 ```
 
 - 算出長度：pens.length
@@ -40,17 +40,17 @@ console.log(pens);
 在刪除元素之後，陣列長度不會改變，原本位置變為 undefined。
 
 ```javascript
-var array = ["a", "b", "c", "d"];
-delete array[2]; // 刪除 'c'
-console.log(array.length); // 4
-console.log(array[2]); // 'undefined'
+var array = ['a', 'b', 'c', 'd']
+delete array[2] // 刪除 'c'
+console.log(array.length) // 4
+console.log(array[2]) // 'undefined'
 ```
 
 ### 2. pop：刪除最後一筆資料
 
 ```javascript
-var arr = ["a", "b", "c", "d", "e", "f"];
-arr.pop();
+var arr = ['a', 'b', 'c', 'd', 'e', 'f']
+arr.pop()
 ```
 
 arr 剩下：a, b, c, d, e  
@@ -64,9 +64,9 @@ splice(index，howmany，item1，…..，itemX)
 ```javascript
 // 刪除第三筆資料
 
-var array = ["a", "b", "c", "d"];
-array.splice(2, 1, "e"); // 刪除 'c'，新增 'e'
-console.log(array); // ['a', 'b', 'e' , 'd']
+var array = ['a', 'b', 'c', 'd']
+array.splice(2, 1, 'e') // 刪除 'c'，新增 'e'
+console.log(array) // ['a', 'b', 'e' , 'd']
 ```
 
 ### 4. concat：合併兩個陣列
@@ -75,10 +75,10 @@ Array.prototype.concat()
 合併兩個陣列，並把新的陣列返回。
 
 ```javascript
-let array1 = ["1", "2", "3"];
-let array2 = ["a", "b", "c"];
-let array3 = array1.concat(array2);
-console.log(array3);
+let array1 = ['1', '2', '3']
+let array2 = ['a', 'b', 'c']
+let array3 = array1.concat(array2)
+console.log(array3)
 
 // result : ["1", "2", "3", "a", "b", "c"]
 ```
@@ -90,25 +90,25 @@ console.log(array3);
 例如：回傳大於 10 的數字
 
 ```javascript
-var numbers = [1, 3, 6, 10, 99, 101];
+var numbers = [1, 3, 6, 10, 99, 101]
 
 var filteredNum = numbers.filter(function (value) {
-  return value > 10;
-});
+  return value > 10
+})
 
-filteredNum; // [99, 101]
+filteredNum // [99, 101]
 ```
 
 如果想找「Tom」會回傳空陣列，表示找不到。
 
 ```javascript
-var names = ["Sean", "Jack", "Bob"];
+var names = ['Sean', 'Jack', 'Bob']
 
 var filtered = names.filter(function (value) {
-  return value === "Tom";
-});
+  return value === 'Tom'
+})
 
-filtered; // []
+filtered // []
 ```
 
 ### 6. sort：將陣列進行重新排序
@@ -117,29 +117,29 @@ filtered; // []
 
 ```javascript
 let Brand = [
-  "Oldsmobile",
-  "Pontiac",
-  "Buick",
-  "Cadillac",
-  "Holden",
-  "Saturn",
-  "GMC",
-];
+  'Oldsmobile',
+  'Pontiac',
+  'Buick',
+  'Cadillac',
+  'Holden',
+  'Saturn',
+  'GMC',
+]
 
-Brand.sort(); // 陣列重新排序
-console.log(Brand); // Buick, Cadillac, GMC, Holden, Oldsmobile, Pontiac, Saturn
+Brand.sort() // 陣列重新排序
+console.log(Brand) // Buick, Cadillac, GMC, Holden, Oldsmobile, Pontiac, Saturn
 
-Brand.reverse(); // 順序反轉
-console.log(Brand); // Saturn, Pontiac, Oldsmobile, Holden, GMC, Cadillac, Buick
+Brand.reverse() // 順序反轉
+console.log(Brand) // Saturn, Pontiac, Oldsmobile, Holden, GMC, Cadillac, Buick
 ```
 
 範例：數字陣列.sort
 
 ```javascript
-let InStock = [12, 3, 5, 53, 12, 53, 47];
+let InStock = [12, 3, 5, 53, 12, 53, 47]
 
-InStock.sort();
-console.log(InStock);
+InStock.sort()
+console.log(InStock)
 // 12, 12, 3, 47, 5, 53, 53
 ```
 
@@ -147,15 +147,15 @@ console.log(InStock);
 
 ```javascript
 InStock.sort(function (a, b) {
-  return a - b;
-});
-console.log(InStock);
+  return a - b
+})
+console.log(InStock)
 // 3, 5, 12, 12, 47, 53, 53
 
 InStock.sort(function (a, b) {
-  return b - a; //順序反轉
-});
-console.log(InStock);
+  return b - a //順序反轉
+})
+console.log(InStock)
 // 53, 53, 47, 12, 12, 5, 3
 ```
 
@@ -165,38 +165,38 @@ console.log(InStock);
 
 ```javascript
 for (let i = 0; i < 3; i++) {
-  console.log(i);
+  console.log(i)
 }
 ```
 
 在 JS 的世界裡，物件是從 0 開始計算
 
 ```javascript
-let pens = ["red", "black", "white"];
-console.log(pens[0]);
+let pens = ['red', 'black', 'white']
+console.log(pens[0])
 ```
 
 組合技
 
 ```javascript
 for (let i = 0; i < pens.length; i++) {
-  console.log(pens[i]);
+  console.log(pens[i])
 }
 ```
 
 ### 範例：九九乘法表
 
 ```javascript
-document.write('<ul class="multiplicationTable">');
+document.write('<ul class="multiplicationTable">')
 
 for (let i = 1; i < 10; i++) {
   for (let j = 1; j < 10; j++) {
-    console.log(i * j);
-    document.write("<li>" + i + "*" + j + "=" + i * j + "</li>");
+    console.log(i * j)
+    document.write('<li>' + i + '*' + j + '=' + i * j + '</li>')
   }
 }
 
-document.write("</>");
+document.write('</>')
 ```
 
 ![GITHUB](https://i.imgur.com/TtFOPu4.png)
@@ -207,23 +207,23 @@ document.write("</>");
 let school = {
   student: 5927,
   teacher: 300,
-  dog: ["Tom", "John", "Bob"],
+  dog: ['Tom', 'John', 'Bob'],
   light: 3,
-  校長: "Bob",
-};
+  校長: 'Bob',
+}
 
-console.log(school.student); // 5927
-console.log(school.dog[1]); // John
-console.log(school.校長); // Bob
+console.log(school.student) // 5927
+console.log(school.dog[1]) // John
+console.log(school.校長) // Bob
 
-school.classRoom = 200;
-console.log(school);
+school.classRoom = 200
+console.log(school)
 
 // 可以對既有的值做更改或累加
-school.classRoom = 250;
-console.log(school.classRoom);
-school.classRoom = school.classRoom + 50;
-console.log(school.classRoom);
+school.classRoom = 250
+console.log(school.classRoom)
+school.classRoom = school.classRoom + 50
+console.log(school.classRoom)
 ```
 
 ## JSON

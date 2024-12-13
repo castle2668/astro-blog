@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #14 立即呼叫的函式表達式 (IIFEs) 與安全程式碼"
-excerpt: "本文主要內容為探討「IIFE」的相關知識，理解為什麼 IIFE 會被應用在各種大型框架或資源庫裡面，並且能幫助撰寫安全的程式碼。"
-tags: ["javascript"]
+title: 'Understand JavaScript #14 立即呼叫的函式表達式 (IIFEs) 與安全程式碼'
+excerpt: '本文主要內容為探討「IIFE」的相關知識，理解為什麼 IIFE 會被應用在各種大型框架或資源庫裡面，並且能幫助撰寫安全的程式碼。'
+tags: ['javascript']
 date: 2021-03-30
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-03-30-iife-safe-code
 ---
 
@@ -19,21 +19,21 @@ slug: 2021-03-30-iife-safe-code
 ```javascript
 // Function Statement
 function greet(name) {
-  console.log("Hello " + name);
+  console.log('Hello ' + name)
 }
-greet("Damao");
+greet('Damao')
 
 // Using a Function Expression
 var greetFunc = function (name) {
-  console.log("Hello " + name);
-};
-greetFunc("Damao");
+  console.log('Hello ' + name)
+}
+greetFunc('Damao')
 
 // Return a value to variable
 var greeting = function (name) {
-  return "Hello " + name;
-};
-console.log(greeting("Damao")); // Hello Damao
+  return 'Hello ' + name
+}
+console.log(greeting('Damao')) // Hello Damao
 ```
 
 我們對剛才的函式做一些修改，我們在 `function{}()` 後方加上 `()` 來執行函式。
@@ -43,9 +43,9 @@ console.log(greeting("Damao")); // Hello Damao
 ```javascript
 // Using an Immediately Invoked Function Expression
 var greeting = (function (name) {
-  return "Hello " + name; // 回傳一個字串
-})("Damao");
-console.log(greeting); // 是一個字串，不是函式
+  return 'Hello ' + name // 回傳一個字串
+})('Damao')
+console.log(greeting) // 是一個字串，不是函式
 ```
 
 ### 繞過語法解析器
@@ -54,7 +54,7 @@ console.log(greeting); // 是一個字串，不是函式
 
 ```javascript
 function greet(name) {
-  return "Hello " + name;
+  return 'Hello ' + name
 }
 ```
 
@@ -65,9 +65,9 @@ function greet(name) {
 最常見的作法就是把函式用一個**括號**包起來，因為 JavaScript 引擎會判斷括號裡的東西是一個表示式。
 
 ```javascript
-(function (name) {
-  return "Hello " + name;
-});
+;(function (name) {
+  return 'Hello ' + name
+})
 ```
 
 現在我們就有一個函式，它只是單純放在那裡，沒有在運作哩。
@@ -77,11 +77,11 @@ function greet(name) {
 一個函式表達式被括號包住，所以 Parser 會認為這不是函式陳述式，而是一個立即執行的函式，因為最後的 `()` 執行了函式。
 
 ```javascript
-var firstname = "Damao";
+var firstname = 'Damao'
 
-(function (name) {
-  console.log("Inside IIFE: Hello " + name);
-})(firstname);
+;(function (name) {
+  console.log('Inside IIFE: Hello ' + name)
+})(firstname)
 
 // Inside IIFE: Hello Damao
 ```
@@ -113,22 +113,22 @@ var firstname = "Damao";
 
 ```javascript
 // IIFE
-(function (name) {
-  var greeting = "Hello";
-  console.log(greeting + " " + name);
-})("Damao");
+;(function (name) {
+  var greeting = 'Hello'
+  console.log(greeting + ' ' + name)
+})('Damao')
 ```
 
 由於物件傳參考的特性，我們可以把全域物件 `window` 的參考傳給 IIFE，這樣就能影響到全域物件哩。
 
 ```javascript
-(function (global, name) {
-  var greeting = "Hello";
-  global.greeting = "Hola"; // 故意影響全域物件
-  console.log(greeting + " " + name); // Hello Damao
-})(window, "Damao");
+;(function (global, name) {
+  var greeting = 'Hello'
+  global.greeting = 'Hola' // 故意影響全域物件
+  console.log(greeting + ' ' + name) // Hello Damao
+})(window, 'Damao')
 
-console.log(greeting); // Hola
+console.log(greeting) // Hola
 ```
 
 ## 回顧

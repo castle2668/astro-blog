@@ -1,10 +1,10 @@
 ---
-title: "更強大的 React 狀態管理工具 useReducer Hook"
-excerpt: "在 JavaScript 的世界中，陣列處理方法之一的 reduce 就是將多個值陸續處理累積後成為新的單一值，而本文要介紹的 useReducer 也有類似的概念，透過這個更強大的狀態管理 Hook，可以將複雜的 State 處理完成後，返回一個單純的值。"
-tags: ["react"]
+title: '更強大的 React 狀態管理工具 useReducer Hook'
+excerpt: '在 JavaScript 的世界中，陣列處理方法之一的 reduce 就是將多個值陸續處理累積後成為新的單一值，而本文要介紹的 useReducer 也有類似的概念，透過這個更強大的狀態管理 Hook，可以將複雜的 State 處理完成後，返回一個單純的值。'
+tags: ['react']
 date: 2021-10-24
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2021-10-24-usereducer
 ---
 
@@ -26,9 +26,9 @@ useReducer 的撰寫方式與 useState 很類似，使用上會回傳一個陣�
 
 ```jsx
 // 格式
-const [state, dispatchFn] = useReducer(reducerFn, initState, initFn);
+const [state, dispatchFn] = useReducer(reducerFn, initState, initFn)
 // 範例
-const [emailState, emailDispatch] = useReducer();
+const [emailState, emailDispatch] = useReducer()
 ```
 
 ### Step 2. 建立 Reducer Function
@@ -44,21 +44,21 @@ const [emailState, emailDispatch] = useReducer();
 ```jsx
 // Initial State
 const defaultEmailState = {
-  value: "",
+  value: '',
   isValid: false,
-};
+}
 
 // Reducer Function
 const emailReducer = (state, action) => {
-  return defaultEmailState;
-};
+  return defaultEmailState
+}
 
-const Login = (props) => {
+const Login = props => {
   const [emailState, dispatchEmail] = useReducer(
     emailReducer,
-    defaultEmailState,
-  );
-};
+    defaultEmailState
+  )
+}
 ```
 
 ### Step 3. 使用 Dispatch Function 觸發 State 更新
@@ -75,7 +75,7 @@ const Login = (props) => {
 
 ```jsx
 //              type              , payload
-dispatchEmail({ type: "USER_INPUT", payload: event.target.value });
+dispatchEmail({ type: 'USER_INPUT', payload: event.target.value })
 ```
 
 第二步就是更新 State 了，透過剛才傳入的類別，我們可以定義出多個狀態更新的情境，不同的種類會回傳不同的更新結果。
@@ -84,17 +84,17 @@ dispatchEmail({ type: "USER_INPUT", payload: event.target.value });
 // NOTE: React guarantees that this state is absolutely the last state snapshot
 const emailReducer = (state, action) => {
   // 使用者輸入觸發 Dispatch Function
-  if (action.type === "USER_INPUT") {
-    return { value: action.payload, isValid: action.payload.includes("@") };
+  if (action.type === 'USER_INPUT') {
+    return { value: action.payload, isValid: action.payload.includes('@') }
   }
 
   // 輸入框失去焦點觸發 Dispatch Function
-  if (action.type === "INPUT_BLUR") {
-    return { value: state.value, isValid: state.value.includes("@") };
+  if (action.type === 'INPUT_BLUR') {
+    return { value: state.value, isValid: state.value.includes('@') }
   }
 
-  return { value: "", isValid: false };
-};
+  return { value: '', isValid: false }
+}
 ```
 
 到這裡就大功告成囉！我們已經把原本在元件中的邏輯抽離到 Reducer Function 裡面了。這麼做的好處在於，如果元件裡的 State 邏輯變得複雜時，我們不會在閱讀元件程式碼的同時，還被各種 setState 搞得思緒雜亂。

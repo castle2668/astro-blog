@@ -1,10 +1,10 @@
 ---
-title: "2021 年度回顧"
-excerpt: "這是我在 2021 年最值得聊聊的幾件事情 🎉"
-tags: ["yearlyreview", "life"]
+title: '2021 年度回顧'
+excerpt: '這是我在 2021 年最值得聊聊的幾件事情 🎉'
+tags: ['yearlyreview', 'life']
 date: 2021-12-31
-author: "海豹人 Sealman"
-image: "work-life-balance.jpg"
+author: '海豹人 Sealman'
+image: 'work-life-balance.jpg'
 slug: 2021-12-31-yearly-review
 ---
 

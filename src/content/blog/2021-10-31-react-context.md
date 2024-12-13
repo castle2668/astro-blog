@@ -1,10 +1,10 @@
 ---
-title: "使用 React Context 處理全域狀態"
-excerpt: "為了避免 Props Drilling，React 提供了 Context API 幫助我們解決這樣的問題，本文會介紹 Context API 的基本用法，包含 createContext、Provider、Consumer、useContext 等概念。"
-tags: ["react"]
+title: '使用 React Context 處理全域狀態'
+excerpt: '為了避免 Props Drilling，React 提供了 Context API 幫助我們解決這樣的問題，本文會介紹 Context API 的基本用法，包含 createContext、Provider、Consumer、useContext 等概念。'
+tags: ['react']
 date: 2021-10-31
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2021-10-31-react-context
 ---
 
@@ -24,9 +24,9 @@ slug: 2021-10-31-react-context
 const AuthContext = React.createContext({
   isLoggedIn: false,
   onLogout: () => {},
-});
+})
 
-export default AuthContext;
+export default AuthContext
 ```
 
 > 這裡所設定的值只是為了 IDE 的自動完成提示，跟狀態的預設值無關
@@ -44,7 +44,7 @@ return (
       {isLoggedIn && <Home onLogout={logoutHandler} />}
     </main>
   </AuthContext.Provider>
-);
+)
 ```
 
 ### Step 3. 取用 Context (useContext Hook)
@@ -66,7 +66,7 @@ return (
       {isLoggedIn && <Home onLogout={logoutHandler} />}
     </main>
   </AuthContext.Provider>
-);
+)
 ```
 
 > 這裡所設定的 value 就是預設值，也會跟著 setState 做更新
@@ -74,8 +74,8 @@ return (
 在元件中使用 Context：
 
 ```jsx
-const Navigation = (props) => {
-  const authCtx = useContext(AuthContext);
+const Navigation = props => {
+  const authCtx = useContext(AuthContext)
 
   return (
     <nav className={classes.nav}>
@@ -97,10 +97,10 @@ const Navigation = (props) => {
         )}
       </ul>
     </nav>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation
 ```
 
 ### Step 4. 提供為全域狀態 (Optional)
@@ -119,8 +119,8 @@ ReactDOM.render(
   >
     <App />
   </AuthContextProvider>,
-  document.getElementById("root"),
-);
+  document.getElementById('root')
+)
 ```
 
 ### Step 5. 抽取出來建立一個 Context Store (Recommended)
@@ -130,23 +130,23 @@ ReactDOM.render(
 ```jsx
 // <root>/src/store/auth-context.jsx
 
-import React, { createContext, useState } from "react";
+import React, { createContext, useState } from 'react'
 
 export const AuthContext = createContext({
   isLoggedIn: false,
   onLogout: () => {},
-});
+})
 
 const AuthContextProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const loginHandler = (email, password) => {
     // handle login...
-  };
+  }
 
   const logoutHandler = () => {
     // handle logout...
-  };
+  }
 
   return (
     <AuthContext.Provider
@@ -158,10 +158,10 @@ const AuthContextProvider = ({ children }) => {
     >
       {children}
     </AuthContext.Provider>
-  );
-};
+  )
+}
 
-export default AuthContextProvider;
+export default AuthContextProvider
 ```
 
 可以看到這裡從 IDE 自動完成提示、useState、Function Handler、設定 Provider 預設值，上面提到的步驟幾乎全都做了，就集中在這個檔案裡面。
@@ -173,8 +173,8 @@ ReactDOM.render(
   <AuthContextProvider>
     <App />
   </AuthContextProvider>,
-  document.getElementById("root"),
-);
+  document.getElementById('root')
+)
 ```
 
 ## Recap

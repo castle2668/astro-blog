@@ -1,10 +1,10 @@
 ---
-title: "[Algorithms] Sieve Of Eratosthenes"
+title: '[Algorithms] Sieve Of Eratosthenes'
 excerpt: "Discover the Sieve of Eratosthenes — an efficient algorithm to find all prime numbers up to a given limit. We'll cover the steps involved, optimizing runtime, and breaking down the code for a clear understanding."
-tags: ["algorithms", "javascript"]
+tags: ['algorithms', 'javascript']
 date: 2024-10-17
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2024-10-17-sieve-of-eratosthenes
 ---
 
@@ -23,26 +23,26 @@ For instance, if we input `20`, we should get `[2, 3, 5, 7, 11, 13, 17, 19]`, re
 
 ```javascript
 function sieveOfEratosthenes(n) {
-  const primes = Array(n + 1).fill(true);
-  primes[0] = primes[1] = false; // 0 and 1 are not primes
+  const primes = Array(n + 1).fill(true)
+  primes[0] = primes[1] = false // 0 and 1 are not primes
 
   for (let i = 2; i <= Math.sqrt(n); i++) {
     if (primes[i]) {
       for (let j = i * i; j <= n; j += i) {
-        primes[j] = false; // Mark multiples of i as not prime
+        primes[j] = false // Mark multiples of i as not prime
       }
     }
   }
 
   // Collecting the prime numbers
   return primes.reduce((result, isPrime, index) => {
-    if (isPrime) result.push(index);
-    return result;
-  }, []);
+    if (isPrime) result.push(index)
+    return result
+  }, [])
 }
 
 // Example Usage
-console.log(sieveOfEratosthenes(49));
+console.log(sieveOfEratosthenes(49))
 // Output: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
 ```
 

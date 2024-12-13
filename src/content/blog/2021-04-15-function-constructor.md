@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #21 使用建構式自定義原型"
-excerpt: "本文主要內容為探討關鍵字 new 與函式建構子的相關知識，內容包含關鍵字 new、函式建構子，以及函式的原型屬性。"
-tags: ["javascript"]
+title: 'Understand JavaScript #21 使用建構式自定義原型'
+excerpt: '本文主要內容為探討關鍵字 new 與函式建構子的相關知識，內容包含關鍵字 new、函式建構子，以及函式的原型屬性。'
+tags: ['javascript']
 date: 2021-04-15
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-04-15-function-constructor
 ---
 
@@ -16,17 +16,17 @@ slug: 2021-04-15-function-constructor
 
 ```javascript
 function Person() {
-  console.log(this);
-  this.firstname = "Damao";
-  this.lastname = "Huang";
-  console.log("This function is invoked");
+  console.log(this)
+  this.firstname = 'Damao'
+  this.lastname = 'Huang'
+  console.log('This function is invoked')
 
-  return { greeting: "I got in the way" };
+  return { greeting: 'I got in the way' }
 }
 
 // 使用 new 運算子，不是在呼叫一個函式
-var damao = new Person();
-console.log(damao);
+var damao = new Person()
+console.log(damao)
 ```
 
 1. 用 `new` 建立一個空物件，效果就像是用 `var damao = {}` 建立的一個空物件
@@ -44,17 +44,17 @@ console.log(damao);
 
 ```javascript
 function Person(firstname, lastname) {
-  console.log(this);
-  this.firstname = firstname;
-  this.lastname = lastname;
-  console.log("This function is invoked");
+  console.log(this)
+  this.firstname = firstname
+  this.lastname = lastname
+  console.log('This function is invoked')
 }
 
-var sean = new Person("Sean", "Huang");
-console.log(sean);
+var sean = new Person('Sean', 'Huang')
+console.log(sean)
 
-var john = new Person("John", "Doe");
-console.log(john);
+var john = new Person('John', 'Doe')
+console.log(john)
 ```
 
 從上面這些範例，我們知道 new 運算子是用來建立物件，而函式建構子其實就只是一個正常的函式，可以用來增加新物件的屬性和方法。
@@ -73,12 +73,12 @@ console.log(john);
 // function Person(firstname, lastname) {...}
 
 Person.prototype.getFullName = function () {
-  return this.firstname + " " + this.lastname;
-};
+  return this.firstname + ' ' + this.lastname
+}
 
-var john = new Person("John", "Doe");
-console.log(john);
-console.log(john.getFullName());
+var john = new Person('John', 'Doe')
+console.log(john)
+console.log(john.getFullName())
 ```
 
 有了原型屬性後，如果已經使用函式建構子創造一堆物件，臨時想要新增方法給所有物件的話，就不用打掉重練了，因為我們可以用 `.prototype` 來新增屬性和方法給所有物件。
@@ -100,9 +100,9 @@ console.log(john.getFullName());
 當要取用物件的屬性或方法時也會出現錯誤 (Uncaught TypeError: Cannot read property 'getFullName' of undefined)，因為此時 `john` 是 `undefined` 而不是一個物件。
 
 ```javascript
-var john = Person("John", "Doe"); // 忘記加上 new
-console.log(john); // undefined
-console.log(john.getFullName()); // Error
+var john = Person('John', 'Doe') // 忘記加上 new
+console.log(john) // undefined
+console.log(john.getFullName()) // Error
 ```
 
 容易忘記加上 `new` 算是使用函式建構子的缺點之一，這也是為什麼我們在寫法上第一個字母要使用大寫，因為這樣可以幫助區分一般函式與函式建構子，也比較好看出有沒有忘記加上 new 關鍵字，甚至現在有所謂的 Linter 直接把這一點作為書寫 JavaScript 時的規範。

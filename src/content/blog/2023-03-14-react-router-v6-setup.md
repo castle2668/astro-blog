@@ -1,10 +1,10 @@
 ---
-title: "React Router V6 - Setup Routes"
-excerpt: "React Router 團隊最近又來一次全面升級，新增了許多功能，特別是 Loader 功能實在是讓我大開眼界。除此之外，我發現他們的文件寫得很好，基本上只要跟著走一遍 Tutorial 就可以掌握新版的寫法調整與新功能哩。"
-tags: ["react", "reactrouter"]
+title: 'React Router V6 - Setup Routes'
+excerpt: 'React Router 團隊最近又來一次全面升級，新增了許多功能，特別是 Loader 功能實在是讓我大開眼界。除此之外，我發現他們的文件寫得很好，基本上只要跟著走一遍 Tutorial 就可以掌握新版的寫法調整與新功能哩。'
+tags: ['react', 'reactrouter']
 date: 2023-03-14
-author: "Sean Huang"
-image: "react.jpg"
+author: 'Sean Huang'
+image: 'react.jpg'
 slug: 2023-03-14-react-router-v6-setup
 ---
 
@@ -25,20 +25,20 @@ React Router v6.4 新增的 [Data APIs](https://reactrouter.com/en/main/routers/
 此方法需要傳入一個由物件所組成的陣列（每一個物件就是一組路由），然後把回傳值提供給 `RouterProvider`。
 
 ```jsx
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "@/routes/Home";
-import ProductsPage from "@/routes/Products";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import HomePage from '@/routes/Home'
+import ProductsPage from '@/routes/Products'
 
 const router = createBrowserRouter([
-  { path: "/", element: <HomePage /> },
-  { path: "/products", element: <ProductsPage /> },
-]);
+  { path: '/', element: <HomePage /> },
+  { path: '/products', element: <ProductsPage /> },
+])
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
-);
+  </React.StrictMode>
+)
 ```
 
 > 還有另一種建立方法 `createRoutesFromElement` 個人覺得較為冗長，且跟之前使用 JSX 的寫法相似，這裡就不予介紹啦。
@@ -48,8 +48,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 在 React Router 中要實現頁面跳轉的功能，我們不是使用原生的 `<a>` 標籤，而是使用 React Router 提供的 `<Link>` 元件。
 
 ```jsx
-import { Link, NavLink } from "react-router-dom";
-<Link to="/products">Products Page</Link>;
+import { Link, NavLink } from 'react-router-dom'
+;<Link to="/products">Products Page</Link>
 ```
 
 另一種路由鏈結是 `<NavLink>`，它與 `<Link>` 的作用相同，但是還內建了 `isActive` 和 `isPending` 兩個狀態屬性。
@@ -59,17 +59,17 @@ import { Link, NavLink } from "react-router-dom";
 ```jsx
 const getNavLinkClass = ({ isActive, isPending }) => {
   if (isActive) {
-    return "active";
+    return 'active'
   }
   if (isPending) {
-    return "pending";
+    return 'pending'
   }
-  return "";
-};
+  return ''
+}
 
-<NavLink to="/products" className={getNavLinkClass}>
+;<NavLink to="/products" className={getNavLinkClass}>
   Products Page
-</NavLink>;
+</NavLink>
 ```
 
 在製作巢狀路由時，可以為 `<NavLink>` 加上 `end` 屬性，以確保該元件不會在進入其子路由時，也被匹配到 `isActive` 等狀態，例如：
@@ -90,7 +90,7 @@ const getNavLinkClass = ({ isActive, isPending }) => {
 以下的 RootLayout 元件是一個父路由，我們會使用 `children` 配置子路由，而那些子頁面的內容就會顯示在 `<Outlet />` 這個輸出點的位置。
 
 ```jsx
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom'
 
 const RootLayout = () => {
   return (
@@ -98,10 +98,10 @@ const RootLayout = () => {
       <h1>Root Layout</h1>
       <Outlet />
     </>
-  );
-};
+  )
+}
 
-export default RootLayout;
+export default RootLayout
 ```
 
 > 底下的範例，我們可以看到 `RootLayout` 的擺放位置
@@ -115,16 +115,16 @@ export default RootLayout;
 ```jsx
 const router = createBrowserRouter([
   {
-    path: "/", // 絕對路徑
+    path: '/', // 絕對路徑
     element: <RootLayout />,
     children: [
       // 相對路徑
       // { path: "", element: <HomePage /> },
       { index: true, element: <HomePage /> },
-      { path: "products", element: <ProductsPage /> },
+      { path: 'products', element: <ProductsPage /> },
     ],
   },
-]);
+])
 ```
 
 > 使用 Index Route 會讓程式的語意更加明確，但是不使用也沒關係喔。
@@ -136,11 +136,11 @@ const router = createBrowserRouter([
 製作專案時，我們通常不會直接使用 React Router 內建的錯誤頁面，而是選擇建立一個屬於自己專案的錯誤畫面。
 
 ```jsx
-import { useRouteError } from "react-router-dom";
+import { useRouteError } from 'react-router-dom'
 
 const ErrorPage = () => {
-  const error = useRouteError();
-  console.error(error);
+  const error = useRouteError()
+  console.error(error)
 
   return (
     <div id="error-page">
@@ -150,10 +150,10 @@ const ErrorPage = () => {
         <i>{error.statusText || error.message}</i>
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default ErrorPage;
+export default ErrorPage
 ```
 
 完成了這個簡單的 404 頁面後，可以透過 `errorElement` 來配置這個錯誤處理的專屬頁面。
@@ -161,15 +161,15 @@ export default ErrorPage;
 ```jsx
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <RootLayout />,
     errorElement: <ErrorPage />, // catch any errors
     children: [
       { index: true, element: <HomePage /> },
-      { path: "products", element: <ProductsPage /> },
+      { path: 'products', element: <ProductsPage /> },
     ],
   },
-]);
+])
 ```
 
 ## 程式化導頁 - useNavigate
@@ -179,21 +179,21 @@ const router = createBrowserRouter([
 透過 react-router-dom 提供的 `useNavigate` 函式，就可以執行程式化導頁。
 
 ```jsx
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
 const Home = ({ film }) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleNavigate = () => {
-    navigate("/products");
-  };
+    navigate('/products')
+  }
 
   return (
     <div>
       <button onClick={handleNavigate}>前往產品頁面</button>
     </div>
-  );
-};
+  )
+}
 ```
 
 ## 動態路由與 useParams
@@ -203,18 +203,18 @@ const Home = ({ film }) => {
 在 React Router 中可以使用冒號 (`:`) 代表該片段屬於一個動態路由。
 
 ```jsx
-const router = "createBrowserRouter"([
+const router = 'createBrowserRouter'([
   {
-    path: "/",
+    path: '/',
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: "products", element: <ProductsPage /> },
-      { path: "products/:productId", element: <ProductDetailPage /> },
+      { path: 'products', element: <ProductsPage /> },
+      { path: 'products/:productId', element: <ProductDetailPage /> },
     ],
   },
-]);
+])
 ```
 
 接下來，我們可以透過 React Router 提供的 `useParams` Hook 去取得這個動態路由片段的資訊物件。
@@ -222,30 +222,30 @@ const router = "createBrowserRouter"([
 這裡的 Identifier (`productId`) 是來自於路由設定裡的 `/product/:productId`，因此如果路由配置更改，這裡取得的 Identifier 也會跟著改變喔。
 
 ```jsx
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link } from 'react-router-dom'
 
 const DUMMY_PRODUCTS = [
-  { id: "1", title: "Product 1" },
-  { id: "2", title: "Product 2" },
-];
+  { id: '1', title: 'Product 1' },
+  { id: '2', title: 'Product 2' },
+]
 
 const ProductDetailPage = () => {
-  const params = useParams();
+  const params = useParams()
 
   return (
     <div>
       <h1>Product Detail</h1>
       <p>{params.productId}</p>
-      {DUMMY_PRODUCTS.map((product) => (
+      {DUMMY_PRODUCTS.map(product => (
         <li key={product.id}>
           <Link to={`/products/${product.id}`}>{product.title}</Link>
         </li>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default ProductDetailPage;
+export default ProductDetailPage
 ```
 
 ## 回顧

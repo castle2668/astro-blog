@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #20 物件導向與原型繼承"
-excerpt: "本文主要內容為探討「原型」的相關知識，包含原型繼承、原型鏈、基本物件，以及資源庫 Underscore 裡面的 Reflection 與 Extend 模式。"
-tags: ["javascript"]
+title: 'Understand JavaScript #20 物件導向與原型繼承'
+excerpt: '本文主要內容為探討「原型」的相關知識，包含原型繼承、原型鏈、基本物件，以及資源庫 Underscore 裡面的 Reflection 與 Extend 模式。'
+tags: ['javascript']
 date: 2021-04-12
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-04-12-prototype-chain
 ---
 
@@ -28,22 +28,22 @@ slug: 2021-04-12-prototype-chain
 
 ```javascript
 var person = {
-  firstname: "Default",
-  lastname: "Default",
+  firstname: 'Default',
+  lastname: 'Default',
   getFullName: function () {
-    return this.firstname + " " + this.lastname;
+    return this.firstname + ' ' + this.lastname
   },
-};
+}
 
 var damao = {
-  firstname: "Damao",
-  lastname: "Huang",
-};
+  firstname: 'Damao',
+  lastname: 'Huang',
+}
 
 // Don't do this EVER! for example purposes only.
-damao.__proto__ = person; // (1)
-console.log(damao.getFullName()); // (2) Damao Huang
-console.log(damao.firstname); // (3) Damao
+damao.__proto__ = person // (1)
+console.log(damao.getFullName()) // (2) Damao Huang
+console.log(damao.firstname) // (3) Damao
 ```
 
 1. 將 `damao` 的原型屬性設定為 `person`，意思就是 `damao` 繼承自 `person`。換句話說，就是 `damao` 原來的本質被設定為 `person`。
@@ -57,25 +57,25 @@ console.log(damao.firstname); // (3) Damao
 基本物件就是原型鏈最末端（後代）的東西，如果再往上找（祖先）則會得到 `null`。
 
 ```javascript
-var a = {};
-var b = function () {};
-var c = [];
-var d = "";
+var a = {}
+var b = function () {}
+var c = []
+var d = ''
 
-console.log(a.__proto__); // Object {} → 基本物件
-console.log(a.__proto__.__proto__); // null
+console.log(a.__proto__) // Object {} → 基本物件
+console.log(a.__proto__.__proto__) // null
 
-console.log(b.__proto__); // ƒ () { [native code] }
-console.log(b.__proto__.__proto__); // Object {}
-console.log(b.__proto__.__proto__.__proto__); // null
+console.log(b.__proto__) // ƒ () { [native code] }
+console.log(b.__proto__.__proto__) // Object {}
+console.log(b.__proto__.__proto__.__proto__) // null
 
-console.log(c.__proto__); // []
-console.log(c.__proto__.__proto__); // Object {}
-console.log(c.__proto__.__proto__.__proto__); // null
+console.log(c.__proto__) // []
+console.log(c.__proto__.__proto__) // Object {}
+console.log(c.__proto__.__proto__.__proto__) // null
 
-console.log(d.__proto__); // ""
-console.log(d.__proto__.__proto__); // Object {}
-console.log(d.__proto__.__proto__.__proto__); // null
+console.log(d.__proto__) // ""
+console.log(d.__proto__.__proto__) // Object {}
+console.log(d.__proto__.__proto__.__proto__) // null
 ```
 
 ## Underscore 的 Reflection 與 Extend 模式
@@ -94,30 +94,30 @@ console.log(d.__proto__.__proto__.__proto__); // null
 
 ```javascript
 var person = {
-  firstname: "Default",
-  lastname: "Default",
+  firstname: 'Default',
+  lastname: 'Default',
   getFullName: function () {
-    return this.firstname + " " + this.lastname;
+    return this.firstname + ' ' + this.lastname
   },
-};
+}
 
 var damao = {
-  firstname: "Damao",
-  lastname: "Huang",
-};
+  firstname: 'Damao',
+  lastname: 'Huang',
+}
 
-damao.__proto__ = person; // Don't do this EVER! for example purposes only.
+damao.__proto__ = person // Don't do this EVER! for example purposes only.
 
 // 1. 遍歷物件裡的每個東西
 for (var prop in damao) {
-  console.log(prop + ": " + damao[prop]); // 使用中括號，因為 prop 是字串
+  console.log(prop + ': ' + damao[prop]) // 使用中括號，因為 prop 是字串
 }
 
 // 2. 只取得自己本身的東西
 for (var prop in damao) {
   // 後代可以使用基本物件的方法
   if (damao.hasOwnProperty(prop)) {
-    console.log(prop + ": " + damao[prop]);
+    console.log(prop + ': ' + damao[prop])
   }
 }
 ```
@@ -133,20 +133,20 @@ for (var prop in damao) {
 
 ```javascript
 var sean = {
-  address: "111 Main St.",
+  address: '111 Main St.',
   getFormalFullName: function () {
-    return this.lastname + " " + this.firstname;
+    return this.lastname + ' ' + this.firstname
   },
-};
+}
 
 var sealman = {
   getFirstName: function () {
-    return this.firstname;
+    return this.firstname
   },
-};
+}
 
-_.extend(damao, sean, sealman);
-console.log(damao);
+_.extend(damao, sean, sealman)
+console.log(damao)
 ```
 
 由此可以看出，Underscore 的 `_.extend()` 跟原型鏈的概念不同，它是把很多屬性結合放到一個物件上。

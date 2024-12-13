@@ -1,10 +1,10 @@
 ---
-title: "ES6 Class & Extends 與 ES7 現代寫法"
-excerpt: "本文介紹 ES6 Class 實體與繼承的概念，以及進入 ES7 後出現的簡化寫法。"
-tags: ["javascript"]
+title: 'ES6 Class & Extends 與 ES7 現代寫法'
+excerpt: '本文介紹 ES6 Class 實體與繼承的概念，以及進入 ES7 後出現的簡化寫法。'
+tags: ['javascript']
 date: 2021-09-02
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-09-02-ex6-class-extends-es7
 ---
 
@@ -21,16 +21,16 @@ slug: 2021-09-02-ex6-class-extends-es7
 ```jsx
 class Person {
   constructor() {
-    this.name = "Sean";
+    this.name = 'Sean'
   }
 
   printName() {
-    console.log("My name is ", this.name);
+    console.log('My name is ', this.name)
   }
 }
 
-const Sean = new Person();
-Sean.printName(); // "My name is Sean"
+const Sean = new Person()
+Sean.printName() // "My name is Sean"
 ```
 
 ## Extends
@@ -42,27 +42,27 @@ Sean.printName(); // "My name is Sean"
 ```jsx
 class Human {
   constructor() {
-    this.gender = "female";
+    this.gender = 'female'
   }
   printGender() {
-    console.log(`My gender is ${this.gender}`);
+    console.log(`My gender is ${this.gender}`)
   }
 }
 
 class Person extends Human {
   constructor() {
-    super();
-    this.name = "Sean";
-    this.gender = "male";
+    super()
+    this.name = 'Sean'
+    this.gender = 'male'
   }
   printName() {
-    console.log(`My name is ${this.name}`);
+    console.log(`My name is ${this.name}`)
   }
 }
 
-const Sean = new Person();
-Sean.printName(); // "My name is Sean"
-Sean.printGender(); // "My gender is male"
+const Sean = new Person()
+Sean.printName() // "My name is Sean"
+Sean.printGender() // "My gender is male"
 ```
 
 ## Class 在 ES7 更新的寫法
@@ -75,25 +75,25 @@ ES7 的 Class 將方法寫成了一個**儲存值為函式的屬性**，寫法�
 
 ```jsx
 class Human {
-  gender = "female";
+  gender = 'female'
 
   printGender = () => {
-    console.log(`My gender is ${this.gender}`);
-  };
+    console.log(`My gender is ${this.gender}`)
+  }
 }
 
 class Person extends Human {
-  name = "Sean";
-  gender = "male";
+  name = 'Sean'
+  gender = 'male'
 
   printName = () => {
-    console.log(`My name is ${this.name}`);
-  };
+    console.log(`My name is ${this.name}`)
+  }
 }
 
-const Sean = new Person();
-Sean.printName(); // "My name is Sean"
-Sean.printGender(); // "My gender is male"
+const Sean = new Person()
+Sean.printName() // "My name is Sean"
+Sean.printGender() // "My gender is male"
 ```
 
 > 以上資源是我自己整理過後的筆記，若有錯誤歡迎隨時和我聯繫

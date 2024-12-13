@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #11 傳值和傳參考"
-excerpt: "本文主要介紹「傳值和傳參考」的概念，這對於 JavaScript 的開發與除錯會很有幫助，如果不知道這些觀念，可能會導致一些很難 Debug 的奇怪問題。"
-tags: ["javascript"]
+title: 'Understand JavaScript #11 傳值和傳參考'
+excerpt: '本文主要介紹「傳值和傳參考」的概念，這對於 JavaScript 的開發與除錯會很有幫助，如果不知道這些觀念，可能會導致一些很難 Debug 的奇怪問題。'
+tags: ['javascript']
 date: 2021-03-23
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-03-23-value-and-reference
 ---
 
@@ -38,14 +38,14 @@ slug: 2021-03-23-value-and-reference
 純值的 a 與複製的純值 b 都有自己的記憶體位址，所以當我們改變 a，並不會對 b 有任何影響。
 
 ```javascript
-var a = 3;
-var b;
+var a = 3
+var b
 
-b = a;
-a = 2;
+b = a
+a = 2
 
-console.log(a); // 2
-console.log(b); // 3
+console.log(a) // 2
+console.log(b) // 3
 ```
 
 ### By Reference (All Objects, including Functions)
@@ -55,14 +55,14 @@ console.log(b); // 3
 所以如果更改了 c 或 d 任何一個的值，都是在更改它們共同指向的那個物件。
 
 ```javascript
-var c = { greeting: "hi" };
-var d;
+var c = { greeting: 'hi' }
+var d
 
-d = c;
-c.greeting = "hello"; // mutate
+d = c
+c.greeting = 'hello' // mutate
 
-console.log(c); // {greeting: "hello"}
-console.log(d); // {greeting: "hello"}
+console.log(c) // {greeting: "hello"}
+console.log(d) // {greeting: "hello"}
 ```
 
 ### By Reference (even as Parameters)
@@ -70,17 +70,17 @@ console.log(d); // {greeting: "hello"}
 使用函式的「參數」來傳遞物件時，也會是以傳參考 (By Reference) 的方式傳入。
 
 ```javascript
-var c = { greeting: "hi" };
-var d;
-d = c;
+var c = { greeting: 'hi' }
+var d
+d = c
 
 function changeGreeting(obj) {
-  obj.greeting = "Hola"; // mutate
+  obj.greeting = 'Hola' // mutate
 }
 
-changeGreeting(d);
-console.log(c); // {greeting: "Hola"}
-console.log(d); // {greeting: "Hola"}
+changeGreeting(d)
+console.log(c) // {greeting: "Hola"}
+console.log(d) // {greeting: "Hola"}
 ```
 
 ## 什麼是 Mutate
@@ -103,16 +103,16 @@ Mutate 是一個電腦科學家決定的複雜詞彙，它就是改變某件事 
 
 ```javascript
 // equals operator sets up new memory space (new address)
-var c = { greeting: "hi" };
-var d;
-d = c;
+var c = { greeting: 'hi' }
+var d
+d = c
 
-console.log(c); // {greeting: "hi"}
-console.log(d); // {greeting: "hi"}
+console.log(c) // {greeting: "hi"}
+console.log(d) // {greeting: "hi"}
 
-c = { greeting: "howdy" };
-console.log(c); // {greeting: "howdy"}
-console.log(d); // {greeting: "hi"}
+c = { greeting: 'howdy' }
+console.log(c) // {greeting: "howdy"}
+console.log(d) // {greeting: "hi"}
 ```
 
 ## 回顧

@@ -1,10 +1,10 @@
 ---
-title: "[Algorithms] Mean Median Mode"
-excerpt: "Learn how to calculate the mean, median, and mode of a number array in JavaScript with a reusable, functional approach. We’ll split the task into easy-to-follow steps that make this algorithm both efficient and beginner-friendly!"
-tags: ["algorithms", "javascript"]
+title: '[Algorithms] Mean Median Mode'
+excerpt: 'Learn how to calculate the mean, median, and mode of a number array in JavaScript with a reusable, functional approach. We’ll split the task into easy-to-follow steps that make this algorithm both efficient and beginner-friendly!'
+tags: ['algorithms', 'javascript']
 date: 2024-10-02
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2024-10-02-mean-median-mode
 ---
 
@@ -33,40 +33,40 @@ function meanMedianMode(array) {
     mean: getMean(array),
     median: getMedian(array),
     mode: getMode(array),
-  };
+  }
 }
 
 function getMean(array) {
-  let sum = 0;
-  array.forEach((num) => (sum += num));
-  return sum / array.length;
+  let sum = 0
+  array.forEach(num => (sum += num))
+  return sum / array.length
 }
 
 function getMedian(array) {
-  array.sort((a, b) => a - b);
-  const middle = array.length / 2;
+  array.sort((a, b) => a - b)
+  const middle = array.length / 2
   return array.length % 2 !== 0
     ? array[Math.floor(middle)]
-    : (array[middle - 1] + array[middle]) / 2;
+    : (array[middle - 1] + array[middle]) / 2
 }
 
 function getMode(array) {
-  const frequency = {};
-  array.forEach((num) => (frequency[num] = (frequency[num] || 0) + 1));
+  const frequency = {}
+  array.forEach(num => (frequency[num] = (frequency[num] || 0) + 1))
 
   let maxFreq = 0,
-    modes = [];
+    modes = []
   for (const num in frequency) {
     if (frequency[num] > maxFreq) {
-      modes = [Number(num)];
-      maxFreq = frequency[num];
-    } else if (frequency[num] === maxFreq) modes.push(Number(num));
+      modes = [Number(num)]
+      maxFreq = frequency[num]
+    } else if (frequency[num] === maxFreq) modes.push(Number(num))
   }
-  return modes.length === Object.keys(frequency).length ? [] : modes;
+  return modes.length === Object.keys(frequency).length ? [] : modes
 }
 
 // Example Usage
-console.log(meanMedianMode([9, 10, 23, 10, 23, 9]));
+console.log(meanMedianMode([9, 10, 23, 10, 23, 9]))
 // Output: { mean: 14, median: 10, mode: [9, 10, 23] }
 ```
 

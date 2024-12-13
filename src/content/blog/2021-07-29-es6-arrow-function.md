@@ -1,10 +1,10 @@
 ---
-title: "JavaScript ES6 箭頭函式與傳統函式的差異"
-excerpt: "本文內容主要探討 JavaScript ES6 中的「箭頭函式」的相關概念。"
-tags: ["javascript"]
+title: 'JavaScript ES6 箭頭函式與傳統函式的差異'
+excerpt: '本文內容主要探討 JavaScript ES6 中的「箭頭函式」的相關概念。'
+tags: ['javascript']
 date: 2021-07-29
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-07-29-es6-arrow-function
 ---
 
@@ -15,22 +15,22 @@ slug: 2021-07-29-es6-arrow-function
 ```javascript
 // 傳統函式
 var callSomeone = function (someone) {
-  return someone + "吃飯了";
-};
+  return someone + '吃飯了'
+}
 
 // 箭頭函式
-var callSomeone = (someone) => {
-  return someone + "吃飯了";
-};
+var callSomeone = someone => {
+  return someone + '吃飯了'
+}
 
-console.log(callSomeone("小明")); // "小明吃飯了"
+console.log(callSomeone('小明')) // "小明吃飯了"
 ```
 
 如果函式的 Code 只有一行 `return ...`，則可以再省略大括號 `{}` 和 `return`，改為只有一行的形式。
 
 ```javascript
-var callSomeone = (someone) => someone + "吃飯了";
-console.log(callSomeone("小明")); // "小明吃飯了"
+var callSomeone = someone => someone + '吃飯了'
+console.log(callSomeone('小明')) // "小明吃飯了"
 ```
 
 另外，參數只有一個的時候 `(someone)` 的括號其實可以省略，但如果是**不帶入參數**的情況就不能省略，所以個人習慣一律都不省略。
@@ -46,10 +46,10 @@ console.log(callSomeone("小明")); // "小明吃飯了"
 ```javascript
 // 傳統函式可以使用 arguments 參數
 const updateEasyCard = function (five) {
-  console.log(five); // 5
-  console.log(arguments); // Arguments(4) [5, 10, 15, 20, callee: ƒ, Symbol(Symbol.iterator): ƒ]
-};
-updateEasyCard(5, 10, 15, 20);
+  console.log(five) // 5
+  console.log(arguments) // Arguments(4) [5, 10, 15, 20, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+}
+updateEasyCard(5, 10, 15, 20)
 ```
 
 如果想要在箭頭函式中像是 `arguments` 參數那樣**大量使用參數**的話，可以使用之前**其餘參數**來幫忙做到，而且其餘參數會組出一個真正的陣列，我們可以在它身上使用各種陣列方法。
@@ -57,10 +57,10 @@ updateEasyCard(5, 10, 15, 20);
 ```javascript
 // 箭頭函式使用其餘參數達到 arguments 參數的效果
 const updateEasyCard = (five, ...arg) => {
-  console.log(five); // 5
-  console.log(arg); // (3) [10, 15, 20]
-};
-updateEasyCard(5, 10, 15, 20);
+  console.log(five) // 5
+  console.log(arg) // (3) [10, 15, 20]
+}
+updateEasyCard(5, 10, 15, 20)
 ```
 
 ## 差別三：this 綁定的差異
@@ -74,21 +74,21 @@ updateEasyCard(5, 10, 15, 20);
 
 ```javascript
 // 傳統函式
-var name = "全域阿婆";
+var name = '全域阿婆'
 var auntie = {
-  name: "漂亮阿姨",
+  name: '漂亮阿姨',
   callName: function () {
     // this => auntie
-    console.log(`1, ${this.name}, ${this}`); // 1, 漂亮阿姨, [object Object]
+    console.log(`1, ${this.name}, ${this}`) // 1, 漂亮阿姨, [object Object]
     setTimeout(function () {
       // this => window
-      console.log(`2, ${this.name}`); // 2, 全域阿婆
-      console.log(`3, ${this}`); // 3, [object Window]
-    }, 10);
+      console.log(`2, ${this.name}`) // 2, 全域阿婆
+      console.log(`3, ${this}`) // 3, [object Window]
+    }, 10)
   },
-};
+}
 
-auntie.callName();
+auntie.callName()
 ```
 
 現在我們試著把函式 `callName` 改成箭頭函式，執行後會發現裡面的 `this` 都是指向全域的 `window`。因為箭頭函式沒有自己的 `this` 變數，裡面所使用的 `this` 的值是由上下文決定的，而不是看呼叫方法的物件。
@@ -98,20 +98,20 @@ auntie.callName();
 當 Parser 在讀程式碼、定義這些 `this` 的時候，所在的執行環境是全域執行環境，因此 `this` 就會指向**定義時所在的執行環境的物件**，也就是 `window` 物件。
 
 ```javascript
-var name = "全域阿婆";
+var name = '全域阿婆'
 var auntie = {
-  name: "漂亮阿姨",
+  name: '漂亮阿姨',
   callName: () => {
-    console.log(`1, ${this.name}, ${this}`); // 1, 全域阿婆, [object Window]
+    console.log(`1, ${this.name}, ${this}`) // 1, 全域阿婆, [object Window]
     // 這邊 setTimeout 就算改用傳統函式也一樣，因為外層是箭頭函式了
     setTimeout(() => {
-      console.log(`2, ${this.name}`); // 2, 全域阿婆
-      console.log(`3, ${this}`); // 3, [object Window]
-    }, 10);
+      console.log(`2, ${this.name}`) // 2, 全域阿婆
+      console.log(`3, ${this}`) // 3, [object Window]
+    }, 10)
   },
-};
+}
 
-auntie.callName();
+auntie.callName()
 ```
 
 ### 常見的兼容寫法 (self)
@@ -120,19 +120,19 @@ auntie.callName();
 
 ```javascript
 var auntie = {
-  name: "漂亮阿姨",
+  name: '漂亮阿姨',
   // 在傳統函式裡面盡情地使用箭頭函式
   callName() {
     // 定義 self 變數
-    var self = this;
+    var self = this
     // 使用箭頭函式
     setTimeout(() => {
-      console.log(this);
-      console.log(self, self.name);
-    }, 10);
+      console.log(this)
+      console.log(self, self.name)
+    }, 10)
   },
-};
-auntie.callName();
+}
+auntie.callName()
 ```
 
 > 補充一下，因為定義 `setTimeout` 時執行環境就是在 `callName()` 函式執行環境下，所以其實 `setTimeout` 裡面的 `this` 本來就是指向 `auntie` 物件。  

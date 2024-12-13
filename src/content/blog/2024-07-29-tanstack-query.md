@@ -1,10 +1,10 @@
 ---
-title: "使用 TanStack Query 輕鬆處理 HTTP Requests"
-excerpt: "TanStack Query 可以幫助我們發送 HTTP Request 也就是串接 API，讓前端畫面與後端資料能夠溝通與同步。沒錯！這些事情透過 useEffect 以及 Fetch 或 Axios 就能做到了，只是 TanStack Query 大幅地簡化了這方面的 Code，一起來看看 TanStack Query 如何提升開發者體驗吧。"
-tags: ["react", "tanstackquery"]
+title: '使用 TanStack Query 輕鬆處理 HTTP Requests'
+excerpt: 'TanStack Query 可以幫助我們發送 HTTP Request 也就是串接 API，讓前端畫面與後端資料能夠溝通與同步。沒錯！這些事情透過 useEffect 以及 Fetch 或 Axios 就能做到了，只是 TanStack Query 大幅地簡化了這方面的 Code，一起來看看 TanStack Query 如何提升開發者體驗吧。'
+tags: ['react', 'tanstackquery']
 date: 2024-07-29
-author: "Sean Huang"
-image: "react.jpg"
+author: 'Sean Huang'
+image: 'react.jpg'
 slug: 2024-07-29-tanstack-query
 ---
 
@@ -33,10 +33,10 @@ import {
   useQueryClient,
   QueryClient,
   QueryClientProvider,
-} from "@tanstack/react-query";
+} from '@tanstack/react-query'
 
 // Create a client
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
 function App() {
   return (
@@ -44,7 +44,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Example />
     </QueryClientProvider>
-  );
+  )
 }
 ```
 
@@ -73,35 +73,35 @@ function App() {
 範例：
 
 ```jsx
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from '@tanstack/react-query'
 
 function Example() {
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["exampleData"],
+    queryKey: ['exampleData'],
     queryFn: async () => {
       const response = await fetch(
-        "https://api.github.com/repos/TanStack/query",
-      );
-      return await response.json();
+        'https://api.github.com/repos/TanStack/query'
+      )
+      return await response.json()
     },
-  });
+  })
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return 'Loading...'
 
-  if (isError) return "An error has occurred: " + error.message;
+  if (isError) return 'An error has occurred: ' + error.message
 
   return (
     <div>
       <h1>{data.full_name}</h1>
       <p>{data.description}</p>
-      <strong>👀 {data.subscribers_count}</strong>{" "}
-      <strong>✨ {data.stargazers_count}</strong>{" "}
+      <strong>👀 {data.subscribers_count}</strong>{' '}
+      <strong>✨ {data.stargazers_count}</strong>{' '}
       <strong>🍴 {data.forks_count}</strong>
     </div>
-  );
+  )
 }
 
-export default Example;
+export default Example
 ```
 
 ### 如何為 queryFn 帶上參數
@@ -112,9 +112,9 @@ export default Example;
 
 ```jsx
 const { data, isPending, isError, error } = useQuery({
-  queryKey: ["exampleData", { search: searchTerm }],
+  queryKey: ['exampleData', { search: searchTerm }],
   queryFn: ({ signal }) => fetchData({ signal, searchTerm }),
-});
+})
 ```
 
 ## useMutation Hook
@@ -134,24 +134,24 @@ const { data, isPending, isError, error } = useQuery({
 範例：
 
 ```jsx
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 // 引入 useMutation Hook
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from '@tanstack/react-query'
 
 function NewEvent() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   // 使用 useMutation Hook
   const { mutate, isPending, isError, error } = useMutation({
     mutationFn: createNewEvent,
     onSuccess: () => {
-      navigate("/home");
+      navigate('/home')
     },
-  });
+  })
 
   // 將資料傳送給後端
   function handleSubmit(formData) {
-    mutate({ event: formData }); // 這個 { event: formData } 參數是依照 API 要求的 Payload 格式
+    mutate({ event: formData }) // 這個 { event: formData } 參數是依照 API 要求的 Payload 格式
   }
 
   return (
@@ -168,10 +168,10 @@ function NewEvent() {
         {isError && <p>Failed to create event.</p>}
       </form>
     </>
-  );
+  )
 }
 
-export default Example;
+export default Example
 ```
 
 ### QueryClient - Invalidate Queries
@@ -182,10 +182,10 @@ export default Example;
 const { mutate, isPending, isError, error } = useMutation({
   mutationFn: createNewEvent,
   onSuccess: () => {
-    queryClient.invalidateQueries({ queryKey: ["exampleData"] });
-    navigate("/home");
+    queryClient.invalidateQueries({ queryKey: ['exampleData'] })
+    navigate('/home')
   },
-});
+})
 ```
 
 ### Optimistic Updating - onMutate + onError + onSettled
@@ -201,12 +201,12 @@ const { mutate, isPending, isError, error } = useMutation({
 ```jsx
 const { mutate, isPending, isError, error } = useMutation({
   mutationFn: updateEventData,
-  onMutate: async (data) => {
-    const newEvent = data.event;
-    await queryClient.cancelQueries({ queryKey: ["events", params.id] }); // 先確保取消所有此 Key 的查詢
-    queryClient.setQueryData(["events", params.id], newEvent); // 手動更新此 Key 的緩存
+  onMutate: async data => {
+    const newEvent = data.event
+    await queryClient.cancelQueries({ queryKey: ['events', params.id] }) // 先確保取消所有此 Key 的查詢
+    queryClient.setQueryData(['events', params.id], newEvent) // 手動更新此 Key 的緩存
   },
-});
+})
 ```
 
 更完整一點的寫法，我們還可以在 `onMutate` 中透過 `queryClient.getQueryData()`取得緩存中的前一個結果並且放在 `return`中回傳，這個回傳資料可以在 `onError` 的 `context` 中拿到，我們可以把這個東西用來當作錯誤情況的退路。
@@ -216,21 +216,21 @@ const { mutate, isPending, isError, error } = useMutation({
 ```jsx
 const { mutate, isPending, isError, error } = useMutation({
   mutationFn: updateEventData,
-  onMutate: async (data) => {
-    const newEvent = data.event;
+  onMutate: async data => {
+    const newEvent = data.event
 
-    await queryClient.cancelQueries({ queryKey: ["events", params.id] });
-    const previousEvent = queryClient.getQueryData(); // 更新前的資料
+    await queryClient.cancelQueries({ queryKey: ['events', params.id] })
+    const previousEvent = queryClient.getQueryData() // 更新前的資料
 
-    queryClient.setQueryData(["events", params.id], newEvent);
+    queryClient.setQueryData(['events', params.id], newEvent)
 
-    return { previousEvent }; // 簡潔寫法
+    return { previousEvent } // 簡潔寫法
   },
   onError: (error, data, context) => {
-    queryClient.setQueryData(["events", params.id], context.previousEvent); // 錯誤處理
+    queryClient.setQueryData(['events', params.id], context.previousEvent) // 錯誤處理
   },
   onSettled: () => {
-    queryClient.invalidateQueries({ queryKey: ["events", params.id] });
+    queryClient.invalidateQueries({ queryKey: ['events', params.id] })
   },
-});
+})
 ```

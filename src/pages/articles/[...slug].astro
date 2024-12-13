@@ -1,31 +1,29 @@
 ---
-import { type CollectionEntry, getCollection, getEntry } from "astro:content";
-
-import Tags from "../../components/Tags.astro";
-import MainLayout from "../../layouts/MainLayout.astro";
-import { formatDate } from "../../utils";
+import { type CollectionEntry, getCollection, getEntry } from 'astro:content'
+import Tags from '../../components/Tags.astro'
+import MainLayout from '../../layouts/MainLayout.astro'
+import { formatDate } from '../../utils'
 
 export async function getStaticPaths() {
-  const allBlogArticles: CollectionEntry<"blog">[] =
-    await getCollection("blog");
-  return allBlogArticles.map((article) => ({
+  const allBlogArticles: CollectionEntry<'blog'>[] = await getCollection('blog')
+  return allBlogArticles.map(article => ({
     params: { slug: article.slug },
-  }));
+  }))
 }
 
-const { slug } = Astro.params;
+const { slug } = Astro.params
 
 if (slug === undefined) {
-  throw new Error("Slug is required");
+  throw new Error('Slug is required')
 }
 
-const entry = await getEntry("blog", slug);
+const entry = await getEntry('blog', slug)
 
 if (entry === undefined) {
-  return Astro.redirect("/404");
+  return Astro.redirect('/404')
 }
 
-const { Content } = await entry.render();
+const { Content } = await entry.render()
 ---
 
 <MainLayout
@@ -48,7 +46,7 @@ const { Content } = await entry.render();
       </h3>
       <Tags tags={entry.data.tags} />
       <img
-        src={"/images/" + entry.data.image}
+        src={'/images/' + entry.data.image}
         alt="Article Image"
         class="w-full h-auto rounded-xl my-6 max-h-96 object-center object-cover"
       />
@@ -69,32 +67,32 @@ const { Content } = await entry.render();
 </MainLayout>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const articleContent = document.querySelector(".article-content");
-    const toc = document.getElementById("toc");
+  document.addEventListener('DOMContentLoaded', () => {
+    const articleContent = document.querySelector('.article-content')
+    const toc = document.getElementById('toc')
 
-    if (!articleContent || !toc) return;
+    if (!articleContent || !toc) return
 
-    const headings = articleContent.querySelectorAll("h1, h2, h3, h4, h5, h6");
+    const headings = articleContent.querySelectorAll('h1, h2, h3, h4, h5, h6')
 
-    headings.forEach((heading) => {
-      const level = parseInt(heading.tagName[1]); // h1, h2, h3, ...
-      const id = heading.id;
-      const text = heading.textContent;
+    headings.forEach(heading => {
+      const level = parseInt(heading.tagName[1]) // h1, h2, h3, ...
+      const id = heading.id
+      const text = heading.textContent
 
-      const li = document.createElement("li");
-      const a = document.createElement("a");
-      a.href = `#${id}`;
-      a.textContent = text;
-      a.classList.add(`heading-${level}`);
-      li.appendChild(a);
-      toc.appendChild(li);
-    });
+      const li = document.createElement('li')
+      const a = document.createElement('a')
+      a.href = `#${id}`
+      a.textContent = text
+      a.classList.add(`heading-${level}`)
+      li.appendChild(a)
+      toc.appendChild(li)
+    })
 
     if (toc.children.length === 0) {
-      toc.style.display = "none";
+      toc.style.display = 'none'
     }
-  });
+  })
 </script>
 
 <style is:global>
@@ -124,14 +122,16 @@ const { Content } = await entry.render();
     color: #c1170c;
   }
 
-  html.light .article-content > p code:not([class]),
+  html.light .article-content p code:not([class]),
+  html.light .article-content li code:not([class]),
   html.light .article-content > code:not([class]) {
     background-color: #edf1f7;
     font-size: 14px;
     padding: 2px 4px;
   }
 
-  html.dark .article-content > p code:not([class]),
+  html.dark .article-content p code:not([class]),
+  html.dark .article-content li code:not([class]),
   html.dark .article-content > code:not([class]) {
     background-color: #415977;
     font-size: 14px;

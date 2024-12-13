@@ -1,10 +1,10 @@
 ---
-title: "Vue.js 使用 v-bind 動態綁定 Class、Style 與各種屬性"
-excerpt: "本篇介紹如何透過 v-bind 指令來動態綁定屬性，這是很常用到的技巧喔，以下就來介紹各種 v-bind 綁定的用法吧！"
-tags: ["vue"]
+title: 'Vue.js 使用 v-bind 動態綁定 Class、Style 與各種屬性'
+excerpt: '本篇介紹如何透過 v-bind 指令來動態綁定屬性，這是很常用到的技巧喔，以下就來介紹各種 v-bind 綁定的用法吧！'
+tags: ['vue']
 date: 2020-05-24
-author: "海豹人 Sealman"
-image: "development.jpg"
+author: '海豹人 Sealman'
+image: 'development.jpg'
 slug: 2020-05-24-vue-bind-class
 ---
 
@@ -39,14 +39,14 @@ v-bind 這個指令可以幫 HTML 標籤的屬性綁定值，讓資料可以直�
 
 <script>
   var app = new Vue({
-    el: "#app",
+    el: '#app',
     data: {
       styleObject: {
-        backgroundColor: "red",
-        borderWidth: "5px",
+        backgroundColor: 'red',
+        borderWidth: '5px',
       },
     },
-  });
+  })
 </script>
 ```
 

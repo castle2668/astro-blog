@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
 const SearchPage = () => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('')
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const queryParam = urlParams.get("query");
+    const urlParams = new URLSearchParams(window.location.search)
+    const queryParam = urlParams.get('query')
     if (queryParam) {
-      setQuery(queryParam);
+      setQuery(queryParam)
     }
-  }, []);
+  }, [])
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
-  };
+    setQuery(event.target.value)
+  }
 
   const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    window.location.href = `/articles/search?query=${encodeURIComponent(query)}`;
-  };
+    event.preventDefault()
+    window.location.href = `/articles/search?query=${encodeURIComponent(query)}`
+  }
 
   return (
     <form
@@ -36,17 +36,17 @@ const SearchPage = () => {
           name="query"
           value={query}
           onChange={handleChange}
-          className="bg-gray-50 dark:bg-gray-600 border border-gray-300 dark:border-gray-600 text-sm rounded-lg focus:outline-maple-600 w-full p-2.5"
+          className="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm focus:outline-maple-600 dark:border-gray-600 dark:bg-gray-600"
           placeholder="Search articles..."
           required
         />
       </div>
       <button
         type="submit"
-        className="p-2.5 ms-2 text-sm font-medium text-white bg-maple-500 rounded-lg border border-maple-500 hover:bg-maple-600 focus:ring-4 focus:outline-none focus:ring-maple-300"
+        className="ms-2 rounded-lg border border-maple-500 bg-maple-500 p-2.5 text-sm font-medium text-white hover:bg-maple-600 focus:outline-none focus:ring-4 focus:ring-maple-300"
       >
         <svg
-          className="w-4 h-4"
+          className="h-4 w-4"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -63,7 +63,7 @@ const SearchPage = () => {
         <span className="sr-only">Search</span>
       </button>
     </form>
-  );
-};
+  )
+}
 
-export default SearchPage;
+export default SearchPage

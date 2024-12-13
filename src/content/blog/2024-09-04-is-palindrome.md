@@ -1,10 +1,10 @@
 ---
-title: "[Algorithms] Is Palindrome"
+title: '[Algorithms] Is Palindrome'
 excerpt: "The 'Is Palindrome' algorithm checks whether a string reads the same forward and backward, ignoring spaces and punctuation. It's a simple yet classic algorithm that can be easily implemented with JavaScript string and array manipulation."
-tags: ["algorithms", "javascript"]
+tags: ['algorithms', 'javascript']
 date: 2024-09-04
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2024-09-04-is-palindrome
 ---
 
@@ -28,21 +28,21 @@ Given the string: `"A Santa at NASA"`, the algorithm should return true because,
 
 ```javascript
 function isPalindrome(string) {
-  string = string.toLowerCase(); // Step 1: Convert to lowercase
-  const charactersArr = string.split("");
-  const validCharacters = "abcdefghijklmnopqrstuvwxyz".split(""); // Alphabet array
+  string = string.toLowerCase() // Step 1: Convert to lowercase
+  const charactersArr = string.split('')
+  const validCharacters = 'abcdefghijklmnopqrstuvwxyz'.split('') // Alphabet array
 
   // Step 2: Filter out non-alphabetic characters
-  let lettersArr = [];
-  charactersArr.forEach((char) => {
-    if (validCharacters.indexOf(char) > -1) lettersArr.push(char);
-  });
+  let lettersArr = []
+  charactersArr.forEach(char => {
+    if (validCharacters.indexOf(char) > -1) lettersArr.push(char)
+  })
 
   // Step 3: Compare the string with its reverse
-  return lettersArr.join("") === lettersArr.reverse().join("");
+  return lettersArr.join('') === lettersArr.reverse().join('')
 }
 
-console.log(isPalindrome("A Santa at NASA")); // true
+console.log(isPalindrome('A Santa at NASA')) // true
 ```
 
 ## Conclusion

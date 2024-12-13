@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #18 bind()、call() 與 apply()"
-excerpt: "本文主要內容為探討 bind()、call() 與 apply() 的相關知識，這三個函式都與 this 有關，可以用來控制 this 變數。"
-tags: ["javascript"]
+title: 'Understand JavaScript #18 bind()、call() 與 apply()'
+excerpt: '本文主要內容為探討 bind()、call() 與 apply() 的相關知識，這三個函式都與 this 有關，可以用來控制 this 變數。'
+tags: ['javascript']
 date: 2021-04-08
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-04-08-bind-call-apply
 ---
 
@@ -18,13 +18,13 @@ slug: 2021-04-08-bind-call-apply
 
 ```javascript
 var person = {
-  firstname: "Damao",
-  lastname: "Huang",
+  firstname: 'Damao',
+  lastname: 'Huang',
   getFullName: function () {
-    var fullName = `${this.firstname} ${this.lastname}`;
-    return fullName;
+    var fullName = `${this.firstname} ${this.lastname}`
+    return fullName
   },
-};
+}
 ```
 
 > 這裡的 this 關鍵字會指向包含該方法的物件，也就是 `person`。
@@ -38,10 +38,10 @@ var person = {
 
 ```javascript
 var logName = function (lang1, lang2) {
-  console.log(`Logged: ${this.getFullName()}`);
-};
+  console.log(`Logged: ${this.getFullName()}`)
+}
 
-logName(); // Uncaught TypeError: this.getFullName is not a function
+logName() // Uncaught TypeError: this.getFullName is not a function
 ```
 
 我們可以用 `bind()` 控制 this 的指向，強迫讓 this 指向 `person` 物件。
@@ -52,13 +52,13 @@ logName(); // Uncaught TypeError: this.getFullName is not a function
 
 ```javascript
 var logName = function (lang1, lang2) {
-  console.log(`Logged: ${this.getFullName()}`);
-  console.log(`Arguments: ${lang1} ${lang2}`);
-};
+  console.log(`Logged: ${this.getFullName()}`)
+  console.log(`Arguments: ${lang1} ${lang2}`)
+}
 
-var logPersonName = logName.bind(person);
+var logPersonName = logName.bind(person)
 
-logPersonName("zh-tw", "en");
+logPersonName('zh-tw', 'en')
 // Logged: Damao Huang
 // Arguments: zh-tw en
 ```
@@ -67,10 +67,10 @@ logPersonName("zh-tw", "en");
 
 ```javascript
 var logName = function (lang1, lang2) {
-  console.log(`Logged: ${this.getFullName()}`);
-}.bind(person);
+  console.log(`Logged: ${this.getFullName()}`)
+}.bind(person)
 
-logName(); // Logged: Damao Huang
+logName() // Logged: Damao Huang
 ```
 
 ## call()
@@ -81,11 +81,11 @@ logName(); // Logged: Damao Huang
 
 ```javascript
 var logName = function (lang1, lang2) {
-  console.log(`Logged: ${this.getFullName()}`);
-  console.log(`Arguments: ${lang1} ${lang2}`);
-};
+  console.log(`Logged: ${this.getFullName()}`)
+  console.log(`Arguments: ${lang1} ${lang2}`)
+}
 
-logName.call(person, "zh-tw", "en");
+logName.call(person, 'zh-tw', 'en')
 // Logged: Damao Huang
 // Arguments: zh-tw en
 ```
@@ -93,10 +93,10 @@ logName.call(person, "zh-tw", "en");
 另外，我們也可以在創造函式後立刻執行，有點類似立即函式的概念，但這邊不是用 IIFE 執行函式的，而是用 `.call()` 來完成。
 
 ```javascript
-(function (lang1, lang2) {
-  console.log(`Logged: ${this.getFullName()}`);
-  console.log(`Arguments: ${lang1} ${lang2}`);
-}).call(person, "zh-tw", "en");
+;(function (lang1, lang2) {
+  console.log(`Logged: ${this.getFullName()}`)
+  console.log(`Arguments: ${lang1} ${lang2}`)
+}).call(person, 'zh-tw', 'en')
 ```
 
 ## apply()
@@ -106,7 +106,7 @@ logName.call(person, "zh-tw", "en");
 - 第二個參數是傳給函式的參數，型別必須為陣列
 
 ```javascript
-logName.apply(person, ["zh-tw", "en"]);
+logName.apply(person, ['zh-tw', 'en'])
 // Logged: Damao Huang
 // Arguments: zh-tw en
 ```
@@ -116,10 +116,10 @@ logName.apply(person, ["zh-tw", "en"]);
 另外，與 call 一樣，apply 也可以在創造函式後立刻呼叫它。
 
 ```javascript
-(function (lang1, lang2) {
-  console.log(`Logged: ${this.getFullName()}`);
-  console.log(`Arguments: ${lang1} ${lang2}`);
-}).apply(person, ["zh-tw", "en"]);
+;(function (lang1, lang2) {
+  console.log(`Logged: ${this.getFullName()}`)
+  console.log(`Arguments: ${lang1} ${lang2}`)
+}).apply(person, ['zh-tw', 'en'])
 ```
 
 ## 實際應用
@@ -136,12 +136,12 @@ logName.apply(person, ["zh-tw", "en"]);
 
 ```javascript
 var person2 = {
-  firstname: "Sealman",
-  lastname: "Huang",
-};
+  firstname: 'Sealman',
+  lastname: 'Huang',
+}
 
-console.log(person.getFullName.call(person2));
-console.log(person.getFullName.apply(person2));
+console.log(person.getFullName.call(person2))
+console.log(person.getFullName.apply(person2))
 ```
 
 這邊我用 `apply` 去呼叫 `person` 裡面的 `getFullName` 方法，同時我也設定 this 關鍵字指向 `person2`，這樣子我們就能借用一個函式。
@@ -159,22 +159,22 @@ console.log(person.getFullName.apply(person2));
 
 ```javascript
 function multiply(a, b) {
-  return a * b;
+  return a * b
 }
 
-var multiplyCopy = multiply.bind(this);
-console.log(multiplyCopy(5, 2)); // 10
+var multiplyCopy = multiply.bind(this)
+console.log(multiplyCopy(5, 2)) // 10
 
-var multiplyByTwo = multiply.bind(this, 2);
-console.log(multiplyByTwo(3)); // 6
+var multiplyByTwo = multiply.bind(this, 2)
+console.log(multiplyByTwo(3)) // 6
 ```
 
 換句話說，此時拷貝函式 `multiplyByTwo` 的程式碼就等同於以下程式碼。
 
 ```javascript
 function multiplyByTwo(b) {
-  var a = 2;
-  return a * b;
+  var a = 2
+  return a * b
 }
 ```
 
@@ -183,10 +183,10 @@ function multiplyByTwo(b) {
 最後，如果把兩個參數都傳給 bind，就會變成 a 與 b 都是固定的值，此時不管怎麼傳，結果都會是 2 乘以 10 等於 20。
 
 ```javascript
-var multiplyByTwo = multiply.bind(this, 2, 10);
+var multiplyByTwo = multiply.bind(this, 2, 10)
 
-console.log(multiplyByTwo(3)); // 20
-console.log(multiplyByTwo(4)); // 20
+console.log(multiplyByTwo(3)) // 20
+console.log(multiplyByTwo(4)) // 20
 ```
 
 ## 回顧

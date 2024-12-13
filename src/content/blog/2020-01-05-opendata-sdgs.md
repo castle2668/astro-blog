@@ -1,10 +1,10 @@
 ---
-title: "開放資料與 SDG-16"
-excerpt: "本學期的資訊倫理課程，期末報告是去右昌國中成果發表，我的期末提案是開放資料的網頁應用，我打算只講應用方面，技術與原理忽略掉，這樣比較能夠讓國中學生們聽懂。本文內容與成果發表內容相似，主要都是說明開放資料與 SDG-16 的關係。"
-tags: ["nuk", "informationethics", "sdgs", "opendata"]
+title: '開放資料與 SDG-16'
+excerpt: '本學期的資訊倫理課程，期末報告是去右昌國中成果發表，我的期末提案是開放資料的網頁應用，我打算只講應用方面，技術與原理忽略掉，這樣比較能夠讓國中學生們聽懂。本文內容與成果發表內容相似，主要都是說明開放資料與 SDG-16 的關係。'
+tags: ['nuk', 'informationethics', 'sdgs', 'opendata']
 date: 2020-01-05
-author: "Huang, Yung-Hsiang"
-image: "development.jpg"
+author: 'Huang, Yung-Hsiang'
+image: 'development.jpg'
 slug: 2020-01-05-opendata-sdgs
 ---
 

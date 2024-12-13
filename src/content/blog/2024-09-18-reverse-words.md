@@ -1,10 +1,10 @@
 ---
-title: "[Algorithms] Reverse Words in a Sentence"
-excerpt: "Today, we’re tackling the Reverse Words algorithm! This is a fun little challenge where we take a sentence, flip each word individually, and put the sentence back together—no messing with the word order, just reversing each word. Let’s dive in!"
-tags: ["algorithms", "javascript"]
+title: '[Algorithms] Reverse Words in a Sentence'
+excerpt: 'Today, we’re tackling the Reverse Words algorithm! This is a fun little challenge where we take a sentence, flip each word individually, and put the sentence back together—no messing with the word order, just reversing each word. Let’s dive in!'
+tags: ['algorithms', 'javascript']
 date: 2024-09-18
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2024-09-18-reverse-words
 ---
 
@@ -21,21 +21,21 @@ Here’s a quick solution for the Reverse Words problem:
 
 ```javascript
 function reverseWords(string) {
-  const wordsArr = string.split(" ");
-  const reversedWordsArr = [];
+  const wordsArr = string.split(' ')
+  const reversedWordsArr = []
 
-  wordsArr.forEach((word) => {
-    let reversedWord = "";
+  wordsArr.forEach(word => {
+    let reversedWord = ''
     for (let i = word.length - 1; i >= 0; i--) {
-      reversedWord += word[i];
+      reversedWord += word[i]
     }
-    reversedWordsArr.push(reversedWord);
-  });
+    reversedWordsArr.push(reversedWord)
+  })
 
-  return reversedWordsArr.join(" ");
+  return reversedWordsArr.join(' ')
 }
 
-console.log(reverseWords("Coding JavaScript")); // Output: "gnidoC tpircSavaJ"
+console.log(reverseWords('Coding JavaScript')) // Output: "gnidoC tpircSavaJ"
 ```
 
 ### How It Works

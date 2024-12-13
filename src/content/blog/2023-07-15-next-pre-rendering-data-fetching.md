@@ -1,10 +1,10 @@
 ---
-title: "Next.js 預先渲染頁面與資料取得方式"
-excerpt: "Next.js 除了可以用來做 SSR 之外，其實也可以取代原本的 React 做 SPA，或是取代 Gridsome 做 SSG 靜態網站，也可以根據需求混合生成頁面，稱為 ISG，第一次聽到這麼多種，腦子差點打結了 XD"
-tags: ["next", "pagesrouter"]
+title: 'Next.js 預先渲染頁面與資料取得方式'
+excerpt: 'Next.js 除了可以用來做 SSR 之外，其實也可以取代原本的 React 做 SPA，或是取代 Gridsome 做 SSG 靜態網站，也可以根據需求混合生成頁面，稱為 ISG，第一次聽到這麼多種，腦子差點打結了 XD'
+tags: ['nextjs', 'pagesrouter']
 date: 2023-07-15
-author: "Sean Huang"
-image: "nextjs.png"
+author: 'Sean Huang'
+image: 'nextjs.png'
 slug: 2023-07-15-next-pre-rendering-data-fetching
 ---
 
@@ -20,13 +20,13 @@ Static Generation with "getStaticProps" (only works in `pages` folder)
 
 ```jsx
 export default function Page({ repo }) {
-  return repo.stargazers_count;
+  return repo.stargazers_count
 }
 
 export async function getStaticProps() {
-  const res = await fetch("<https://api.github.com/repos/vercel/next.js>");
-  const repo = await res.json();
-  return { props: { repo } };
+  const res = await fetch('<https://api.github.com/repos/vercel/next.js>')
+  const repo = await res.json()
+  return { props: { repo } }
 }
 ```
 
@@ -41,20 +41,20 @@ export async function getStaticProps() {
 
 ```jsx
 export default function Page({ repo }) {
-  return repo.stargazers_count;
+  return repo.stargazers_count
 }
 
 export async function getStaticProps() {
-  console.log("(Re-)Generating...");
-  const res = await fetch("<https://api.github.com/repos/vercel/next.js>");
-  const repo = await res.json();
+  console.log('(Re-)Generating...')
+  const res = await fetch('<https://api.github.com/repos/vercel/next.js>')
+  const repo = await res.json()
 
   return {
     props: {
       repo,
     },
     revalidate: 600, // Re-generate every 10 minutes
-  };
+  }
 }
 ```
 
@@ -70,19 +70,19 @@ export async function getStaticProps() {
 
 ```jsx
 export default function Page({ repo }) {
-  return repo.stargazers_count;
+  return repo.stargazers_count
 }
 
 export async function getStaticProps() {
-  console.log("(Re-)Generating...");
-  const res = await fetch("<https://api.github.com/repos/vercel/next.js>");
-  const repo = await res.json();
+  console.log('(Re-)Generating...')
+  const res = await fetch('<https://api.github.com/repos/vercel/next.js>')
+  const repo = await res.json()
 
   // If we have no data, maybe we want to show the NotFound page
   if (repo.length === 0) {
     return {
       notFound: true,
-    };
+    }
   }
 
   // If we have at least one data, we return the regular page
@@ -91,7 +91,7 @@ export async function getStaticProps() {
       repo,
     },
     revalidate: 600,
-  };
+  }
 }
 ```
 
@@ -99,27 +99,27 @@ The `redirect` key is set to an object, you can set a `destination` to a route.
 
 ```jsx
 export default function Page({ repo }) {
-  return repo.stargazers_count;
+  return repo.stargazers_count
 }
 
 export async function getStaticProps() {
-  console.log("(Re-)Generating...");
-  const res = await fetch("<https://api.github.com/repos/vercel/next.js>");
-  const repo = await res.json();
+  console.log('(Re-)Generating...')
+  const res = await fetch('<https://api.github.com/repos/vercel/next.js>')
+  const repo = await res.json()
 
   // If you failed to fetch data, maybe you want to redirect
   if (!repo) {
     return {
       redirect: {
-        destination: "/no-data",
+        destination: '/no-data',
       },
-    };
+    }
   }
 
   if (repo.length === 0) {
     return {
       notFound: true,
-    };
+    }
   }
 
   return {
@@ -127,7 +127,7 @@ export async function getStaticProps() {
       repo,
     },
     revalidate: 600,
-  };
+  }
 }
 ```
 
@@ -137,21 +137,21 @@ export async function getStaticProps() {
 // /pages/[uid].js
 
 function UserIdPage(props) {
-  return <h1>{props.id}</h1>;
+  return <h1>{props.id}</h1>
 }
 
-export default UserIdPage;
+export default UserIdPage
 
 export async function getServerSideProps(context) {
-  const { params } = context;
+  const { params } = context
 
-  const userId = params.uid;
+  const userId = params.uid
 
   return {
     props: {
-      id: "userid-" + userId,
+      id: 'userid-' + userId,
     },
-  };
+  }
 }
 ```
 
@@ -172,10 +172,10 @@ export async function getServerSideProps(context) {
 // /pages/[pid].js
 
 export async function getStaticPaths() {
-  const data = await getData();
+  const data = await getData()
 
-  const ids = data.products.map((product) => product.id);
-  const pathsWithParams = ids.map((id) => ({ params: { pid: id } }));
+  const ids = data.products.map(product => product.id)
+  const pathsWithParams = ids.map(id => ({ params: { pid: id } }))
 
   return {
     // paths: [
@@ -185,7 +185,7 @@ export async function getStaticPaths() {
     // ],
     paths: pathsWithParams,
     fallback: false,
-  };
+  }
 }
 ```
 
@@ -201,11 +201,11 @@ export async function getStaticPaths() {
 
 ```jsx
 function ProductDetailPage(props) {
-  const { loadedProduct } = props;
+  const { loadedProduct } = props
 
   // prepare the fallback state
   if (!loadedProduct) {
-    return <p>Loading...</p>;
+    return <p>Loading...</p>
   }
 
   return (
@@ -213,12 +213,12 @@ function ProductDetailPage(props) {
       <h1>{loadedProduct.title}</h1>
       <p>{loadedProduct.description}</p>
     </Fragment>
-  );
+  )
 }
 
 async function getData() {
   // ...
-  return data;
+  return data
 }
 
 export async function getStaticProps(context) {
@@ -227,22 +227,22 @@ export async function getStaticProps(context) {
     props: {
       loadedProduct: product,
     },
-  };
+  }
 }
 
 export async function getStaticPaths() {
-  const data = await getData();
+  const data = await getData()
 
-  const ids = data.products.map((product) => product.id);
-  const pathsWithParams = ids.map((id) => ({ params: { pid: id } }));
+  const ids = data.products.map(product => product.id)
+  const pathsWithParams = ids.map(id => ({ params: { pid: id } }))
 
   return {
     paths: pathsWithParams,
     fallback: true,
-  };
+  }
 }
 
-export default ProductDetailPage;
+export default ProductDetailPage
 ```
 
 第三種選項是 `fallback: "blocking"`。
@@ -253,15 +253,15 @@ Next.js 會等待這個頁面在 Server 上完全預先生成完畢，然後再�
 
 ```jsx
 export async function getStaticPaths() {
-  const data = await getData();
+  const data = await getData()
 
-  const ids = data.products.map((product) => product.id);
-  const pathsWithParams = ids.map((id) => ({ params: { pid: id } }));
+  const ids = data.products.map(product => product.id)
+  const pathsWithParams = ids.map(id => ({ params: { pid: id } }))
 
   return {
     paths: pathsWithParams,
-    fallback: "blocking",
-  };
+    fallback: 'blocking',
+  }
 }
 ```
 
@@ -276,28 +276,28 @@ export async function getStaticPaths() {
 ```jsx
 export default function Page(props) {
   if (props.hasError) {
-    return <div>Invalid data</div>;
+    return <div>Invalid data</div>
   }
 
-  return <div>{props.data}</div>;
+  return <div>{props.data}</div>
 }
 
 export async function getServerSideProps(context) {
-  const res = await fetch("<https://api.example.com/data>");
-  const data = await res.json();
+  const res = await fetch('<https://api.example.com/data>')
+  const data = await res.json()
 
   if (!data) {
     return {
       // notFound: true, // 如果有錯誤，可以導向 NotFound Page
       hasError: true, // 或者使用自定義的 Error State
-    };
+    }
   }
 
   return {
     props: {
       data,
     },
-  };
+  }
 }
 ```
 

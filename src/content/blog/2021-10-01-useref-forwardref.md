@@ -1,10 +1,10 @@
 ---
-title: "關於 React Refs 的概念，以及如何 Forwarding Refs"
-excerpt: "本文會介紹 React 當中的 Refs，及其延伸出的 useRef 與 forwardRef 的使用方式。"
-tags: ["react"]
+title: '關於 React Refs 的概念，以及如何 Forwarding Refs'
+excerpt: '本文會介紹 React 當中的 Refs，及其延伸出的 useRef 與 forwardRef 的使用方式。'
+tags: ['react']
 date: 2021-10-01
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2021-10-01-useref-forwardref
 ---
 
@@ -22,18 +22,18 @@ Ref 的主要用法，通常是用來訪問 DOM。
 
 ```jsx
 // 新增 useRef 加到 HTML <Input> 上面
-const nameInputRef = useRef();
-<input id="username" type="text" ref={nameInputRef} />;
+const nameInputRef = useRef()
+;<input id="username" type="text" ref={nameInputRef} />
 
 // useRef.current 指向 <input> element
-console.log(nameInputRef.current); // <input id="username" type="text">
+console.log(nameInputRef.current) // <input id="username" type="text">
 ```
 
 特別注意，`useRef.current.value` 所取得的值會是 String 型別，即使 Input 的 `type` 設定為 `number` 也一樣，如下所示。
 
 ```jsx
-console.log(nameInputRef.current.value); // "1"
-console.log(+amountInputRef.current.value); // Convert a numbered "String" to a "Number"
+console.log(nameInputRef.current.value) // "1"
+console.log(+amountInputRef.current.value) // Convert a numbered "String" to a "Number"
 ```
 
 如果非得要透過 Ref 去操作 DOM，基本上只建議進行一些簡單操作，因為 DOM 是所謂的 **Uncontrolled Component**，也就是它並不受到 React 控制的意思。
@@ -42,7 +42,7 @@ console.log(+amountInputRef.current.value); // Convert a numbered "String" to a 
 
 ```jsx
 // Manipulating the DOM
-nameInputRef.current.value = "";
+nameInputRef.current.value = ''
 ```
 
 另一個使用 Ref 的常見用法，是當我們有一個值需要管理，但是希望它不是一個 State 的時候。由於 State 會在變更時也重新評估與執行元件，所以像是初始化階段時，如果要判斷是否已經初始化，可以透過 Ref 來做紀錄，因為 Ref 在變更時不會重新評估元件，而且也會僅作用於該元件內。
@@ -60,7 +60,7 @@ nameInputRef.current.value = "";
 我們必須要透過 `forwardRef` 把元件包裝起來，變成 `<forwardInput>` 來把 `<Input>` 往前傳遞。
 
 ```jsx
-const forwardInput = React.forwardRef(Input);
+const forwardInput = React.forwardRef(Input)
 ```
 
 當我們自製的元件使用 `forwardRef` 包裝後，這個 `<Input>` 元件就能夠取用 `ref` 這個參數了，現在我們把 `ref` 當成 props 傳遞給裡面的 HTML `<input>` 使用。
@@ -74,12 +74,12 @@ const Input = (props, ref) => {
       <label htmlFor={props.input.id}>{props.label}</label>
       <input ref={ref} {...props.input} />
     </div>
-  );
-};
+  )
+}
 
-const forwardInput = React.forwardRef(Input);
+const forwardInput = React.forwardRef(Input)
 
-export default forwardInput;
+export default forwardInput
 ```
 
 > 實際使用範例可參考 [React Hook useRef and forwarding refs with forwardRef](https://youtu.be/ScT4ElKd6eo) 這部影片。

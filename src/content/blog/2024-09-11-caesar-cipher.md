@@ -1,10 +1,10 @@
 ---
-title: "[Algorithms] Caesar Cipher"
+title: '[Algorithms] Caesar Cipher'
 excerpt: "The algorithm we'll explore in this post is the Caesar Cipher. This classic encryption technique shifts each letter in a string by a specified number of places in the alphabet."
-tags: ["algorithms", "javascript"]
+tags: ['algorithms', 'javascript']
 date: 2024-09-11
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2024-09-11-caesar-cipher
 ---
 
@@ -25,36 +25,36 @@ Additionally, the Caesar Cipher can handle negative numbers, allowing it to shif
 
 ```javascript
 function caesarCipher(str, num) {
-  num = num % 26; // Handle shifts greater than 26
-  const lowerCaseString = str.toLowerCase();
-  const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
-  let newString = "";
+  num = num % 26 // Handle shifts greater than 26
+  const lowerCaseString = str.toLowerCase()
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
+  let newString = ''
 
   for (let i = 0; i < lowerCaseString.length; i++) {
-    const currentLetter = lowerCaseString[i];
+    const currentLetter = lowerCaseString[i]
 
-    if (currentLetter === " ") {
-      newString += currentLetter;
-      continue;
+    if (currentLetter === ' ') {
+      newString += currentLetter
+      continue
     }
 
-    const currentIndex = alphabet.indexOf(currentLetter);
-    let newIndex = currentIndex + num;
-    if (newIndex > 25) newIndex -= 26; // Wrap around if necessary
-    if (newIndex < 0) newIndex += 26; // Wrap around if negative
+    const currentIndex = alphabet.indexOf(currentLetter)
+    let newIndex = currentIndex + num
+    if (newIndex > 25) newIndex -= 26 // Wrap around if necessary
+    if (newIndex < 0) newIndex += 26 // Wrap around if negative
 
     // Maintain the original letter's case
     if (str[i] === str[i].toUpperCase()) {
-      newString += alphabet[newIndex].toUpperCase();
+      newString += alphabet[newIndex].toUpperCase()
     } else {
-      newString += alphabet[newIndex];
+      newString += alphabet[newIndex]
     }
   }
 
-  return newString;
+  return newString
 }
 
-console.log(caesarCipher("Hello World!", 3)); // Output: 'Khoor Zruog!'
+console.log(caesarCipher('Hello World!', 3)) // Output: 'Khoor Zruog!'
 ```
 
 ## Summary

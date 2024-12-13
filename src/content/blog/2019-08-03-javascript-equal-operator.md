@@ -1,10 +1,10 @@
 ---
-title: "JavaScript 兩個等號與三個等號有什麼不同"
-excerpt: "過去學過 Java、C 與 Python 都沒遇過這問題，沒想到在學習 JavaScript 時會遇到三等號與雙等號的問題，滿新奇的！"
-tags: ["javascript"]
+title: 'JavaScript 兩個等號與三個等號有什麼不同'
+excerpt: '過去學過 Java、C 與 Python 都沒遇過這問題，沒想到在學習 JavaScript 時會遇到三等號與雙等號的問題，滿新奇的！'
+tags: ['javascript']
 date: 2019-08-03
-author: "Huang, Yung-Hsiang"
-image: "javascript.png"
+author: 'Huang, Yung-Hsiang'
+image: 'javascript.png'
 slug: 2019-08-03-javascript-equal-operator
 ---
 
@@ -23,7 +23,7 @@ JavaScript 有三種「等號」的運算子，分別是：
 ## 比較運算子範例
 
 ```javascript
-99 == "99"; // true
+99 == '99' // true
 ```
 
 回傳 true，因為 JavaScript 在做 `==` 的比較運算時，會自動先把右邊的 String 型別轉換成「數值」，再將兩邊的值拿來比較，因此兩邊的值一樣就會回傳 true。
@@ -37,7 +37,7 @@ JavaScript 有三種「等號」的運算子，分別是：
 ### 嚴謹比較運算子範例
 
 ```javascript
-99 === "99"; // false
+99 === '99' // false
 ```
 
 回傳 false，因為 `===` 除了比較兩邊的值是否相同之外，也會比較兩者型態是否相同。
@@ -51,11 +51,11 @@ JavaScript 有三種「等號」的運算子，分別是：
 當寬鬆比較遇到布林值時，首先一樣是只會強制轉型其中一邊，但是布林值的轉換優先程度是最高的。
 
 ```javascript
-let a = true;
-console.log(a == true); // true == true，得到 true
-console.log(a === true); // true === true，得到 true
-console.log(a === "true"); // true === 'true'，得到 false
-console.log(a == "true"); // true == 'true'，得到 false !？
+let a = true
+console.log(a == true) // true == true，得到 true
+console.log(a === true) // true === true，得到 true
+console.log(a === 'true') // true === 'true'，得到 false
+console.log(a == 'true') // true == 'true'，得到 false !？
 ```
 
 第四個 `a == "true"` 等同於判斷數值 `1` 是否等於字串 `"true"`，因此最後會得到 false。

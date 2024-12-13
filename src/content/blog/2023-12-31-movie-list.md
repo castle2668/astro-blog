@@ -1,10 +1,10 @@
 ---
-title: "來去電影院 2023"
-excerpt: "跟大家分享一下我 2023 去電影院看的各種電影，很喜歡觀賞電影的放鬆時刻，希望大家都能找到屬於自己的休閒方式。"
-tags: ["life"]
+title: '來去電影院 2023'
+excerpt: '跟大家分享一下我 2023 去電影院看的各種電影，很喜歡觀賞電影的放鬆時刻，希望大家都能找到屬於自己的休閒方式。'
+tags: ['life']
 date: 2023-12-31
-author: "Sean Huang"
-image: "work-life-balance.jpg"
+author: 'Sean Huang'
+image: 'work-life-balance.jpg'
 slug: 2023-12-31-movie-list
 ---
 

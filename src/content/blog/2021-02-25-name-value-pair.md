@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #3 Name-Value Pair"
-excerpt: "本文聊聊比較輕鬆的主題 Name-Value Pair 或稱 Key-Value Pair 鍵值對，以及它跟物件的關係。"
-tags: ["javascript"]
+title: 'Understand JavaScript #3 Name-Value Pair'
+excerpt: '本文聊聊比較輕鬆的主題 Name-Value Pair 或稱 Key-Value Pair 鍵值對，以及它跟物件的關係。'
+tags: ['javascript']
 date: 2021-02-25
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-02-25-name-value-pair
 ---
 
@@ -21,7 +21,7 @@ Name-Value Pair（名稱與值的配對）是指「一個名稱會對應到一�
 例如：以下程式碼就是一個 Name-Value Pair。
 
 ```javascript
-Address: "100 Main St.";
+Address: '100 Main St.'
 ```
 
 而我們常用的「物件」其實就是 Name-Value Pairs 的集合 (Collection)，結構如下所示。
