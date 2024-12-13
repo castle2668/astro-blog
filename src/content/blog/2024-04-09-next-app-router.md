@@ -1,10 +1,10 @@
 ---
-title: "Next.js v12 到 v14 版本升級紀錄！有何不同？"
-excerpt: "專案一直以來都是使用 Next 12 以及 Pages Router 進行開發，不久前 Next 發表了 v14，其中 v13 與 v14 都陸續新增了一些概念，最重要的就是 App Router 成為默認的架構方式，而近期 App Router 的功能已經大致完善，因此打算試用看看。族繁不及備載，本篇文章只有記載本身學習與使用 Next 14 的體驗，以及瞭解到的幾項改變。"
-tags: ["next", "approuter", "reactservercomponents"]
+title: 'Next.js v12 到 v14 版本升級紀錄！有何不同？'
+excerpt: '專案一直以來都是使用 Next 12 以及 Pages Router 進行開發，不久前 Next 發表了 v14，其中 v13 與 v14 都陸續新增了一些概念，最重要的就是 App Router 成為默認的架構方式，而近期 App Router 的功能已經大致完善，因此打算試用看看。族繁不及備載，本篇文章只有記載本身學習與使用 Next 14 的體驗，以及瞭解到的幾項改變。'
+tags: ['nextjs', 'approuter', 'reactservercomponents']
 date: 2024-04-09
-author: "Sean Huang"
-image: "nextjs.png"
+author: 'Sean Huang'
+image: 'nextjs.png'
 slug: 2024-04-09-next-app-router
 ---
 
@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
         <main>{children}</main>
       </body>
     </html>
-  );
+  )
 }
 ```
 
@@ -105,14 +105,14 @@ project
 
 ```jsx
 export default async function AsyncPage() {
-  const data = await getData();
+  const data = await getData()
 
   return (
     <div>
       <h1>Async Page</h1>
       <DataGrid data={data} />
     </div>
-  );
+  )
 }
 ```
 
@@ -122,7 +122,7 @@ Suspense 是 React 提供的元件，我們可以用它包住剛剛的 Async RSC
 
 ```jsx
 export default async function AsyncPage() {
-  const data = await getData();
+  const data = await getData()
 
   return (
     <div>
@@ -131,7 +131,7 @@ export default async function AsyncPage() {
         <DataGrid data={data} />
       </Suspense>
     </div>
-  );
+  )
 }
 ```
 

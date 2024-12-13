@@ -1,10 +1,10 @@
 ---
-title: "Vue.js Event Modifier"
-excerpt: "在使用 Vue 的 v-on 時可以搭配修飾符，幫助我們加上一些附加作用，而 Vue 幫我們包裝好的修飾符有事件修飾符、按鍵修飾符，與滑鼠修飾符這三種。"
-tags: ["vue"]
+title: 'Vue.js Event Modifier'
+excerpt: '在使用 Vue 的 v-on 時可以搭配修飾符，幫助我們加上一些附加作用，而 Vue 幫我們包裝好的修飾符有事件修飾符、按鍵修飾符，與滑鼠修飾符這三種。'
+tags: ['vue']
 date: 2019-10-13
-author: "Huang, Yung-Hsiang"
-image: "development.jpg"
+author: 'Huang, Yung-Hsiang'
+image: 'development.jpg'
 slug: 2019-10-13-vue-modifier
 ---
 
@@ -45,16 +45,16 @@ slug: 2019-10-13-vue-modifier
 
 <script>
   var app = new Vue({
-    el: "#app",
+    el: '#app',
     data: {
       // omit...
     },
     methods: {
       trigger: function (name) {
-        console.log(name, "此事件被觸發了");
+        console.log(name, '此事件被觸發了')
       },
     },
-  });
+  })
 </script>
 ```
 

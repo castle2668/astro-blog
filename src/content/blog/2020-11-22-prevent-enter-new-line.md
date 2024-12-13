@@ -1,10 +1,10 @@
 ---
-title: "如何避免在按下 Enter 時自動換行"
-excerpt: "使用 Contenteditable 送出輸入訊息時，我們會監聽 Enter 按鍵來換行，但是這個動作會觸發換行效果，導致送出的訊息多出一個空行，這個問題該怎麼解決呢？"
-tags: ["javascript", "vue"]
+title: '如何避免在按下 Enter 時自動換行'
+excerpt: '使用 Contenteditable 送出輸入訊息時，我們會監聽 Enter 按鍵來換行，但是這個動作會觸發換行效果，導致送出的訊息多出一個空行，這個問題該怎麼解決呢？'
+tags: ['javascript', 'vue']
 date: 2020-11-22
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2020-11-22-prevent-enter-new-line
 ---
 

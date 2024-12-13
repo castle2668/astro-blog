@@ -1,10 +1,10 @@
 ---
-title: "React Router V6 - Fetch data with Loader"
-excerpt: "上一篇介紹了 React Router V6 的基本架構，包含導頁、動態路由與巢狀路由，本文則會介紹 V6 全新的重要功能 Loader。"
-tags: ["react", "reactrouter"]
+title: 'React Router V6 - Fetch data with Loader'
+excerpt: '上一篇介紹了 React Router V6 的基本架構，包含導頁、動態路由與巢狀路由，本文則會介紹 V6 全新的重要功能 Loader。'
+tags: ['react', 'reactrouter']
 date: 2023-03-31
-author: "Sean Huang"
-image: "react.jpg"
+author: 'Sean Huang'
+image: 'react.jpg'
 slug: 2023-03-31-react-router-v6-loader
 ---
 
@@ -23,23 +23,23 @@ slug: 2023-03-31-react-router-v6-loader
 ```jsx
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <RootLayout />,
     children: [
       {
-        path: "events",
+        path: 'events',
         element: <EventRootLayout />,
         children: [
           {
             index: true,
             element: <Events />,
             loader: async () => {
-              const response = await fetch("http://localhost:8080/events");
+              const response = await fetch('http://localhost:8080/events')
               if (!response.ok) {
                 // Handle Error...
               } else {
-                const resData = await response.json();
-                return resData.events;
+                const resData = await response.json()
+                return resData.events
               }
             },
           },
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+])
 ```
 
 回傳成功後，我們就可以在元件裡面透過 `useLoaderData` 取得資料了。
@@ -56,12 +56,12 @@ const router = createBrowserRouter([
 
 ```jsx
 const EventsPage = () => {
-  const events = useLoaderData();
+  const events = useLoaderData()
 
-  return <EventsList events={events} />;
-};
+  return <EventsList events={events} />
+}
 
-export default EventsPage;
+export default EventsPage
 ```
 
 不過，如果我們在 `App.js` 這種定義路由的檔案中撰寫 `loader` 的函式，這個檔案會變得很大一包，所以建議的做法還是將 Loader 寫在 Page Component 裡面再 `export` 到路由檔案去做定義喔。
@@ -69,32 +69,32 @@ export default EventsPage;
 例如：我們將 Loader 寫在 Page-Level 元件中。
 
 ```jsx
-export default EventsPage;
+export default EventsPage
 
 export const loader = async () => {
-  const response = await fetch("http://localhost:8080/events");
+  const response = await fetch('http://localhost:8080/events')
   if (!response.ok) {
     // Handle Error...
   } else {
-    const resData = await response.json();
-    return resData.events;
+    const resData = await response.json()
+    return resData.events
   }
-};
+}
 ```
 
 定義好 Loader 後，將元件裡面定義的 `loader` 通過 `import` 引入進來，並且可以使用 alias 定義不同頁面元件所使用的 Loader 名稱，常見的命名方式為 `Events` 頁面就叫做 `eventsLoader`。
 
 ```jsx
-import Events, { loader as eventsLoader } from "./pages/Events";
+import Events, { loader as eventsLoader } from './pages/Events'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <RootLayout />,
     children: [
       ,
       {
-        path: "events",
+        path: 'events',
         element: <EventRootLayout />,
         children: [
           {
@@ -106,7 +106,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+])
 ```
 
 最後一樣就可以在元件裡面透過 `useLoaderData` 取用資料啦！
@@ -125,18 +125,18 @@ const router = createBrowserRouter([
 
 ```jsx
 const RootLayout = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation()
 
   return (
     <>
       <MainNavigation />
       <main>
-        {navigation.state === "loading" && <p>Loading...</p>}
+        {navigation.state === 'loading' && <p>Loading...</p>}
         <Outlet />
       </main>
     </>
-  );
-};
+  )
+}
 ```
 
 另外，Loader 是在 Browser 環境中執行，而非在 Server 環境中執行。
@@ -152,13 +152,13 @@ const RootLayout = () => {
 ```jsx
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <RootLayout />,
     errorElement: <Error />, // catch any errors
     children: [
       { index: true, element: <Home /> },
       {
-        path: "events",
+        path: 'events',
         element: <EventRootLayout />,
         children: [
           {
@@ -170,7 +170,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+])
 ```
 
 > 根據需求，你也可以在父子路由個別設置 `errorElement`，如果子路由沒有設置，那麼子路由出現的 Error 就會 Bubble Up 到父路由。
@@ -179,24 +179,24 @@ const router = createBrowserRouter([
 
 ```jsx
 const EventsPage = () => {
-  const data = useLoaderData();
-  const events = data.events;
+  const data = useLoaderData()
+  const events = data.events
 
-  return <EventsList events={events} />;
-};
+  return <EventsList events={events} />
+}
 
-export default EventsPage;
+export default EventsPage
 
 export const loader = async () => {
-  const response = await fetch("http://localhost:8080/events");
+  const response = await fetch('http://localhost:8080/events')
   if (!response.ok) {
-    throw new Response(JSON.stringify({ message: "Could not fetch events" }), {
+    throw new Response(JSON.stringify({ message: 'Could not fetch events' }), {
       status: 500,
-    });
+    })
   } else {
-    return response;
+    return response
   }
-};
+}
 ```
 
 定義好錯誤訊息後，我們透過 React Router V6 提供的 `useRouteError` 去取得錯誤訊息。
@@ -207,28 +207,28 @@ export const loader = async () => {
 // Error.js
 
 const Error = () => {
-  const error = useRouteError();
+  const error = useRouteError()
 
-  let title = "Oops!";
-  let message = "Sorry, an unexpected error has occurred.";
+  let title = 'Oops!'
+  let message = 'Sorry, an unexpected error has occurred.'
 
   // API Error
   if (error.status === 500) {
-    message = JSON.parse(error.data).message;
+    message = JSON.parse(error.data).message
   }
 
   // Path Error
   if (error.status === 404) {
-    title = "Not Found!";
-    message = "Could not find resource or page.";
+    title = 'Not Found!'
+    message = 'Could not find resource or page.'
   }
 
   return (
     <PageContent title={title}>
       <p>{message}</p>
     </PageContent>
-  );
-};
+  )
+}
 ```
 
 > 如果你是回傳一般物件，像是 `return { message: "error" }`，那麼這個 `error` 就會是那個物件本身了。
@@ -243,16 +243,16 @@ const Error = () => {
 // Events.js
 
 export const loader = async () => {
-  const response = await fetch("http://localhost:8080/events22");
+  const response = await fetch('http://localhost:8080/events22')
   if (!response.ok) {
     // throw new Response(JSON.stringify({ message: "Could not fetch events" }), {
     //   status: 500,
     // });
-    throw json({ message: "Could not fetch events" }, { status: 500 });
+    throw json({ message: 'Could not fetch events' }, { status: 500 })
   } else {
-    return response;
+    return response
   }
-};
+}
 ```
 
 與此同時，你用 `useRouteError` 取得 `error.data` 後也不需要再做 `JSON.parse()` 了。
@@ -262,7 +262,7 @@ export const loader = async () => {
 
 if (error.status === 500) {
   // message = JSON.parse(error.data).message;
-  message = error.data.message;
+  message = error.data.message
 }
 ```
 
@@ -281,19 +281,19 @@ if (error.status === 500) {
 // EventDetail.js
 
 export const loader = async ({ request, params }) => {
-  const id = params.eventId;
-  const response = await fetch(`http://localhost:8080/events/${id}`);
+  const id = params.eventId
+  const response = await fetch(`http://localhost:8080/events/${id}`)
   if (!response.ok) {
     throw json(
-      { message: "Could not fetch details for the selected event" },
+      { message: 'Could not fetch details for the selected event' },
       {
         status: 500,
-      },
-    );
+      }
+    )
   } else {
-    return response;
+    return response
   }
-};
+}
 ```
 
 ## 通過 useRouteLoaderData() 在子路由之間分享 Loader
@@ -309,29 +309,29 @@ export const loader = async ({ request, params }) => {
 ```jsx
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     children: [
       {
-        path: "events",
+        path: 'events',
         element: <EventRootLayout />,
         children: [
           {
-            path: ":eventId",
-            id: "event-detail", // 記得加上 ID
+            path: ':eventId',
+            id: 'event-detail', // 記得加上 ID
             loader: eventDetailLoader, // 共用的 Loader
             children: [
               {
                 index: true,
                 element: <EventDetail />,
               },
-              { path: "edit", element: <EditEvent /> },
+              { path: 'edit', element: <EditEvent /> },
             ],
           },
         ],
       },
     ],
   },
-]);
+])
 ```
 
 設定好 RouteLoader 後，進入 EventDetail 頁面將原本的 `useLoaderData` 改為使用 `useRouteLoaderData`。
@@ -341,22 +341,22 @@ const router = createBrowserRouter([
 ```jsx
 // EventDetail.js
 const EventDetail = () => {
-  const data = useRouteLoaderData("event-detail");
+  const data = useRouteLoaderData('event-detail')
 
-  return <EventItem event={data.event} />;
-};
+  return <EventItem event={data.event} />
+}
 
 // EditEvent.js
 const EditEvent = () => {
-  const data = useRouteLoaderData("event-detail");
+  const data = useRouteLoaderData('event-detail')
 
   return (
     <>
       <h1>EditEvent</h1>
       <EventForm event={data.event} />
     </>
-  );
-};
+  )
+}
 ```
 
 > 注意：`useRouteLoaderData` 必須接收 Routes ID 這一個參數才能運作喔。

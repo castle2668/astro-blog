@@ -1,10 +1,10 @@
 ---
-title: "[Algorithms] Reverse Array In Place"
-excerpt: "Learn how to reverse an array in place with this efficient, space-saving technique. In this post, we’ll explore swapping elements directly within the original array without creating a new one, practicing some key array manipulation skills along the way. Perfect for those looking to level up their JavaScript skills!"
-tags: ["algorithms", "javascript"]
+title: '[Algorithms] Reverse Array In Place'
+excerpt: 'Learn how to reverse an array in place with this efficient, space-saving technique. In this post, we’ll explore swapping elements directly within the original array without creating a new one, practicing some key array manipulation skills along the way. Perfect for those looking to level up their JavaScript skills!'
+tags: ['algorithms', 'javascript']
 date: 2024-09-25
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2024-09-25-reverse-array-in-place
 ---
 
@@ -29,15 +29,15 @@ This approach might seem a bit tricky at first, but it’s a great way to deepen
 ```javascript
 function reverseArrayInPlace(arr) {
   for (let i = 0; i < arr.length / 2; i++) {
-    const tempVar = arr[i];
-    arr[i] = arr[arr.length - 1 - i];
-    arr[arr.length - 1 - i] = tempVar;
+    const tempVar = arr[i]
+    arr[i] = arr[arr.length - 1 - i]
+    arr[arr.length - 1 - i] = tempVar
   }
 
-  return arr;
+  return arr
 }
 
-console.log(reverseArrayInPlace([1, 2, 3, 4, 5, 6, 7, 8])); // Output: [8, 7, 6, 5, 4, 3, 2, 1]
+console.log(reverseArrayInPlace([1, 2, 3, 4, 5, 6, 7, 8])) // Output: [8, 7, 6, 5, 4, 3, 2, 1]
 ```
 
 ## Summary

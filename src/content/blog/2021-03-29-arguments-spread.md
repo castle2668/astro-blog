@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #13 函式參數與 arguments、spread"
-excerpt: "本文主要內容為探討「函式參數」的相關知識，包含預設值、arguments 關鍵字、spread parameter 等等。"
-tags: ["javascript"]
+title: 'Understand JavaScript #13 函式參數與 arguments、spread'
+excerpt: '本文主要內容為探討「函式參數」的相關知識，包含預設值、arguments 關鍵字、spread parameter 等等。'
+tags: ['javascript']
 date: 2021-03-29
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-03-29-arguments-spread
 ---
 
@@ -15,34 +15,34 @@ slug: 2021-03-29-arguments-spread
 
 ```javascript
 function greet(firstname, lastname, language) {
-  console.log(firstname); // undefined
-  console.log(lastname); // undefined
-  console.log(language); // undefined
+  console.log(firstname) // undefined
+  console.log(lastname) // undefined
+  console.log(language) // undefined
 }
-greet();
+greet()
 ```
 
 到了 ES6 我們可以直接為參數設定預設值，如果沒有傳入相對應位置的參數，就會使用該參數設定的預設值。
 
 ```javascript
-function greet(firstname, lastname, language = "en") {
-  console.log(firstname); // Damao
-  console.log(lastname); // Huang
-  console.log(language); // en
+function greet(firstname, lastname, language = 'en') {
+  console.log(firstname) // Damao
+  console.log(lastname) // Huang
+  console.log(language) // en
 }
-greet("Damao", "Huang");
+greet('Damao', 'Huang')
 ```
 
 然而，如果要針對某些不支援 ES6 的瀏覽器做處理，我們就只能自己動手完成預設值的概念了。例如：當 language 是 undefined 的時候，會強制轉型為 false，最終就會得到 `'en'` 的值。
 
 ```javascript
 function greet(firstname, lastname, language) {
-  language = language || "en";
-  console.log(firstname);
-  console.log(lastname);
-  console.log(language);
+  language = language || 'en'
+  console.log(firstname)
+  console.log(lastname)
+  console.log(language)
 }
-greet("Damao", "Huang");
+greet('Damao', 'Huang')
 ```
 
 ## ES5 的 arguments 關鍵字
@@ -60,20 +60,20 @@ greet("Damao", "Huang");
 ```javascript
 function greet(firstname, lastname, language) {
   if (arguments.length === 0) {
-    console.log("Missing Parameters!");
-    console.log("--------------------");
-    return;
+    console.log('Missing Parameters!')
+    console.log('--------------------')
+    return
   }
-  console.log(firstname);
-  console.log(lastname);
-  console.log(language);
-  console.log(arguments);
-  console.log("arg 0:", arguments[0]);
-  console.log("--------------------");
+  console.log(firstname)
+  console.log(lastname)
+  console.log(language)
+  console.log(arguments)
+  console.log('arg 0:', arguments[0])
+  console.log('--------------------')
 }
 
-greet();
-greet("Damao", "Huang", "zh-tw");
+greet()
+greet('Damao', 'Huang', 'zh-tw')
 ```
 
 ## ES6 的 spread parameter
@@ -82,13 +82,13 @@ greet("Damao", "Huang", "zh-tw");
 
 ```javascript
 function greet(firstname, lastname, language, ...other) {
-  console.log(firstname);
-  console.log(lastname);
-  console.log(language);
-  console.log(other); // (2) ["test1", "test2"]
+  console.log(firstname)
+  console.log(lastname)
+  console.log(language)
+  console.log(other) // (2) ["test1", "test2"]
 }
 
-greet("Damao", "Huang", "zh-tw", "test1", "test2");
+greet('Damao', 'Huang', 'zh-tw', 'test1', 'test2')
 ```
 
 ## 回顧

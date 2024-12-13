@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #5 範圍鏈 (Scope Chain)"
-excerpt: "範圍鏈是什麼，這個專有名詞聽起來好像很難懂，但是其實它很好理解呢。"
-tags: ["javascript"]
+title: 'Understand JavaScript #5 範圍鏈 (Scope Chain)'
+excerpt: '範圍鏈是什麼，這個專有名詞聽起來好像很難懂，但是其實它很好理解呢。'
+tags: ['javascript']
 date: 2021-02-27
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-02-27-scope-chain
 ---
 
@@ -16,36 +16,36 @@ slug: 2021-02-27-scope-chain
 
 ```javascript
 function b() {
-  var myVar; // b() 執行環境
+  var myVar // b() 執行環境
 }
 
 function a() {
-  var myVar = 2; // a() 執行環境
-  b();
+  var myVar = 2 // a() 執行環境
+  b()
 }
 
-var myVar = 1; // 全域執行環境
-a();
+var myVar = 1 // 全域執行環境
+a()
 ```
 
 我們可以加上 `console.log(myVar)` 來驗證我們的理解，可以想一想我們會得到什麼樣的結果與順序。
 
 ```javascript
 function b() {
-  var myVar;
-  console.log(myVar); // undefined
+  var myVar
+  console.log(myVar) // undefined
 }
 
 function a() {
-  var myVar = 2;
-  console.log(myVar); // 2
-  b();
+  var myVar = 2
+  console.log(myVar) // 2
+  b()
 }
 
-var myVar = 1;
-console.log(myVar); // 1
-a();
-console.log(myVar); // 1
+var myVar = 1
+console.log(myVar) // 1
+a()
+console.log(myVar) // 1
 ```
 
 我們會得到 1 → 2 → undefined → 1 的結果。
@@ -113,8 +113,8 @@ let 讓 JavaScript 使用一種叫做區塊範圍 (Block Scoping) 的東西，�
 在「提升之後」以及「賦值之前」的這段期間，如果在賦值之前就試圖取值，則會拋出錯誤，如下方範例所示。
 
 ```javascript
-console.log(c); // Uncaught ReferenceError: c is not defined
-let c = true;
+console.log(c) // Uncaught ReferenceError: c is not defined
+let c = true
 ```
 
 如果調整一下順序，讓變數**先被賦值之後再取值**就沒問題了。
@@ -122,8 +122,8 @@ let c = true;
 > 注意：並不是撰寫順序上把取值的動作寫在後面就可以，而是在「執行順序」上取值的動作要在賦值後面。
 
 ```javascript
-let c = true;
-console.log(c); // true
+let c = true
+console.log(c) // true
 ```
 
 ## 回顧

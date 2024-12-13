@@ -1,53 +1,53 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
+import type { CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
 
-import MainLayout from "../layouts/MainLayout.astro";
+import MainLayout from '../layouts/MainLayout.astro'
 
-const allBlogArticles: CollectionEntry<"blog">[] = (
-  await getCollection("blog")
+const allBlogArticles: CollectionEntry<'blog'>[] = (
+  await getCollection('blog')
 ).sort(
-  (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+  (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
     b.data.date.valueOf() - a.data.date.valueOf()
-);
+)
 
 // 依年份分類文章
-const articlesByYear = allBlogArticles.map((article) => {
-  const date = new Date(article.data.date);
+const articlesByYear = allBlogArticles.map(article => {
+  const date = new Date(article.data.date)
   return {
     year: date.getFullYear(),
     article,
-  };
-});
+  }
+})
 
 // 找出所有年份
 const years = articlesByYear
-  .map((article) => article.year)
+  .map(article => article.year)
   .filter((year, index, array) => array.indexOf(year) === index)
-  .sort((a, b) => b - a);
+  .sort((a, b) => b - a)
 
 // 依年份排序文章
-const articlesByYearSorted = years.map((year) => {
+const articlesByYearSorted = years.map(year => {
   return {
     year,
-    articles: articlesByYear.filter((article) => article.year === year),
-  };
-});
+    articles: articlesByYear.filter(article => article.year === year),
+  }
+})
 ---
 
 <MainLayout title="Archive" url="/archive/">
   <h1 class="text-2xl mb-4">Archive</h1>
   <p class="mb-4">目前總共有 {articlesByYear.length} 篇文章 `ʕ•̀ω•́ʔ✧`</p>
   {
-    articlesByYearSorted.map((year) => (
+    articlesByYearSorted.map(year => (
       <div class="mb-4">
         <h2 class="text-xl mb-2">{year.year}</h2>
         <ul class="list-disc ml-4">
-          {year.articles.map((article) => (
+          {year.articles.map(article => (
             <li class="p-1">
               <span>
-                {`${article.article.data.date.toLocaleDateString("en-US", {
-                  month: "short",
+                {`${article.article.data.date.toLocaleDateString('en-US', {
+                  month: 'short',
                 })}.`}
               </span>
               <a

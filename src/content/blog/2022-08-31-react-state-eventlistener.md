@@ -1,10 +1,10 @@
 ---
-title: "為什麼 React State 在 Event Listener 中沒有正確更新"
-excerpt: "最近在使用 Ant Design 的 Table 元件時，想要監聽 Scroll 事件去更改呈現的欄位，但是發現 State 成功更新後，Table 所使用的 State 卻沒有跟著更新，這到底是怎麼回事哩。"
-tags: ["react", "antdesign"]
+title: '為什麼 React State 在 Event Listener 中沒有正確更新'
+excerpt: '最近在使用 Ant Design 的 Table 元件時，想要監聽 Scroll 事件去更改呈現的欄位，但是發現 State 成功更新後，Table 所使用的 State 卻沒有跟著更新，這到底是怎麼回事哩。'
+tags: ['react', 'antdesign']
 date: 2022-08-31
-author: "Sean Huang"
-image: "react.jpg"
+author: 'Sean Huang'
+image: 'react.jpg'
 slug: 2022-08-31-react-state-eventlistener
 ---
 
@@ -64,26 +64,26 @@ export default App;
 我們把更新的 State 放到 useEffect 的 Dependency 陣列中，當監聽到 State 改變時，React 就會重新為 DOM 元素綁定事件，此時的 Listener 所使用的值就會是更新後的 State 囉！
 
 ```jsx
-const [col, setCols] = useState(columns);
+const [col, setCols] = useState(columns)
 
 useEffect(() => {
-  const scrollEvent = (event) => {
-    const left = event.target.scrollLeft;
+  const scrollEvent = event => {
+    const left = event.target.scrollLeft
     if (left < 50) {
       // 調整欄位...
-      setCols(newColumns);
+      setCols(newColumns)
     }
-  };
-  const tableBodyEl = document.querySelector(".ant-table-body");
-  tableBodyEl.addEventListener("scroll", scrollEvent);
+  }
+  const tableBodyEl = document.querySelector('.ant-table-body')
+  tableBodyEl.addEventListener('scroll', scrollEvent)
 
   // Avoid Memory Leaks
   return () => {
-    tableBodyEl.removeEventListener("scroll", scrollEvent);
-  };
+    tableBodyEl.removeEventListener('scroll', scrollEvent)
+  }
 
   // React State cannot attach to EventListener, so we need to attach the listener again when the state changes
-}, [dataColumn]);
+}, [dataColumn])
 ```
 
 對了，記得在 Cleanup Function 中執行 `removeEventListener` 清除之前綁定的監聽，這樣可以盡量避免 Memory Leaks 的發生喔。

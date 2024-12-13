@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #2 語法作用域 (Lexical Scope)"
-excerpt: "JavaScript 是屬於語法作用域（靜態作用域），而靜態作用域與動態作用域這兩者有何不同呢。"
-tags: ["javascript"]
+title: 'Understand JavaScript #2 語法作用域 (Lexical Scope)'
+excerpt: 'JavaScript 是屬於語法作用域（靜態作用域），而靜態作用域與動態作用域這兩者有何不同呢。'
+tags: ['javascript']
 date: 2021-02-24
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-02-24-lexical-scope
 ---
 
@@ -24,12 +24,12 @@ JavaScript 是語法作用域（又稱為靜態作用域），語法在解析時
 
 ```javascript
 function callName() {
-  var sean = "Sean";
-  console.log(sean);
+  var sean = 'Sean'
+  console.log(sean)
 }
 
-callName(); // Sean
-console.log(sean); // Sean is not defined
+callName() // Sean
+console.log(sean) // Sean is not defined
 ```
 
 ## 動態作用域
@@ -39,19 +39,19 @@ console.log(sean); // Sean is not defined
 以下範例說明靜態作用域與動態作用域，在使用時兩者之間的差異。
 
 ```javascript
-var value = 1;
+var value = 1
 
 function fn1() {
-  console.log(value); // 語法作用域：1
+  console.log(value) // 語法作用域：1
   // 若是動態作用域，這裡則會得到 2
 }
 
 function fn2() {
-  var value = 2;
-  fn1();
+  var value = 2
+  fn1()
 }
 
-fn2();
+fn2()
 ```
 
 如果是語法作用域 (JavaScript)，`var value = 2;` 的作用域只在 `fn2` 裡面，因此會得到 `value` 為 1 的結果。

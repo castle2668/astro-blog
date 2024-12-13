@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #10 函式就是物件 (Functions Are Objects)"
-excerpt: "本文主要內容為探討「函式物件」的相關知識，包含「一級函式」這個讓 JavaScript 適合撰寫 Functional Programming 的特性，以及函式陳述式、函式表達式、匿名函式等重要觀念。"
-tags: ["javascript"]
+title: 'Understand JavaScript #10 函式就是物件 (Functions Are Objects)'
+excerpt: '本文主要內容為探討「函式物件」的相關知識，包含「一級函式」這個讓 JavaScript 適合撰寫 Functional Programming 的特性，以及函式陳述式、函式表達式、匿名函式等重要觀念。'
+tags: ['javascript']
 date: 2021-03-22
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-03-22-functions-are-objects
 ---
 
@@ -30,13 +30,13 @@ slug: 2021-03-22-functions-are-objects
 ```javascript
 function greet() {
   // Name: greet
-  console.log("Hi"); // Code
+  console.log('Hi') // Code
 }
 
-greet.language = "english";
+greet.language = 'english'
 
-console.log(greet); // 這只會得到函式的所有文字
-console.log(greet.language); // english
+console.log(greet) // 這只會得到函式的所有文字
+console.log(greet.language) // english
 ```
 
 ![First Class Functions Example](https://i.imgur.com/D7EXbm9.png)
@@ -57,9 +57,9 @@ console.log(greet.language); // english
 以下最後兩段程式碼都會形成一個值，一個用變數儲存，另一個沒有。但是這兩行程式碼都是表達式，因為它們都有回傳值。
 
 ```javascript
-var a;
-a = 3; // Return: 3 → 表達式
-1 + 2; // Return: 3 → 表達式
+var a
+a = 3 // Return: 3 → 表達式
+1 + 2 // Return: 3 → 表達式
 ```
 
 > 還記得運算子就是一個函式吧？
@@ -91,19 +91,19 @@ if (a === 3 /* Expression */) {
 此時 `function` 不需要寫 Name 屬性，因為已經有連結函式物件的位址的 `anonymousGreet` 變數名稱了，它可以作為使用時的參照，所以不必再設定 Name 屬性作為參照，而這就稱為**匿名函式**。
 
 ```javascript
-greet();
+greet()
 
 // Function Statement
 function greet() {
-  console.log("hi");
+  console.log('hi')
 }
 
 // Function Expression
 var anonymousGreet = function () {
-  console.log("anonymous hi");
-};
+  console.log('anonymous hi')
+}
 
-anonymousGreet();
+anonymousGreet()
 ```
 
 第 3 行的 `function greet(){}` 是函式陳述式，當程式執行時，它不會做任何事情，JavaScript 就只是把它加到記憶體中，接著繼續往下解析。
@@ -113,11 +113,11 @@ anonymousGreet();
 另外，如果把 `anonymousGreet()` 的調用移到宣告之前會出現錯誤訊息，而非像第一行一樣提升。
 
 ```javascript
-anonymousGreet(); // Uncaught TypeError: undefined is not a function
+anonymousGreet() // Uncaught TypeError: undefined is not a function
 
 var anonymousGreet = function () {
-  console.log("anonymous hi");
-};
+  console.log('anonymous hi')
+}
 ```
 
 在執行階段，JavaScript 會依序將「函式陳述式」與「變數」放進記憶體，但變數此時是預設值 **undefined**。
@@ -130,21 +130,21 @@ var anonymousGreet = function () {
 
 ```javascript
 function log(a) {
-  console.log(a);
+  console.log(a)
 }
 
-log(3); // 3
-log("Hello"); // Hello
+log(3) // 3
+log('Hello') // Hello
 
 // {greeting: "hi"}
 log({
-  greeting: "hi",
-});
+  greeting: 'hi',
+})
 
 // ƒ () { console.log('hi') }
 log(function () {
-  console.log("hi");
-});
+  console.log('hi')
+})
 ```
 
 如果想要執行傳入的函式，可以改成使用小括號來呼叫函式。
@@ -153,13 +153,13 @@ log(function () {
 
 ```javascript
 function log(a) {
-  a();
+  a()
 }
 
 // hi
 log(function () {
-  console.log("hi");
-});
+  console.log('hi')
+})
 ```
 
 像以上這樣把函式傳給另一個函式的做法，就是 Functional Programming 的概念。

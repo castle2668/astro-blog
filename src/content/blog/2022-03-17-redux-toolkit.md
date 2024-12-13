@@ -1,10 +1,10 @@
 ---
-title: "使用 Redux Toolkit 更有效率地撰寫 Redux"
-excerpt: "本文介紹 Redux Toolkit 的基本使用方式，因為我是從 Vue 轉 React 的開發者，第一眼看到 Redux Toolkit 真的眼睛為之一亮！裡面使用到的觀念與 Vuex 相仿，非常好理解，撰寫的結構也相當有條理喔。"
-tags: ["react", "redux", "reduxtoolkit"]
+title: '使用 Redux Toolkit 更有效率地撰寫 Redux'
+excerpt: '本文介紹 Redux Toolkit 的基本使用方式，因為我是從 Vue 轉 React 的開發者，第一眼看到 Redux Toolkit 真的眼睛為之一亮！裡面使用到的觀念與 Vuex 相仿，非常好理解，撰寫的結構也相當有條理喔。'
+tags: ['react', 'redux', 'reduxtoolkit']
 date: 2022-03-17
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2022-03-17-redux-toolkit
 ---
 
@@ -26,34 +26,34 @@ Redux Toolkit 簡化了 Redux 的使用方式，以下是簡單歸納的用法�
 首先我們透過 `createSlice()` 建立各種 Slice，像是 `counterSlice` 等等，不相關的功能可以分別建立不同的 Slice。
 
 ```jsx
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   counter: 0,
   showCounter: true,
-};
+}
 
 const counterSlice = createSlice({
-  name: "counter", // 可任意命名
+  name: 'counter', // 可任意命名
   initialState: initialState, // 初始值
   reducers: {
     increment(state) {
-      state.counter++; // RTK 會自動把它變成 immutable 的方式
+      state.counter++ // RTK 會自動把它變成 immutable 的方式
     },
     decrement(state) {
-      state.counter--;
+      state.counter--
     },
     increase(state, action) {
-      state.counter = state.counter + action.payload;
+      state.counter = state.counter + action.payload
     },
     toggleCounter(state) {
-      state.showCounter = !state.showCounter;
+      state.showCounter = !state.showCounter
     },
   },
-});
+})
 
 // 導出 counterSlice 的 actions 物件到元件中做使用
-export const counterActions = counterSlice.actions;
+export const counterActions = counterSlice.actions
 ```
 
 ### Step 2. 透過 configureStore 建立 Store
@@ -68,7 +68,7 @@ export const counterActions = counterSlice.actions;
 // Create Redux store
 const store = configureStore({
   reducer: counterSlice.reducer,
-});
+})
 ```
 
 當然，如果是經手一些大型專案，我們可能會需要切分出多個 Slice，這時候我們可以透過物件的形式配置多個 Reducer。這麼做就像是在建立一個 Reducer 的 Map，並且 `configureStore` 還會自動幫我們把這些 Reducers 全部合併成一個 Main Reducer。
@@ -77,11 +77,11 @@ const store = configureStore({
 // Create a map of reducer (Add Slice Reducers to the Store)
 const store = configureStore({
   reducer: { counter: counterSlice.reducer },
-});
+})
 
-export const counterActions = counterSlice.actions;
+export const counterActions = counterSlice.actions
 
-export default store;
+export default store
 ```
 
 > 在最後 `export` 時，除了預設導出 `store`，也記得可以直接導出整個 `actions` 物件，像是可以命名為 `counterActions` 方便我們在元件中使用
@@ -97,30 +97,30 @@ export default store;
 使用範例：在元件中使用 `dispatch(counterActions.increment())` 也就等於使用 `dispatch({type: 'UNIQUE_ID'})` 的效果（如果還需要 Payload 就再加上參數即可）。
 
 ```jsx
-import { counterActions } from "../store";
+import { counterActions } from '../store'
 
 const Counter = () => {
   // ...omit
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const incrementHandler = () => {
-    dispatch(counterActions.increment());
-  };
+    dispatch(counterActions.increment())
+  }
 
   const increaseHandler = () => {
     // payload
-    dispatch(counterActions.increase(10)); // {type: 'UNIQUE_ID', payload: 10}
-  };
+    dispatch(counterActions.increase(10)) // {type: 'UNIQUE_ID', payload: 10}
+  }
 
   const decrementHandler = () => {
-    dispatch(counterActions.decrement());
-  };
+    dispatch(counterActions.decrement())
+  }
 
   const toggleCounterHandler = () => {
-    dispatch(counterActions.toggleCounter());
-  };
+    dispatch(counterActions.toggleCounter())
+  }
   // ...omit
-};
+}
 ```
 
 ## 進階使用 (Optional)
@@ -152,8 +152,8 @@ export default store;
 
 ```jsx
 // state.counter => state.counter.counter
-const counter = useSelector((state) => state.counter.counter);
-const showCounter = useSelector((state) => state.counter.showCounter);
+const counter = useSelector(state => state.counter.counter)
+const showCounter = useSelector(state => state.counter.showCounter)
 ```
 
 ### Step 5. 檔案與程式碼拆分
@@ -188,23 +188,23 @@ export default authSlice.reducer;
 
 ```jsx
 // src/store/index.js
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit'
 
-import counterReducer from "./counter";
-import authReducer from "./auth";
+import counterReducer from './counter'
+import authReducer from './auth'
 
 const store = configureStore({
   // KEY for useSelector (state.KEY.stateName)
   reducer: { counter: counterReducer, auth: authReducer },
-});
+})
 
-export default store;
+export default store
 ```
 
 除此之外，在元件中調用 Actions 物件時，也要注意 Import 的路徑，Actions 是從每個功能個別的 Store 導出的。
 
 ```jsx
-import { counterActions } from "../store/counter";
+import { counterActions } from '../store/counter'
 ```
 
 ## 回顧

@@ -1,10 +1,10 @@
 ---
-title: "Introducing React.memo"
-excerpt: "本文介紹 React.memo 的使用方式，以此減少元件不必要的渲染。"
-tags: ["react"]
+title: 'Introducing React.memo'
+excerpt: '本文介紹 React.memo 的使用方式，以此減少元件不必要的渲染。'
+tags: ['react']
 date: 2021-12-03
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2021-12-03-react-memo
 ---
 
@@ -15,7 +15,7 @@ slug: 2021-12-03-react-memo
 只要在輸出 Component 時套上 `React.memo()` 即可。（限 Functional Component 使用，Class Component 不能用）
 
 ```jsx
-export default React.memo(DemoOutput);
+export default React.memo(DemoOutput)
 ```
 
 `React.memo` 會去看這個 Component 所傳入使用的 Props 是否改變 (New props value vs. Previous props value)。如果父元件給的 Props 有改變，React 才會重新執行與評估這個子元件，而不是每次都重新執行。

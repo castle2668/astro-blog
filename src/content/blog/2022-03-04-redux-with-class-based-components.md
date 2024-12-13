@@ -1,10 +1,10 @@
 ---
-title: "React Redux with Class-based Components"
-excerpt: "本文介紹 React Redux 於 Class-based Components 的使用。"
-tags: ["react", "redux"]
+title: 'React Redux with Class-based Components'
+excerpt: '本文介紹 React Redux 於 Class-based Components 的使用。'
+tags: ['react', 'redux']
 date: 2022-03-04
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2022-03-04-redux-with-class-based-components
 ---
 
@@ -15,7 +15,7 @@ slug: 2022-03-04-redux-with-class-based-components
 它的寫法可以解讀為 `connect()` 會回傳一個 Function，接著把 Counter 元件作為參數傳進去。
 
 ```jsx
-export default connect()(Counter);
+export default connect()(Counter)
 ```
 
 除了接收元件，`connect()` 本身也會接受兩個 Function 作為參數：
@@ -24,17 +24,17 @@ export default connect()(Counter);
 - 第二個參數則類似 `useDispatch`，作用是將 `dispatch` 函式儲存為 Props
 
 ```jsx
-import { Component } from "react";
-import { connect } from "react-redux";
+import { Component } from 'react'
+import { connect } from 'react-redux'
 
 class Counter extends Component {
   incrementHandler = () => {
-    this.props.increment();
-  };
+    this.props.increment()
+  }
 
   decrementHandler = () => {
-    this.props.decrement();
-  };
+    this.props.decrement()
+  }
 
   render() {
     return (
@@ -45,24 +45,24 @@ class Counter extends Component {
           <button onClick={this.decrementHandler.bind(this)}>Decrement</button>
         </div>
       </main>
-    );
+    )
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     counter: state.counter,
-  };
-};
+  }
+}
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    increment: () => dispatch({ type: "INCREMENT" }),
-    decrement: () => dispatch({ type: "DECREMENT" }),
-  };
-};
+    increment: () => dispatch({ type: 'INCREMENT' }),
+    decrement: () => dispatch({ type: 'DECREMENT' }),
+  }
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default connect(mapStateToProps, mapDispatchToProps)(Counter)
 ```
 
 ## References

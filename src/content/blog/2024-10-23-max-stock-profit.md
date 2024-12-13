@@ -1,10 +1,10 @@
 ---
-title: "[Algorithms] Max Stock Profit"
-excerpt: "In this article, we’ll walk through the Max Stock Profit algorithm, which helps determine the maximum profit achievable from buying and selling a stock in a single day based on its changing prices. This common algorithm problem often appears in technical interviews and requires a mix of array handling and optimization techniques."
-tags: ["algorithms", "javascript"]
+title: '[Algorithms] Max Stock Profit'
+excerpt: 'In this article, we’ll walk through the Max Stock Profit algorithm, which helps determine the maximum profit achievable from buying and selling a stock in a single day based on its changing prices. This common algorithm problem often appears in technical interviews and requires a mix of array handling and optimization techniques.'
+tags: ['algorithms', 'javascript']
 date: 2024-10-23
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2024-10-23-max-stock-profit
 ---
 
@@ -24,29 +24,29 @@ To find the solution in optimal time complexity, we use a `O(n)` approach by sca
 
 ```javascript
 function maxStockProfit(pricesArr) {
-  let maxProfit = -1;
-  let buyPrice = 0;
-  let sellPrice = 0;
-  let changeBuyPrice = true;
+  let maxProfit = -1
+  let buyPrice = 0
+  let sellPrice = 0
+  let changeBuyPrice = true
 
   for (let i = 0; i < pricesArr.length; i++) {
-    if (changeBuyPrice) buyPrice = pricesArr[i];
-    sellPrice = pricesArr[i + 1];
+    if (changeBuyPrice) buyPrice = pricesArr[i]
+    sellPrice = pricesArr[i + 1]
 
     if (sellPrice < buyPrice) {
-      changeBuyPrice = true;
+      changeBuyPrice = true
     } else {
-      let tempProfit = sellPrice - buyPrice;
-      if (tempProfit > maxProfit) maxProfit = tempProfit;
-      changeBuyPrice = false;
+      let tempProfit = sellPrice - buyPrice
+      if (tempProfit > maxProfit) maxProfit = tempProfit
+      changeBuyPrice = false
     }
   }
 
-  return maxProfit;
+  return maxProfit
 }
 
 // Example usage
-maxStockProfit([5, 2, 10, 1, 12, 8, 7]);
+maxStockProfit([5, 2, 10, 1, 12, 8, 7])
 ```
 
 ## Summary

@@ -1,10 +1,10 @@
 ---
-title: "Vue 3 Methods × Computed × Watch"
-excerpt: "本文主要內容為探討 Vue 3 的 Methods、Computed、Watch 的寫法與相關知識。"
-tags: ["vue", "compositionapi"]
+title: 'Vue 3 Methods × Computed × Watch'
+excerpt: '本文主要內容為探討 Vue 3 的 Methods、Computed、Watch 的寫法與相關知識。'
+tags: ['vue', 'compositionapi']
 date: 2021-04-30
-author: "海豹人 Sealman"
-image: "development.jpg"
+author: '海豹人 Sealman'
+image: 'development.jpg'
 slug: 2021-04-30-vue3-methods-computed-watch
 ---
 
@@ -58,8 +58,8 @@ const App = {
 ```javascript
 // 商品列表展開時的高度 (每個商品 40px)
 const listHeight = computed(() => {
-  return isOpen.value ? `${newArr.value.length * 40}px` : "0px";
-});
+  return isOpen.value ? `${newArr.value.length * 40}px` : '0px'
+})
 ```
 
 ## 資料監控 Watch
@@ -73,8 +73,8 @@ const listHeight = computed(() => {
 ```javascript
 // 監控一個 ref 純值
 watch(index, (newIndex, oldIndex) => {
-  console.log("index", newIndex, oldIndex);
-});
+  console.log('index', newIndex, oldIndex)
+})
 ```
 
 ### 要監控的值
@@ -90,17 +90,17 @@ Watch 第一個參數（要監控的值）可能包含以下幾種：
 watch(
   () => refObject.value.index,
   (newIndex, oldIndex) => {
-    console.log("refObject", newIndex, oldIndex);
-  },
-);
+    console.log('refObject', newIndex, oldIndex)
+  }
+)
 
 // 這邊不是要監控 reactive 物件，而是要監控 reactive 物件裡面單一的 key，所以使用 function return 的方式
 watch(
   () => reactiveObject.index,
   (newIndex, oldIndex) => {
-    console.log("reactiveObject", newIndex, oldIndex);
-  },
-);
+    console.log('reactiveObject', newIndex, oldIndex)
+  }
+)
 ```
 
 試著監控 ref 與 reactive 整個物件，會發現如果監控整個物件，只有 reactive 可以被成功監控到。
@@ -109,20 +109,20 @@ watch(
 
 ```javascript
 // 只有 reactive 物件可以整個被監控
-watch(refObj, (newVal) => {
-  console.log("refObj", newVal);
-});
-watch(reactiveObj, (newVal) => {
-  console.log("reactiveObj", newVal); // Proxy {idx: 1}
-});
+watch(refObj, newVal => {
+  console.log('refObj', newVal)
+})
+watch(reactiveObj, newVal => {
+  console.log('reactiveObj', newVal) // Proxy {idx: 1}
+})
 
 // ref 物件只能監控一個 key
 watch(
   () => refObj.value.idx,
-  (newVal) => {
-    console.log("refObj", newVal); // refObj 1
-  },
-);
+  newVal => {
+    console.log('refObj', newVal) // refObj 1
+  }
+)
 ```
 
 ### 深層資料監控 deep
@@ -132,11 +132,11 @@ watch(
 ```javascript
 watch(
   refObj,
-  (newVal) => {
-    console.log("data", newVal);
+  newVal => {
+    console.log('data', newVal)
   },
-  { deep: true },
-);
+  { deep: true }
+)
 ```
 
 但是 `deep` 是針對每一個 key 做掃描，所以效能耗費大，盡量還是少用，只有真的需要大範圍掃描時才使用。

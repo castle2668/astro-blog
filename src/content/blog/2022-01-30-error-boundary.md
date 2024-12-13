@@ -1,10 +1,10 @@
 ---
-title: "在 React Class-based Components 中使用 Error Boundary 處理錯誤"
-excerpt: "本文介紹 React Class-based Components 中 Error Boundary 的使用方式。"
-tags: ["react"]
+title: '在 React Class-based Components 中使用 Error Boundary 處理錯誤'
+excerpt: '本文介紹 React Class-based Components 中 Error Boundary 的使用方式。'
+tags: ['react']
 date: 2022-01-30
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2022-01-30-error-boundary
 ---
 
@@ -27,17 +27,17 @@ componentDidUpdate() {
 我們可以將 `ErrorBoundary` 作為「保護子元件」的父元件，因此 `render()` 函式的內容就單純只放子元件的內容，也就是 `this.props.children`，
 
 ```jsx
-import { Component } from "react";
+import { Component } from 'react'
 
 class ErrorBoundary extends Component {
   componentDidCatch() {}
 
   render() {
-    return this.props.children;
+    return this.props.children
   }
 }
 
-export default ErrorBoundary;
+export default ErrorBoundary
 ```
 
 像這樣將 `ErrorBoundary` 元件包覆在想要保護的元件外圍（其實 `ErrorBoundary` 也可以包覆多個元件，不只一個）。
@@ -51,28 +51,28 @@ export default ErrorBoundary;
 現在我們就能在 `componentDidCatch` 加上一些錯誤處理，確保拋出錯誤時整個 App 不會崩潰，反而可以 Catch 那些錯誤並處理它們。
 
 ```jsx
-import { Component } from "react";
+import { Component } from 'react'
 
 class ErrorBoundary extends Component {
   constructor() {
-    super();
-    this.state = { hasError: false };
+    super()
+    this.state = { hasError: false }
   }
 
   componentDidCatch(error) {
-    console.log(error);
-    this.setState({ hasError: true });
+    console.log(error)
+    this.setState({ hasError: true })
   }
 
   render() {
     if (this.state.hasError) {
-      return <p>Something went wrong!</p>;
+      return <p>Something went wrong!</p>
     }
-    return this.props.children;
+    return this.props.children
   }
 }
 
-export default ErrorBoundary;
+export default ErrorBoundary
 ```
 
 ## Summary: Class-based vs Functional Components

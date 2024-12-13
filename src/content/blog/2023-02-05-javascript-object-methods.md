@@ -1,10 +1,10 @@
 ---
-title: "JavaScript Object Snippets"
-excerpt: "開發上，我們常常對物件做各種操作與應用，本文記載 Sean 常用到的物件操作方式。"
-tags: ["javascript"]
+title: 'JavaScript Object Snippets'
+excerpt: '開發上，我們常常對物件做各種操作與應用，本文記載 Sean 常用到的物件操作方式。'
+tags: ['javascript']
 date: 2023-02-05
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2023-02-05-javascript-object-methods
 ---
 
@@ -15,13 +15,13 @@ slug: 2023-02-05-javascript-object-methods
 會回傳一個布林值，判斷指定的屬性是否為該物件本身的屬性，而非繼承的屬性。
 
 ```javascript
-const object1 = {};
-object1.property1 = 42;
+const object1 = {}
+object1.property1 = 42
 
-console.log(object1.hasOwnProperty("property1"));
+console.log(object1.hasOwnProperty('property1'))
 // Expected output: true
 
-console.log(object1.hasOwnProperty("property2"));
+console.log(object1.hasOwnProperty('property2'))
 // Expected output: false
 ```
 
@@ -34,7 +34,7 @@ console.log(object1.hasOwnProperty("property2"));
 ```javascript
 for (const prop in obj) {
   if (obj.hasOwnProperty(prop)) {
-    console.log(`obj.${prop} = ${obj[prop]}`);
+    console.log(`obj.${prop} = ${obj[prop]}`)
   }
 }
 ```
@@ -47,13 +47,13 @@ for (const prop in obj) {
 
 ```javascript
 const object1 = {
-  prop1: "exists",
-};
+  prop1: 'exists',
+}
 
-console.log(Object.hasOwn(object1, "prop1"));
+console.log(Object.hasOwn(object1, 'prop1'))
 // Expected output: true
 
-console.log(Object.hasOwn(object1, "prop2"));
+console.log(Object.hasOwn(object1, 'prop2'))
 // Expected output: false
 ```
 
@@ -68,11 +68,11 @@ console.log(Object.hasOwn(object1, "prop2"));
 > [for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
 
 ```javascript
-const obj = { a: "something", b: 10 };
-console.log(Object.entries(obj)); // [ ['a', 'something'], ['b', 10] ]
+const obj = { a: 'something', b: 10 }
+console.log(Object.entries(obj)) // [ ['a', 'something'], ['b', 10] ]
 
 for (const [key, value] of Object.entries(obj)) {
-  console.log(`${key}: ${value}`);
+  console.log(`${key}: ${value}`)
 }
 // Expected output:
 // "a: somestring"
@@ -87,12 +87,12 @@ for (const [key, value] of Object.entries(obj)) {
 
 ```javascript
 const object1 = {
-  a: "lorem",
+  a: 'lorem',
   b: 123,
   c: false,
-};
+}
 
-console.log(Object.keys(object1));
+console.log(Object.keys(object1))
 // Expected output: Array ["a", "b", "c"]
 ```
 
@@ -104,12 +104,12 @@ console.log(Object.keys(object1));
 
 ```javascript
 const object1 = {
-  a: "lorem",
+  a: 'lorem',
   b: 123,
   c: false,
-};
+}
 
-console.log(Object.keys(object1));
+console.log(Object.keys(object1))
 // Expected output: Array ["lorem", 123, false]
 ```
 
@@ -124,15 +124,15 @@ console.log(Object.keys(object1));
 ```javascript
 // Object.assign(target, ...sources);
 
-const target = { a: 1, b: 2 };
-const source = { b: 4, c: 5 };
+const target = { a: 1, b: 2 }
+const source = { b: 4, c: 5 }
 
-const returnedTarget = Object.assign(target, source);
+const returnedTarget = Object.assign(target, source)
 
-console.log(target);
+console.log(target)
 // Expected output: Object { a: 1, b: 4, c: 5 }
 
-console.log(returnedTarget === target);
+console.log(returnedTarget === target)
 // Expected output: true
 ```
 

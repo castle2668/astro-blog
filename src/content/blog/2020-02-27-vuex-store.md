@@ -1,10 +1,10 @@
 ---
-title: "使用 Vuex 管理資料狀態"
-excerpt: "瞭解 Vue 的指令、元件、路由配置等概念後，我們用 Vue CLI 製作的網站差不多告一段落了！然而 Vue 生態圈還有一個必備技能是 Vuex，我們現在就來把 Vuex 也加入專案，讓我們的資料狀態可以跨元件同步。"
-tags: ["vue", "vuex"]
+title: '使用 Vuex 管理資料狀態'
+excerpt: '瞭解 Vue 的指令、元件、路由配置等概念後，我們用 Vue CLI 製作的網站差不多告一段落了！然而 Vue 生態圈還有一個必備技能是 Vuex，我們現在就來把 Vuex 也加入專案，讓我們的資料狀態可以跨元件同步。'
+tags: ['vue', 'vuex']
 date: 2020-02-27
-author: "Huang, Yung-Hsiang"
-image: "development.jpg"
+author: 'Huang, Yung-Hsiang'
+image: 'development.jpg'
 slug: 2020-02-27-vuex-store
 ---
 
@@ -50,16 +50,16 @@ slug: 2020-02-27-vuex-store
 ```javascript
 // store/index.js
 
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     isLoading: false,
   },
-});
+})
 ```
 
 接著在元件中透過 `computed` 監聽資料的變化。
@@ -68,13 +68,13 @@ export default new Vuex.Store({
 // App.vue
 
 export default {
-  name: "App",
+  name: 'App',
   computed: {
     isLoading() {
-      return this.$store.state.isLoading;
+      return this.$store.state.isLoading
     },
   },
-};
+}
 ```
 
 ### STEP 2：實作 Actions

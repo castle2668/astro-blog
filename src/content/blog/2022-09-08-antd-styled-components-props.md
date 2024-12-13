@@ -1,10 +1,10 @@
 ---
-title: "為什麼在 Ant Design 使用 styled-components 傳遞 Boolean Props 會出現警告"
-excerpt: "最近要使用 styled-components 包裝 Ant Design 的元件時，想透過傳遞 Boolean 值的 props 來製作動態樣式，結果是成功了但是卻一直跳出警告訊息，這是為什麼呢？"
-tags: ["react", "antdesign", "styledcomponents"]
+title: '為什麼在 Ant Design 使用 styled-components 傳遞 Boolean Props 會出現警告'
+excerpt: '最近要使用 styled-components 包裝 Ant Design 的元件時，想透過傳遞 Boolean 值的 props 來製作動態樣式，結果是成功了但是卻一直跳出警告訊息，這是為什麼呢？'
+tags: ['react', 'antdesign', 'styledcomponents']
 date: 2022-09-08
-author: "Sean Huang"
-image: "react.jpg"
+author: 'Sean Huang'
+image: 'react.jpg'
 slug: 2022-09-08-antd-styled-components-props
 ---
 
@@ -17,19 +17,19 @@ slug: 2022-09-08-antd-styled-components-props
 ```jsx
 const StyledButton = styled(Button)`
   color: palevioletred;
-  font-weight: ${(props) => (props.primary ? "bold" : "normal")};
-`;
+  font-weight: ${props => (props.primary ? 'bold' : 'normal')};
+`
 
 const App = () => {
-  const [isPrimary, setIsPrimary] = useState(true);
+  const [isPrimary, setIsPrimary] = useState(true)
 
   return (
     <div>
       <StyledButton primary={isPrimary}>test</StyledButton>
       <Button>test</Button>
     </div>
-  );
-};
+  )
+}
 ```
 
 打開 CodeSandbox 其實是能看到樣式成功出現的，只是 Console 中會有 Warning 訊息。
@@ -59,19 +59,19 @@ const App = () => {
 
 const StyledButton = styled(Button)`
   color: palevioletred;
-  font-weight: ${(props) => (props.primary === "true" ? "bold" : "normal")};
-`;
+  font-weight: ${props => (props.primary === 'true' ? 'bold' : 'normal')};
+`
 
 const App = () => {
-  const [isPrimary, setIsPrimary] = useState("true");
+  const [isPrimary, setIsPrimary] = useState('true')
 
   return (
     <div>
       <StyledButton primary={isPrimary}>test</StyledButton>
       <Button>test</Button>
     </div>
-  );
-};
+  )
+}
 ```
 
 ## 解法二：Transient Props in styled-components (v5.1)
@@ -87,19 +87,19 @@ Transient props 的作用就是「防止」被 styled-components 使用的 props
 
 const StyledButton = styled(Button)`
   color: palevioletred;
-  font-weight: ${(props) => (props.$primary ? "bold" : "normal")};
-`;
+  font-weight: ${props => (props.$primary ? 'bold' : 'normal')};
+`
 
 const App = () => {
-  const [isPrimary, setIsPrimary] = useState(true);
+  const [isPrimary, setIsPrimary] = useState(true)
 
   return (
     <div>
       <StyledButton $primary={isPrimary}>test</StyledButton>
       <Button>test</Button>
     </div>
-  );
-};
+  )
+}
 ```
 
 使用時要注意 styled-components 的版本喔，因為 Transient props 是在 v5.1 以上才可以使用的屬性。

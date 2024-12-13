@@ -1,10 +1,10 @@
 ---
-title: "瞭解 Spread & Rest Operator 與 Destructuring 的用法"
-excerpt: "Spread 與 Rest 運算子都是寫成三個點，而它的身份就取決於我們在哪裡使用它，一起來看看吧。"
-tags: ["javascript"]
+title: '瞭解 Spread & Rest Operator 與 Destructuring 的用法'
+excerpt: 'Spread 與 Rest 運算子都是寫成三個點，而它的身份就取決於我們在哪裡使用它，一起來看看吧。'
+tags: ['javascript']
 date: 2021-08-06
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-08-06-spread-rest-operator-destructuring
 ---
 
@@ -20,14 +20,14 @@ slug: 2021-08-06-spread-rest-operator-destructuring
 - 將舊物件所有的 Name-value pair 拉出來放入新物件，再另外添加新的屬性
 
 ```jsx
-const oldArray = [1, 2, 3];
-const newArray = [...oldArray, 4, 5];
-console.log(newArray);
+const oldArray = [1, 2, 3]
+const newArray = [...oldArray, 4, 5]
+console.log(newArray)
 // [1, 2, 3, 4, 5]
 
-const oldObject = { oldProp: 1 };
-const newObject = { ...oldObject, newProp: 5 };
-console.log(newObject);
+const oldObject = { oldProp: 1 }
+const newObject = { ...oldObject, newProp: 5 }
+console.log(newObject)
 // { oldProp: 1, newProp: 5 }
 ```
 
@@ -49,11 +49,11 @@ Spread Operator 可以用來複製物件或陣列，屬於「淺拷貝」。
 
 ```jsx
 function sortArgs(...args) {
-  console.log(args); // 參數列表
-  return args.sort();
+  console.log(args) // 參數列表
+  return args.sort()
 }
 
-sortArgs("Sean", 23, true);
+sortArgs('Sean', 23, true)
 // ["Sean", 23, true]
 ```
 
@@ -61,10 +61,10 @@ sortArgs("Sean", 23, true);
 
 ```jsx
 const filter = (...args) => {
-  return args.filter((el) => el === 1);
-};
+  return args.filter(el => el === 1)
+}
 
-console.log(filter(1, 2, 3));
+console.log(filter(1, 2, 3))
 // [1]
 ```
 
@@ -84,13 +84,13 @@ console.log(filter(1, 2, 3));
 如果要跳過某個元素，像是要跳過 `num2` 直接取得後面的 `num3`，只要放一個空格然後逗號就可以忽略掉 `num2` 了。
 
 ```jsx
-const [a, b] = ["Hello", "Sean", 123];
-console.log(a); // "Hello"
-console.log(b); // "Sean"
+const [a, b] = ['Hello', 'Sean', 123]
+console.log(a) // "Hello"
+console.log(b) // "Sean"
 
-const numbers = [1, 2, 3];
-const [num1, , num3] = numbers;
-console.log(num1, num3); // 1 3
+const numbers = [1, 2, 3]
+const [num1, , num3] = numbers
+console.log(num1, num3) // 1 3
 ```
 
 ### Object Destructuring
@@ -98,9 +98,9 @@ console.log(num1, num3); // 1 3
 在等號左側使用大括號並寫上對應的屬性名稱，就可以從右邊提取出該屬性的值。
 
 ```jsx
-const { name } = { name: "Sean", age: 23 };
-console.log(name); // "Sean"
-console.log(age); // age is not defined
+const { name } = { name: 'Sean', age: 23 }
+console.log(name) // "Sean"
+console.log(age) // age is not defined
 ```
 
 > 以上資源是我自己整理過後的筆記，若有錯誤歡迎隨時和我聯繫

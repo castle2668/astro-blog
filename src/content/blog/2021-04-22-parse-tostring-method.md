@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #25 解析 toString() 方法 ft. typeof, instanceof"
-excerpt: "本文主要內容為探討 JavaScript 中 toString() 方法的相關知識，以及關鍵字 typeof 和 instanceof 的使用。"
-tags: ["javascript"]
+title: 'Understand JavaScript #25 解析 toString() 方法 ft. typeof, instanceof'
+excerpt: '本文主要內容為探討 JavaScript 中 toString() 方法的相關知識，以及關鍵字 typeof 和 instanceof 的使用。'
+tags: ['javascript']
 date: 2021-04-22
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-04-22-parse-tostring-method
 ---
 
@@ -17,20 +17,20 @@ JavaScript 中有個關鍵字 `typeof`，顧名思義，它能夠回傳型別。
 ### 使用 typeof 判斷型別
 
 ```javascript
-var a = 3;
-console.log(typeof a); // number
+var a = 3
+console.log(typeof a) // number
 
-var b = "Hello";
-console.log(typeof b); // string
+var b = 'Hello'
+console.log(typeof b) // string
 
-var c = { firstname: "Damao" };
-console.log(typeof c); // object
+var c = { firstname: 'Damao' }
+console.log(typeof c) // object
 
-var d = [];
-console.log(typeof d); // object
+var d = []
+console.log(typeof d) // object
 
-const z = function () {};
-console.log(typeof z); // function
+const z = function () {}
+console.log(typeof z) // function
 ```
 
 我們可以看到關鍵的問題出在 Object 與 Array 身上，關鍵字 `typeof` 沒辦法判斷出陣列，因為在 JavaScript 中，除了基本型別以外的其他東西都是物件！
@@ -45,15 +45,15 @@ console.log(typeof z); // function
 
 ```javascript
 // 數字的陣列 [0, 1, 2] 可以直接轉成字串 "0,1,2"
-var arr = [0, 1, 2]; // "0,1,2"
-console.log(arr.toString());
+var arr = [0, 1, 2] // "0,1,2"
+console.log(arr.toString())
 ```
 
 再看看另一個兒子「數值」所改寫的 `toString()` 方法，它甚至可以把數值轉換成不同的進位制。
 
 ```javascript
-var num = 10;
-console.log(num.toString(2)); // 10 進位轉為 2 進位 => 1010
+var num = 10
+console.log(num.toString(2)) // 10 進位轉為 2 進位 => 1010
 ```
 
 至於物件當然也可以使用 `toString()`，但是結果會顯示成 `"[object Object]"` 這種樣子。
@@ -61,15 +61,15 @@ console.log(num.toString(2)); // 10 進位轉為 2 進位 => 1010
 想要看到 `key: value` 還是得用 Loop，或是使用 `JSON.stringify()` 也可以看到完整 Object 的一行字串。
 
 ```javascript
-var a = 3;
-console.log(a.toString()); // "3"
+var a = 3
+console.log(a.toString()) // "3"
 
-var b = "Hello";
-console.log(b.toString()); // "Hello"
+var b = 'Hello'
+console.log(b.toString()) // "Hello"
 
-var c = { firstname: "Damao" };
-console.log(c.toString()); // "[object Object]"
-console.log(JSON.stringify(c)); // {"firstname":"Damao"}
+var c = { firstname: 'Damao' }
+console.log(c.toString()) // "[object Object]"
+console.log(JSON.stringify(c)) // {"firstname":"Damao"}
 ```
 
 如果是陣列呢？陣列也是一種物件，所以基本上跟物件的結果一樣。
@@ -77,13 +77,13 @@ console.log(JSON.stringify(c)); // {"firstname":"Damao"}
 差別在於陣列的 `toString()` 方法會試著將陣列中的**物件**轉為字串，此時如果是「空陣列」就會等於陣列中沒有物件，結果就會回傳空字串。
 
 ```javascript
-var d = [];
-console.log(typeof d); // object
-console.log(d.toString()); // "" (空字串)
+var d = []
+console.log(typeof d) // object
+console.log(d.toString()) // "" (空字串)
 
-var d = [{}];
-console.log(d.toString()); // [object Object]
-console.log(JSON.stringify(d)); // "[{}]"
+var d = [{}]
+console.log(d.toString()) // [object Object]
+console.log(JSON.stringify(d)) // "[{}]"
 ```
 
 然而，到目前為止，我們可以發現陣列和物件使用 `toString()` 的結果都是 `"[object Object]"`，所以問題還沒有解決，到底要怎麼檢驗區分出 Array 跟 Object 呢？
@@ -104,8 +104,8 @@ A：內建的函式建構子加上 `.prototype` 就是指它們的原型，在�
 - `Object.prototype` → 預設的原生原型
 
   ```javascript
-  console.log(Object.prototype); // 基本物件
-  console.log(Object.prototype.__proto__); // null
+  console.log(Object.prototype) // 基本物件
+  console.log(Object.prototype.__proto__) // null
   ```
 
 - `Object.prototype.toString()` → 內建方法
@@ -115,12 +115,12 @@ A：內建的函式建構子加上 `.prototype` 就是指它們的原型，在�
 我們讓每個東西都通過 `Object.prototype.toString()` 檢測，這個方法能判斷所有的型別喔！
 
 ```javascript
-console.log(Object.prototype.toString.call(a)); // [object Number]
-console.log(Object.prototype.toString.call(b)); // [object String]
-console.log(Object.prototype.toString.call(c)); // [object Object]
-console.log(Object.prototype.toString.call(d)); // [object Array]
-console.log(Object.prototype.toString.call(undefined)); // [object Undefined]
-console.log(Object.prototype.toString.call(null)); // [object Null]
+console.log(Object.prototype.toString.call(a)) // [object Number]
+console.log(Object.prototype.toString.call(b)) // [object String]
+console.log(Object.prototype.toString.call(c)) // [object Object]
+console.log(Object.prototype.toString.call(d)) // [object Array]
+console.log(Object.prototype.toString.call(undefined)) // [object Undefined]
+console.log(Object.prototype.toString.call(null)) // [object Null]
 ```
 
 結論：如果要精確地判斷型別，特別是區分物件與陣列，就要用物件的 `toString()` 方法。
@@ -131,12 +131,12 @@ console.log(Object.prototype.toString.call(null)); // [object Null]
 
 ```javascript
 function Person(name) {
-  this.name = name;
+  this.name = name
 }
-var e = new Person("Damao");
-console.log(e); // Person {name: "Damao"}
-console.log(typeof e); // object
-console.log(e instanceof Person); // true
+var e = new Person('Damao')
+console.log(e) // Person {name: "Damao"}
+console.log(typeof e) // object
+console.log(e instanceof Person) // true
 ```
 
 ## 萬年 bug - typeof null
@@ -148,8 +148,8 @@ console.log(e instanceof Person); // true
 不過 `typeof null` 得到物件 (object) 這個結果就是 JavaScript 的 bug 了，但是因為這個問題存在很久了，過去建置的網站可能有用到，所以不能修正哩 🤔
 
 ```javascript
-console.log(typeof undefined); // undefined
-console.log(typeof null); // object
+console.log(typeof undefined) // undefined
+console.log(typeof null) // object
 ```
 
 ## 回顧

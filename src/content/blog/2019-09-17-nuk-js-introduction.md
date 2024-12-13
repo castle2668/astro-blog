@@ -1,10 +1,10 @@
 ---
-title: "NUK JavaScript #1：let、const、型別"
-excerpt: "這學期終於選到 JS 課程了，很期待但又怕很難哈哈。總之就整理筆記，幫忙加深印象吧，往後複習期中期末考試應該有幫助。此篇將會介紹環境安裝、型別，與 ES6 的 let、const。"
-tags: ["nuk", "javascript"]
+title: 'NUK JavaScript #1：let、const、型別'
+excerpt: '這學期終於選到 JS 課程了，很期待但又怕很難哈哈。總之就整理筆記，幫忙加深印象吧，往後複習期中期末考試應該有幫助。此篇將會介紹環境安裝、型別，與 ES6 的 let、const。'
+tags: ['nuk', 'javascript']
 date: 2019-09-17
-author: "Huang, Yung-Hsiang"
-image: "javascript.png"
+author: 'Huang, Yung-Hsiang'
+image: 'javascript.png'
 slug: 2019-09-17-nuk-js-introduction
 ---
 
@@ -30,10 +30,10 @@ slug: 2019-09-17-nuk-js-introduction
 在 ES5 我們會用 var 來做宣告，但到了 ES6 我們不想要汙染全域變數，因此使用 let 與 const 來宣告變數。
 
 ```javascript
-let Ming = "小明";
-let Sean = "小翔";
-console.log(Ming);
-console.log(Sean);
+let Ming = '小明'
+let Sean = '小翔'
+console.log(Ming)
+console.log(Sean)
 ```
 
 上面兩行 Code 以白話文翻譯就是：
@@ -49,10 +49,10 @@ console.log(Sean);
 以下我們用 let 與 const 宣告變數，不過這一次我們還想要重新賦予值給變數：
 
 ```javascript
-let a = 1;
-a = 2; // let 可以重新賦予值
-const b = 1;
-b = 2; // const 不可以重新賦予值
+let a = 1
+a = 2 // let 可以重新賦予值
+const b = 1
+b = 2 // const 不可以重新賦予值
 ```
 
 運行上面的程式碼後，我們會發現 const 所宣告的變數 b 是無法重新賦予值的，這就是因為 const 不可變動的特性而出現的錯誤！
@@ -70,11 +70,11 @@ A：因為某些狀況下，開發者並不希望某一些資訊是可以被改�
 首先，我們先來看以下的範例程式碼：
 
 ```javascript
-var a = 1;
-var b = "hello";
+var a = 1
+var b = 'hello'
 // var c = a + b;
-console.log(c);
-var c = a + b; // Hoisting
+console.log(c)
+var c = a + b // Hoisting
 ```
 
 上述的程式碼中，我們分別宣告了 a 與 b 兩個變數並賦予其值，再宣告變數 c = a + b 並回傳其值。  
@@ -83,11 +83,11 @@ var c = a + b; // Hoisting
 但是！如果使用 let 來宣告，狀況可就不同了：
 
 ```javascript
-let a = 1;
-b = "hello";
+let a = 1
+b = 'hello'
 // let c = a + b;
-console.log(c);
-let c = a + b; // let 無法 Hoisting
+console.log(c)
+let c = a + b // let 無法 Hoisting
 ```
 
 這個例子中，我們只是把 var 換成 let，但是 console 卻傳來錯誤訊息，並表示無法存取到 c 這個變數。
@@ -109,26 +109,26 @@ Hoisting 結論：var 會向上提升，let 與 const 不會。
 我們剛才宣告的型別都是數字，現在我們來試著宣告一個字串型別的值：
 
 ```javascript
-let a = 1;
-let b = "hello";
+let a = 1
+let b = 'hello'
 ```
 
 如果我們將 a 與 b 相加，會得到什麼結果呢？  
 我們會得到 1hello 的字串！
 
 ```javascript
-let a = 1;
-let b = "hello";
-console.log(a + b);
+let a = 1
+let b = 'hello'
+console.log(a + b)
 ```
 
 此外，不只數字跟數字、數字跟字串可以相加，布林值與字串也可以相加。  
 以下我們會得到 true + hello，也就是 truehello 的字串。
 
 ```javascript
-let a = true;
-let b = "hello";
-console.log(a + b);
+let a = true
+let b = 'hello'
+console.log(a + b)
 ```
 
 這一篇介紹了 let 與 const 的特性，包含重新賦予值以及 Hoisting，在最後也稍微介紹了型別的觀念。  

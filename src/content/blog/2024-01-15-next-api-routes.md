@@ -1,10 +1,10 @@
 ---
-title: "透過 Next.js API Routes 新增後端程式碼，實現 Fullstack React"
-excerpt: "其實專案使用 Next.js 的話，可以考慮直接在 Next 專案中的 API Routes 進行後端的開發，只是這次開發公司專案是第一次用，當初並沒有規劃這一塊，所以目前專案完成上線後，沒有安排進行這方面的重構，不過我們還是可以學習一下怎麼在 Next 這個框架中完成全端開發。"
-tags: ["next", "pagesrouter", "apiroutes"]
+title: '透過 Next.js API Routes 新增後端程式碼，實現 Fullstack React'
+excerpt: '其實專案使用 Next.js 的話，可以考慮直接在 Next 專案中的 API Routes 進行後端的開發，只是這次開發公司專案是第一次用，當初並沒有規劃這一塊，所以目前專案完成上線後，沒有安排進行這方面的重構，不過我們還是可以學習一下怎麼在 Next 這個框架中完成全端開發。'
+tags: ['nextjs', 'pagesrouter', 'apiroutes']
 date: 2024-01-15
-author: "Sean Huang"
-image: "nextjs.png"
+author: 'Sean Huang'
+image: 'nextjs.png'
 slug: 2024-01-15-next-api-routes
 ---
 
@@ -20,10 +20,10 @@ Next.js API Routes 是 Next.js 框架中用來處理 API 請求的一個特殊�
 // <root>/pages/api/feedback.js
 
 function handler(req, res) {
-  res.status(200).json({ message: "Our First API Route" });
+  res.status(200).json({ message: 'Our First API Route' })
 }
 
-export default handler;
+export default handler
 ```
 
 實際上這邊就是在撰寫 Node.js 程式碼，Next.js 把 API Routes 設計得跟 Express.js 很像。
@@ -52,41 +52,41 @@ export default handler;
 我們這裡預期會有兩種 HTTP Method，`POST` 提交表單並返回所有資料，與 `GET` 取得所有資料，所使用的 URL 是同一個，符合 CRUD。
 
 ```jsx
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react'
 
 function HomePage() {
-  const [feedbackItems, setFeedbackItems] = useState([]);
+  const [feedbackItems, setFeedbackItems] = useState([])
 
-  const emailInputRef = useRef();
-  const feedbackInputRef = useRef();
+  const emailInputRef = useRef()
+  const feedbackInputRef = useRef()
 
   // 送出 JSON 資料提交表單，並返回最新 JSON 資料
   function submitFormHandler(event) {
-    event.preventDefault();
+    event.preventDefault()
 
-    const enteredEmail = emailInputRef.current.value;
-    const enteredFeedback = feedbackInputRef.current.value;
+    const enteredEmail = emailInputRef.current.value
+    const enteredFeedback = feedbackInputRef.current.value
 
-    const reqBody = { email: enteredEmail, text: enteredFeedback };
+    const reqBody = { email: enteredEmail, text: enteredFeedback }
 
-    fetch("/api/feedback", {
-      method: "POST",
+    fetch('/api/feedback', {
+      method: 'POST',
       body: JSON.stringify(reqBody),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then(response => response.json())
+      .then(data => console.log(data))
   }
 
   // 取得最新 JSON 資料
   function loadFeedbackHandler() {
-    fetch("/api/feedback")
-      .then((response) => response.json())
-      .then((data) => {
-        setFeedbackItems(data.feedback);
-      });
+    fetch('/api/feedback')
+      .then(response => response.json())
+      .then(data => {
+        setFeedbackItems(data.feedback)
+      })
   }
 
   return (
@@ -106,15 +106,15 @@ function HomePage() {
       <hr />
       <button onClick={loadFeedbackHandler}>Load Feedback</button>
       <ul>
-        {feedbackItems.map((item) => (
+        {feedbackItems.map(item => (
           <li key={item.id}>{item.text}</li>
         ))}
       </ul>
     </div>
-  );
+  )
 }
 
-export default HomePage;
+export default HomePage
 ```
 
 這是我們對應的 API Routes 的 Code，我們會判斷 `req.method` 如果是 `POST` 就將新的 Feedback 寫入檔案，然後將最新的所有資料返回給前端顯示。
@@ -122,49 +122,49 @@ export default HomePage;
 ```jsx
 // <root>/pages/api/feedback.js
 
-import fs from "fs"; // import file system Node.js module
-import path from "path"; // import path Node.js module
+import fs from 'fs' // import file system Node.js module
+import path from 'path' // import path Node.js module
 
 export function buildFeedbackPath() {
   // process.cwd() returns the current working directory of the Node.js process
-  return path.join(process.cwd(), "data", "feedback.json");
+  return path.join(process.cwd(), 'data', 'feedback.json')
 }
 
 export function extractFeedback(filePath) {
   // readFileSync() reads the entire contents of a file synchronously
-  const fileData = fs.readFileSync(filePath);
+  const fileData = fs.readFileSync(filePath)
   // JSON.parse() parses a JSON string, constructing the JavaScript value or object described by the string
-  const data = JSON.parse(fileData);
-  return data;
+  const data = JSON.parse(fileData)
+  return data
 }
 
 function handler(req, res) {
-  if (req.method === "POST") {
-    const { email } = req.body;
-    const feedbackText = req.body.text;
+  if (req.method === 'POST') {
+    const { email } = req.body
+    const feedbackText = req.body.text
 
     const newFeedback = {
       id: new Date().toISOString(),
       email,
       text: feedbackText,
-    };
+    }
 
     // store that in a database or in a file
-    const filePath = buildFeedbackPath();
-    const data = extractFeedback(filePath);
-    data.push(newFeedback);
+    const filePath = buildFeedbackPath()
+    const data = extractFeedback(filePath)
+    data.push(newFeedback)
     // writeFileSync() writes data to a file, replacing the file if it already exists
     // JSON.stringify() converts a JavaScript object or value to a JSON string
-    fs.writeFileSync(filePath, JSON.stringify(data));
-    res.status(201).json({ message: "Success!", feedback: newFeedback });
+    fs.writeFileSync(filePath, JSON.stringify(data))
+    res.status(201).json({ message: 'Success!', feedback: newFeedback })
   } else {
-    const filePath = buildFeedbackPath();
-    const data = extractFeedback(filePath);
-    res.status(200).json({ feedback: data });
+    const filePath = buildFeedbackPath()
+    const data = extractFeedback(filePath)
+    res.status(200).json({ feedback: data })
   }
 }
 
-export default handler;
+export default handler
 ```
 
 當然這些 Node.js 的 Code 也能使用在同為 Server Side 的 Pre-Rendering Page 上面，舉例來說，在 “getStaticProps” 或 “getServerSideProps” 中取得 Feedback 資料。
@@ -173,13 +173,13 @@ export default handler;
 
 ```jsx
 export async function getStaticProps() {
-  const filePath = buildFeedbackPath();
-  const data = extractFeedback(filePath);
+  const filePath = buildFeedbackPath()
+  const data = extractFeedback(filePath)
   return {
     props: {
       feedbackItems: data,
     },
-  };
+  }
 }
 ```
 
@@ -194,19 +194,19 @@ export async function getStaticProps() {
 ```jsx
 // <root>/pages/api/feedback/[feedbackId].js
 
-import { buildFeedbackPath, extractFeedback } from ".";
+import { buildFeedbackPath, extractFeedback } from '.'
 
 function handler(req, res) {
-  const feedbackId = req.query.feedbackId;
-  const filePath = buildFeedbackPath();
-  const feedbackData = extractFeedback(filePath);
+  const feedbackId = req.query.feedbackId
+  const filePath = buildFeedbackPath()
+  const feedbackData = extractFeedback(filePath)
   const selectedFeedback = feedbackData.find(
-    (feedback) => feedback.id === feedbackId,
-  );
-  res.status(200).json({ feedback: selectedFeedback });
+    feedback => feedback.id === feedbackId
+  )
+  res.status(200).json({ feedback: selectedFeedback })
 }
 
-export default handler;
+export default handler
 ```
 
 至於在 Feedback 詳細頁等元件中的使用方式，大概就像是以下這樣 👇
@@ -214,10 +214,10 @@ export default handler;
 ```jsx
 function loadFeedbackHandler(id) {
   fetch(`/api/feedback/${id}`)
-    .then((response) => response.json())
-    .then((data) => {
-      setFeedbackData(data.feedback);
-    });
+    .then(response => response.json())
+    .then(data => {
+      setFeedbackData(data.feedback)
+    })
 }
 ```
 

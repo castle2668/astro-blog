@@ -1,10 +1,10 @@
 ---
-title: "[Data Structures] Hash Tables"
+title: '[Data Structures] Hash Tables'
 excerpt: "In this article, we’ll explore the hash table data structure, which provides fast data access using keys. We'll build our own hash table step-by-step in JavaScript, covering how it stores data, handles collisions, and retrieves values."
-tags: ["datastructures", "javascript", "hashtable"]
+tags: ['datastructures', 'javascript', 'hashtable']
 date: 2024-11-13
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2024-11-13-hash-tables
 ---
 
@@ -20,14 +20,14 @@ To create a hash table, we need two constructor functions: one for the table its
 
 ```javascript
 function HashTable(size) {
-  this.buckets = Array(size);
-  this.numBuckets = this.buckets.length;
+  this.buckets = Array(size)
+  this.numBuckets = this.buckets.length
 }
 
 function HashNode(key, value, next) {
-  this.key = key;
-  this.value = value;
-  this.next = next || null;
+  this.key = key
+  this.value = value
+  this.next = next || null
 }
 ```
 
@@ -41,9 +41,9 @@ The modulus operator (`%`) calculates the remainder after division, helping us e
 
 ```javascript
 // Example of charCodeAt and modulus
-let str = "example";
-let charCode = str.charCodeAt(0); // Unicode value of 'e' = 101
-let index = charCode % 10; // Ensure result is within array bounds
+let str = 'example'
+let charCode = str.charCodeAt(0) // Unicode value of 'e' = 101
+let index = charCode % 10 // Ensure result is within array bounds
 ```
 
 ## Hash Method
@@ -52,12 +52,12 @@ The `hash` method will transform our key into an index. It adds up the Unicode v
 
 ```javascript
 HashTable.prototype.hash = function (key) {
-  let total = 0;
+  let total = 0
   for (let i = 0; i < key.length; i++) {
-    total += key.charCodeAt(i);
+    total += key.charCodeAt(i)
   }
-  return total % this.numBuckets;
-};
+  return total % this.numBuckets
+}
 ```
 
 ## Insert Method
@@ -68,21 +68,21 @@ Additionally, this method can be optimized by adding an early return for cases w
 
 ```javascript
 HashTable.prototype.insert = function (key, value) {
-  let index = this.hash(key);
+  let index = this.hash(key)
   if (!this.buckets[index]) {
-    this.buckets[index] = new HashNode(key, value);
+    this.buckets[index] = new HashNode(key, value)
   } else {
-    let currentNode = this.buckets[index];
+    let currentNode = this.buckets[index]
     while (currentNode.next) {
       if (currentNode.key === key) {
-        currentNode.value = value; // Update existing key
-        return;
+        currentNode.value = value // Update existing key
+        return
       }
-      currentNode = currentNode.next;
+      currentNode = currentNode.next
     }
-    currentNode.next = new HashNode(key, value); // Add new node at the end
+    currentNode.next = new HashNode(key, value) // Add new node at the end
   }
-};
+}
 ```
 
 ## Get Method
@@ -91,16 +91,16 @@ The `get` method retrieves the value associated with a given key. It hashes the 
 
 ```javascript
 HashTable.prototype.get = function (key) {
-  let index = this.hash(key);
-  let currentNode = this.buckets[index];
+  let index = this.hash(key)
+  let currentNode = this.buckets[index]
   while (currentNode) {
     if (currentNode.key === key) {
-      return currentNode.value;
+      return currentNode.value
     }
-    currentNode = currentNode.next;
+    currentNode = currentNode.next
   }
-  return null; // Return null if key not found
-};
+  return null // Return null if key not found
+}
 ```
 
 ## RetrieveAll Method
@@ -110,22 +110,22 @@ The `retrieveAll` method is designed to collect and return all nodes stored in o
 ```javascript
 HashTable.prototype.retrieveAll = function () {
   // Initialize an empty array to store all nodes
-  let allNodes = [];
+  let allNodes = []
 
   // Loop through each bucket in the hash table
   for (let i = 0; i < this.numBuckets; i++) {
-    let currentNode = this.buckets[i]; // Start with the first node in the bucket
+    let currentNode = this.buckets[i] // Start with the first node in the bucket
 
     // Traverse through each node in the linked list (if there’s a chain)
     while (currentNode) {
-      allNodes.push(currentNode); // Add the current node to the array
-      currentNode = currentNode.next; // Move to the next node in the chain
+      allNodes.push(currentNode) // Add the current node to the array
+      currentNode = currentNode.next // Move to the next node in the chain
     }
   }
 
   // Return the array containing all nodes
-  return allNodes;
-};
+  return allNodes
+}
 ```
 
 ## Source Code
@@ -134,59 +134,59 @@ Here’s the full JavaScript implementation of a Binary Search Tree, with method
 
 ```javascript
 function HashTable(size) {
-  this.buckets = Array(size);
-  this.numBuckets = this.buckets.length;
+  this.buckets = Array(size)
+  this.numBuckets = this.buckets.length
 }
 
 function HashNode(key, value, next) {
-  this.key = key;
-  this.value = value;
-  this.next = next || null;
+  this.key = key
+  this.value = value
+  this.next = next || null
 }
 
 HashTable.prototype.hash = function (key) {
-  let total = 0;
+  let total = 0
   for (let i = 0; i < key.length; i++) {
-    total += key.charCodeAt(i);
+    total += key.charCodeAt(i)
   }
-  return total % this.numBuckets;
-};
+  return total % this.numBuckets
+}
 
 HashTable.prototype.insert = function (key, value) {
-  let index = this.hash(key);
+  let index = this.hash(key)
   if (!this.buckets[index]) {
-    this.buckets[index] = new HashNode(key, value);
+    this.buckets[index] = new HashNode(key, value)
   } else {
-    let currentNode = this.buckets[index];
+    let currentNode = this.buckets[index]
     while (currentNode.next) {
       if (currentNode.key === key) {
-        currentNode.value = value;
-        return;
+        currentNode.value = value
+        return
       }
-      currentNode = currentNode.next;
+      currentNode = currentNode.next
     }
-    currentNode.next = new HashNode(key, value);
+    currentNode.next = new HashNode(key, value)
   }
-};
+}
 
 HashTable.prototype.get = function (key) {
-  let index = this.hash(key);
-  let currentNode = this.buckets[index];
+  let index = this.hash(key)
+  let currentNode = this.buckets[index]
   while (currentNode) {
     if (currentNode.key === key) {
-      return currentNode.value;
+      return currentNode.value
     }
-    currentNode = currentNode.next;
+    currentNode = currentNode.next
   }
-  return null;
-};
+  return null
+}
 
 // Example usage:
-let contactsTable = new HashTable(30);
-contactsTable.insert("Alice", "alice@example.com");
-contactsTable.insert("Bob", "bob@example.com");
-console.log(contactsTable.get("Alice")); // Output: alice@example.com
-console.log(contactsTable.get("Bob")); // Output: bob@example.com
+let contactsTable = new HashTable(30)
+contactsTable.insert('Alice', 'alice@example.com')
+contactsTable.insert('Bob', 'bob@example.com')
+console.log(contactsTable.get('Alice')) // Output: alice@example.com
+console.log(contactsTable.get('Bob')) // Output: bob@example.com
 ```
 
 ## Wrap-up

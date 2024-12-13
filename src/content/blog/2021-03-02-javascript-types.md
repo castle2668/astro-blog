@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #7 型別 (Types)"
-excerpt: "JavaScript 很特別，它與其他程式語言不同，尤其是處理變數資料與型別的部分。本文主要內容為「型別」的相關知識，包含動態型別、純值、陣列，至於物件則會紀錄在其他筆記中。"
-tags: ["javascript"]
+title: 'Understand JavaScript #7 型別 (Types)'
+excerpt: 'JavaScript 很特別，它與其他程式語言不同，尤其是處理變數資料與型別的部分。本文主要內容為「型別」的相關知識，包含動態型別、純值、陣列，至於物件則會紀錄在其他筆記中。'
+tags: ['javascript']
 date: 2021-03-02
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-03-02-javascript-types
 ---
 
@@ -17,16 +17,16 @@ JavaScript 處理型別的方式稱為「動態型別」，意思是我們不用
 因為型別是在執行時才知道，所以一個變數在不同時間點，會擁有不同型別的值。
 
 ```javascript
-var isNew = true; // no errors
-isNew = "hello!";
-isNew = 1;
+var isNew = true // no errors
+isNew = 'hello!'
+isNew = 1
 ```
 
 我們可以用 `typeof` 來檢測某個變數所儲存的值的型別。
 
 ```javascript
-const isNew = "Sean";
-console.log(typeof isNew); // "string"
+const isNew = 'Sean'
+console.log(typeof isNew) // "string"
 ```
 
 ### 靜態型別 (Static Typing)
@@ -84,8 +84,8 @@ Symbol 是在 ES6 引入的一種新的基本資料型態，用來表示唯一 (
   所以如果有宣告，但是還沒有設值，那結果就會出現 undefined，不過此時這個變數已經有佔據記憶體空間了。
 
   ```javascript
-  var a;
-  console.log(a); // undefined
+  var a
+  console.log(a) // undefined
   ```
 
 - not defined：找不到、未被定義
@@ -93,13 +93,13 @@ Symbol 是在 ES6 引入的一種新的基本資料型態，用來表示唯一 (
   如果是完全沒有宣告變數，就直接去呼叫變數的話，則會得到「無法參照」的錯誤，並告訴我們 JavaScript 在記憶體中找不到那個值 (Uncaught Reference)。
 
   ```javascript
-  console.log(a); // not defined
+  console.log(a) // not defined
   ```
 
 - null：是一個值，表示「不存在」的意思，是基本型別的其中一種
 
   ```javascript
-  var a = null;
+  var a = null
   ```
 
 ### 使用 undefined 的注意事項
@@ -108,7 +108,7 @@ Symbol 是在 ES6 引入的一種新的基本資料型態，用來表示唯一 (
 
 ```javascript
 // NEVER DO THIS!
-a = undefined;
+a = undefined
 ```
 
 雖然這是可以做到的，程式也可以順利運行沒錯，但是我們不應該讓 undefined 這個特殊關鍵字是由我們來設定。
@@ -121,8 +121,8 @@ a = undefined;
 
 ```javascript
 // var arr = new Array();
-var arr = [1, 2, 3];
-console.log(arr[0]); // 1
+var arr = [1, 2, 3]
+console.log(arr[0]) // 1
 ```
 
 在其他程式語言中，陣列裡面的值通常為相同的型別，像是數字陣列、字串陣列、物件陣列等等。
@@ -133,26 +133,26 @@ console.log(arr[0]); // 1
 var arr = [
   1,
   false,
-  "Hello World",
+  'Hello World',
   {
-    name: "Sean",
-    address: "111 Main St.",
+    name: 'Sean',
+    address: '111 Main St.',
   },
   // Function Expression
   function (name) {
-    var greeting = "Hello";
-    console.log(greeting + name);
+    var greeting = 'Hello'
+    console.log(greeting + name)
   },
-];
+]
 
-console.log(arr); // (5) [1, false, "Hello World", {…}, ƒ]
+console.log(arr) // (5) [1, false, "Hello World", {…}, ƒ]
 ```
 
 如果想要參考到這個陣列中的函式，因為基準是從 0 開始，所以是用 `arr[4]`。如果想要調用、執行參數，則再加上小括號與參數。
 
 ```javascript
-arr[4]("Sean"); // Hello Sean
-arr[4](arr[3].name); // Hello Sean
+arr[4]('Sean') // Hello Sean
+arr[4](arr[3].name) // Hello Sean
 ```
 
 ## 回顧

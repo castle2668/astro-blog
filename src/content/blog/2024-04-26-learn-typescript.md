@@ -1,10 +1,10 @@
 ---
-title: "[Note] TypeScript Course for Beginners - Learn TypeScript from Scratch!"
-excerpt: "這個 TypeScript 學習大綱包含從基礎到進階的概念，涵蓋了 TypeScript 的基本語法、編譯器配置、高級類型和特性、泛型、裝飾器、命名空間和模組，以及 TypeScript 與其他工具的集成。此大綱適用於想要全面學習 TypeScript 的開發者，從基本開始，然後深入理解 TypeScript 的高級功能。"
-tags: ["typescript"]
+title: '[Note] TypeScript Course for Beginners - Learn TypeScript from Scratch!'
+excerpt: '這個 TypeScript 學習大綱包含從基礎到進階的概念，涵蓋了 TypeScript 的基本語法、編譯器配置、高級類型和特性、泛型、裝飾器、命名空間和模組，以及 TypeScript 與其他工具的集成。此大綱適用於想要全面學習 TypeScript 的開發者，從基本開始，然後深入理解 TypeScript 的高級功能。'
+tags: ['typescript']
 date: 2024-04-26
-author: "Sean Huang"
-image: "react.jpg"
+author: 'Sean Huang'
+image: 'react.jpg'
 slug: 2024-04-26-learn-typescript
 ---
 
@@ -24,15 +24,15 @@ slug: 2024-04-26-learn-typescript
 - Numbers, Strings and Booleans：基礎的型別
 
   ```tsx
-  let name: string = "John";
-  let age: number = 25;
-  let isStudent: boolean = true;
+  let name: string = 'John'
+  let age: number = 25
+  let isStudent: boolean = true
 
   function greet(person: string): string {
-    return `Hello, ${person}!`;
+    return `Hello, ${person}!`
   }
 
-  console.log(greet(name));
+  console.log(greet(name))
   ```
 
 - Object Types：對象型別
@@ -45,10 +45,10 @@ slug: 2024-04-26-learn-typescript
 
   ```tsx
   // 定義一個元組，包含兩個數字
-  let point: [number, number] = [1, 2];
+  let point: [number, number] = [1, 2]
 
   // 定義一個包含名字和年齡的元組
-  let person: [string, number] = ["Alice", 25];
+  let person: [string, number] = ['Alice', 25]
   ```
 
 - Enums：枚舉。枚舉的優點包括：
@@ -59,13 +59,13 @@ slug: 2024-04-26-learn-typescript
 
   ```tsx
   enum Direction {
-    NORTH = "N",
-    EAST = "E",
-    SOUTH = "S",
-    WEST = "W",
+    NORTH = 'N',
+    EAST = 'E',
+    SOUTH = 'S',
+    WEST = 'W',
   }
 
-  console.log(Direction.NORTH); // 輸出："N"
+  console.log(Direction.NORTH) // 輸出："N"
   ```
 
   > 當定義枚舉時，常見的做法是使用駝峰命名法來定義枚舉的名稱，而使用全大寫來定義枚舉的常量值。這樣做可以在代碼中清楚地標識枚舉的值和其他變數，增強可讀性，有助於區分與普通變數的差異。然而，這不是嚴格規定的規則，而是一種慣例。
@@ -77,15 +77,15 @@ slug: 2024-04-26-learn-typescript
 
   ```tsx
   function printValue(value: number | string): void {
-    if (typeof value === "number") {
-      console.log(`The number is ${value}`);
+    if (typeof value === 'number') {
+      console.log(`The number is ${value}`)
     } else {
-      console.log(`The string is '${value}'`);
+      console.log(`The string is '${value}'`)
     }
   }
 
-  printValue(42); // 輸出：The number is 42
-  printValue("Hello"); // 輸出：The string is 'Hello'
+  printValue(42) // 輸出：The number is 42
+  printValue('Hello') // 輸出：The string is 'Hello'
   ```
 
 - Literal Types：字面量型別
@@ -96,13 +96,13 @@ slug: 2024-04-26-learn-typescript
     例如，如果你要定義一個代表方向的變數，它只能是 "north"、"south"、"east" 或 "west"，可以使用字面量型別來限定可能的值：
 
   ```tsx
-  type Direction = "north" | "south" | "east" | "west";
+  type Direction = 'north' | 'south' | 'east' | 'west'
 
   function move(direction: Direction): void {
-    console.log(`Moving in the ${direction} direction`);
+    console.log(`Moving in the ${direction} direction`)
   }
 
-  move("north"); // 輸出：Moving in the north direction
+  move('north') // 輸出：Moving in the north direction
   // move('up');  // 錯誤：'up' 不是有效的方向
   ```
 
@@ -111,14 +111,14 @@ slug: 2024-04-26-learn-typescript
   - 別名可以指向基本型別、聯合型別、元組型別、函數型別，甚至更複雜的結構
 
   ```tsx
-  type Name = string; // 給 string 型別取個別名
-  type StringOrNumber = string | number; // 聯合型別
-  type Direction = "north" | "south" | "east" | "west"; // 字面量型別
+  type Name = string // 給 string 型別取個別名
+  type StringOrNumber = string | number // 聯合型別
+  type Direction = 'north' | 'south' | 'east' | 'west' // 字面量型別
   // 物件型別別名
   type Person = {
-    name: string;
-    age: number;
-  };
+    name: string
+    age: number
+  }
   ```
 
 - Function Return Types and Void：函數返回型別和空型別
@@ -128,20 +128,20 @@ slug: 2024-04-26-learn-typescript
 
     ```tsx
     function getSquare(num: number): number {
-      return num * num;
+      return num * num
     }
 
-    const result = getSquare(5); // 25
+    const result = getSquare(5) // 25
     ```
 
   - `void` 型別用於表示函數沒有返回值。這在定義那些不需要返回特定值的函數時非常有用，如事件處理器、日誌記錄函數等
 
     ```tsx
     function logMessage(message: string): void {
-      console.log(message);
+      console.log(message)
     }
 
-    logMessage("Hello, TypeScript");
+    logMessage('Hello, TypeScript')
     ```
 
 - Function Types and Callbacks：函數型別與回呼
@@ -150,14 +150,14 @@ slug: 2024-04-26-learn-typescript
 
     ```tsx
     // 定義一個接受兩個數字參數並返回數字的函數型別
-    type MathOperation = (a: number, b: number) => number;
+    type MathOperation = (a: number, b: number) => number
 
     // 使用函數型別
-    const add: MathOperation = (x, y) => x + y;
-    const subtract: MathOperation = (x, y) => x - y;
+    const add: MathOperation = (x, y) => x + y
+    const subtract: MathOperation = (x, y) => x - y
 
-    console.log(add(5, 3)); // 8
-    console.log(subtract(5, 3)); // 2
+    console.log(add(5, 3)) // 8
+    console.log(subtract(5, 3)) // 2
     ```
 
   - 回呼函數（Callbacks）是函數型別的一個常見應用。它們允許你將函數作為參數傳遞，並在某些事件或操作完成後調用。
@@ -165,19 +165,19 @@ slug: 2024-04-26-learn-typescript
 
     ```tsx
     // 定義一個函數型別，接受一個字串參數且沒有返回值
-    type EventCallback = (event: string) => void;
+    type EventCallback = (event: string) => void
 
     // 使用回呼函數
     function triggerEvent(callback: EventCallback, eventName: string): void {
-      console.log(`Triggering event: ${eventName}`);
-      callback(eventName); // 呼叫回呼函數
+      console.log(`Triggering event: ${eventName}`)
+      callback(eventName) // 呼叫回呼函數
     }
 
-    const handleEvent: EventCallback = (event) => {
-      console.log(`Event handled: ${event}`);
-    };
+    const handleEvent: EventCallback = event => {
+      console.log(`Event handled: ${event}`)
+    }
 
-    triggerEvent(handleEvent, "ClickEvent");
+    triggerEvent(handleEvent, 'ClickEvent')
     ```
 
     在這個例子中，`EventCallback` 是一個回呼函數型別，定義了它接受一個字串參數且沒有返回值。這種回呼機制在事件驅動程式和異步操作中非常常見。
@@ -189,18 +189,18 @@ slug: 2024-04-26-learn-typescript
   - `unknown` 的使用場景包括從外部來源接收數據、處理不確定的值、或者在函數中接受多種可能的參數
 
   ```tsx
-  let value: unknown;
+  let value: unknown
 
-  value = 42; // 可以是數字
-  value = "Hello"; // 也可以是字串
+  value = 42 // 可以是數字
+  value = 'Hello' // 也可以是字串
 
   // 不能直接將 unknown 型別賦值給其他具體型別
-  let name: string;
+  let name: string
   // name = value;  // 錯誤，因為 unknown 不能直接賦值
 
   // 必須執行型別檢查
-  if (typeof value === "string") {
-    name = value; // 這時可以賦值，因為已確定是字串
+  if (typeof value === 'string') {
+    name = value // 這時可以賦值，因為已確定是字串
   }
   ```
 
@@ -218,7 +218,7 @@ slug: 2024-04-26-learn-typescript
   ```tsx
   // throwError 總是拋出異常
   function throwError(message: string): never {
-    throw new Error(message); // 總是拋出異常
+    throw new Error(message) // 總是拋出異常
   }
 
   // infiniteLoop 進行無限循環
@@ -230,21 +230,21 @@ slug: 2024-04-26-learn-typescript
 
   // assertNever 用於在 switch 語句中處理不可能的情況
   function assertNever(x: never): never {
-    throw new Error("Unexpected value: " + x);
+    throw new Error('Unexpected value: ' + x)
   }
 
-  type Shape = "circle" | "square" | "triangle";
+  type Shape = 'circle' | 'square' | 'triangle'
 
   function getShapeArea(shape: Shape): number {
     switch (shape) {
-      case "circle":
-        return Math.PI * 5 * 5; // 圓形面積
-      case "square":
-        return 25; // 正方形面積
-      case "triangle":
-        return 10; // 三角形面積
+      case 'circle':
+        return Math.PI * 5 * 5 // 圓形面積
+      case 'square':
+        return 25 // 正方形面積
+      case 'triangle':
+        return 10 // 三角形面積
       default:
-        assertNever(shape); // 處理不可能的情況
+        assertNever(shape) // 處理不可能的情況
     }
   }
   ```

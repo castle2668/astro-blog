@@ -1,10 +1,10 @@
 ---
-title: "Deploying React Apps over Firebase Hosting"
-excerpt: "有很多做法能夠部署 React 專案，本文會介紹如何透過 Firebase Hosting 這項服務來部署一個 SPA 專案。"
-tags: ["react"]
+title: 'Deploying React Apps over Firebase Hosting'
+excerpt: '有很多做法能夠部署 React 專案，本文會介紹如何透過 Firebase Hosting 這項服務來部署一個 SPA 專案。'
+tags: ['react']
 date: 2022-06-06
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2022-06-06-deploying-react-apps
 ---
 

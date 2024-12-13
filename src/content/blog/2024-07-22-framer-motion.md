@@ -1,10 +1,10 @@
 ---
-title: "為你的 React Apps 加上動畫效果"
-excerpt: "沒有動畫效果的 Web Apps 不是說不好，但就是在完整度上少了一點什麼。如果可以適當添加一些動畫效果，除了可以讓網站看起來更加用心，也可以吸引使用者持續瀏覽。本文會介紹前端加入動畫效果的幾種方式，包含 CSS Transitions、CSS Animations，以及 Framer Motion 這套動畫效果 Library。"
-tags: ["react", "css", "framermotion"]
+title: '為你的 React Apps 加上動畫效果'
+excerpt: '沒有動畫效果的 Web Apps 不是說不好，但就是在完整度上少了一點什麼。如果可以適當添加一些動畫效果，除了可以讓網站看起來更加用心，也可以吸引使用者持續瀏覽。本文會介紹前端加入動畫效果的幾種方式，包含 CSS Transitions、CSS Animations，以及 Framer Motion 這套動畫效果 Library。'
+tags: ['react', 'css', 'framermotion']
 date: 2024-07-22
-author: "Sean Huang"
-image: "react.jpg"
+author: 'Sean Huang'
+image: 'react.jpg'
 slug: 2024-07-22-framer-motion
 ---
 
@@ -20,7 +20,7 @@ CSS Transitions 常常被用在製作旋轉圖標上，許多下拉選單操作�
 
 ```jsx
 // 假設已知我們有一個控制是否展開的狀態為 isExpanded
-<div className={`item-details ${isExpanded ? "expanded" : ""}`}>
+<div className={`item-details ${isExpanded ? 'expanded' : ''}`}>
   <button onClick={onViewDetails}>
     View Details <span className="item-details-icon">▲</span>
   </button>
@@ -55,7 +55,7 @@ return (
   <>
     isShowModal && <Modal onDone={handleDone} />
   </>
-);
+)
 ```
 
 當 Modal 開啟時，就會執行我們在 `@keyframes` 定義的 `slide-up-fade-in` 動畫效果，Modal 會從一開始的 `opacity: 0` 浮現到 `1`，同時位置也會透過 `translateY` 從下方 `30px` 的位置往上移動到 `0px`。最後的 `forwards` 則是指希望元素在動畫完成後，保留在動畫結束的狀態。
@@ -90,10 +90,10 @@ return (
 安裝 Framer Motion 之後，可以引入 `motion` 並且選用它包裝過後的 HTML 元素像是 `motion.div`，準備完成後，我們就可以開始為元素加上動畫了。
 
 ```jsx
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
 
 function App() {
-  return <motion.div />;
+  return <motion.div />
 }
 ```
 
@@ -141,7 +141,7 @@ function App() {
 除此之外，我們還可以加上 `exit` 為 DOM 移除的動作也加上動畫效果。也因此還必須加上 `<AnimatePresence>` 來包裝這個 Modal，讓 Framer Motion 確保這個元素已經執行了退出動畫才從 DOM 中移除 Modal。
 
 ```jsx
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from 'framer-motion'
 
 function App() {
   return (
@@ -153,7 +153,7 @@ function App() {
         open
       />
     </AnimatePresence>
-  );
+  )
 }
 ```
 
@@ -162,7 +162,7 @@ function App() {
 舉例來說，剛剛的 Modal 就可以改為以下寫法，讓 Modal 的動畫效果看起來更好理解與管理。
 
 ```jsx
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from 'framer-motion'
 
 function App() {
   return (
@@ -178,6 +178,6 @@ function App() {
         open
       />
     </AnimatePresence>
-  );
+  )
 }
 ```

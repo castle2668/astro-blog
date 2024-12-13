@@ -1,10 +1,10 @@
 ---
-title: "[React] Debouncing with useCallback Hook"
-excerpt: "本文介紹 React 當中 useCallback 這個 Hook 的使用概念，並且結合 Lodash 實作 Debouncing Search 的功能幫助理解 useCallback 的作用。"
-tags: ["react", "lodash"]
+title: '[React] Debouncing with useCallback Hook'
+excerpt: '本文介紹 React 當中 useCallback 這個 Hook 的使用概念，並且結合 Lodash 實作 Debouncing Search 的功能幫助理解 useCallback 的作用。'
+tags: ['react', 'lodash']
 date: 2022-10-11
-author: "Sean Huang"
-image: "react.jpg"
+author: 'Sean Huang'
+image: 'react.jpg'
 slug: 2022-10-11-usecallback
 ---
 
@@ -17,8 +17,8 @@ slug: 2022-10-11-usecallback
 ```jsx
 // 回傳一個 memoized 的 callback
 const memoizedCallback = useCallback(() => {
-  doSomething(a, b);
-}, [a, b]);
+  doSomething(a, b)
+}, [a, b])
 ```
 
 > 這時候使用像是 `React.memo` 時，就能夠知道傳入的函式是相同的物件。儘管 Props 傳入的是 Object，仍可以在父元件重新渲染時，不會重新分配記憶體位址，減少不必要的重新渲染
@@ -30,8 +30,8 @@ const memoizedCallback = useCallback(() => {
 ```jsx
 // 這裡用到 setState 但是不用放入 dependency，因為 React 保證 setState 不會變化
 const toggleParagraphHandler = useCallback(() => {
-  setShowParagraph((prevShowParagraph) => !prevShowParagraph);
-}, []);
+  setShowParagraph(prevShowParagraph => !prevShowParagraph)
+}, [])
 ```
 
 如果函式有使用到一些變數，因為有 Closure 關住原本的狀態，所以就算外部更改了變數，此時 `useCallback` 包住的函式的變數值，仍然會是傳入時的值。
@@ -41,9 +41,9 @@ const toggleParagraphHandler = useCallback(() => {
 ```jsx
 const toggleParagraphHandler = useCallback(() => {
   if (allowToggle) {
-    setShowParagraph((prevShowParagraph) => !prevShowParagraph);
+    setShowParagraph(prevShowParagraph => !prevShowParagraph)
   }
-}, [allowToggle]);
+}, [allowToggle])
 ```
 
 ## 範例練習：Lodash Debounce with React Hooks
@@ -60,11 +60,11 @@ const toggleParagraphHandler = useCallback(() => {
 
 ```jsx
 const debouncedSearch = useRef(
-  debounce(async (params) => {
-    await doSearch(params);
+  debounce(async params => {
+    await doSearch(params)
   }, 1000),
-  [],
-).current;
+  []
+).current
 ```
 
 ### 方法二：透過 useCallback 記憶函式
@@ -73,11 +73,11 @@ const debouncedSearch = useRef(
 
 ```jsx
 const debouncedSearch = useCallback(
-  debounce(async (params) => {
-    await doSearch(params);
+  debounce(async params => {
+    await doSearch(params)
   }, 1000),
-  [],
-);
+  []
+)
 ```
 
 ## 回顧

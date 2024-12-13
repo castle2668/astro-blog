@@ -1,10 +1,10 @@
 ---
-title: "Styling React Components"
-excerpt: "本文介紹 React 中基本的樣式撰寫方式，包含 Inline Style、CSS Modules、styled-components 等方式。"
-tags: ["react"]
+title: 'Styling React Components'
+excerpt: '本文介紹 React 中基本的樣式撰寫方式，包含 Inline Style、CSS Modules、styled-components 等方式。'
+tags: ['react']
 date: 2021-09-17
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2021-09-17-styling-react-components
 ---
 
@@ -18,13 +18,13 @@ slug: 2021-09-17-styling-react-components
 
 ```jsx
 const divStyle = {
-  background: "#ccc",
-  fontSize: "16",
-};
+  background: '#ccc',
+  fontSize: '16',
+}
 
 const HelloWorldComponent = () => {
-  return <div style={divStyle}>Hello World!</div>;
-};
+  return <div style={divStyle}>Hello World!</div>
+}
 ```
 
 ## Styled Components vs. CSS Modules

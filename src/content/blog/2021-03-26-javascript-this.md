@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #12 物件 × 函式 × this"
-excerpt: "本文主要內容為探討物件、函式，以及那個令人困惑的「this」的指向問題與相關知識。"
-tags: ["javascript"]
+title: 'Understand JavaScript #12 物件 × 函式 × this'
+excerpt: '本文主要內容為探討物件、函式，以及那個令人困惑的「this」的指向問題與相關知識。'
+tags: ['javascript']
 date: 2021-03-26
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-03-26-javascript-this
 ---
 
@@ -24,30 +24,30 @@ slug: 2021-03-26-javascript-this
 下面有三個執行環境（全域、呼叫 a 創造的、呼叫 b 創造的），每一種情況中，他們都有自己的 `this` 關鍵字，但這三個 `this` 都指向同一個記憶體位址的物件，也就是全域物件 `window`。
 
 ```javascript
-console.log(this); // Window {…}
+console.log(this) // Window {…}
 
 // Function Statement
 function a() {
-  console.log(this); // Window {…}
+  console.log(this) // Window {…}
 }
-a();
+a()
 
 // Function Expression
 var b = function () {
-  console.log(this); // Window {…}
-};
-b();
+  console.log(this) // Window {…}
+}
+b()
 ```
 
 我們可以透過點運算子連結一個新的變數到全域物件，而任何在全域物件下的變數，我們可以直接參考到它，不需要透過點運算子。
 
 ```javascript
 function a() {
-  console.log(this);
-  this.newVariable = "Hello";
+  console.log(this)
+  this.newVariable = 'Hello'
 }
-a();
-console.log(newVariable); // Hello
+a()
+console.log(newVariable) // Hello
 ```
 
 ## this 指向包含該方法的物件
@@ -57,15 +57,15 @@ console.log(newVariable); // Hello
 ```javascript
 var c = {
   // 屬性 (Property)
-  name: "The c object",
+  name: 'The c object',
 
   // 方法 (Method)
   log: function () {
-    console.log(this);
+    console.log(this)
   },
-};
+}
 
-c.log(); // {name: "The c object", log: ƒ}
+c.log() // {name: "The c object", log: ƒ}
 ```
 
 當我們呼叫的函式是物件的方法時，關鍵字 `this` 會指向「**包含這個方法的物件**」。
@@ -74,14 +74,14 @@ c.log(); // {name: "The c object", log: ƒ}
 
 ```javascript
 var c = {
-  name: "The c object",
+  name: 'The c object',
   log: function () {
-    this.name = "Updated c object";
-    console.log(this);
+    this.name = 'Updated c object'
+    console.log(this)
   },
-};
+}
 
-c.log(); // {name: "Updated c object", log: ƒ}
+c.log() // {name: "Updated c object", log: ƒ}
 ```
 
 ## 陷阱！JavaScript 設計上的小缺陷
@@ -96,20 +96,20 @@ c.log(); // {name: "Updated c object", log: ƒ}
 
 ```javascript
 var c = {
-  name: "The c object",
+  name: 'The c object',
   log: function () {
-    this.name = "Updated c object";
-    console.log(this); // {name: "Updated c object", log: ƒ}
+    this.name = 'Updated c object'
+    console.log(this) // {name: "Updated c object", log: ƒ}
 
     var setName = function (newName) {
-      this.name = newName;
-    };
-    setName("Updated again! The c object");
-    console.log(this); // {name: "Updated c object", log: ƒ}
+      this.name = newName
+    }
+    setName('Updated again! The c object')
+    console.log(this) // {name: "Updated c object", log: ƒ}
   },
-};
+}
 
-c.log();
+c.log()
 ```
 
 經過一番折騰後，我們在全域物件 `window` 裡面找到了剛才的 `name` 屬性，而且它的值為 `"Updated again! The c object"`，也就是說剛才等號運算子新增到了 `window` 裡面，也就代表著 `this` 是指向全域物件 `window` 而非 c 物件。
@@ -128,22 +128,22 @@ c.log();
 
 ```javascript
 var c = {
-  name: "The c object",
+  name: 'The c object',
   log: function () {
-    var self = this;
+    var self = this
 
-    self.name = "Updated c object";
-    console.log(self); // {name: "Updated c object", log: ƒ}
+    self.name = 'Updated c object'
+    console.log(self) // {name: "Updated c object", log: ƒ}
 
     var setName = function (newName) {
-      self.name = newName;
-    };
-    setName("Updated again! The c object");
-    console.log(self); // {name: "Updated again! The c object", log: ƒ}
+      self.name = newName
+    }
+    setName('Updated again! The c object')
+    console.log(self) // {name: "Updated again! The c object", log: ƒ}
   },
-};
+}
 
-c.log();
+c.log()
 ```
 
 > 補充：使用 ES6 的 let 關鍵字也可以解決這樣的問題喔。

@@ -1,10 +1,10 @@
 ---
-title: "2023 年度回顧"
-excerpt: "來記錄一下我在 2023 年發生的大小事情 🎉"
-tags: ["yearlyreview", "life"]
+title: '2023 年度回顧'
+excerpt: '來記錄一下我在 2023 年發生的大小事情 🎉'
+tags: ['yearlyreview', 'life']
 date: 2024-01-01
-author: "Sean Huang"
-image: "work-life-balance.jpg"
+author: 'Sean Huang'
+image: 'work-life-balance.jpg'
 slug: 2024-01-01-yearly-review
 ---
 

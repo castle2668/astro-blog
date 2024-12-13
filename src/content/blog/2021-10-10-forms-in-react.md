@@ -1,10 +1,10 @@
 ---
-title: "Forms in React"
-excerpt: "本文介紹如何在 React 中使用 Forms 表單相關元素。"
-tags: ["react"]
+title: 'Forms in React'
+excerpt: '本文介紹如何在 React 中使用 Forms 表單相關元素。'
+tags: ['react']
 date: 2021-10-10
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2021-10-10-forms-in-react
 ---
 
@@ -27,26 +27,26 @@ slug: 2021-10-10-forms-in-react
 3. 透過三元判斷，去判斷 `type` 是否為 Checkbox，因為只有 Checkbox 需要的值是 `checked` (Boolean) 而非 `value` (String)
 
 ```jsx
-import React from "react";
+import React from 'react'
 
 const Form = () => {
   const [formData, setFormData] = React.useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    comments: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    comments: '',
     isFriendly: true,
-  });
+  })
 
-  const handleChange = (event) => {
-    const { name, value, type, checked } = event.target;
-    setFormData((prevFormData) => {
+  const handleChange = event => {
+    const { name, value, type, checked } = event.target
+    setFormData(prevFormData => {
       return {
         ...prevFormData,
-        [name]: type === "checkbox" ? checked : value,
-      };
-    });
-  };
+        [name]: type === 'checkbox' ? checked : value,
+      }
+    })
+  }
 
   return (
     <form>
@@ -87,10 +87,10 @@ const Form = () => {
       <label htmlFor="isFriendly">Are you friendly?</label>
       <br />
     </form>
-  );
-};
+  )
+}
 
-export default Form;
+export default Form
 ```
 
 ## 表單範例：Radio
@@ -98,28 +98,28 @@ export default Form;
 製作 React 表單的 Radio 時，我們可以對 `checked` 屬性判斷 `formData.employment` 是否等於選取到的 `value`，以呈現哪一個選項是被選取的。
 
 ```jsx
-import React from "react";
+import React from 'react'
 
 const Form = () => {
   const [formData, setFormData] = React.useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    comments: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    comments: '',
     isFriendly: true,
-    employment: "",
-  });
-  console.log(formData.employment);
+    employment: '',
+  })
+  console.log(formData.employment)
 
-  const handleChange = (event) => {
-    const { name, value, type, checked } = event.target;
-    setFormData((prevFormData) => {
+  const handleChange = event => {
+    const { name, value, type, checked } = event.target
+    setFormData(prevFormData => {
       return {
         ...prevFormData,
-        [name]: type === "checkbox" ? checked : value,
-      };
-    });
-  };
+        [name]: type === 'checkbox' ? checked : value,
+      }
+    })
+  }
 
   return (
     <form>
@@ -131,7 +131,7 @@ const Form = () => {
           id="unemployed"
           name="employment"
           value="unemployed"
-          checked={formData.employment === "unemployed"}
+          checked={formData.employment === 'unemployed'}
           onChange={handleChange}
         />
         <label htmlFor="unemployed">Unemployed</label>
@@ -142,7 +142,7 @@ const Form = () => {
           id="part-time"
           name="employment"
           value="part-time"
-          checked={formData.employment === "part-time"}
+          checked={formData.employment === 'part-time'}
           onChange={handleChange}
         />
         <label htmlFor="part-time">Part-time</label>
@@ -153,17 +153,17 @@ const Form = () => {
           id="full-time"
           name="employment"
           value="full-time"
-          checked={formData.employment === "full-time"}
+          checked={formData.employment === 'full-time'}
           onChange={handleChange}
         />
         <label htmlFor="full-time">Full-time</label>
         <br />
       </fieldset>
     </form>
-  );
-};
+  )
+}
 
-export default Form;
+export default Form
 ```
 
 ## 表單範例：Select & Option
@@ -182,15 +182,15 @@ export default Form;
 
 ```jsx
 const [formData, setFormData] = React.useState({
-  firstName: "",
-  lastName: "",
-  email: "",
-  comments: "",
+  firstName: '',
+  lastName: '',
+  email: '',
+  comments: '',
   isFriendly: true,
-  employment: "",
-  favColor: "",
-});
-console.log(formData.favColor);
+  employment: '',
+  favColor: '',
+})
+console.log(formData.favColor)
 ```
 
 跟其他範例一樣新增 HTML `name` 屬性，用 ES6 Computed Property 作為 `setState` 更新的 `key`，另外也新增了空值的預設選項。
@@ -239,8 +239,8 @@ console.log(formData.favColor);
 
 ```jsx
 function handleSubmit() {
-  event.preventDefault();
-  submitToApi(formData);
+  event.preventDefault()
+  submitToApi(formData)
 }
 ```
 

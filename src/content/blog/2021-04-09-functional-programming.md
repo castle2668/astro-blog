@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #19 Functional Programming ft. Underscore, Loadsh"
-excerpt: "本文主要內容為探討「函式程式設計」的相關知識，透過一個經典的範例玩轉 Functional Programming，也會提到 Underscore 與 Loadsh 這兩個有名的資源庫。"
-tags: ["javascript"]
+title: 'Understand JavaScript #19 Functional Programming ft. Underscore, Loadsh'
+excerpt: '本文主要內容為探討「函式程式設計」的相關知識，透過一個經典的範例玩轉 Functional Programming，也會提到 Underscore 與 Loadsh 這兩個有名的資源庫。'
+tags: ['javascript']
 date: 2021-04-09
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-04-09-functional-programming
 ---
 
@@ -13,30 +13,30 @@ slug: 2021-04-09-functional-programming
 平常單純使用 for 迴圈的程式碼，如果想要複用邏輯，而且希望少寫一點 Code、少做重複的事情的話，可以把事情放到函式裡面去做。
 
 ```javascript
-let arr1 = [1, 2, 3];
-console.log("arr1:", arr1);
+let arr1 = [1, 2, 3]
+console.log('arr1:', arr1)
 
 // 純用 for 迴圈
-let arr2 = [];
+let arr2 = []
 for (let i = 0; i < arr1.length; i++) {
-  arr2.push(arr1[i] * 2);
+  arr2.push(arr1[i] * 2)
 }
-console.log("arr2:", arr2);
+console.log('arr2:', arr2)
 
 // 希望之後可以少做重複的事情，所以把事情放到函式內做
 function mapForEach(arr, fn) {
-  let newArr = [];
+  let newArr = []
   for (let i = 0; i < arr.length; i++) {
     // 用傳進去的函式 (fn) 處理傳進去的陣列 (arr)
-    newArr.push(fn(arr[i]));
+    newArr.push(fn(arr[i]))
   }
   // 最後回傳處理後的新陣列
-  return newArr;
+  return newArr
 }
 arr2 = mapForEach(arr1, function (item) {
-  return item * 2;
-});
-console.log("arr2:", arr2);
+  return item * 2
+})
+console.log('arr2:', arr2)
 
 // arr1: (3) [1, 2, 3]
 // arr2: (3) [2, 4, 6]
@@ -50,9 +50,9 @@ console.log("arr2:", arr2);
 ```javascript
 // 讓陣列告訴我符合條件 (function) 的東西
 let arr3 = mapForEach(arr1, function (item) {
-  return item > 2;
-});
-console.log("arr3:", arr3);
+  return item > 2
+})
+console.log('arr3:', arr3)
 
 // arr3: (3) [false, false, true]
 ```
@@ -64,8 +64,8 @@ console.log("arr3:", arr3);
 ```javascript
 // 限制條件的函式
 let checkPastLimit = function (limiter, item) {
-  return item > limiter;
-};
+  return item > limiter
+}
 ```
 
 不過 `mapForEach` 的 `fn` 只接受一個參數，我們為了要複用，不應該變動 `mapForEach`，因為在出現這個需求之前，或許 `mapForEach` 已經使用在好幾個地方了。所以我們要想辦法讓 `checkPastLimit` 只需要傳一個變數 `item`，而另一個變數 `limiter` 我們要預先設定好。
@@ -74,8 +74,8 @@ let checkPastLimit = function (limiter, item) {
 
 ```javascript
 // 預設參數
-let arr4 = mapForEach(arr1, checkPastLimit.bind(this, 1));
-console.log("arr4:", arr4);
+let arr4 = mapForEach(arr1, checkPastLimit.bind(this, 1))
+console.log('arr4:', arr4)
 
 // arr4: (3) [false, true, true]
 ```
@@ -88,11 +88,11 @@ console.log("arr4:", arr4);
 // 我的 checkPastLimit 只想要有一個參數
 let checkPastLimitSimplified = function (presetLimiter) {
   return function (limiter, item) {
-    return item > limiter;
-  }.bind(this, presetLimiter);
-};
-let arr5 = mapForEach(arr1, checkPastLimitSimplified(2));
-console.log("arr5:", arr5);
+    return item > limiter
+  }.bind(this, presetLimiter)
+}
+let arr5 = mapForEach(arr1, checkPastLimitSimplified(2))
+console.log('arr5:', arr5)
 
 // arr5: (3) [false, false, true]
 ```
@@ -110,19 +110,19 @@ Underscore 使用了很多 Functional Programming 的概念，像是它在很多
 使用 Underscore 的方法就如同它的名稱，下底線就是 Underscore 在全域的物件的名稱，這是一個有效的名稱喔！
 
 ```javascript
-let arr1 = [1, 2, 3];
+let arr1 = [1, 2, 3]
 
 // 數字乘以 3
 let arr6 = _.map(arr1, function (item) {
-  return item * 3;
-});
-console.log(arr6); // [3, 6, 9]
+  return item * 3
+})
+console.log(arr6) // [3, 6, 9]
 
 // 可以被 2 整除的數字
 let arr7 = _.filter([1, 2, 3, 4, 5, 6, 7], function (item) {
-  return item % 2 === 0;
-});
-console.log(arr7); // [2, 4, 6]
+  return item % 2 === 0
+})
+console.log(arr7) // [2, 4, 6]
 ```
 
 這些資源庫的原始碼都寫得很好，不但可以免費使用，同時藉由閱讀這些程式碼，我們可以從中學習到很好的 JavaScript 寫法，我們也稱此為**開源教育**。

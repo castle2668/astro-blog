@@ -1,10 +1,10 @@
 ---
-title: "升級 React Router v6 筆記"
-excerpt: "本文為 React Router 升級第 6 版的筆記。"
-tags: ["react", "reactrouter"]
+title: '升級 React Router v6 筆記'
+excerpt: '本文為 React Router 升級第 6 版的筆記。'
+tags: ['react', 'reactrouter']
 date: 2022-04-08
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2022-04-08-react-router-v6
 ---
 
@@ -83,8 +83,8 @@ const Welcome = () => {
         <Route path="new-user" element={<p>Welcome, new user!</p>} />
       </Routes>
     </section>
-  );
-};
+  )
+}
 ```
 
 ### 集中定義：Routes 與 Outlet 元件 (Recommended)
@@ -114,8 +114,8 @@ const Welcome = () => {
       <Link to="new-user">New User</Link>
       <Outlet />
     </section>
-  );
-};
+  )
+}
 ```
 
 > 以上集中定義的做法並不是強制的，但是個人推薦這樣處理更好理解 👍
@@ -138,7 +138,7 @@ const Welcome = () => {
 
 ```jsx
 <NavLink
-  className={(navData) => (navData.isActive ? classes.active : "")}
+  className={navData => (navData.isActive ? classes.active : '')}
   to="/welcome"
 >
   Welcome
@@ -173,20 +173,20 @@ v6 則更換成 `<Navigate>` 元件。還可以加上 `replace` 屬性，讓重�
 v6 把 `useHistory` 移除了，取而代之的是 `useNavigate`。它一樣擁有 Push、Replace、前後導向等功能，但是在寫法上看起來更簡單了。
 
 ```javascript
-const navigate = useNavigate();
-navigate("/welcome");
+const navigate = useNavigate()
+navigate('/welcome')
 
 // 如果要用 Redirect 也就是 Replace 的話，可以加上第二個參數
-navigate("/welcome", { replace: true });
+navigate('/welcome', { replace: true })
 
 // 單純加上 -1，表示回到上一頁
-navigate(-1);
+navigate(-1)
 
 // 回到上上一頁
-navigate(-2);
+navigate(-2)
 
 // 進到下一頁
-navigate(1);
+navigate(1)
 ```
 
 除此之外，`useNavigate` 同樣也能支援物件形式，可以處理比較複雜的路徑。
@@ -197,15 +197,15 @@ navigate(1);
 // 支援物件形式
 navigate({
   pathname: `${location.pathname}`,
-  search: `?sort=${isSortingAscending ? "desc" : "asc"}`,
-});
+  search: `?sort=${isSortingAscending ? 'desc' : 'asc'}`,
+})
 
 // createSearchParams
-const params = { sort: isSortingAscending ? "desc" : "asc" };
+const params = { sort: isSortingAscending ? 'desc' : 'asc' }
 navigate({
   pathname: location.pathname,
   search: `?${createSearchParams(params)}`,
-});
+})
 ```
 
 ## 6. Prompt 直接移除，沒有替代方案
@@ -227,7 +227,7 @@ navigate({
 
 ```jsx
 // import NewQuote from './pages/NewQuote';
-const NewQuote = React.lazy(() => import("./pages/NewQuote"));
+const NewQuote = React.lazy(() => import('./pages/NewQuote'))
 ```
 
 完成後回到頁面，會發現頁面顯示有錯誤。這是因為我們把檔案拆分成 chunks 之後，如我們所願 React Router 進行了延遲加載，但是 React 卻也因此無法順利進行渲染的工作而導致 React 報錯。
@@ -237,10 +237,10 @@ const NewQuote = React.lazy(() => import("./pages/NewQuote"));
 範例：將 Lazy Loading 應用在各個需要的頁面上
 
 ```jsx
-const AllQuotes = React.lazy(() => import("./pages/AllQuotes"));
-const NewQuote = React.lazy(() => import("./pages/NewQuote"));
-const QuoteDetail = React.lazy(() => import("./pages/QuoteDetail"));
-const NotFound = React.lazy(() => import("./pages/NotFound"));
+const AllQuotes = React.lazy(() => import('./pages/AllQuotes'))
+const NewQuote = React.lazy(() => import('./pages/NewQuote'))
+const QuoteDetail = React.lazy(() => import('./pages/QuoteDetail'))
+const NotFound = React.lazy(() => import('./pages/NotFound'))
 
 function App() {
   return (
@@ -262,7 +262,7 @@ function App() {
         </Suspense>
       </Layout>
     </div>
-  );
+  )
 }
 ```
 

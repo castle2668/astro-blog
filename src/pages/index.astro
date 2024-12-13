@@ -1,23 +1,22 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
+import type { CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
+import ArticleCard from '../components/ArticleCard'
+import MostRecentArticle from '../components/MostRecentArticle.astro'
+import SearchInput from '../components/SearchInput'
+import { HOMEPAGE_ARTICLE_LIMIT } from '../constants'
+import MainLayout from '../layouts/MainLayout.astro'
 
-import ArticleCard from "../components/ArticleCard";
-import MostRecentArticle from "../components/MostRecentArticle.astro";
-import SearchInput from "../components/SearchInput";
-import { HOMEPAGE_ARTICLE_LIMIT } from "../constants";
-import MainLayout from "../layouts/MainLayout.astro";
-
-const allBlogArticles: CollectionEntry<"blog">[] = (
-  await getCollection("blog")
+const allBlogArticles: CollectionEntry<'blog'>[] = (
+  await getCollection('blog')
 ).sort(
-  (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+  (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) =>
     b.data.date.valueOf() - a.data.date.valueOf()
-);
+)
 
-const mostRecentArticle: CollectionEntry<"blog"> = allBlogArticles[0];
+const mostRecentArticle: CollectionEntry<'blog'> = allBlogArticles[0]
 
-const otherArticles: CollectionEntry<"blog">[] = allBlogArticles.slice(1);
+const otherArticles: CollectionEntry<'blog'>[] = allBlogArticles.slice(1)
 ---
 
 <MainLayout>
@@ -38,7 +37,7 @@ const otherArticles: CollectionEntry<"blog">[] = allBlogArticles.slice(1);
     {
       otherArticles
         .slice(0, HOMEPAGE_ARTICLE_LIMIT)
-        .map((article) => <ArticleCard client:load article={article} />)
+        .map(article => <ArticleCard client:load article={article} />)
     }
   </div>
 </MainLayout>

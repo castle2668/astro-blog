@@ -1,10 +1,10 @@
 ---
-title: "使用 Quasar CLI 建構 SSR 網站"
-excerpt: "最近專案要從 SPA 改成 SSR，雖然一般而言 SSR 是在專案開發前或者開發初期就得考量，但是事情總有個萬一，俗話說的好，需求是會成長的？總之好險 Quasar 有提供建構 SSR 的方法，這對於轉換到 SSR 會減少許多麻煩。"
-tags: ["quasarframework"]
+title: '使用 Quasar CLI 建構 SSR 網站'
+excerpt: '最近專案要從 SPA 改成 SSR，雖然一般而言 SSR 是在專案開發前或者開發初期就得考量，但是事情總有個萬一，俗話說的好，需求是會成長的？總之好險 Quasar 有提供建構 SSR 的方法，這對於轉換到 SSR 會減少許多麻煩。'
+tags: ['quasarframework']
 date: 2020-11-29
-author: "海豹人 Sealman"
-image: "development.jpg"
+author: '海豹人 Sealman'
+image: 'development.jpg'
 slug: 2020-11-29-quasar-ssr
 ---
 
@@ -30,7 +30,7 @@ slug: 2020-11-29-quasar-ssr
 // quasar.conf.js
 return {
   preFetch: true,
-};
+}
 ```
 
 使用時要注意，其實 Quasar 在 Server 與 Client 環境下都會觸發 `preFetch` 再接著執行 `created`。
@@ -80,36 +80,36 @@ SEO 應該是我們會從 SPA 改為 SSR 的主要原因之一，像是某些頁
 export default {
   data() {
     return {
-      title: "商品頁面",
-    };
+      title: '商品頁面',
+    }
   },
   meta() {
     return {
       meta: {
         description: {
-          name: "description",
+          name: 'description',
           content: `網站描述 - ${this.data.content}`,
         },
         ogTitle: {
-          name: "og:title",
+          name: 'og:title',
           content: `${this.data.subtitle} - ${this.data.title}`,
         },
         ogDescription: {
-          name: "og:description",
+          name: 'og:description',
           content: this.data.content,
         },
         ogImage: {
-          name: "og:image",
+          name: 'og:image',
           content: this.data.image,
         },
         ogUrl: {
-          name: "og:url",
+          name: 'og:url',
           content: this.$route.fullpath,
         },
       },
-    };
+    }
   },
-};
+}
 ```
 
 設定完成後，你可以透過 [Meta Tags](https://metatags.io/) 這個網站進行測試並預覽呈現結果。

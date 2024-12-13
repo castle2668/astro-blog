@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #22 內建的函式建構子"
-excerpt: "本文主要內容為探討「JavaScript 內建的函式建構子」的相關知識。"
-tags: ["javascript"]
+title: 'Understand JavaScript #22 內建的函式建構子'
+excerpt: '本文主要內容為探討「JavaScript 內建的函式建構子」的相關知識。'
+tags: ['javascript']
 date: 2021-04-16
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-04-16-built-in-function-constructor
 ---
 
@@ -17,34 +17,34 @@ JavaScript 引擎有內建的函式建構子，這些建構子的原型上還有
 ### Number 物件
 
 ```javascript
-var a = new Number(3);
-console.log(a); // Number {[[PrimitiveValue]]: 3}
+var a = new Number(3)
+console.log(a) // Number {[[PrimitiveValue]]: 3}
 
 // Number 物件的原型
-console.log(Number.prototype); // Number {0, constructor: ƒ, toExponential: ƒ, toFixed: ƒ, toPrecision: ƒ, …}
+console.log(Number.prototype) // Number {0, constructor: ƒ, toExponential: ƒ, toFixed: ƒ, toPrecision: ƒ, …}
 
 // 使用原型上的內建方法
-console.log(a.toFixed(2)); // 3.00
+console.log(a.toFixed(2)) // 3.00
 ```
 
 ### String 物件
 
 ```javascript
-var a = new String("John");
-console.log(a); // String {"John"}
-console.log(String.prototype); // String {"", constructor: ƒ, anchor: ƒ, big: ƒ, blink: ƒ, …}
+var a = new String('John')
+console.log(a) // String {"John"}
+console.log(String.prototype) // String {"", constructor: ƒ, anchor: ƒ, big: ƒ, blink: ƒ, …}
 
 // 檢查是否有這個值，回傳位置
-console.log(String.prototype.indexOf("o")); // -1
-console.log(a.indexOf("o")); // 1
-console.log(a.indexOf("h")); // 2
+console.log(String.prototype.indexOf('o')) // -1
+console.log(a.indexOf('o')) // 1
+console.log(a.indexOf('h')) // 2
 ```
 
 此外，有時候 JavaScript 會根據程式碼的寫法，自動判斷我們要的是物件還是純值。
 
 ```javascript
 // JavaScript 自動將 'John' 判斷為 new String('John')
-console.log("John".length); // 4
+console.log('John'.length) // 4
 ```
 
 ### Date 物件
@@ -52,9 +52,9 @@ console.log("John".length); // 4
 雖然內建的 Date 物件就有包含許多內建方法，但這邊建議使用 [Moment.js](https://momentjs.com/)。
 
 ```javascript
-var a = new Date("2021/4/16");
-console.log(a); // Fri Apr 16 2021 00:00:00 GMT+0800 (台北標準時間)
-console.log(Date.prototype); // 裡面有一堆方法像是 getFullYear 等等
+var a = new Date('2021/4/16')
+console.log(a) // Fri Apr 16 2021 00:00:00 GMT+0800 (台北標準時間)
+console.log(Date.prototype) // 裡面有一堆方法像是 getFullYear 等等
 ```
 
 ## 編輯內建函式建構子的原型屬性
@@ -65,26 +65,26 @@ console.log(Date.prototype); // 裡面有一堆方法像是 getFullYear 等等
 
 ```javascript
 String.prototype.isLengthGreaterThan = function (limit) {
-  return this.length > limit;
-};
+  return this.length > limit
+}
 
 // 'John' 字串被轉換成物件
-console.log("John".isLengthGreaterThan(2)); // true
+console.log('John'.isLengthGreaterThan(2)) // true
 ```
 
 但如果是數值，JavaScript 不會自動轉換數值為物件，此時就要改用內建的函式建構子 `Number()` 來建立 Number 物件，這樣變數 `a` 的原型就會指向 `Number.prototype`，才能取用到 `isPositive` 方法。
 
 ```javascript
 Number.prototype.isPositive = function () {
-  return this > 0;
-};
+  return this > 0
+}
 
 // Error: 數值不會被自動轉換為物件
 // console.log(3.isPositive());
 
 // 改用內建的函式建構子 Number()
-var a = new Number(3);
-console.log(a.isPositive()); // true
+var a = new Number(3)
+console.log(a.isPositive()) // true
 ```
 
 以上這兩個做法都是所謂的**原型繼承**，我們自己增強或改善 JavaScript 程式語言的功能，很多資源庫與框架也都是這麼做的，不過使用時要注意不要覆寫已經存在的屬性或方法！
@@ -96,10 +96,10 @@ console.log(a.isPositive()); // true
 因此，一般來說都不建議使用內建的函式建構子，除非真的需要使用，否則一律建議用**實體語法**建立真正的純值。
 
 ```javascript
-var a = 3;
-var b = new Number(3);
-console.log(a == b); // true
-console.log(a === b); // false
+var a = 3
+var b = new Number(3)
+console.log(a == b) // true
+console.log(a === b) // false
 ```
 
 另外，如果有要大量處理日期，則不建議使用內建的函式建構子 `Date()`，可以改用 [Moment.js](https://momentjs.com/) 等資源庫，裡面有很多函式可以處理日期甚至做日期運算，它可以解決一些內建的建構子的問題。
@@ -115,11 +115,11 @@ JavaScript 的陣列是一種特別的「物件」，陣列的索引 0, 1, 2 其
 所以使用陣列時，一般還是建議使用標準（使用數值為索引）的方式像是 for 迴圈即可。
 
 ```javascript
-Array.prototype.myCustomFeature = "cool!";
-var arr = ["Damao", "Sealman", "Sean"];
+Array.prototype.myCustomFeature = 'cool!'
+var arr = ['Damao', 'Sealman', 'Sean']
 
 for (var prop in arr) {
-  console.log(prop + ": " + arr[prop]);
+  console.log(prop + ': ' + arr[prop])
 }
 // 0: Damao
 // 1: Sealman
@@ -127,7 +127,7 @@ for (var prop in arr) {
 // myCustomFeature: cool!
 
 for (var i = 0; i < arr.length; i++) {
-  console.log(i + ": " + arr[i]);
+  console.log(i + ': ' + arr[i])
 }
 // 0: Damao
 // 1: Sealman

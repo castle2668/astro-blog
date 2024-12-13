@@ -1,10 +1,10 @@
 ---
-title: "[Algorithms] Merge Sort"
-excerpt: "In this article, we’re covering Merge Sort, an efficient sorting algorithm that breaks down arrays into smaller parts, sorts them, and merges them back into a single sorted array. Merge Sort is often highlighted in technical interviews, so understanding its mechanics is essential."
-tags: ["algorithms", "javascript"]
+title: '[Algorithms] Merge Sort'
+excerpt: 'In this article, we’re covering Merge Sort, an efficient sorting algorithm that breaks down arrays into smaller parts, sorts them, and merges them back into a single sorted array. Merge Sort is often highlighted in technical interviews, so understanding its mechanics is essential.'
+tags: ['algorithms', 'javascript']
 date: 2024-10-22
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2024-10-22-merge-sort
 ---
 
@@ -25,28 +25,28 @@ Let’s look at the implementation:
 
 ```javascript
 function mergeSort(arr) {
-  if (arr.length < 2) return arr;
-  let middleIndex = Math.floor(arr.length / 2);
-  let firstHalf = arr.slice(0, middleIndex);
-  let secondHalf = arr.slice(middleIndex);
+  if (arr.length < 2) return arr
+  let middleIndex = Math.floor(arr.length / 2)
+  let firstHalf = arr.slice(0, middleIndex)
+  let secondHalf = arr.slice(middleIndex)
 
-  return merge(mergeSort(firstHalf), mergeSort(secondHalf));
+  return merge(mergeSort(firstHalf), mergeSort(secondHalf))
 }
 
 function merge(array1, array2) {
-  let result = [];
+  let result = []
   while (array1.length && array2.length) {
-    let minElem;
-    if (array1[0] < array2[0]) minElem = array1.shift();
-    else minElem = array2.shift();
-    result.push(minElem);
+    let minElem
+    if (array1[0] < array2[0]) minElem = array1.shift()
+    else minElem = array2.shift()
+    result.push(minElem)
   }
 
-  return result.concat(array1.length ? array1 : array2);
+  return result.concat(array1.length ? array1 : array2)
 }
 
 // Example usage
-mergeSort([42, 16, 77, 3, 99, 50, 27, 66, 5]);
+mergeSort([42, 16, 77, 3, 99, 50, 27, 66, 5])
 ```
 
 ## Summary

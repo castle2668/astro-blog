@@ -1,10 +1,10 @@
 ---
-title: "[Algorithms] Harmless Ransom Note"
+title: '[Algorithms] Harmless Ransom Note'
 excerpt: "In this post, we'll break down a common algorithm question you might see in coding interviews: the Harmless Ransom Note. It’s a great example to understand how to manipulate strings and use objects as hash tables for performance improvements. Plus, it’s relatively straightforward but offers a solid practice in understanding time complexity."
-tags: ["algorithms", "javascript", "hashtable", "leetcode"]
+tags: ['algorithms', 'javascript', 'hashtable', 'leetcode']
 date: 2024-08-28
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2024-08-28-harmless-ransom-note
 ---
 
@@ -38,34 +38,34 @@ Here’s how you can write the solution in JavaScript:
 
 ```javascript
 function harmlessRansomNote(noteText, magazineText) {
-  const noteArr = noteText.split(" ");
-  const magazineArr = magazineText.split(" ");
-  const magazineObj = {};
+  const noteArr = noteText.split(' ')
+  const magazineArr = magazineText.split(' ')
+  const magazineObj = {}
 
   // Build a hash map for the magazine
-  magazineArr.forEach((word) => {
-    if (!magazineObj[word]) magazineObj[word] = 0;
-    magazineObj[word]++;
-  });
+  magazineArr.forEach(word => {
+    if (!magazineObj[word]) magazineObj[word] = 0
+    magazineObj[word]++
+  })
 
   // Check if the note can be formed
-  let noteIsPossible = true;
-  noteArr.forEach((word) => {
+  let noteIsPossible = true
+  noteArr.forEach(word => {
     if (magazineObj[word]) {
-      magazineObj[word]--;
-      if (magazineObj[word] < 0) noteIsPossible = false;
+      magazineObj[word]--
+      if (magazineObj[word] < 0) noteIsPossible = false
     } else {
-      noteIsPossible = false;
+      noteIsPossible = false
     }
-  });
+  })
 
-  return noteIsPossible;
+  return noteIsPossible
 }
 
 // Example usage
-const note = "give me the secret code";
-const magazine = "you will find the secret code if you give me the information";
-console.log(harmlessRansomNote(note, magazine)); // Output: true
+const note = 'give me the secret code'
+const magazine = 'you will find the secret code if you give me the information'
+console.log(harmlessRansomNote(note, magazine)) // Output: true
 ```
 
 ## Time Complexity
@@ -91,29 +91,29 @@ We loop over both arrays once, making this a linear solution.
  * @return {boolean}
  */
 var canConstruct = function (ransomNote, magazine) {
-  let noteArr = ransomNote.replace(" ", "").split("");
-  let magazineArr = magazine.replace(" ", "").split("");
-  let magazineObj = {};
+  let noteArr = ransomNote.replace(' ', '').split('')
+  let magazineArr = magazine.replace(' ', '').split('')
+  let magazineObj = {}
 
-  magazineArr.forEach((letter) => {
+  magazineArr.forEach(letter => {
     if (!magazineObj[letter]) {
-      magazineObj[letter] = 0;
+      magazineObj[letter] = 0
     }
-    magazineObj[letter] += 1;
-  });
+    magazineObj[letter] += 1
+  })
 
-  let noteIsPossible = true;
-  noteArr.forEach((letter) => {
+  let noteIsPossible = true
+  noteArr.forEach(letter => {
     if (magazineObj[letter] && magazineObj[letter] > 0) {
-      magazineObj[letter] -= 1;
+      magazineObj[letter] -= 1
     } else {
-      console.log(letter);
-      noteIsPossible = false;
+      console.log(letter)
+      noteIsPossible = false
     }
-  });
+  })
 
-  return noteIsPossible;
-};
+  return noteIsPossible
+}
 ```
 
 ## Conclusion

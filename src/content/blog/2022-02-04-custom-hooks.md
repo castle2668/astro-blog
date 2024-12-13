@@ -1,10 +1,10 @@
 ---
-title: "React Code Reuse - Custom Hooks"
-excerpt: "本文介紹為什麼我們要建立並使用 Custom Hooks，以及講解如何撰寫創建自己的 Hooks，讓我們在開發 React 專案時更好地複用各種邏輯與程式碼。"
-tags: ["react"]
+title: 'React Code Reuse - Custom Hooks'
+excerpt: '本文介紹為什麼我們要建立並使用 Custom Hooks，以及講解如何撰寫創建自己的 Hooks，讓我們在開發 React 專案時更好地複用各種邏輯與程式碼。'
+tags: ['react']
 date: 2022-02-04
-author: "海豹人 Sealman"
-image: "react.jpg"
+author: '海豹人 Sealman'
+image: 'react.jpg'
 slug: 2022-02-04-custom-hooks
 ---
 
@@ -23,23 +23,23 @@ slug: 2022-02-04-custom-hooks
 創建好檔案後，我們必須在將函式名稱命名為 `useXxx`，例如：`useCounter`。這種函式名稱的命名方式是必須遵守的規範，這是為了讓 React 能夠辨別這是一個 Custom Hook，讓你能夠在裡面使用 `useEffect` 等 Hooks。
 
 ```jsx
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 
 const useCounter = () => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCounter((prevCounter) => prevCounter + 1);
-    }, 1000);
+      setCounter(prevCounter => prevCounter + 1)
+    }, 1000)
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(interval)
+  }, [])
 
-  return counter;
-};
+  return counter
+}
 
-export default useCounter;
+export default useCounter
 ```
 
 如同內建的 React Hooks，這個 Custom Hook 也會 `return` 東西，我們建立的 Custom Hook 可以回傳「任何」型別。在這個範例當中，我是回傳一個計算過後的 `number`。
@@ -56,45 +56,45 @@ export default useCounter;
 
 ```jsx
 const ForwardCounter = () => {
-  const counter = useCounter(); // 這個 counter 是 Custom Hook 回傳的
+  const counter = useCounter() // 這個 counter 是 Custom Hook 回傳的
 
-  return <Card>{counter}</Card>;
-};
+  return <Card>{counter}</Card>
+}
 
-export default ForwardCounter;
+export default ForwardCounter
 ```
 
 接下來，我們可以再針對不同的邏輯去做改變，像是透過「參數」來指定不同的邏輯。例如：透過 `forwards` 參數，給予 Custom Hook `false` 表示遞減，預設的 `true` 則為遞增。
 
 ```jsx
 const useCounter = (forwards = true) => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
       // 根據參數的值判斷要執行的動作
       if (forwards) {
-        setCounter((prevCounter) => prevCounter + 1);
+        setCounter(prevCounter => prevCounter + 1)
       } else {
-        setCounter((prevCounter) => prevCounter - 1);
+        setCounter(prevCounter => prevCounter - 1)
       }
-    }, 1000);
+    }, 1000)
 
-    return () => clearInterval(interval);
-  }, [forwards]); // 記得把參數放入 Dependencies array
+    return () => clearInterval(interval)
+  }, [forwards]) // 記得把參數放入 Dependencies array
 
-  return counter;
-};
+  return counter
+}
 ```
 
 使用上加上參數，例如：選擇傳入 `false` 表示要執行遞減。
 
 ```jsx
 const BackwardCounter = () => {
-  const counter = useCounter(false);
+  const counter = useCounter(false)
 
-  return <Card>{counter}</Card>;
-};
+  return <Card>{counter}</Card>
+}
 ```
 
 ## 使用 Custom Hooks 的注意事項
@@ -108,27 +108,27 @@ const BackwardCounter = () => {
 解決方法：對可能變動的函式（或物件）使用 `useCallback`（或 `useMemo`），這樣就能確保它們是同一個引用。
 
 ```jsx
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from 'react'
 
 const useCustomHook = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(0)
 
   const updateValue = useCallback(() => {
-    setValue((prev) => prev + 1);
-  }, []);
+    setValue(prev => prev + 1)
+  }, [])
 
-  return { value, updateValue };
-};
+  return { value, updateValue }
+}
 
 const MyComponent = () => {
-  const { value, updateValue } = useCustomHook();
+  const { value, updateValue } = useCustomHook()
 
   useEffect(() => {
-    updateValue(); // 加上 useCallback 避免導致無限循環
-  }, [updateValue]);
+    updateValue() // 加上 useCallback 避免導致無限循環
+  }, [updateValue])
 
-  return <div>{value}</div>;
-};
+  return <div>{value}</div>
+}
 ```
 
 ### 2. 避免在使用 Custom Hook 時傳入參數，將外部依賴改為函式參數
@@ -138,27 +138,27 @@ const MyComponent = () => {
 這意味著在 Custom Hook 內部使用這些變數的地方，我們直接把它們作為函式參數來傳遞。這樣一來，我們就不需要在 Custom Hook 中傳遞這些變數，Custom Hook 也不需要新增 dependencies。
 
 ```jsx
-import { useEffect } from "react";
+import { useEffect } from 'react'
 
 const useCustomHook = () => {
-  const logDependency = (dependency) => {
-    console.log(dependency);
-  };
+  const logDependency = dependency => {
+    console.log(dependency)
+  }
 
-  return logDependency;
-};
+  return logDependency
+}
 
 const MyComponent = ({ someProp }) => {
-  const logDependency = useCustomHook();
+  const logDependency = useCustomHook()
 
   useEffect(() => {
     // 傳遞 someProp 作為參數給 logDependency，而不是直接依賴 someProp
     // 減少了不必要的重複渲染和潛在的錯誤
-    logDependency(someProp);
-  }, [someProp, logDependency]);
+    logDependency(someProp)
+  }, [someProp, logDependency])
 
-  return <div>{someProp}</div>;
-};
+  return <div>{someProp}</div>
+}
 ```
 
 ## 回顧

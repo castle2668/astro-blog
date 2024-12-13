@@ -1,10 +1,10 @@
 ---
-title: "[Algorithms] Fibonacci vs. Memorized Fibonacci"
+title: '[Algorithms] Fibonacci vs. Memorized Fibonacci'
 excerpt: "In this post, we'll explore two different implementations of the Fibonacci sequence: the classic recursive version and an optimized version using memoization. Both methods generate the same result, but their efficiency is quite different, especially when dealing with large numbers."
-tags: ["algorithms", "javascript"]
+tags: ['algorithms', 'javascript']
 date: 2024-10-16
-author: "Sean Huang"
-image: "javascript.png"
+author: 'Sean Huang'
+image: 'javascript.png'
 slug: 2024-10-16-memorized-fibonacci
 ---
 
@@ -20,11 +20,11 @@ Let's start with a simple recursive implementation of the Fibonacci sequence:
 
 ```javascript
 function fibonacci(position) {
-  if (position < 3) return 1;
-  else return fibonacci(position - 1) + fibonacci(position - 2);
+  if (position < 3) return 1
+  else return fibonacci(position - 1) + fibonacci(position - 2)
 }
 
-fibonacci(6); // Output: 8
+fibonacci(6) // Output: 8
 ```
 
 ## The Problem: Repeated Calculations and Performance Issues
@@ -43,18 +43,18 @@ Memoization helps optimize recursive functions by storing previously calculated 
 
 ```javascript
 function fibMemo(index, cache) {
-  cache = cache || [];
-  if (cache[index]) return cache[index];
+  cache = cache || []
+  if (cache[index]) return cache[index]
   else {
-    if (index < 3) return 1;
+    if (index < 3) return 1
     else {
-      cache[index] = fibMemo(index - 1, cache) + fibMemo(index - 2, cache);
+      cache[index] = fibMemo(index - 1, cache) + fibMemo(index - 2, cache)
     }
   }
-  return cache[index];
+  return cache[index]
 }
 
-fibMemo(500); // Output: 1.394232245616977e+104 (Very large number, computed quickly)
+fibMemo(500) // Output: 1.394232245616977e+104 (Very large number, computed quickly)
 ```
 
 In this version, we introduce a `cache` array to store previously computed Fibonacci numbers.

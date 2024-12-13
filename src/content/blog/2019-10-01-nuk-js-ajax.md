@@ -1,10 +1,10 @@
 ---
-title: "NUK JavaScript #5：AJAX 撈取資料"
-excerpt: "這次要介紹如何用 AJAX 撈取資料。"
-tags: ["nuk", "javascript"]
+title: 'NUK JavaScript #5：AJAX 撈取資料'
+excerpt: '這次要介紹如何用 AJAX 撈取資料。'
+tags: ['nuk', 'javascript']
 date: 2019-10-01
-author: "Huang, Yung-Hsiang"
-image: "javascript.png"
+author: 'Huang, Yung-Hsiang'
+image: 'javascript.png'
 slug: 2019-10-01-nuk-js-ajax
 ---
 
@@ -18,11 +18,11 @@ slug: 2019-10-01-nuk-js-ajax
 > 此時資料還沒回傳
 
 ```javascript
-let xhr = new XMLHttpRequest();
+let xhr = new XMLHttpRequest()
 xhr.open(
-  "get",
-  "https://soweb.kcg.gov.tw/open1999/ServiceRequestsQuery.asmx/ServiceRequestsQuery?startdate=&enddate=",
-);
+  'get',
+  'https://soweb.kcg.gov.tw/open1999/ServiceRequestsQuery.asmx/ServiceRequestsQuery?startdate=&enddate='
+)
 ```
 
 待對方的伺服器確認我們的身分後，會回傳資料給我們，拿到資料後再看要怎麼處理。
@@ -30,7 +30,7 @@ xhr.open(
 > 資料會回傳到 `response` 跟 `responseText`
 
 ```javascript
-xhr.send();
+xhr.send()
 ```
 
 ## ReadyState
@@ -52,11 +52,11 @@ xhr.send();
 ```javascript
 // JSON.parse(字串)
 
-let b = JSON.parse(a);
-console.log(b[0]);
+let b = JSON.parse(a)
+console.log(b[0])
 
-JSON.parse(xhr.responseText);
-console.log(data[1].ZipName_);
+JSON.parse(xhr.responseText)
+console.log(data[1].ZipName_)
 ```
 
 ## Onload 非同步
@@ -71,25 +71,25 @@ console.log(data[1].ZipName_);
 
 ```javascript
 xhr.onload = function () {
-  let data = JSON.parse(xhr.responseText);
-  console.log(data[1].ZipName_);
-};
+  let data = JSON.parse(xhr.responseText)
+  console.log(data[1].ZipName_)
+}
 ```
 
 以下程式碼中，加上 onload 之後 XHR 裡面的程式碼不會立刻執行，可以用 console.log 查看執行狀況。  
 前兩個 console.log(xhr.responseText) 回傳的都是空值，而且會等到最後資料回傳時才會觸發 onload 裡面的程式碼。
 
 ```javascript
-console.log(xhr.responseText); // #1
+console.log(xhr.responseText) // #1
 
 xhr.onload = function () {
-  console.log(1); // #4
-  let data = JSON.parse(xhr.responseText);
-  console.log(data[0].ZipName_); // #5
-};
+  console.log(1) // #4
+  let data = JSON.parse(xhr.responseText)
+  console.log(data[0].ZipName_) // #5
+}
 
-console.log(xhr.responseText); // #2
-console.log(2); // #3
+console.log(xhr.responseText) // #2
+console.log(2) // #3
 ```
 
 ## AJAX 題目練習
@@ -108,28 +108,28 @@ console.log(2); // #3
 ```javascript
 // JavaScript
 
-let xhr = new XMLHttpRequest();
+let xhr = new XMLHttpRequest()
 xhr.open(
-  "get",
-  "https://soweb.kcg.gov.tw/open1999/ServiceRequestsQuery.asmx/ServiceRequestsQuery?startdate=&enddate=",
-);
-xhr.send();
+  'get',
+  'https://soweb.kcg.gov.tw/open1999/ServiceRequestsQuery.asmx/ServiceRequestsQuery?startdate=&enddate='
+)
+xhr.send()
 
 xhr.onload = function () {
-  let data = JSON.parse(xhr.responseText);
-  let dataLen = data.length;
-  let total = document.querySelector(".total");
-  let totalNum = 0;
+  let data = JSON.parse(xhr.responseText)
+  let dataLen = data.length
+  let total = document.querySelector('.total')
+  let totalNum = 0
 
   for (let i = 0; i < dataLen; i++) {
-    if (data[i].ZipName_ == "鼓山區") {
-      totalNum += 1;
+    if (data[i].ZipName_ == '鼓山區') {
+      totalNum += 1
     }
   }
 
-  total.innerHTML = totalNum;
-  console.log("鼓山區總共有" + totalNum + "筆案件");
-};
+  total.innerHTML = totalNum
+  console.log('鼓山區總共有' + totalNum + '筆案件')
+}
 ```
 
 > 以上資源是我自己整理過後的筆記，若有錯誤歡迎隨時和我聯繫

@@ -1,10 +1,10 @@
 ---
-title: "Understand JavaScript #23 使用 Object.create 建立多層繼承"
-excerpt: "本文主要內容為探討「Object.create」的相關知識以及搭配使用的 Polyfill。"
-tags: ["javascript"]
+title: 'Understand JavaScript #23 使用 Object.create 建立多層繼承'
+excerpt: '本文主要內容為探討「Object.create」的相關知識以及搭配使用的 Polyfill。'
+tags: ['javascript']
 date: 2021-04-19
-author: "海豹人 Sealman"
-image: "javascript.png"
+author: '海豹人 Sealman'
+image: 'javascript.png'
 slug: 2021-04-19-object-create
 ---
 
@@ -18,18 +18,18 @@ slug: 2021-04-19-object-create
 
 ```javascript
 var person = {
-  firstname: "Default",
-  lastname: "Default",
+  firstname: 'Default',
+  lastname: 'Default',
   greet: function () {
-    return "Hi " + this.firstname;
+    return 'Hi ' + this.firstname
   },
-};
+}
 
-console.log(person.greet()); // Hi Default
+console.log(person.greet()) // Hi Default
 
-var damao = Object.create(person); // 從傳入的物件上建立物件
-console.log(damao); // 是一個空物件，它的原型是 person 物件
-console.log(damao.greet()); // Hi Default
+var damao = Object.create(person) // 從傳入的物件上建立物件
+console.log(damao) // 是一個空物件，它的原型是 person 物件
+console.log(damao.greet()) // Hi Default
 ```
 
 > 注意：如果沒有用 `this`，執行時會到全域執行環境中找 `firstname`，因為全域中只有 `person`，而 `person` 是物件所以不會建立執行環境，最後結果就會找不到 `firstname`。
@@ -39,10 +39,10 @@ console.log(damao.greet()); // Hi Default
 使用 `Object.create` 後，可以再建立新物件的屬性和方法去覆蓋原型給的預設值。執行時，原型鏈找到新物件就會停止，不會繼續往下找。
 
 ```javascript
-damao.firstname = "Damao";
-damao.lastname = "Huang";
-console.log(damao.greet()); // Hi Damao
-console.log(damao); // {firstname: "Damao", lastname: "Huang"}
+damao.firstname = 'Damao'
+damao.lastname = 'Huang'
+console.log(damao.greet()) // Hi Damao
+console.log(damao) // {firstname: "Damao", lastname: "Huang"}
 ```
 
 ### 範例：建立多層繼承
@@ -51,30 +51,30 @@ console.log(damao); // {firstname: "Damao", lastname: "Huang"}
 
 ```javascript
 function Animal(species) {
-  this.kingdom = "動物界";
-  this.species = species || "海豹族";
+  this.kingdom = '動物界'
+  this.species = species || '海豹族'
 }
 Animal.prototype.drink = function () {
-  console.log(this.name + "喝水");
-};
+  console.log(this.name + '喝水')
+}
 
 function Mamegoma(name, color, size) {
-  Animal.call(this, "海豹族"); // 繼承 Animal 的建構函式
-  this.name = name;
-  this.color = color || "白色";
-  this.size = size || "中";
+  Animal.call(this, '海豹族') // 繼承 Animal 的建構函式
+  this.name = name
+  this.color = color || '白色'
+  this.size = size || '中'
 }
-Mamegoma.prototype = Object.create(Animal.prototype); // Mamegoma 的原型是繼承 Animal 的原型
-Mamegoma.prototype.constructor = Mamegoma; // 讓建構函式更完整
+Mamegoma.prototype = Object.create(Animal.prototype) // Mamegoma 的原型是繼承 Animal 的原型
+Mamegoma.prototype.constructor = Mamegoma // 讓建構函式更完整
 Mamegoma.prototype.eat = function () {
-  console.log(this.name + "吃灰塵");
-};
+  console.log(this.name + '吃灰塵')
+}
 
-var Piu = new Mamegoma("Piu", "粉紅色", "大");
-console.log(Piu); // 註
+var Piu = new Mamegoma('Piu', '粉紅色', '大')
+console.log(Piu) // 註
 
-Piu.eat(); // Piu吃灰塵 (Mamegoma 原型的方法)
-Piu.drink(); // Piu喝水 (Animal 原型的方法)
+Piu.eat() // Piu吃灰塵 (Mamegoma 原型的方法)
+Piu.drink() // Piu喝水 (Animal 原型的方法)
 ```
 
 ⭐️ `Piu.__proto__` is a reference to `Mamegoma.prototype`
@@ -128,23 +128,23 @@ Polyfill 做了什麼事情呢？
 這就相當於 `var temp = Object.create(proto)` 的意思，也就是用 `proto` 作為原型來建立新物件 `temp`，最後回傳 `temp` 完成物件建立。
 
 ```javascript
-if (typeof Object.create !== "function") {
+if (typeof Object.create !== 'function') {
   Object.create = function (proto, propertiesObject) {
     if (
       !(
         proto === null ||
-        typeof proto === "object" ||
-        typeof proto === "function"
+        typeof proto === 'object' ||
+        typeof proto === 'function'
       )
     ) {
-      throw TypeError("Argument must be an object, or null");
+      throw TypeError('Argument must be an object, or null')
     }
-    var temp = new Object();
-    temp.__proto__ = proto;
-    if (typeof propertiesObject === "object")
-      Object.defineProperties(temp, propertiesObject);
-    return temp;
-  };
+    var temp = new Object()
+    temp.__proto__ = proto
+    if (typeof propertiesObject === 'object')
+      Object.defineProperties(temp, propertiesObject)
+    return temp
+  }
 }
 ```
 
