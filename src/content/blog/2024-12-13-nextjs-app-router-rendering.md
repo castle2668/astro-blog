@@ -49,7 +49,7 @@ export default function ClientComponent() {
   if (loading) return <div>Loading...</div>
   if (!data) return <div>No data</div>
 
-  return <div>{/* 渲染數據 */}</div>
+  return <div>{/* 渲染資料 */}</div>
 }
 ```
 
@@ -66,7 +66,7 @@ async function getData() {
 
 export default async function Page() {
   const data = await getData()
-  return <div>{/* 渲染數據 */}</div>
+  return <div>{/* 渲染資料 */}</div>
 }
 ```
 
@@ -107,7 +107,7 @@ async function getData(slug: string) {
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const data = await getData(params.slug)
-  return <div>{/* 渲染數據 */}</div>
+  return <div>{/* 渲染資料 */}</div>
 }
 ```
 
@@ -173,7 +173,7 @@ async function getData() {
 
 export default async function Page() {
   const data = await getData()
-  return <div>{/* 渲染數據 */}</div>
+  return <div>{/* 渲染資料 */}</div>
 }
 ```
 
@@ -198,8 +198,8 @@ export default async function Page() {
 
 1. App Router 預設就是伺服器端元件（Server Components），除非明確使用 `'use client'`
 2. 不再需要 `getStaticProps` 與 `getServerSideProps` 等方法
-3. 資料獲取是通過在元件中直接使用 `async/await` 等方式
+3. 資料獲取是透過在元件中直接使用 `async/await` 等方式
 4. 緩存和重新驗證的配置是通過 `fetch` 的選項來完成
 5. 動態路由使用 `generateStaticParams` 替代了 `getStaticPaths`
 
-這些新的模式雖然看起來不同，但是其實也很直觀，也不會很難理解。主要就是通過配置 fetch 選項來控制渲染和資料獲取的行為。
+這些新的模式雖然看起來不同，但是其實也很直觀，不會到很難理解。主要就是通過配置 `fetch` 的選項來控制渲染和資料獲取的行為。
