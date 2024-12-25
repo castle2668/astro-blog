@@ -1,5 +1,5 @@
 ---
-title: '在 Next.js 中串接 Google Maps API (2024)'
+title: '在 Next.js 中串接 Google Maps API'
 excerpt: '在現代 Web 開發中，地圖服務是許多應用的重要元件。本文將介紹如何在 Next.js 中使用 Google Maps API，並展示一個包含地圖標記和互動功能的範例。'
 tags: ['nextjs', 'googlemapsapi']
 date: 2024-12-25
