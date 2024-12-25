@@ -12,7 +12,7 @@ slug: 2024-12-25-google-maps-api
 
 ### 1. 啟用 Google Maps API
 
-第一步是前往 Google Cloud Console，開啟 Google Maps API 並建立 API 金鑰。記得限制金鑰的使用範圍以提高安全性。
+第一步是前往 [Google Cloud Console](https://console.cloud.google.com)，開啟 Google Maps API 並建立 API 金鑰。記得限制金鑰的使用範圍以提高安全性。
 
 ### 2. 設定環境變數
 
